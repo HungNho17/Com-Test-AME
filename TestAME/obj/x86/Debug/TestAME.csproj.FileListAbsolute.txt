@@ -1,0 +1,8 @@
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\bin\Debug\TestAME.exe
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\bin\Debug\TestAME.pdb
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.AME_APP_TEST.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.Properties.Resources.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.exe
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.pdb
+F:\4.GIT_HUB\2.TestAME\TestAME\TestAME\obj\x86\Debug\TestAME.csprojResolveAssemblyReference.cache
