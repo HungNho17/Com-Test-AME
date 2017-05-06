@@ -15,7 +15,7 @@ namespace TestAME
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AME_APP_TEST());
+            Application.Run(new MW_AmeTest());
         }
     }
 }
