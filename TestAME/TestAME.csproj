@@ -89,10 +89,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceImage\Red.png" />
+    <Resource Include="ResourceImage\Red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceImage\Green.png" />
+    <Resource Include="ResourceImage\Green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
