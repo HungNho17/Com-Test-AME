@@ -48,7 +48,7 @@ namespace TestAME
         {  
             MessageBox.Show("Form 2 Closed!");
             UpdateStatusConnect();
-        } 
+        }
 
     }
 }

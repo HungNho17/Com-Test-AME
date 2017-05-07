@@ -15,3 +15,12 @@ C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.Properties
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.MW_AmeTest.resources
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.exe
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.pdb
+F:\4.GIT_HUB\2.TestAME\TestAME\bin\Debug\TestAME.exe
+F:\4.GIT_HUB\2.TestAME\TestAME\bin\Debug\TestAME.pdb
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.csprojResolveAssemblyReference.cache
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.MW_AmeTest.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.Properties.Resources.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
+F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
