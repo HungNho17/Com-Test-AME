@@ -51,10 +51,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.tbDataRecieve = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbSendLF = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btSend = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tbDataSend = new System.Windows.Forms.TextBox();
@@ -85,6 +84,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
+            this.tbDataRecieve = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -217,11 +217,11 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.tbDataRecieve);
             this.groupBox1.Controls.Add(this.lbWrapText);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.tbDataRecieve);
             this.groupBox1.Location = new System.Drawing.Point(0, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(575, 235);
@@ -270,28 +270,13 @@
             this.button1.Text = "Wrap Text";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // tbDataRecieve
-            // 
-            this.tbDataRecieve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDataRecieve.BackColor = System.Drawing.Color.Black;
-            this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
-            this.tbDataRecieve.Location = new System.Drawing.Point(15, 24);
-            this.tbDataRecieve.Multiline = true;
-            this.tbDataRecieve.Name = "tbDataRecieve";
-            this.tbDataRecieve.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbDataRecieve.Size = new System.Drawing.Size(446, 196);
-            this.tbDataRecieve.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.lbSendLF);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.btSend);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.tbDataSend);
@@ -313,15 +298,16 @@
             this.lbSendLF.TabIndex = 11;
             this.lbSendLF.Text = "   ";
             // 
-            // button6
+            // btSend
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(467, 63);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(102, 24);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Send";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSend.Location = new System.Drawing.Point(467, 63);
+            this.btSend.Name = "btSend";
+            this.btSend.Size = new System.Drawing.Size(102, 24);
+            this.btSend.TabIndex = 3;
+            this.btSend.Text = "Send";
+            this.btSend.UseVisualStyleBackColor = true;
+            this.btSend.Click += new System.EventHandler(this.btSend_Click);
             // 
             // button5
             // 
@@ -349,7 +335,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDataSend.BackColor = System.Drawing.Color.Black;
-            this.tbDataSend.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDataSend.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDataSend.ForeColor = System.Drawing.Color.Lime;
             this.tbDataSend.Location = new System.Drawing.Point(16, 14);
             this.tbDataSend.Multiline = true;
@@ -656,6 +642,26 @@
             this.BTSPort.UseVisualStyleBackColor = true;
             this.BTSPort.Click += new System.EventHandler(this.BTSPort_Click);
             // 
+            // SPort
+            // 
+            this.SPort.ReadTimeout = 10;
+            this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
+            // 
+            // tbDataRecieve
+            // 
+            this.tbDataRecieve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDataRecieve.BackColor = System.Drawing.Color.Black;
+            this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
+            this.tbDataRecieve.Location = new System.Drawing.Point(16, 32);
+            this.tbDataRecieve.Name = "tbDataRecieve";
+            this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.tbDataRecieve.Size = new System.Drawing.Size(444, 188);
+            this.tbDataRecieve.TabIndex = 11;
+            this.tbDataRecieve.Text = "";
+            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,11 +718,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox tbDataRecieve;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbDataSend;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btSend;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btCmd7;
@@ -747,6 +752,7 @@
         private System.Windows.Forms.Label lbDisplayRCData;
         private System.Windows.Forms.Label lbToLocalCMD;
         private System.Windows.Forms.Label lbToCommunicate;
+        private System.Windows.Forms.RichTextBox tbDataRecieve;
     }
 }
 

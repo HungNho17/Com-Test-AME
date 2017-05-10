@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using System.IO.Ports;
 
 namespace TestAME
 {
@@ -32,6 +34,8 @@ namespace TestAME
         bool FlagSendLF = false;
         bool FlagSendTo = true;
 
+        public delegate void AddDataDelegate(int datain);
+        public AddDataDelegate myDelegate;
 //==============================================================================
 // Window Actions.
 //==============================================================================
@@ -44,6 +48,8 @@ namespace TestAME
         private void AME_APP_TEST_Load(object sender, EventArgs e)
         {
             ReInitializeAllComponents();
+            this.myDelegate = new AddDataDelegate(AddDataMethod);
+
         }
 
 //==============================================================================
@@ -54,8 +60,8 @@ namespace TestAME
         public void ReInitializeAllComponents()
         {
             ComPort = new SerialComPort(SPort);
+            SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
-            
             UpdateStatusWindow();
         }
 
@@ -135,6 +141,20 @@ namespace TestAME
             }
         }
 
+        public bool ProcessDataRecieved(int data)
+        {
+            bool ret = true;
+            string temp = ComPort.ProcessDataRecieve(data);
+            
+            tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
+            tbDataRecieve.SelectionLength = 0;
+            tbDataRecieve.SelectionColor = Color.Yellow;
+            tbDataRecieve.AppendText(temp);
+            tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
+
+            return ret;
+        }
+
 //==============================================================================
 // Event Process
 //==============================================================================
@@ -191,5 +211,32 @@ namespace TestAME
             UpdateStatusWindow();
         }
 
+        public void AddDataMethod(int dataIn)
+        {
+            ProcessDataRecieved(dataIn);
+        }
+
+        void SPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            int indata = 0;
+            while (indata != (-1))
+            {
+                try
+                {
+                    indata = sp.ReadByte();
+                    this.Invoke(this.myDelegate, new Object[] { indata });
+                }
+                catch { break; }
+            }
+        }
+
+        private void btSend_Click(object sender, EventArgs e)
+        {
+            if (tbDataSend.Text != null)
+            {
+                ComPort.SendData(tbDataSend.Text);
+            }
+        }
     }
 }

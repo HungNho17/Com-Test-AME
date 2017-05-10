@@ -16,6 +16,7 @@ namespace TestAME
 // Type definition.
 //==============================================================================
         DataGrid Datagrid = new DataGrid();
+        int oldNumber = 0; 
 
 //==============================================================================
 // All Atributes.
@@ -64,7 +65,20 @@ namespace TestAME
             {
                 CLBSerialPort.Items.Add(element);
             }
+
+            int idx = 0;
+            foreach (var element in CLBSerialPort.Items)
+            {
+                if (element.ToString() == ComPort.PortName)
+                {
+                    CLBSerialPort.SetItemChecked(idx, true);
+                    oldNumber = idx;
+                    return;
+                }
+                idx++;
+            }
             CLBSerialPort.SetItemChecked(0, true);
+            oldNumber = 0;
         }
 
         public void LoadVariableDefault()
@@ -190,7 +204,19 @@ namespace TestAME
             }
         }
 
-        private void SW_SerialComSetUp_FormClosed(object sender, FormClosedEventArgs e)
+        private void CLBSerialPort_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int newNumber = CLBSerialPort.SelectedIndex;
+            if (newNumber != oldNumber)
+            {
+                CLBSerialPort.SetItemChecked(oldNumber, false);
+                CLBSerialPort.SetItemChecked(newNumber, true);
+                oldNumber = newNumber;
+                PortName = CLBSerialPort.SelectedItem.ToString();
+            }
+        }
+
+        private void btOK_Click(object sender, EventArgs e)
         {
             if (ComPort.IsOpen)
             {
@@ -200,11 +226,27 @@ namespace TestAME
                     ComPort.PortName = PortName;
                 }
             }
+            else
+            {
+                ComPort.PortName = PortName;
+            }
 
             ComPort.BaudRate = PortBaudRate;
             ComPort.Parity = PortParity;
             ComPort.DataBits = PortDataBits;
             ComPort.StopBits = PortStopBit;
+
+            this.Close();
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SW_SerialComSetUp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
 
     }

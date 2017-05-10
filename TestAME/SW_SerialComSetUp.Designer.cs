@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CLBSerialPort = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.RB115200 = new System.Windows.Forms.RadioButton();
             this.RB57600 = new System.Windows.Forms.RadioButton();
@@ -52,7 +53,8 @@
             this.RBStopB2 = new System.Windows.Forms.RadioButton();
             this.RBStopB1 = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.CLBSerialPort = new System.Windows.Forms.CheckedListBox();
+            this.btOK = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -71,6 +73,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Serial Ports";
+            // 
+            // CLBSerialPort
+            // 
+            this.CLBSerialPort.FormattingEnabled = true;
+            this.CLBSerialPort.Location = new System.Drawing.Point(5, 22);
+            this.CLBSerialPort.MultiColumn = true;
+            this.CLBSerialPort.Name = "CLBSerialPort";
+            this.CLBSerialPort.Size = new System.Drawing.Size(230, 364);
+            this.CLBSerialPort.TabIndex = 0;
+            this.CLBSerialPort.SelectedValueChanged += new System.EventHandler(this.CLBSerialPort_SelectedValueChanged);
             // 
             // groupBox2
             // 
@@ -374,26 +386,38 @@
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(179, 157);
+            this.groupBox6.Size = new System.Drawing.Size(179, 116);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Serial port information:";
             // 
-            // CLBSerialPort
+            // btOK
             // 
-            this.CLBSerialPort.FormattingEnabled = true;
-            this.CLBSerialPort.Location = new System.Drawing.Point(5, 22);
-            this.CLBSerialPort.MultiColumn = true;
-            this.CLBSerialPort.Name = "CLBSerialPort";
-            this.CLBSerialPort.Size = new System.Drawing.Size(230, 364);
-            this.CLBSerialPort.TabIndex = 0;
-            this.CLBSerialPort.SelectedValueChanged += new System.EventHandler(this.CLBSerialPort_SelectedValueChanged);
+            this.btOK.Location = new System.Drawing.Point(272, 381);
+            this.btOK.Name = "btOK";
+            this.btOK.Size = new System.Drawing.Size(81, 26);
+            this.btOK.TabIndex = 6;
+            this.btOK.Text = "OK";
+            this.btOK.UseVisualStyleBackColor = true;
+            this.btOK.Click += new System.EventHandler(this.btOK_Click);
+            // 
+            // btCancel
+            // 
+            this.btCancel.Location = new System.Drawing.Point(370, 381);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(82, 26);
+            this.btCancel.TabIndex = 7;
+            this.btCancel.Text = "CANCEL";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // SW_SerialComSetUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 419);
+            this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btOK);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -445,5 +469,7 @@
         private System.Windows.Forms.RadioButton RBStopB1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckedListBox CLBSerialPort;
+        private System.Windows.Forms.Button btOK;
+        private System.Windows.Forms.Button btCancel;
     }
 }
