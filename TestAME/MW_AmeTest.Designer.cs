@@ -47,15 +47,16 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbDataRecieve = new System.Windows.Forms.RichTextBox();
             this.lbWrapText = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btNewLineCo = new System.Windows.Forms.Button();
+            this.btClearCo = new System.Windows.Forms.Button();
+            this.btWrapTextCo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbSendLF = new System.Windows.Forms.Label();
             this.btSend = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btClearLo = new System.Windows.Forms.Button();
+            this.btSendLFLo = new System.Windows.Forms.Button();
             this.tbDataSend = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btCmd7 = new System.Windows.Forms.Button();
@@ -78,13 +79,12 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lbToLocalCMD = new System.Windows.Forms.Label();
             this.lbToCommunicate = new System.Windows.Forms.Label();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
+            this.btCharToLo = new System.Windows.Forms.Button();
+            this.btCharToCo = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button21 = new System.Windows.Forms.Button();
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
-            this.tbDataRecieve = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -194,7 +194,7 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // helpToolStripMenuItem
@@ -213,21 +213,37 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.tbDataRecieve);
             this.groupBox1.Controls.Add(this.lbWrapText);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btNewLineCo);
+            this.groupBox1.Controls.Add(this.btClearCo);
+            this.groupBox1.Controls.Add(this.btWrapTextCo);
             this.groupBox1.Location = new System.Drawing.Point(0, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(575, 235);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Communications";
+            // 
+            // tbDataRecieve
+            // 
+            this.tbDataRecieve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDataRecieve.BackColor = System.Drawing.Color.Black;
+            this.tbDataRecieve.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold);
+            this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
+            this.tbDataRecieve.Location = new System.Drawing.Point(12, 15);
+            this.tbDataRecieve.Name = "tbDataRecieve";
+            this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.tbDataRecieve.Size = new System.Drawing.Size(448, 205);
+            this.tbDataRecieve.TabIndex = 11;
+            this.tbDataRecieve.Text = "";
             // 
             // lbWrapText
             // 
@@ -240,49 +256,52 @@
             this.lbWrapText.TabIndex = 10;
             this.lbWrapText.Text = "   ";
             // 
-            // button3
+            // btNewLineCo
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(467, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 24);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "New Line";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btNewLineCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btNewLineCo.Location = new System.Drawing.Point(467, 196);
+            this.btNewLineCo.Name = "btNewLineCo";
+            this.btNewLineCo.Size = new System.Drawing.Size(102, 24);
+            this.btNewLineCo.TabIndex = 3;
+            this.btNewLineCo.Text = "New Line";
+            this.btNewLineCo.UseVisualStyleBackColor = true;
+            this.btNewLineCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // button2
+            // btClearCo
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(467, 166);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 24);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Clear Text";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btClearCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btClearCo.Location = new System.Drawing.Point(467, 166);
+            this.btClearCo.Name = "btClearCo";
+            this.btClearCo.Size = new System.Drawing.Size(102, 24);
+            this.btClearCo.TabIndex = 2;
+            this.btClearCo.Text = "Clear Text";
+            this.btClearCo.UseVisualStyleBackColor = true;
+            this.btClearCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // button1
+            // btWrapTextCo
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(494, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Wrap Text";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btWrapTextCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btWrapTextCo.Location = new System.Drawing.Point(494, 137);
+            this.btWrapTextCo.Name = "btWrapTextCo";
+            this.btWrapTextCo.Size = new System.Drawing.Size(75, 23);
+            this.btWrapTextCo.TabIndex = 1;
+            this.btWrapTextCo.Text = "Wrap Text";
+            this.btWrapTextCo.UseVisualStyleBackColor = true;
+            this.btWrapTextCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.lbSendLF);
             this.groupBox2.Controls.Add(this.btSend);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.btClearLo);
+            this.groupBox2.Controls.Add(this.btSendLFLo);
             this.groupBox2.Controls.Add(this.tbDataSend);
             this.groupBox2.Location = new System.Drawing.Point(0, 281);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(575, 93);
+            this.groupBox2.Size = new System.Drawing.Size(575, 115);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Local Command";
@@ -292,7 +311,7 @@
             this.lbSendLF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSendLF.AutoSize = true;
             this.lbSendLF.Image = ((System.Drawing.Image)(resources.GetObject("lbSendLF.Image")));
-            this.lbSendLF.Location = new System.Drawing.Point(472, 10);
+            this.lbSendLF.Location = new System.Drawing.Point(472, 32);
             this.lbSendLF.Name = "lbSendLF";
             this.lbSendLF.Size = new System.Drawing.Size(16, 13);
             this.lbSendLF.TabIndex = 11;
@@ -301,7 +320,7 @@
             // btSend
             // 
             this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSend.Location = new System.Drawing.Point(467, 63);
+            this.btSend.Location = new System.Drawing.Point(467, 85);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(102, 24);
             this.btSend.TabIndex = 3;
@@ -309,46 +328,49 @@
             this.btSend.UseVisualStyleBackColor = true;
             this.btSend.Click += new System.EventHandler(this.btSend_Click);
             // 
-            // button5
+            // btClearLo
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(468, 34);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(102, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Clear Text";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btClearLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btClearLo.Location = new System.Drawing.Point(468, 56);
+            this.btClearLo.Name = "btClearLo";
+            this.btClearLo.Size = new System.Drawing.Size(102, 23);
+            this.btClearLo.TabIndex = 2;
+            this.btClearLo.Text = "Clear Text";
+            this.btClearLo.UseVisualStyleBackColor = true;
+            this.btClearLo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // button4
+            // btSendLFLo
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(494, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Send LF";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btSendLFLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSendLFLo.Location = new System.Drawing.Point(494, 27);
+            this.btSendLFLo.Name = "btSendLFLo";
+            this.btSendLFLo.Size = new System.Drawing.Size(75, 23);
+            this.btSendLFLo.TabIndex = 1;
+            this.btSendLFLo.Text = "Send LF";
+            this.btSendLFLo.UseVisualStyleBackColor = true;
+            this.btSendLFLo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
             // tbDataSend
             // 
-            this.tbDataSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDataSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDataSend.BackColor = System.Drawing.Color.Black;
+            this.tbDataSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbDataSend.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDataSend.ForeColor = System.Drawing.Color.Lime;
-            this.tbDataSend.Location = new System.Drawing.Point(16, 14);
+            this.tbDataSend.Location = new System.Drawing.Point(12, 14);
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbDataSend.Size = new System.Drawing.Size(445, 73);
+            this.tbDataSend.Size = new System.Drawing.Size(449, 95);
             this.tbDataSend.TabIndex = 0;
             this.tbDataSend.WordWrap = false;
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btCmd7);
             this.groupBox3.Controls.Add(this.btCmd3);
             this.groupBox3.Controls.Add(this.btCmd6);
@@ -357,7 +379,7 @@
             this.groupBox3.Controls.Add(this.btCmd1);
             this.groupBox3.Controls.Add(this.btCmd4);
             this.groupBox3.Controls.Add(this.btCmd0);
-            this.groupBox3.Location = new System.Drawing.Point(0, 390);
+            this.groupBox3.Location = new System.Drawing.Point(0, 402);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(575, 106);
             this.groupBox3.TabIndex = 3;
@@ -552,12 +574,12 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.lbToLocalCMD);
             this.groupBox5.Controls.Add(this.lbToCommunicate);
-            this.groupBox5.Controls.Add(this.button20);
-            this.groupBox5.Controls.Add(this.button19);
+            this.groupBox5.Controls.Add(this.btCharToLo);
+            this.groupBox5.Controls.Add(this.btCharToCo);
             this.groupBox5.Controls.Add(this.textBox3);
             this.groupBox5.Location = new System.Drawing.Point(596, 208);
             this.groupBox5.Name = "groupBox5";
@@ -588,43 +610,45 @@
             this.lbToCommunicate.TabIndex = 12;
             this.lbToCommunicate.Text = "   ";
             // 
-            // button20
+            // btCharToLo
             // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.Location = new System.Drawing.Point(42, 219);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(135, 23);
-            this.button20.TabIndex = 2;
-            this.button20.Text = "To Local Command";
-            this.button20.UseVisualStyleBackColor = true;
+            this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCharToLo.Location = new System.Drawing.Point(42, 219);
+            this.btCharToLo.Name = "btCharToLo";
+            this.btCharToLo.Size = new System.Drawing.Size(135, 23);
+            this.btCharToLo.TabIndex = 2;
+            this.btCharToLo.Text = "To Local Command";
+            this.btCharToLo.UseVisualStyleBackColor = true;
+            this.btCharToLo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // button19
+            // btCharToCo
             // 
-            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button19.Location = new System.Drawing.Point(42, 189);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(135, 23);
-            this.button19.TabIndex = 1;
-            this.button19.Text = "To Communications";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCharToCo.Location = new System.Drawing.Point(42, 189);
+            this.btCharToCo.Name = "btCharToCo";
+            this.btCharToCo.Size = new System.Drawing.Size(135, 23);
+            this.btCharToCo.TabIndex = 1;
+            this.btCharToCo.Text = "To Communications";
+            this.btCharToCo.UseVisualStyleBackColor = true;
+            this.btCharToCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
             // textBox3
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(17, 19);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(160, 159);
+            this.textBox3.Size = new System.Drawing.Size(160, 163);
             this.textBox3.TabIndex = 0;
             // 
             // button21
             // 
             this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button21.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button21.Location = new System.Drawing.Point(594, 473);
+            this.button21.Location = new System.Drawing.Point(594, 480);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(90, 23);
             this.button21.TabIndex = 6;
@@ -634,7 +658,7 @@
             // BTSPort
             // 
             this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTSPort.Location = new System.Drawing.Point(690, 473);
+            this.BTSPort.Location = new System.Drawing.Point(690, 480);
             this.BTSPort.Name = "BTSPort";
             this.BTSPort.Size = new System.Drawing.Size(90, 23);
             this.BTSPort.TabIndex = 7;
@@ -646,21 +670,6 @@
             // 
             this.SPort.ReadTimeout = 10;
             this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
-            // 
-            // tbDataRecieve
-            // 
-            this.tbDataRecieve.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbDataRecieve.BackColor = System.Drawing.Color.Black;
-            this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold);
-            this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
-            this.tbDataRecieve.Location = new System.Drawing.Point(16, 32);
-            this.tbDataRecieve.Name = "tbDataRecieve";
-            this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.tbDataRecieve.Size = new System.Drawing.Size(444, 188);
-            this.tbDataRecieve.TabIndex = 11;
-            this.tbDataRecieve.Text = "";
             // 
             // MW_AmeTest
             // 
@@ -715,15 +724,15 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btNewLineCo;
+        private System.Windows.Forms.Button btClearCo;
+        private System.Windows.Forms.Button btWrapTextCo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbDataSend;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btSend;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btClearLo;
+        private System.Windows.Forms.Button btSendLFLo;
         private System.Windows.Forms.Button btCmd7;
         private System.Windows.Forms.Button btCmd3;
         private System.Windows.Forms.Button btCmd6;
@@ -738,8 +747,8 @@
         private System.Windows.Forms.Button btShowSpace;
         private System.Windows.Forms.Button btShowLF;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button btCharToLo;
+        private System.Windows.Forms.Button btCharToCo;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button BTSPort;

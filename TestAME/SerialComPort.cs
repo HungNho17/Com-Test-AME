@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Data;
+using System.Collections.Generic;
+using System.Text;
 
 namespace TestAME
 {
@@ -78,24 +81,34 @@ namespace TestAME
 
         public SerialComPort(SerialPort a)
         {
-            string[] port;
+            string[] port = null;
             CurrentComPort = a;
             port = SerialPort.GetPortNames();
-            CurrentComPort.PortName = port[0];
+            if(port.Length > 0)
+                CurrentComPort.PortName = port[0];
         }
 
         public bool OpenSPort()
         {
+            if (CurrentComPort.PortName == null) 
+                return false;
+
             if (CurrentComPort != null)
             {
                 if (CurrentComPort.IsOpen != true)
-                { 
-                    CurrentComPort.Open();
-                    if (CurrentComPort.IsOpen == false)
+                {
+                    try
+                    {
+                        CurrentComPort.Open();
+                        if (CurrentComPort.IsOpen == false)
+                        {
+                            return false;
+                        }
+                    }
+                    catch
                     {
                         return false;
-                    } 
-                       
+                    }
                 }
             }
              
@@ -104,12 +117,22 @@ namespace TestAME
 
         public bool CloseSPort()
         {
+            if (CurrentComPort.PortName == null)
+                return false;
+
             if (CurrentComPort != null)
             {
                 if (CurrentComPort.IsOpen == true)
                 {
-                    CurrentComPort.Close();
-                    if (CurrentComPort.IsOpen == true)
+                    try
+                    {
+                        CurrentComPort.Close();
+                        if (CurrentComPort.IsOpen == true)
+                        {
+                            return false;
+                        }
+                    }
+                    catch
                     {
                         return false;
                     }
@@ -139,9 +162,22 @@ namespace TestAME
         {
             bool bRet = true;
 
+            if (CurrentComPort.PortName == null)
+                return false;
+
             if (CurrentComPort.IsOpen == true)
             {
-                CurrentComPort.WriteLine(dataOut);
+                try
+                {
+                    byte[] dataBytes = null;
+                    dataBytes = Encoding.ASCII.GetBytes(dataOut);
+                    if (dataBytes.Length > 0)
+                        CurrentComPort.Write(dataBytes, 0, dataBytes.Length);
+                }
+                catch
+                {
+                    return false;
+                }
             }
 
             return bRet;

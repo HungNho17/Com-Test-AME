@@ -25,6 +25,7 @@ namespace TestAME
         SerialComPort ComPort = null;
         List<Button> CommandBTList = null;
         List<Button> ConnectStatusBTList = null;
+        List<Button> ControlUIBTList = null;
 
         bool FlagConnectStatus = false;
         bool FlagDisplayDataRecieve = true;
@@ -62,6 +63,7 @@ namespace TestAME
             ComPort = new SerialComPort(SPort);
             SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
+            ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
             UpdateStatusWindow();
         }
 
@@ -172,6 +174,9 @@ namespace TestAME
             UpdateStatusWindow();
         }
 
+        /// <summary>
+        /// PROCESS MULTI BUTTON - CONNECTING ACTION
+        /// </summary>
         private void BTConnectStatus_Click(object sender, EventArgs e)
         {
             int IndexSender = ConnectStatusBTList.IndexOf(sender as Button);
@@ -183,6 +188,10 @@ namespace TestAME
                         if (ComPort.OpenSPort())
                         {
                             FlagConnectStatus = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Comport Fail!");
                         }
                     }
                     else
@@ -202,6 +211,44 @@ namespace TestAME
                     break;
                 case 3: // bt show endline character.
                     FlagShowLF ^= true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            UpdateStatusWindow();
+        }
+
+        /// <summary>
+        /// PROCESS MULTI BUTTON - CONTROL UI
+        /// </summary>
+        private void BTControlUI_Click(object sender, EventArgs e)
+        {
+            int IndexSender = ControlUIBTList.IndexOf(sender as Button);
+            switch (IndexSender)
+            {
+                case 0: // bt wrap text
+                    FlagWrapText ^= true;
+                    break;
+
+                case 1: // bt clear co
+                    tbDataRecieve.Text = "";
+                    break;
+                case 2: // bt new line
+                    tbDataRecieve.Text += "\n";
+                    break;
+                case 3: // bt send lf
+                    FlagSendLF ^= true;
+                    break;
+                case 4: // bt clear lo
+                    tbDataSend.Text = "";
+                    break;
+                case 5: // bt char to co
+                    FlagSendTo = true;
+                    break;
+                case 6: // bt char to lo
+                    FlagSendTo = false;
                     break;
 
                 default:
