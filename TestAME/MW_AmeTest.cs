@@ -121,10 +121,12 @@ namespace TestAME
             if (FlagWrapText) // update status process data recieve
             {
                 lbWrapText.Image = TestAME.Properties.Resources.Green;
+                tbDataRecieve.WordWrap = true;
             }
             else
             {
                 lbWrapText.Image = TestAME.Properties.Resources.Red;
+                tbDataRecieve.WordWrap = false;
             }
 
             if (FlagSendLF) // update status process data sending
@@ -178,16 +180,20 @@ namespace TestAME
             
             tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
             tbDataRecieve.SelectionLength = 0;
+
             if (flagFromSP)
                 tbDataRecieve.SelectionColor = Color.Yellow;
-            tbDataRecieve.AppendText(temp);
 
+            tbDataRecieve.AppendText(temp);
             tbDataRecieve.Focus();
             tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
             tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
             return ret;
         }
 
+        /// <summary>
+        /// CONVERT KEYCODE TO INT OF ASSCII CHARACTER
+        /// </summary>
         public int KeyCodeToUnicode(Keys key)
         {
             int iResult = 0;
@@ -218,13 +224,10 @@ namespace TestAME
         }
         [DllImport("user32.dll")]
         static extern bool GetKeyboardState(byte[] lpKeyState);
-
         [DllImport("user32.dll")]
         static extern uint MapVirtualKey(uint uCode, uint uMapType);
-
         [DllImport("user32.dll")]
         static extern IntPtr GetKeyboardLayout(uint idThread);
-
         [DllImport("user32.dll")]
         static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
 
@@ -376,14 +379,33 @@ namespace TestAME
             tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
         }
 
-        private void WindowKey_Event(object sender, KeyEventArgs e)
+        /// <summary>
+        /// PROCESS DATA RECIEVE TEXT CHANGE
+        /// </summary>
+        private void TBDataRecieve_TextChange(object sender, EventArgs e)
+        {
+            //tbDataRecieve.Text = tbDataRecieve.Text.Remove(tbDataRecieve.Text.Length - 1);
+            //tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+        }
+
+        /// <summary>
+        /// PROCESS WINDOW KEYBOARD PRESS
+        /// </summary>
+        private void WindowKeyDown_Event(object sender, KeyEventArgs e)
         {
             int temp = 0;
+            e.Handled = true;
+
             temp = KeyCodeToUnicode(e.KeyCode);
             UpdateDataRecieved(temp, false); // from keyboard
+        }
+        private void WindowKeyUp_Event(object sender, KeyEventArgs e)
+        {
             e.Handled = true;
-            //if (e.KeyCode == Keys.Back) e.Handled = true;
-            //else if (e.KeyCode == Keys.Delete) e.Handled = true;
+        }
+        private void WindowKeyPress_Event(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         /// <summary>
@@ -393,6 +415,9 @@ namespace TestAME
         {
             
         }
+
+
+
 
     }
 }
