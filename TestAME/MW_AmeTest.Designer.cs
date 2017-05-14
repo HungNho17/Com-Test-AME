@@ -77,11 +77,17 @@
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lvCharSet = new System.Windows.Forms.ListView();
+            this.Char = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Decimal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Hex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbToLocalCMD = new System.Windows.Forms.Label();
             this.lbToCommunicate = new System.Windows.Forms.Label();
             this.btCharToLo = new System.Windows.Forms.Button();
             this.btCharToCo = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button21 = new System.Windows.Forms.Button();
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
@@ -194,7 +200,7 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // helpToolStripMenuItem
@@ -227,7 +233,7 @@
             this.groupBox1.Size = new System.Drawing.Size(575, 235);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Communications";
+            this.groupBox1.Text = "Communications (Recieved = Yellow, Transmitted = Green)";
             // 
             // tbDataRecieve
             // 
@@ -238,12 +244,14 @@
             this.tbDataRecieve.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold);
             this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
-            this.tbDataRecieve.Location = new System.Drawing.Point(12, 15);
+            this.tbDataRecieve.Location = new System.Drawing.Point(12, 19);
             this.tbDataRecieve.Name = "tbDataRecieve";
             this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.tbDataRecieve.Size = new System.Drawing.Size(448, 205);
+            this.tbDataRecieve.Size = new System.Drawing.Size(448, 201);
             this.tbDataRecieve.TabIndex = 11;
             this.tbDataRecieve.Text = "";
+            this.tbDataRecieve.Click += new System.EventHandler(this.TBDataRecive_Click);
+            this.tbDataRecieve.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WindowKey_Event);
             // 
             // lbWrapText
             // 
@@ -359,11 +367,11 @@
             this.tbDataSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbDataSend.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDataSend.ForeColor = System.Drawing.Color.Lime;
-            this.tbDataSend.Location = new System.Drawing.Point(12, 14);
+            this.tbDataSend.Location = new System.Drawing.Point(12, 19);
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbDataSend.Size = new System.Drawing.Size(449, 95);
+            this.tbDataSend.Size = new System.Drawing.Size(449, 90);
             this.tbDataSend.TabIndex = 0;
             this.tbDataSend.WordWrap = false;
             // 
@@ -576,17 +584,82 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.lvCharSet);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.lbToLocalCMD);
             this.groupBox5.Controls.Add(this.lbToCommunicate);
             this.groupBox5.Controls.Add(this.btCharToLo);
             this.groupBox5.Controls.Add(this.btCharToCo);
-            this.groupBox5.Controls.Add(this.textBox3);
             this.groupBox5.Location = new System.Drawing.Point(596, 208);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(184, 259);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Charracter Set:";
+            // 
+            // lvCharSet
+            // 
+            this.lvCharSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvCharSet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Char,
+            this.Decimal,
+            this.Hex});
+            this.lvCharSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvCharSet.FullRowSelect = true;
+            this.lvCharSet.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvCharSet.Location = new System.Drawing.Point(22, 38);
+            this.lvCharSet.MultiSelect = false;
+            this.lvCharSet.Name = "lvCharSet";
+            this.lvCharSet.Size = new System.Drawing.Size(155, 144);
+            this.lvCharSet.TabIndex = 17;
+            this.lvCharSet.UseCompatibleStateImageBehavior = false;
+            this.lvCharSet.View = System.Windows.Forms.View.Details;
+            this.lvCharSet.DoubleClick += new System.EventHandler(this.SelectCharacterSet_DoubleClick);
+            // 
+            // Char
+            // 
+            this.Char.Text = "";
+            this.Char.Width = 50;
+            // 
+            // Decimal
+            // 
+            this.Decimal.Text = "";
+            this.Decimal.Width = 35;
+            // 
+            // Hex
+            // 
+            this.Hex.Text = "";
+            this.Hex.Width = 45;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(115, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Hex";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(64, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Decimal";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Char";
             // 
             // lbToLocalCMD
             // 
@@ -632,18 +705,6 @@
             this.btCharToCo.UseVisualStyleBackColor = true;
             this.btCharToCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(17, 19);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(160, 163);
-            this.textBox3.TabIndex = 0;
-            // 
             // button21
             // 
             this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -684,10 +745,11 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(811, 557);
             this.Name = "MW_AmeTest";
-            this.Text = "AME TEST SUPPORT";
+            this.Text = "DATALOGIC R&D - Serial Com Test Support";
             this.Load += new System.EventHandler(this.AME_APP_TEST_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -749,7 +811,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btCharToLo;
         private System.Windows.Forms.Button btCharToCo;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button BTSPort;
         private System.IO.Ports.SerialPort SPort;
@@ -762,6 +823,13 @@
         private System.Windows.Forms.Label lbToLocalCMD;
         private System.Windows.Forms.Label lbToCommunicate;
         private System.Windows.Forms.RichTextBox tbDataRecieve;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView lvCharSet;
+        private System.Windows.Forms.ColumnHeader Char;
+        private System.Windows.Forms.ColumnHeader Decimal;
+        private System.Windows.Forms.ColumnHeader Hex;
     }
 }
 

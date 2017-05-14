@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO.Ports;
+using System.Runtime.InteropServices;
 
 namespace TestAME
 {
@@ -65,6 +66,7 @@ namespace TestAME
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
             UpdateStatusWindow();
+            UpdateCharSetTable();
         }
 
         // Update Status For Window
@@ -78,10 +80,24 @@ namespace TestAME
             if (FlagConnectStatus) // update status connection
             {
                 lbConnect.Image = TestAME.Properties.Resources.Green;
+
+                if (FlagDisplayDataRecieve == false) // update status data recieve display
+                {
+                    tbDataRecieve.BackColor = Color.DarkBlue;
+                    lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
+                }
+                else
+                {
+                    tbDataRecieve.BackColor = Color.Black;
+                    lbDisplayRCData.Image = TestAME.Properties.Resources.Green;
+                }
             }
             else
             {
                 lbConnect.Image = TestAME.Properties.Resources.Red;
+
+                tbDataRecieve.BackColor = Color.DarkBlue;
+                lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
             }
             
             if (FlagShowSpace )
@@ -100,17 +116,6 @@ namespace TestAME
             else
             {
                 lbShowLF.Image = TestAME.Properties.Resources.Red;
-            }
-
-            if (FlagDisplayDataRecieve == false) // update status data recieve display
-            {
-                tbDataRecieve.BackColor = Color.MediumBlue;
-                lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
-            }
-            else
-            {
-                tbDataRecieve.BackColor = Color.Black;
-                lbDisplayRCData.Image = TestAME.Properties.Resources.Green;
             }
 
             if (FlagWrapText) // update status process data recieve
@@ -143,23 +148,92 @@ namespace TestAME
             }
         }
 
-        public bool ProcessDataRecieved(int data)
+        // Update Char Set Table
+        public void UpdateCharSetTable()
+        {
+            DataTable TempTable = null;
+            ListViewItem TempItem = null;
+
+            TempTable = ComPort.ProcessCharSetTable().Copy();
+            foreach (DataRow element in TempTable.Rows)
+            {
+                TempItem = new ListViewItem(element[0].ToString());
+                TempItem.SubItems.Add(element[1].ToString());
+                TempItem.SubItems.Add(element[2].ToString());
+                lvCharSet.Items.Add(TempItem);
+            }
+            lvCharSet.FullRowSelect = true;
+        }
+
+        // Update data recieved into texbox recieve
+        public bool UpdateDataRecieved(int data, bool flagFromSP)
         {
             bool ret = true;
-            string temp = ComPort.ProcessDataRecieve(data);
+
+            // Do nothing.
+            if (!FlagDisplayDataRecieve || (data == -1)) 
+                return ret;
+
+            string temp = ComPort.RecieveDataProcessing(data, FlagShowLF, FlagShowSpace);
             
             tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
             tbDataRecieve.SelectionLength = 0;
-            tbDataRecieve.SelectionColor = Color.Yellow;
+            if (flagFromSP)
+                tbDataRecieve.SelectionColor = Color.Yellow;
             tbDataRecieve.AppendText(temp);
-            tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
 
+            tbDataRecieve.Focus();
+            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+            tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
             return ret;
         }
+
+        public int KeyCodeToUnicode(Keys key)
+        {
+            int iResult = 0;
+            byte[] keyboardState = new byte[255];
+            bool keyboardStateStatus = GetKeyboardState(keyboardState);
+
+            if (!keyboardStateStatus)
+            {
+                return 0;
+            }
+
+            uint virtualKeyCode = (uint)key;
+            uint scanCode = MapVirtualKey(virtualKeyCode, 0);
+            IntPtr inputLocaleIdentifier = GetKeyboardLayout(0);
+
+            StringBuilder result = new StringBuilder();
+            ToUnicodeEx(virtualKeyCode, scanCode, keyboardState, result, (int)5, (uint)0, inputLocaleIdentifier);
+            try
+            {
+                iResult = result[0];
+            }
+            catch 
+            { 
+                iResult = -1;
+            }
+            
+            return iResult;
+        }
+        [DllImport("user32.dll")]
+        static extern bool GetKeyboardState(byte[] lpKeyState);
+
+        [DllImport("user32.dll")]
+        static extern uint MapVirtualKey(uint uCode, uint uMapType);
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetKeyboardLayout(uint idThread);
+
+        [DllImport("user32.dll")]
+        static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
 
 //==============================================================================
 // Event Process
 //==============================================================================
+        /// <summary>
+        /// SUB FORM SET UP SERIAL PORT ENTER
+        /// </summary>
         private void BTSPort_Click(object sender, EventArgs e)
         {
             SW_SerialComSetUp SubFormSPort = new SW_SerialComSetUp(SPort);
@@ -167,10 +241,12 @@ namespace TestAME
             SubFormSPort.ShowDialog();
         }
 
+        /// <summary>
+        /// SUP FORM SET UP SERIAL PORT CLOSE
+        /// </summary>
         void SubFormSPortClosed(object sender, FormClosedEventArgs e)  
         {  
             // Do something if it in need!
-
             UpdateStatusWindow();
         }
 
@@ -258,11 +334,13 @@ namespace TestAME
             UpdateStatusWindow();
         }
 
+        /// <summary>
+        /// PROCESS DATA RECIEVE FORM SERIAL PORT
+        /// </summary>
         public void AddDataMethod(int dataIn)
         {
-            ProcessDataRecieved(dataIn);
+            UpdateDataRecieved(dataIn, true); // from SP
         }
-
         void SPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
@@ -278,12 +356,43 @@ namespace TestAME
             }
         }
 
+        /// <summary>
+        /// PROCESS SEND DATA VIA SERIAL PORT
+        /// </summary>
         private void btSend_Click(object sender, EventArgs e)
         {
             if (tbDataSend.Text != null)
             {
-                ComPort.SendData(tbDataSend.Text);
+                ComPort.SendData(tbDataSend.Text, FlagSendLF);
             }
         }
+
+        /// <summary>
+        /// TEXT BOX DATA RECIEVE SELECTION
+        /// </summary>
+        private void TBDataRecive_Click(object sender, EventArgs e)
+        {
+            tbDataRecieve.Focus();
+            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+        }
+
+        private void WindowKey_Event(object sender, KeyEventArgs e)
+        {
+            int temp = 0;
+            temp = KeyCodeToUnicode(e.KeyCode);
+            UpdateDataRecieved(temp, false); // from keyboard
+            e.Handled = true;
+            //if (e.KeyCode == Keys.Back) e.Handled = true;
+            //else if (e.KeyCode == Keys.Delete) e.Handled = true;
+        }
+
+        /// <summary>
+        /// PROCESS CHARACTER SELECT
+        /// </summary>
+        private void SelectCharacterSet_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
