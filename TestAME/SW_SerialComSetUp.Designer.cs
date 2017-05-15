@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_SerialComSetUp));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CLBSerialPort = new System.Windows.Forms.CheckedListBox();
+            this.LVSerialPort = new System.Windows.Forms.ListView();
+            this.Port = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.RB115200 = new System.Windows.Forms.RadioButton();
             this.RB57600 = new System.Windows.Forms.RadioButton();
@@ -64,7 +67,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CLBSerialPort);
+            this.groupBox1.Controls.Add(this.LVSerialPort);
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -74,15 +77,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Serial Ports";
             // 
-            // CLBSerialPort
+            // LVSerialPort
             // 
-            this.CLBSerialPort.FormattingEnabled = true;
-            this.CLBSerialPort.Location = new System.Drawing.Point(5, 22);
-            this.CLBSerialPort.MultiColumn = true;
-            this.CLBSerialPort.Name = "CLBSerialPort";
-            this.CLBSerialPort.Size = new System.Drawing.Size(230, 364);
-            this.CLBSerialPort.TabIndex = 0;
-            this.CLBSerialPort.SelectedValueChanged += new System.EventHandler(this.CLBSerialPort_SelectedValueChanged);
+            this.LVSerialPort.CheckBoxes = true;
+            this.LVSerialPort.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Port,
+            this.Description});
+            this.LVSerialPort.FullRowSelect = true;
+            this.LVSerialPort.GridLines = true;
+            this.LVSerialPort.Location = new System.Drawing.Point(11, 17);
+            this.LVSerialPort.Name = "LVSerialPort";
+            this.LVSerialPort.Size = new System.Drawing.Size(224, 374);
+            this.LVSerialPort.TabIndex = 0;
+            this.LVSerialPort.UseCompatibleStateImageBehavior = false;
+            this.LVSerialPort.View = System.Windows.Forms.View.Details;
+            this.LVSerialPort.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.SerialPort_ItemCheck);
+            // 
+            // Port
+            // 
+            this.Port.Text = "Ports";
+            // 
+            // Description
+            // 
+            this.Description.Text = "Registry Description";
+            this.Description.Width = 200;
             // 
             // groupBox2
             // 
@@ -424,6 +442,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SW_SerialComSetUp";
             this.Text = "SelectAndConfigSP";
@@ -468,8 +487,10 @@
         private System.Windows.Forms.RadioButton RBStopB2;
         private System.Windows.Forms.RadioButton RBStopB1;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckedListBox CLBSerialPort;
         private System.Windows.Forms.Button btOK;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.ListView LVSerialPort;
+        private System.Windows.Forms.ColumnHeader Port;
+        private System.Windows.Forms.ColumnHeader Description;
     }
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Management;
+using System.Runtime.InteropServices;
+
 
 namespace TestAME
 {
@@ -15,8 +18,7 @@ namespace TestAME
 //==============================================================================
 // Type definition.
 //==============================================================================
-        DataGrid Datagrid = new DataGrid();
-        int oldNumber = 0; 
+        ListViewItem oldItemSPChecked = null;
 
 //==============================================================================
 // All Atributes.
@@ -63,28 +65,43 @@ namespace TestAME
 
             foreach(string element in port)
             {
-                CLBSerialPort.Items.Add(element);
+                ListViewItem tempItem = new ListViewItem(element);
+                tempItem.SubItems.Add(GetSerialPortInfo(element));
+                LVSerialPort.Items.Add(tempItem);
+            }
+            
+        }
+
+        public string GetSerialPortInfo(string portName)
+        {
+            string sResult = null;
+            try
+            {
+                ManagementObjectSearcher searcher =
+                    new ManagementObjectSearcher("root\\CIMV2",
+                    "SELECT * FROM Win32_PnPEntity");
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    if (queryObj["Caption"].ToString().Contains(portName))
+                    {
+                       sResult = queryObj["Caption"].ToString();
+                    }
+
+                }
+            }
+            catch (ManagementException e)
+            {
+                MessageBox.Show(e.Message);
             }
 
-            int idx = 0;
-            foreach (var element in CLBSerialPort.Items)
-            {
-                if (element.ToString() == ComPort.PortName)
-                {
-                    CLBSerialPort.SetItemChecked(idx, true);
-                    oldNumber = idx;
-                    return;
-                }
-                idx++;
-            }
-            CLBSerialPort.SetItemChecked(0, true);
-            oldNumber = 0;
+            return sResult;
         }
 
         public void LoadVariableDefault()
         {
             RefreshComport();
-            PortName = CLBSerialPort.Items[0].ToString();
+            PortName = null;
             PortBaudRate = 9600;
             PortParity = Parity.None;
             PortDataBits = 8;
@@ -204,20 +221,14 @@ namespace TestAME
             }
         }
 
-        private void CLBSerialPort_SelectedValueChanged(object sender, EventArgs e)
-        {
-            int newNumber = CLBSerialPort.SelectedIndex;
-            if (newNumber != oldNumber)
-            {
-                CLBSerialPort.SetItemChecked(oldNumber, false);
-                CLBSerialPort.SetItemChecked(newNumber, true);
-                oldNumber = newNumber;
-                PortName = CLBSerialPort.SelectedItem.ToString();
-            }
-        }
-
         private void btOK_Click(object sender, EventArgs e)
         {
+            if (PortName == null)
+            { 
+                this.Close();
+                return;
+            }
+
             if (ComPort.IsOpen)
             {
                 if (ComPort.PortName != PortName)
@@ -247,6 +258,39 @@ namespace TestAME
         private void SW_SerialComSetUp_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void SerialPort_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (LVSerialPort.CheckedItems.Count > 1) 
+                MessageBox.Show("Sai roi... hix!");
+
+            foreach (ListViewItem element in LVSerialPort.Items)
+            {
+                if (e.Index != element.Index)
+                {
+                    if (element.Checked == true)
+                    {
+                        LVSerialPort.ItemCheck -= SerialPort_ItemCheck;
+                        element.Checked = false;
+                        LVSerialPort.ItemCheck += SerialPort_ItemCheck;
+                    }
+                    
+                }
+                else
+                {
+                    if (element.Checked == true)
+                    {
+                        btOK.Enabled = false;
+                    }
+                    else
+                    {
+                        PortName = element.Text;
+                        btOK.Enabled = true;
+                    }
+                }
+
+            }
         }
 
     }

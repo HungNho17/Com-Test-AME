@@ -240,6 +240,35 @@ namespace TestAME
             return sResult;
         }
 
+        public bool SendData(int dataOut, bool flagSendLF)
+        {
+            bool bRet = true;
+
+            if (CurrentComPort.PortName == null)
+                return false;
+
+            if (CurrentComPort.IsOpen == true)
+            {
+                try
+                {
+                    byte[] dataBytes = new byte[2];
+                    dataBytes[0] = (byte)dataOut;
+                    CurrentComPort.Write(dataBytes, 0, 1);
+
+                    if (flagSendLF)
+                    {
+                        dataBytes[0] = 13;
+                        CurrentComPort.Write(dataBytes, 0, 1);
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            return bRet;
+        }
         public bool SendData(string dataOut, bool flagSendLF)
         {
             bool bRet = true;
@@ -258,7 +287,10 @@ namespace TestAME
                         CurrentComPort.Write(dataBytes, 0, dataBytes.Length);
 
                     if (flagSendLF)
-                        CurrentComPort.Write("\n");
+                    {
+                        dataBytes[0] = 13;
+                        CurrentComPort.Write(dataBytes, 0, 1);
+                    }
                 }
                 catch
                 {

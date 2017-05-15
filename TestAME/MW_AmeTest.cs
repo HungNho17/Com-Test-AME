@@ -380,15 +380,6 @@ namespace TestAME
         }
 
         /// <summary>
-        /// PROCESS DATA RECIEVE TEXT CHANGE
-        /// </summary>
-        private void TBDataRecieve_TextChange(object sender, EventArgs e)
-        {
-            //tbDataRecieve.Text = tbDataRecieve.Text.Remove(tbDataRecieve.Text.Length - 1);
-            //tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
-        }
-
-        /// <summary>
         /// PROCESS WINDOW KEYBOARD PRESS
         /// </summary>
         private void WindowKeyDown_Event(object sender, KeyEventArgs e)
@@ -398,6 +389,8 @@ namespace TestAME
 
             temp = KeyCodeToUnicode(e.KeyCode);
             UpdateDataRecieved(temp, false); // from keyboard
+
+            ComPort.SendData(temp, FlagSendLF);
         }
         private void WindowKeyUp_Event(object sender, KeyEventArgs e)
         {

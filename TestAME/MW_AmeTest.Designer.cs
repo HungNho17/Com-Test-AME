@@ -251,7 +251,6 @@
             this.tbDataRecieve.TabIndex = 11;
             this.tbDataRecieve.Text = "";
             this.tbDataRecieve.Click += new System.EventHandler(this.TBDataRecive_Click);
-            this.tbDataRecieve.TextChanged += new System.EventHandler(this.TBDataRecieve_TextChange);
             this.tbDataRecieve.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WindowKeyDown_Event);
             this.tbDataRecieve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WindowKeyPress_Event);
             this.tbDataRecieve.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WindowKeyUp_Event);
