@@ -52,7 +52,6 @@ namespace TestAME
         {
             ReInitializeAllComponents();
             this.myDelegate = new AddDataDelegate(AddDataMethod);
-
         }
 
 //==============================================================================
@@ -70,6 +69,7 @@ namespace TestAME
             UpdateStatusWindow();
             UpdateCharSetTable();
             UpdateUserButtonCmd();
+            UpdateKeyboarStatus();
         }
 
         public void UpdateStatusWindow()
@@ -236,7 +236,22 @@ namespace TestAME
 
             return bRet;
         }
-        
+
+        public bool UpdateKeyboarStatus()
+        {
+            bool bRet = true;
+
+            lbCap.Enabled = false;
+            lbNum.Enabled = false;
+            lbSclr.Enabled = false;
+
+            if (Control.IsKeyLocked(Keys.CapsLock)) lbCap.Enabled = true;
+            if (Control.IsKeyLocked(Keys.NumLock)) lbNum.Enabled = true;
+            if (Control.IsKeyLocked(Keys.Scroll)) lbSclr.Enabled = true;
+            
+            return bRet;
+        }
+
         /// <summary>
         /// CONVERT KEYCODE TO INT OF ASSCII CHARACTER
         /// </summary>
@@ -270,6 +285,8 @@ namespace TestAME
         }
         [DllImport("user32.dll")]
         static extern bool GetKeyboardState(byte[] lpKeyState);
+        [DllImport("user32.dll")]
+        static extern short GetKeyState(int keyCode);
         [DllImport("user32.dll")]
         static extern uint MapVirtualKey(uint uCode, uint uMapType);
         [DllImport("user32.dll")]
@@ -463,7 +480,7 @@ namespace TestAME
         }
 
         /// <summary>
-        /// PROCESS WINDOW KEYBOARD PRESS
+        /// PROCESS WINDOW KEYBOARD PRESS ON TEXTBOX DATA RECIEVE
         /// </summary>
         private void WindowKeyDown_Event(object sender, KeyEventArgs e)
         {
@@ -477,11 +494,21 @@ namespace TestAME
         }
         private void WindowKeyUp_Event(object sender, KeyEventArgs e)
         {
+
             e.Handled = true;
         }
         private void WindowKeyPress_Event(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        /// <summary>
+        /// PROCESS WINDOW KEYBOARD PRESS GLOBAL
+        /// </summary>
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            UpdateKeyboarStatus();
+            return true;
         }
 
         /// <summary>
@@ -522,6 +549,7 @@ namespace TestAME
             UserCmd.ChangeCurrentUser(true);
             UpdateUserButtonCmd();
         }
+
 
     }
 }

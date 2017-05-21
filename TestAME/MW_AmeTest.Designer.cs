@@ -96,9 +96,9 @@
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbSclr = new System.Windows.Forms.Label();
+            this.lbNum = new System.Windows.Forms.Label();
+            this.lbCap = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -817,44 +817,44 @@
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.lbSclr);
+            this.groupBox6.Controls.Add(this.lbNum);
+            this.groupBox6.Controls.Add(this.lbCap);
             this.groupBox6.Location = new System.Drawing.Point(596, 485);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(183, 29);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             // 
-            // label7
+            // lbSclr
             // 
-            this.label7.AutoSize = true;
-            this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(132, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "SCLR";
+            this.lbSclr.AutoSize = true;
+            this.lbSclr.Enabled = false;
+            this.lbSclr.Location = new System.Drawing.Point(132, 10);
+            this.lbSclr.Name = "lbSclr";
+            this.lbSclr.Size = new System.Drawing.Size(35, 13);
+            this.lbSclr.TabIndex = 2;
+            this.lbSclr.Text = "SCLR";
             // 
-            // label6
+            // lbNum
             // 
-            this.label6.AutoSize = true;
-            this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(91, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "NUM";
+            this.lbNum.AutoSize = true;
+            this.lbNum.Enabled = false;
+            this.lbNum.Location = new System.Drawing.Point(91, 10);
+            this.lbNum.Name = "lbNum";
+            this.lbNum.Size = new System.Drawing.Size(32, 13);
+            this.lbNum.TabIndex = 1;
+            this.lbNum.Text = "NUM";
             // 
-            // label5
+            // lbCap
             // 
-            this.label5.AutoSize = true;
-            this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(54, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "CAP";
+            this.lbCap.AutoSize = true;
+            this.lbCap.Enabled = false;
+            this.lbCap.Location = new System.Drawing.Point(54, 10);
+            this.lbCap.Name = "lbCap";
+            this.lbCap.Size = new System.Drawing.Size(28, 13);
+            this.lbCap.TabIndex = 0;
+            this.lbCap.Text = "CAP";
             // 
             // groupBox7
             // 
@@ -974,9 +974,9 @@
         private System.Windows.Forms.Label lbPrevious;
         private System.Windows.Forms.Label lbCurrentUser;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbSclr;
+        private System.Windows.Forms.Label lbNum;
+        private System.Windows.Forms.Label lbCap;
         private System.Windows.Forms.GroupBox groupBox7;
     }
 }
