@@ -19,9 +19,13 @@ namespace TestAME
 // All Atributes.
 //==============================================================================
         SerialComPort ComPort = null;
+        UserCommandManagement UserCmd = null;
         List<Button> CommandBTList = null;
         List<Button> ConnectStatusBTList = null;
         List<Button> ControlUIBTList = null;
+
+        string[] btNameListCurrent = null;
+        string[] cmdListCurrent = null;
 
         bool FlagConnectStatus = false;
         bool FlagDisplayDataRecieve = true;
@@ -30,6 +34,8 @@ namespace TestAME
         bool FlagWrapText = true;
         bool FlagSendLF = false;
         bool FlagSendTo = true;
+
+
 
         public delegate void AddDataDelegate(int datain);
         public AddDataDelegate myDelegate;
@@ -42,7 +48,6 @@ namespace TestAME
             InitializeComponent();
         }
 
-        // Event Window Loaded.
         private void AME_APP_TEST_Load(object sender, EventArgs e)
         {
             ReInitializeAllComponents();
@@ -57,12 +62,14 @@ namespace TestAME
         public void ReInitializeAllComponents()
         {
             ComPort = new SerialComPort(SPort);
+            UserCmd = new UserCommandManagement();
             SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
-            CommandBTList = new List<Button>() { };
+            CommandBTList = new List<Button>() { btCmd0,btCmd1,btCmd2,btCmd3,btCmd4,btCmd5,btCmd6,btCmd7};
             UpdateStatusWindow();
             UpdateCharSetTable();
+            UpdateUserButtonCmd();
         }
 
         public void UpdateStatusWindow()
@@ -198,6 +205,38 @@ namespace TestAME
             return bRet;
         }
 
+        public bool UpdateUserButtonCmd()
+        {
+            bool bRet = false;
+
+            btNameListCurrent = UserCmd.GetCurrentUserSetting(1);
+            cmdListCurrent = UserCmd.GetCurrentUserSetting(0);
+
+            bRet =  ProcessButtonCmd(btNameListCurrent);
+            lbCurrentUser.Text = UserCmd.GetCurrentUserName();
+
+            return bRet;
+        }
+        public bool ProcessButtonCmd(string[] btNameListTemp)
+        {
+            bool bRet = false;
+
+            int idx = 0;
+            foreach (string element in btNameListCurrent)
+            {
+                CommandBTList[idx].Text = "undefine";
+                CommandBTList[idx].Enabled = false;
+                if (element != "")
+                {
+                    CommandBTList[idx].Text = element;
+                    CommandBTList[idx].Enabled = true;
+                }
+                idx++;
+            }
+
+            return bRet;
+        }
+        
         /// <summary>
         /// CONVERT KEYCODE TO INT OF ASSCII CHARACTER
         /// </summary>
@@ -274,8 +313,8 @@ namespace TestAME
         /// SUB FORM USER SETTING COMMAND CLOSE
         /// </summary>
         void SubFormCmdClosed(object sender, FormClosedEventArgs e)
-        { 
-        
+        {
+            UpdateUserButtonCmd();
         }
 
         /// <summary>
@@ -360,6 +399,24 @@ namespace TestAME
             }
 
             UpdateStatusWindow();
+        }
+
+        /// <summary>
+        /// PROCESS MULTI BUTTON - USER COMMAND
+        /// </summary>
+        private void BTControlUserCmd_Click(object sender, EventArgs e)
+        {
+            string temp = null;
+            int IndexSender = CommandBTList.IndexOf(sender as Button);
+
+            ComPort.SendData(cmdListCurrent[IndexSender], UserCmd.GetFlagInsertLF());
+            temp = cmdListCurrent[IndexSender];
+
+            if (UserCmd.GetFlagInsertLF())
+            {
+                temp += '\n';
+            }
+            UpdateDataTransmited(temp);
         }
 
         /// <summary>
@@ -455,15 +512,16 @@ namespace TestAME
         /// <summary>
         /// PROCESS CHANGE USER # CMD SETTING
         /// </summary>
-        private void MoveToPreviousUser(object sender, MouseEventArgs e)
+        private void MoveToPreviousUser(object sender, EventArgs e)
         {
-
+            UserCmd.ChangeCurrentUser(false);
+            UpdateUserButtonCmd();
         }
         private void MoveToNextUser(object sender, EventArgs e)
         {
-
+            UserCmd.ChangeCurrentUser(true);
+            UpdateUserButtonCmd();
         }
-
 
     }
 }

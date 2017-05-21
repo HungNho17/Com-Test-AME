@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbCmd8 = new System.Windows.Forms.TextBox();
+            this.tbCmd7 = new System.Windows.Forms.TextBox();
+            this.tbName8 = new System.Windows.Forms.TextBox();
+            this.tbName7 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbCmd6 = new System.Windows.Forms.TextBox();
@@ -56,10 +60,6 @@
             this.btCancel = new System.Windows.Forms.Button();
             this.btClear = new System.Windows.Forms.Button();
             this.FlagInsertLF = new System.Windows.Forms.CheckBox();
-            this.tbName7 = new System.Windows.Forms.TextBox();
-            this.tbName8 = new System.Windows.Forms.TextBox();
-            this.tbCmd7 = new System.Windows.Forms.TextBox();
-            this.tbCmd8 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,34 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User command # :";
+            // 
+            // tbCmd8
+            // 
+            this.tbCmd8.Location = new System.Drawing.Point(192, 219);
+            this.tbCmd8.Name = "tbCmd8";
+            this.tbCmd8.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd8.TabIndex = 17;
+            // 
+            // tbCmd7
+            // 
+            this.tbCmd7.Location = new System.Drawing.Point(192, 193);
+            this.tbCmd7.Name = "tbCmd7";
+            this.tbCmd7.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd7.TabIndex = 16;
+            // 
+            // tbName8
+            // 
+            this.tbName8.Location = new System.Drawing.Point(20, 219);
+            this.tbName8.Name = "tbName8";
+            this.tbName8.Size = new System.Drawing.Size(148, 20);
+            this.tbName8.TabIndex = 15;
+            // 
+            // tbName7
+            // 
+            this.tbName7.Location = new System.Drawing.Point(20, 193);
+            this.tbName7.Name = "tbName7";
+            this.tbName7.Size = new System.Drawing.Size(148, 20);
+            this.tbName7.TabIndex = 14;
             // 
             // label2
             // 
@@ -323,34 +351,6 @@
             this.FlagInsertLF.UseVisualStyleBackColor = true;
             this.FlagInsertLF.CheckedChanged += new System.EventHandler(this.FlagInsertLF_CheckedChanged);
             // 
-            // tbName7
-            // 
-            this.tbName7.Location = new System.Drawing.Point(20, 193);
-            this.tbName7.Name = "tbName7";
-            this.tbName7.Size = new System.Drawing.Size(148, 20);
-            this.tbName7.TabIndex = 14;
-            // 
-            // tbName8
-            // 
-            this.tbName8.Location = new System.Drawing.Point(20, 219);
-            this.tbName8.Name = "tbName8";
-            this.tbName8.Size = new System.Drawing.Size(148, 20);
-            this.tbName8.TabIndex = 15;
-            // 
-            // tbCmd7
-            // 
-            this.tbCmd7.Location = new System.Drawing.Point(192, 193);
-            this.tbCmd7.Name = "tbCmd7";
-            this.tbCmd7.Size = new System.Drawing.Size(243, 20);
-            this.tbCmd7.TabIndex = 16;
-            // 
-            // tbCmd8
-            // 
-            this.tbCmd8.Location = new System.Drawing.Point(192, 219);
-            this.tbCmd8.Name = "tbCmd8";
-            this.tbCmd8.Size = new System.Drawing.Size(243, 20);
-            this.tbCmd8.TabIndex = 17;
-            // 
             // SW_SetupUserCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +362,8 @@
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(489, 394);
+            this.MinimumSize = new System.Drawing.Size(489, 394);
             this.Name = "SW_SetupUserCommand";
             this.ShowIcon = false;
             this.Text = "User Command Setting";

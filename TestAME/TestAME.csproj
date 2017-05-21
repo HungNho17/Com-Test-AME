@@ -77,6 +77,7 @@
     <Compile Include="SW_SetupUserCommand.Designer.cs">
       <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserCommandManagement.cs" />
     <EmbeddedResource Include="MW_AmeTest.resx">
       <DependentUpon>MW_AmeTest.cs</DependentUpon>
     </EmbeddedResource>

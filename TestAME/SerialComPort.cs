@@ -6,9 +6,6 @@ using System.Text;
 
 namespace TestAME
 {
-
-
-    
     public class SerialComPort 
     {
         static SerialPort CurrentComPort = null;

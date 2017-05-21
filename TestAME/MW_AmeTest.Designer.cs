@@ -95,12 +95,19 @@
             this.BTSetupCmd = new System.Windows.Forms.Button();
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -251,7 +258,7 @@
             this.tbDataRecieve.Location = new System.Drawing.Point(12, 19);
             this.tbDataRecieve.Name = "tbDataRecieve";
             this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.tbDataRecieve.Size = new System.Drawing.Size(448, 201);
+            this.tbDataRecieve.Size = new System.Drawing.Size(466, 201);
             this.tbDataRecieve.TabIndex = 11;
             this.tbDataRecieve.Text = "";
             this.tbDataRecieve.Click += new System.EventHandler(this.TBDataRecive_Click);
@@ -264,7 +271,7 @@
             this.lbWrapText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbWrapText.AutoSize = true;
             this.lbWrapText.Image = ((System.Drawing.Image)(resources.GetObject("lbWrapText.Image")));
-            this.lbWrapText.Location = new System.Drawing.Point(472, 148);
+            this.lbWrapText.Location = new System.Drawing.Point(484, 148);
             this.lbWrapText.Name = "lbWrapText";
             this.lbWrapText.Size = new System.Drawing.Size(16, 13);
             this.lbWrapText.TabIndex = 10;
@@ -273,9 +280,9 @@
             // btNewLineCo
             // 
             this.btNewLineCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNewLineCo.Location = new System.Drawing.Point(475, 196);
+            this.btNewLineCo.Location = new System.Drawing.Point(487, 196);
             this.btNewLineCo.Name = "btNewLineCo";
-            this.btNewLineCo.Size = new System.Drawing.Size(94, 20);
+            this.btNewLineCo.Size = new System.Drawing.Size(82, 20);
             this.btNewLineCo.TabIndex = 3;
             this.btNewLineCo.Text = "New Line";
             this.btNewLineCo.UseVisualStyleBackColor = true;
@@ -284,9 +291,9 @@
             // btClearCo
             // 
             this.btClearCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearCo.Location = new System.Drawing.Point(475, 170);
+            this.btClearCo.Location = new System.Drawing.Point(487, 170);
             this.btClearCo.Name = "btClearCo";
-            this.btClearCo.Size = new System.Drawing.Size(94, 20);
+            this.btClearCo.Size = new System.Drawing.Size(82, 20);
             this.btClearCo.TabIndex = 2;
             this.btClearCo.Text = "Clear Text";
             this.btClearCo.UseVisualStyleBackColor = true;
@@ -295,9 +302,9 @@
             // btWrapTextCo
             // 
             this.btWrapTextCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btWrapTextCo.Location = new System.Drawing.Point(494, 144);
+            this.btWrapTextCo.Location = new System.Drawing.Point(503, 144);
             this.btWrapTextCo.Name = "btWrapTextCo";
-            this.btWrapTextCo.Size = new System.Drawing.Size(75, 20);
+            this.btWrapTextCo.Size = new System.Drawing.Size(66, 20);
             this.btWrapTextCo.TabIndex = 1;
             this.btWrapTextCo.Text = "Wrap Text";
             this.btWrapTextCo.UseVisualStyleBackColor = true;
@@ -325,7 +332,7 @@
             this.lbSendLF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSendLF.AutoSize = true;
             this.lbSendLF.Image = ((System.Drawing.Image)(resources.GetObject("lbSendLF.Image")));
-            this.lbSendLF.Location = new System.Drawing.Point(472, 37);
+            this.lbSendLF.Location = new System.Drawing.Point(484, 37);
             this.lbSendLF.Name = "lbSendLF";
             this.lbSendLF.Size = new System.Drawing.Size(16, 13);
             this.lbSendLF.TabIndex = 11;
@@ -334,9 +341,9 @@
             // btSend
             // 
             this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSend.Location = new System.Drawing.Point(475, 85);
+            this.btSend.Location = new System.Drawing.Point(487, 85);
             this.btSend.Name = "btSend";
-            this.btSend.Size = new System.Drawing.Size(94, 20);
+            this.btSend.Size = new System.Drawing.Size(82, 20);
             this.btSend.TabIndex = 3;
             this.btSend.Text = "Send";
             this.btSend.UseVisualStyleBackColor = true;
@@ -345,9 +352,9 @@
             // btClearLo
             // 
             this.btClearLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearLo.Location = new System.Drawing.Point(475, 59);
+            this.btClearLo.Location = new System.Drawing.Point(487, 59);
             this.btClearLo.Name = "btClearLo";
-            this.btClearLo.Size = new System.Drawing.Size(94, 20);
+            this.btClearLo.Size = new System.Drawing.Size(82, 20);
             this.btClearLo.TabIndex = 2;
             this.btClearLo.Text = "Clear Text";
             this.btClearLo.UseVisualStyleBackColor = true;
@@ -356,9 +363,9 @@
             // btSendLFLo
             // 
             this.btSendLFLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSendLFLo.Location = new System.Drawing.Point(494, 33);
+            this.btSendLFLo.Location = new System.Drawing.Point(503, 33);
             this.btSendLFLo.Name = "btSendLFLo";
-            this.btSendLFLo.Size = new System.Drawing.Size(75, 20);
+            this.btSendLFLo.Size = new System.Drawing.Size(66, 20);
             this.btSendLFLo.TabIndex = 1;
             this.btSendLFLo.Text = "Send LF";
             this.btSendLFLo.UseVisualStyleBackColor = true;
@@ -377,7 +384,7 @@
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbDataSend.Size = new System.Drawing.Size(449, 90);
+            this.tbDataSend.Size = new System.Drawing.Size(466, 90);
             this.tbDataSend.TabIndex = 0;
             this.tbDataSend.WordWrap = false;
             // 
@@ -399,138 +406,150 @@
             this.groupBox3.Controls.Add(this.btCmd0);
             this.groupBox3.Location = new System.Drawing.Point(0, 402);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(575, 106);
+            this.groupBox3.Size = new System.Drawing.Size(575, 112);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "User Commands:";
             // 
             // lbNext
             // 
-            this.lbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNext.AutoSize = true;
-            this.lbNext.Location = new System.Drawing.Point(214, 0);
+            this.lbNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNext.Location = new System.Drawing.Point(548, 6);
             this.lbNext.Name = "lbNext";
-            this.lbNext.Size = new System.Drawing.Size(19, 13);
+            this.lbNext.Size = new System.Drawing.Size(21, 13);
             this.lbNext.TabIndex = 10;
             this.lbNext.Text = ">>";
-            this.lbNext.DoubleClick += new System.EventHandler(this.MoveToNextUser);
+            this.lbNext.Click += new System.EventHandler(this.MoveToNextUser);
             // 
             // lbPrevious
             // 
-            this.lbPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPrevious.AutoSize = true;
-            this.lbPrevious.Location = new System.Drawing.Point(103, 0);
+            this.lbPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrevious.Location = new System.Drawing.Point(521, 6);
             this.lbPrevious.Name = "lbPrevious";
-            this.lbPrevious.Size = new System.Drawing.Size(19, 13);
+            this.lbPrevious.Size = new System.Drawing.Size(21, 13);
             this.lbPrevious.TabIndex = 9;
             this.lbPrevious.Text = "<<";
-            this.lbPrevious.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MoveToPreviousUser);
+            this.lbPrevious.Click += new System.EventHandler(this.MoveToPreviousUser);
             // 
             // lbCurrentUser
             // 
             this.lbCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbCurrentUser.AutoSize = true;
-            this.lbCurrentUser.Location = new System.Drawing.Point(160, 0);
+            this.lbCurrentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentUser.Location = new System.Drawing.Point(97, 0);
             this.lbCurrentUser.Name = "lbCurrentUser";
-            this.lbCurrentUser.Size = new System.Drawing.Size(16, 13);
+            this.lbCurrentUser.Size = new System.Drawing.Size(19, 13);
             this.lbCurrentUser.TabIndex = 8;
             this.lbCurrentUser.Text = "...";
+            this.lbCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btCmd7
             // 
             this.btCmd7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd7.Enabled = false;
-            this.btCmd7.Location = new System.Drawing.Point(451, 64);
+            this.btCmd7.Location = new System.Drawing.Point(451, 69);
             this.btCmd7.Name = "btCmd7";
             this.btCmd7.Size = new System.Drawing.Size(118, 23);
             this.btCmd7.TabIndex = 7;
             this.btCmd7.Text = "undefine";
             this.btCmd7.UseVisualStyleBackColor = true;
+            this.btCmd7.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd3
             // 
             this.btCmd3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd3.Enabled = false;
-            this.btCmd3.Location = new System.Drawing.Point(451, 25);
+            this.btCmd3.Location = new System.Drawing.Point(451, 28);
             this.btCmd3.Name = "btCmd3";
             this.btCmd3.Size = new System.Drawing.Size(118, 23);
             this.btCmd3.TabIndex = 6;
             this.btCmd3.Text = "undefine";
             this.btCmd3.UseVisualStyleBackColor = true;
+            this.btCmd3.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd6
             // 
             this.btCmd6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd6.Enabled = false;
-            this.btCmd6.Location = new System.Drawing.Point(308, 64);
+            this.btCmd6.Location = new System.Drawing.Point(308, 69);
             this.btCmd6.Name = "btCmd6";
             this.btCmd6.Size = new System.Drawing.Size(118, 23);
             this.btCmd6.TabIndex = 5;
             this.btCmd6.Text = "undefine";
             this.btCmd6.UseVisualStyleBackColor = true;
+            this.btCmd6.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd2
             // 
             this.btCmd2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd2.Enabled = false;
-            this.btCmd2.Location = new System.Drawing.Point(308, 25);
+            this.btCmd2.Location = new System.Drawing.Point(308, 28);
             this.btCmd2.Name = "btCmd2";
             this.btCmd2.Size = new System.Drawing.Size(118, 23);
             this.btCmd2.TabIndex = 4;
             this.btCmd2.Text = "undefine";
             this.btCmd2.UseVisualStyleBackColor = true;
+            this.btCmd2.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd5
             // 
             this.btCmd5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd5.Enabled = false;
-            this.btCmd5.Location = new System.Drawing.Point(163, 64);
+            this.btCmd5.Location = new System.Drawing.Point(163, 69);
             this.btCmd5.Name = "btCmd5";
             this.btCmd5.Size = new System.Drawing.Size(118, 23);
             this.btCmd5.TabIndex = 3;
             this.btCmd5.Text = "undefine";
             this.btCmd5.UseVisualStyleBackColor = true;
+            this.btCmd5.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd1
             // 
             this.btCmd1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd1.Enabled = false;
-            this.btCmd1.Location = new System.Drawing.Point(163, 25);
+            this.btCmd1.Location = new System.Drawing.Point(163, 28);
             this.btCmd1.Name = "btCmd1";
             this.btCmd1.Size = new System.Drawing.Size(118, 23);
             this.btCmd1.TabIndex = 2;
             this.btCmd1.Text = "undefine";
             this.btCmd1.UseVisualStyleBackColor = true;
+            this.btCmd1.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd4
             // 
             this.btCmd4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd4.Enabled = false;
-            this.btCmd4.Location = new System.Drawing.Point(12, 64);
+            this.btCmd4.Location = new System.Drawing.Point(12, 69);
             this.btCmd4.Name = "btCmd4";
             this.btCmd4.Size = new System.Drawing.Size(118, 23);
             this.btCmd4.TabIndex = 1;
             this.btCmd4.Text = "undefine";
             this.btCmd4.UseVisualStyleBackColor = true;
+            this.btCmd4.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // btCmd0
             // 
             this.btCmd0.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd0.Enabled = false;
-            this.btCmd0.Location = new System.Drawing.Point(12, 25);
+            this.btCmd0.Location = new System.Drawing.Point(12, 28);
             this.btCmd0.Name = "btCmd0";
             this.btCmd0.Size = new System.Drawing.Size(118, 23);
             this.btCmd0.TabIndex = 0;
             this.btCmd0.Text = "undefine";
             this.btCmd0.UseVisualStyleBackColor = true;
+            this.btCmd0.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // groupBox4
             // 
@@ -645,7 +664,7 @@
             this.groupBox5.Controls.Add(this.btCharToCo);
             this.groupBox5.Location = new System.Drawing.Point(596, 195);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 255);
+            this.groupBox5.Size = new System.Drawing.Size(184, 257);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Charracter Set:";
@@ -654,7 +673,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 171);
+            this.label4.Location = new System.Drawing.Point(29, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 13);
             this.label4.TabIndex = 18;
@@ -675,7 +694,7 @@
             this.lvCharSet.Location = new System.Drawing.Point(22, 38);
             this.lvCharSet.MultiSelect = false;
             this.lvCharSet.Name = "lvCharSet";
-            this.lvCharSet.Size = new System.Drawing.Size(146, 127);
+            this.lvCharSet.Size = new System.Drawing.Size(146, 129);
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
@@ -728,7 +747,7 @@
             this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToLocalCMD.AutoSize = true;
             this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(19, 226);
+            this.lbToLocalCMD.Location = new System.Drawing.Point(19, 228);
             this.lbToLocalCMD.Name = "lbToLocalCMD";
             this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
             this.lbToLocalCMD.TabIndex = 13;
@@ -739,7 +758,7 @@
             this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToCommunicate.AutoSize = true;
             this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(19, 197);
+            this.lbToCommunicate.Location = new System.Drawing.Point(19, 199);
             this.lbToCommunicate.Name = "lbToCommunicate";
             this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
             this.lbToCommunicate.TabIndex = 12;
@@ -748,7 +767,7 @@
             // btCharToLo
             // 
             this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToLo.Location = new System.Drawing.Point(42, 221);
+            this.btCharToLo.Location = new System.Drawing.Point(42, 223);
             this.btCharToLo.Name = "btCharToLo";
             this.btCharToLo.Size = new System.Drawing.Size(126, 23);
             this.btCharToLo.TabIndex = 2;
@@ -759,7 +778,7 @@
             // btCharToCo
             // 
             this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToCo.Location = new System.Drawing.Point(42, 192);
+            this.btCharToCo.Location = new System.Drawing.Point(42, 194);
             this.btCharToCo.Name = "btCharToCo";
             this.btCharToCo.Size = new System.Drawing.Size(126, 23);
             this.btCharToCo.TabIndex = 1;
@@ -771,7 +790,7 @@
             // 
             this.BTSetupCmd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BTSetupCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BTSetupCmd.Location = new System.Drawing.Point(596, 456);
+            this.BTSetupCmd.Location = new System.Drawing.Point(12, 13);
             this.BTSetupCmd.Name = "BTSetupCmd";
             this.BTSetupCmd.Size = new System.Drawing.Size(73, 23);
             this.BTSetupCmd.TabIndex = 6;
@@ -782,7 +801,7 @@
             // BTSPort
             // 
             this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTSPort.Location = new System.Drawing.Point(690, 456);
+            this.BTSPort.Location = new System.Drawing.Point(94, 13);
             this.BTSPort.Name = "BTSPort";
             this.BTSPort.Size = new System.Drawing.Size(74, 23);
             this.BTSPort.TabIndex = 7;
@@ -795,13 +814,66 @@
             this.SPort.ReadTimeout = 10;
             this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Location = new System.Drawing.Point(596, 485);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(183, 29);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Enabled = false;
+            this.label7.Location = new System.Drawing.Point(132, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "SCLR";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Enabled = false;
+            this.label6.Location = new System.Drawing.Point(91, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "NUM";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Location = new System.Drawing.Point(54, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "CAP";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.BTSPort);
+            this.groupBox7.Controls.Add(this.BTSetupCmd);
+            this.groupBox7.Location = new System.Drawing.Point(596, 445);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(184, 43);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
+            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 519);
-            this.Controls.Add(this.BTSPort);
-            this.Controls.Add(this.BTSetupCmd);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -826,6 +898,9 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -898,6 +973,11 @@
         private System.Windows.Forms.Label lbNext;
         private System.Windows.Forms.Label lbPrevious;
         private System.Windows.Forms.Label lbCurrentUser;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox7;
     }
 }
 
