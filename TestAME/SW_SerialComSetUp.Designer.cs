@@ -58,6 +58,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btOK = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -412,9 +413,9 @@
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(272, 381);
+            this.btOK.Location = new System.Drawing.Point(334, 379);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(81, 26);
+            this.btOK.Size = new System.Drawing.Size(58, 26);
             this.btOK.TabIndex = 6;
             this.btOK.Text = "OK";
             this.btOK.UseVisualStyleBackColor = true;
@@ -422,19 +423,30 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(370, 381);
+            this.btCancel.Location = new System.Drawing.Point(398, 379);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(82, 26);
+            this.btCancel.Size = new System.Drawing.Size(58, 26);
             this.btCancel.TabIndex = 7;
-            this.btCancel.Text = "CANCEL";
+            this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // btRefresh
+            // 
+            this.btRefresh.Location = new System.Drawing.Point(270, 379);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(58, 26);
+            this.btRefresh.TabIndex = 8;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = true;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
             // 
             // SW_SerialComSetUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 419);
+            this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.groupBox6);
@@ -446,7 +458,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SW_SerialComSetUp";
-            this.Text = "SelectAndConfigSP";
+            this.ShowIcon = false;
+            this.Text = "Serial Comport Setting";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SW_SerialComSetUp_FormClosed);
             this.Load += new System.EventHandler(this.SelectAndConfigSP_Load);
             this.groupBox1.ResumeLayout(false);
@@ -493,5 +506,6 @@
         private System.Windows.Forms.ListView LVSerialPort;
         private System.Windows.Forms.ColumnHeader Port;
         private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.Button btRefresh;
     }
 }

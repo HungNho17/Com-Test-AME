@@ -16,11 +16,6 @@ namespace TestAME
     public partial class MW_AmeTest : Form
     {
 //==============================================================================
-// Type definition.
-//==============================================================================
-        
-
-//==============================================================================
 // All Atributes.
 //==============================================================================
         SerialComPort ComPort = null;
@@ -38,6 +33,7 @@ namespace TestAME
 
         public delegate void AddDataDelegate(int datain);
         public AddDataDelegate myDelegate;
+
 //==============================================================================
 // Window Actions.
 //==============================================================================
@@ -58,18 +54,17 @@ namespace TestAME
 // Internal Actions.
 //==============================================================================
 
-        // Initialize All Component of Window
         public void ReInitializeAllComponents()
         {
             ComPort = new SerialComPort(SPort);
             SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
+            CommandBTList = new List<Button>() { };
             UpdateStatusWindow();
             UpdateCharSetTable();
         }
 
-        // Update Status For Window
         public void UpdateStatusWindow()
         {
             if (SPort.PortName != null)
@@ -150,7 +145,6 @@ namespace TestAME
             }
         }
 
-        // Update Char Set Table
         public void UpdateCharSetTable()
         {
             DataTable TempTable = null;
@@ -167,7 +161,6 @@ namespace TestAME
             lvCharSet.FullRowSelect = true;
         }
 
-        // Update data recieved into texbox recieve
         public bool UpdateDataRecieved(int data, bool flagFromSP)
         {
             bool ret = true;
@@ -268,7 +261,7 @@ namespace TestAME
         }
 
         /// <summary>
-        /// 
+        /// SUB FORM USER SETTING COMMAND ENTER
         /// </summary>
         private void BTSetupCmd_Click(object sender, EventArgs e)
         {
@@ -278,7 +271,7 @@ namespace TestAME
         }
 
         /// <summary>
-        /// 
+        /// SUB FORM USER SETTING COMMAND CLOSE
         /// </summary>
         void SubFormCmdClosed(object sender, FormClosedEventArgs e)
         { 
@@ -457,6 +450,18 @@ namespace TestAME
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// PROCESS CHANGE USER # CMD SETTING
+        /// </summary>
+        private void MoveToPreviousUser(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void MoveToNextUser(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -29,237 +29,67 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbCmd6 = new System.Windows.Forms.TextBox();
+            this.tbCmd5 = new System.Windows.Forms.TextBox();
+            this.tbCmd4 = new System.Windows.Forms.TextBox();
+            this.tbCmd3 = new System.Windows.Forms.TextBox();
+            this.tbCmd2 = new System.Windows.Forms.TextBox();
+            this.tbCmd1 = new System.Windows.Forms.TextBox();
+            this.tbName6 = new System.Windows.Forms.TextBox();
+            this.tbName5 = new System.Windows.Forms.TextBox();
+            this.tbName4 = new System.Windows.Forms.TextBox();
+            this.tbName3 = new System.Windows.Forms.TextBox();
+            this.tbName2 = new System.Windows.Forms.TextBox();
+            this.tbName1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbUser4Name = new System.Windows.Forms.TextBox();
+            this.tbUser3Name = new System.Windows.Forms.TextBox();
+            this.tbUser2Name = new System.Windows.Forms.TextBox();
+            this.tbUser1Name = new System.Windows.Forms.TextBox();
+            this.rbtUser4 = new System.Windows.Forms.RadioButton();
+            this.rbtUser3 = new System.Windows.Forms.RadioButton();
+            this.rbtUser2 = new System.Windows.Forms.RadioButton();
+            this.rbtUser1 = new System.Windows.Forms.RadioButton();
+            this.btOK = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btClear = new System.Windows.Forms.Button();
+            this.FlagInsertLF = new System.Windows.Forms.CheckBox();
+            this.tbName7 = new System.Windows.Forms.TextBox();
+            this.tbName8 = new System.Windows.Forms.TextBox();
+            this.tbCmd7 = new System.Windows.Forms.TextBox();
+            this.tbCmd8 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbCmd8);
+            this.groupBox1.Controls.Add(this.tbCmd7);
+            this.groupBox1.Controls.Add(this.tbName8);
+            this.groupBox1.Controls.Add(this.tbName7);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox16);
-            this.groupBox1.Controls.Add(this.textBox15);
-            this.groupBox1.Controls.Add(this.textBox14);
-            this.groupBox1.Controls.Add(this.textBox13);
-            this.groupBox1.Controls.Add(this.textBox12);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.tbCmd6);
+            this.groupBox1.Controls.Add(this.tbCmd5);
+            this.groupBox1.Controls.Add(this.tbCmd4);
+            this.groupBox1.Controls.Add(this.tbCmd3);
+            this.groupBox1.Controls.Add(this.tbCmd2);
+            this.groupBox1.Controls.Add(this.tbCmd1);
+            this.groupBox1.Controls.Add(this.tbName6);
+            this.groupBox1.Controls.Add(this.tbName5);
+            this.groupBox1.Controls.Add(this.tbName4);
+            this.groupBox1.Controls.Add(this.tbName3);
+            this.groupBox1.Controls.Add(this.tbName2);
+            this.groupBox1.Controls.Add(this.tbName1);
             this.groupBox1.Location = new System.Drawing.Point(12, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(449, 196);
+            this.groupBox1.Size = new System.Drawing.Size(449, 250);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User command # :";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(449, 46);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Command set for User define:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(228, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(14, 13);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(117, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(14, 13);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(339, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(14, 13);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(26, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(78, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "User #1";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(137, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(78, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "User #2";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(248, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(78, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.Text = "User #3";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(359, 16);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(78, 20);
-            this.textBox4.TabIndex = 7;
-            this.textBox4.Text = "User #4";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(20, 37);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(148, 20);
-            this.textBox5.TabIndex = 0;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(20, 63);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(148, 20);
-            this.textBox6.TabIndex = 1;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(20, 89);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(148, 20);
-            this.textBox7.TabIndex = 2;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(20, 115);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(148, 20);
-            this.textBox8.TabIndex = 3;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(20, 141);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(148, 20);
-            this.textBox9.TabIndex = 4;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(20, 167);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(148, 20);
-            this.textBox10.TabIndex = 5;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(194, 37);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(243, 20);
-            this.textBox11.TabIndex = 6;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(194, 63);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(243, 20);
-            this.textBox12.TabIndex = 7;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(194, 89);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(243, 20);
-            this.textBox13.TabIndex = 8;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(194, 115);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(243, 20);
-            this.textBox14.TabIndex = 9;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(194, 141);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(243, 20);
-            this.textBox15.TabIndex = 10;
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(194, 167);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(243, 20);
-            this.textBox16.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Button Label";
             // 
             // label2
             // 
@@ -270,21 +100,277 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Command";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Button Label";
+            // 
+            // tbCmd6
+            // 
+            this.tbCmd6.Location = new System.Drawing.Point(194, 167);
+            this.tbCmd6.Name = "tbCmd6";
+            this.tbCmd6.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd6.TabIndex = 11;
+            // 
+            // tbCmd5
+            // 
+            this.tbCmd5.Location = new System.Drawing.Point(194, 141);
+            this.tbCmd5.Name = "tbCmd5";
+            this.tbCmd5.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd5.TabIndex = 10;
+            // 
+            // tbCmd4
+            // 
+            this.tbCmd4.Location = new System.Drawing.Point(194, 115);
+            this.tbCmd4.Name = "tbCmd4";
+            this.tbCmd4.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd4.TabIndex = 9;
+            // 
+            // tbCmd3
+            // 
+            this.tbCmd3.Location = new System.Drawing.Point(194, 89);
+            this.tbCmd3.Name = "tbCmd3";
+            this.tbCmd3.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd3.TabIndex = 8;
+            // 
+            // tbCmd2
+            // 
+            this.tbCmd2.Location = new System.Drawing.Point(194, 63);
+            this.tbCmd2.Name = "tbCmd2";
+            this.tbCmd2.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd2.TabIndex = 7;
+            // 
+            // tbCmd1
+            // 
+            this.tbCmd1.Location = new System.Drawing.Point(194, 37);
+            this.tbCmd1.Name = "tbCmd1";
+            this.tbCmd1.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd1.TabIndex = 6;
+            // 
+            // tbName6
+            // 
+            this.tbName6.Location = new System.Drawing.Point(20, 167);
+            this.tbName6.Name = "tbName6";
+            this.tbName6.Size = new System.Drawing.Size(148, 20);
+            this.tbName6.TabIndex = 5;
+            // 
+            // tbName5
+            // 
+            this.tbName5.Location = new System.Drawing.Point(20, 141);
+            this.tbName5.Name = "tbName5";
+            this.tbName5.Size = new System.Drawing.Size(148, 20);
+            this.tbName5.TabIndex = 4;
+            // 
+            // tbName4
+            // 
+            this.tbName4.Location = new System.Drawing.Point(20, 115);
+            this.tbName4.Name = "tbName4";
+            this.tbName4.Size = new System.Drawing.Size(148, 20);
+            this.tbName4.TabIndex = 3;
+            // 
+            // tbName3
+            // 
+            this.tbName3.Location = new System.Drawing.Point(20, 89);
+            this.tbName3.Name = "tbName3";
+            this.tbName3.Size = new System.Drawing.Size(148, 20);
+            this.tbName3.TabIndex = 2;
+            // 
+            // tbName2
+            // 
+            this.tbName2.Location = new System.Drawing.Point(20, 63);
+            this.tbName2.Name = "tbName2";
+            this.tbName2.Size = new System.Drawing.Size(148, 20);
+            this.tbName2.TabIndex = 1;
+            // 
+            // tbName1
+            // 
+            this.tbName1.Location = new System.Drawing.Point(20, 37);
+            this.tbName1.Name = "tbName1";
+            this.tbName1.Size = new System.Drawing.Size(148, 20);
+            this.tbName1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tbUser4Name);
+            this.groupBox2.Controls.Add(this.tbUser3Name);
+            this.groupBox2.Controls.Add(this.tbUser2Name);
+            this.groupBox2.Controls.Add(this.tbUser1Name);
+            this.groupBox2.Controls.Add(this.rbtUser4);
+            this.groupBox2.Controls.Add(this.rbtUser3);
+            this.groupBox2.Controls.Add(this.rbtUser2);
+            this.groupBox2.Controls.Add(this.rbtUser1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(449, 46);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Command set for User define:";
+            // 
+            // tbUser4Name
+            // 
+            this.tbUser4Name.Location = new System.Drawing.Point(359, 16);
+            this.tbUser4Name.Name = "tbUser4Name";
+            this.tbUser4Name.Size = new System.Drawing.Size(78, 20);
+            this.tbUser4Name.TabIndex = 7;
+            // 
+            // tbUser3Name
+            // 
+            this.tbUser3Name.Location = new System.Drawing.Point(248, 16);
+            this.tbUser3Name.Name = "tbUser3Name";
+            this.tbUser3Name.Size = new System.Drawing.Size(78, 20);
+            this.tbUser3Name.TabIndex = 6;
+            // 
+            // tbUser2Name
+            // 
+            this.tbUser2Name.Location = new System.Drawing.Point(137, 16);
+            this.tbUser2Name.Name = "tbUser2Name";
+            this.tbUser2Name.Size = new System.Drawing.Size(78, 20);
+            this.tbUser2Name.TabIndex = 5;
+            // 
+            // tbUser1Name
+            // 
+            this.tbUser1Name.Location = new System.Drawing.Point(26, 16);
+            this.tbUser1Name.Name = "tbUser1Name";
+            this.tbUser1Name.Size = new System.Drawing.Size(78, 20);
+            this.tbUser1Name.TabIndex = 4;
+            // 
+            // rbtUser4
+            // 
+            this.rbtUser4.AutoSize = true;
+            this.rbtUser4.Location = new System.Drawing.Point(339, 19);
+            this.rbtUser4.Name = "rbtUser4";
+            this.rbtUser4.Size = new System.Drawing.Size(14, 13);
+            this.rbtUser4.TabIndex = 3;
+            this.rbtUser4.TabStop = true;
+            this.rbtUser4.UseVisualStyleBackColor = true;
+            this.rbtUser4.CheckedChanged += new System.EventHandler(this.rbtUser_Selected);
+            // 
+            // rbtUser3
+            // 
+            this.rbtUser3.AutoSize = true;
+            this.rbtUser3.Location = new System.Drawing.Point(228, 19);
+            this.rbtUser3.Name = "rbtUser3";
+            this.rbtUser3.Size = new System.Drawing.Size(14, 13);
+            this.rbtUser3.TabIndex = 2;
+            this.rbtUser3.TabStop = true;
+            this.rbtUser3.UseVisualStyleBackColor = true;
+            this.rbtUser3.CheckedChanged += new System.EventHandler(this.rbtUser_Selected);
+            // 
+            // rbtUser2
+            // 
+            this.rbtUser2.AutoSize = true;
+            this.rbtUser2.Location = new System.Drawing.Point(117, 19);
+            this.rbtUser2.Name = "rbtUser2";
+            this.rbtUser2.Size = new System.Drawing.Size(14, 13);
+            this.rbtUser2.TabIndex = 1;
+            this.rbtUser2.TabStop = true;
+            this.rbtUser2.UseVisualStyleBackColor = true;
+            this.rbtUser2.CheckedChanged += new System.EventHandler(this.rbtUser_Selected);
+            // 
+            // rbtUser1
+            // 
+            this.rbtUser1.AutoSize = true;
+            this.rbtUser1.Location = new System.Drawing.Point(6, 19);
+            this.rbtUser1.Name = "rbtUser1";
+            this.rbtUser1.Size = new System.Drawing.Size(14, 13);
+            this.rbtUser1.TabIndex = 0;
+            this.rbtUser1.TabStop = true;
+            this.rbtUser1.UseVisualStyleBackColor = true;
+            this.rbtUser1.CheckedChanged += new System.EventHandler(this.rbtUser_Selected);
+            // 
+            // btOK
+            // 
+            this.btOK.Location = new System.Drawing.Point(339, 321);
+            this.btOK.Name = "btOK";
+            this.btOK.Size = new System.Drawing.Size(51, 23);
+            this.btOK.TabIndex = 2;
+            this.btOK.Text = "OK";
+            this.btOK.UseVisualStyleBackColor = true;
+            this.btOK.Click += new System.EventHandler(this.btOK_Click);
+            // 
+            // btCancel
+            // 
+            this.btCancel.Location = new System.Drawing.Point(396, 321);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(51, 23);
+            this.btCancel.TabIndex = 3;
+            this.btCancel.Text = "Cancel";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // btClear
+            // 
+            this.btClear.Location = new System.Drawing.Point(282, 321);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(51, 23);
+            this.btClear.TabIndex = 4;
+            this.btClear.Text = "Clear";
+            this.btClear.UseVisualStyleBackColor = true;
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            // 
+            // FlagInsertLF
+            // 
+            this.FlagInsertLF.AutoSize = true;
+            this.FlagInsertLF.Location = new System.Drawing.Point(30, 327);
+            this.FlagInsertLF.Name = "FlagInsertLF";
+            this.FlagInsertLF.Size = new System.Drawing.Size(214, 17);
+            this.FlagInsertLF.TabIndex = 5;
+            this.FlagInsertLF.Text = "Auto insert {LF} at the end of command.";
+            this.FlagInsertLF.UseVisualStyleBackColor = true;
+            this.FlagInsertLF.CheckedChanged += new System.EventHandler(this.FlagInsertLF_CheckedChanged);
+            // 
+            // tbName7
+            // 
+            this.tbName7.Location = new System.Drawing.Point(20, 193);
+            this.tbName7.Name = "tbName7";
+            this.tbName7.Size = new System.Drawing.Size(148, 20);
+            this.tbName7.TabIndex = 14;
+            // 
+            // tbName8
+            // 
+            this.tbName8.Location = new System.Drawing.Point(20, 219);
+            this.tbName8.Name = "tbName8";
+            this.tbName8.Size = new System.Drawing.Size(148, 20);
+            this.tbName8.TabIndex = 15;
+            // 
+            // tbCmd7
+            // 
+            this.tbCmd7.Location = new System.Drawing.Point(192, 193);
+            this.tbCmd7.Name = "tbCmd7";
+            this.tbCmd7.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd7.TabIndex = 16;
+            // 
+            // tbCmd8
+            // 
+            this.tbCmd8.Location = new System.Drawing.Point(192, 219);
+            this.tbCmd8.Name = "tbCmd8";
+            this.tbCmd8.Size = new System.Drawing.Size(243, 20);
+            this.tbCmd8.TabIndex = 17;
+            // 
             // SW_SetupUserCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 276);
+            this.ClientSize = new System.Drawing.Size(473, 356);
+            this.Controls.Add(this.FlagInsertLF);
+            this.Controls.Add(this.btClear);
+            this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btOK);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SW_SetupUserCommand";
             this.ShowIcon = false;
-            this.Text = "SW_SetupUserCommand";
+            this.Text = "User Command Setting";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -292,27 +378,35 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbtUser3;
+        private System.Windows.Forms.RadioButton rbtUser2;
+        private System.Windows.Forms.RadioButton rbtUser1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.TextBox tbCmd6;
+        private System.Windows.Forms.TextBox tbCmd5;
+        private System.Windows.Forms.TextBox tbCmd4;
+        private System.Windows.Forms.TextBox tbCmd3;
+        private System.Windows.Forms.TextBox tbCmd2;
+        private System.Windows.Forms.TextBox tbCmd1;
+        private System.Windows.Forms.TextBox tbName6;
+        private System.Windows.Forms.TextBox tbName5;
+        private System.Windows.Forms.TextBox tbName4;
+        private System.Windows.Forms.TextBox tbName3;
+        private System.Windows.Forms.TextBox tbName2;
+        private System.Windows.Forms.TextBox tbName1;
+        private System.Windows.Forms.TextBox tbUser4Name;
+        private System.Windows.Forms.TextBox tbUser3Name;
+        private System.Windows.Forms.TextBox tbUser2Name;
+        private System.Windows.Forms.TextBox tbUser1Name;
+        private System.Windows.Forms.RadioButton rbtUser4;
+        private System.Windows.Forms.Button btOK;
+        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.CheckBox FlagInsertLF;
+        private System.Windows.Forms.TextBox tbCmd8;
+        private System.Windows.Forms.TextBox tbCmd7;
+        private System.Windows.Forms.TextBox tbName8;
+        private System.Windows.Forms.TextBox tbName7;
     }
 }

@@ -46,6 +46,7 @@ namespace TestAME
 
         private void SelectAndConfigSP_Load(object sender, EventArgs e)
         {
+            
             if (ComPort.IsOpen)
             {
                 LoadVariableSPort();
@@ -309,6 +310,11 @@ namespace TestAME
                 }
 
             }
+        }
+
+        private void btRefresh_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }
