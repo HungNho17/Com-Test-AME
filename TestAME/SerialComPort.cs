@@ -212,7 +212,7 @@ namespace TestAME
             return true;
         }
 
-        public string RecieveDataProcessing(int dataIn, bool flagShowLF, bool flagShowSpace)
+        public string IntToAssciiStr(int dataIn, bool flagShowLF, bool flagShowSpace)
         {
             string sResult = null;
 
@@ -269,6 +269,7 @@ namespace TestAME
 
             return bRet;
         }
+
         public bool SendData(string dataOut, bool flagSendLF)
         {
             bool bRet = true;

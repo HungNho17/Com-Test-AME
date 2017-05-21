@@ -77,9 +77,7 @@ namespace TestAME
             string sResult = null;
             try
             {
-                ManagementObjectSearcher searcher =
-                    new ManagementObjectSearcher("root\\CIMV2",
-                    "SELECT * FROM Win32_PnPEntity");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity");
 
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
@@ -87,7 +85,6 @@ namespace TestAME
                     {
                        sResult = queryObj["Caption"].ToString();
                     }
-
                 }
             }
             catch (ManagementException e)
@@ -124,6 +121,26 @@ namespace TestAME
 
         public void LoadStatusWindow()
         {
+            if (PortName != null) 
+            {
+                foreach (ListViewItem element in LVSerialPort.Items)
+                {
+                    if (element.Text == PortName)
+                    {
+                        LVSerialPort.ItemCheck -= SerialPort_ItemCheck;
+                        element.Checked = true;
+                        LVSerialPort.ItemCheck += SerialPort_ItemCheck;
+                    }
+                    else
+                    {
+                        LVSerialPort.ItemCheck -= SerialPort_ItemCheck;
+                        element.Checked = false;
+                        LVSerialPort.ItemCheck += SerialPort_ItemCheck;
+                    }
+                }
+            }
+            
+
             for (int i = 0; i < 11; i++)
             {
                 if (ListBaudRateValue[i] == PortBaudRate) ListRBBaudRateIdx[i].Checked = true;
@@ -235,6 +252,7 @@ namespace TestAME
                 {
                     ComPort.Close();
                     ComPort.PortName = PortName;
+                    ComPort.Open();
                 }
             }
             else

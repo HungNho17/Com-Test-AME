@@ -83,7 +83,7 @@ namespace TestAME
 
                 if (FlagDisplayDataRecieve == false) // update status data recieve display
                 {
-                    tbDataRecieve.BackColor = Color.DarkBlue;
+                    tbDataRecieve.BackColor = Color.Navy;
                     lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
                 }
                 else
@@ -96,7 +96,7 @@ namespace TestAME
             {
                 lbConnect.Image = TestAME.Properties.Resources.Red;
 
-                tbDataRecieve.BackColor = Color.DarkBlue;
+                tbDataRecieve.BackColor = Color.Navy;
                 lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
             }
             
@@ -176,7 +176,7 @@ namespace TestAME
             if (!FlagDisplayDataRecieve || (data == -1)) 
                 return ret;
 
-            string temp = ComPort.RecieveDataProcessing(data, FlagShowLF, FlagShowSpace);
+            string temp = ComPort.IntToAssciiStr(data, FlagShowLF, FlagShowSpace);
             
             tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
             tbDataRecieve.SelectionLength = 0;
@@ -189,6 +189,20 @@ namespace TestAME
             tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
             tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
             return ret;
+        }
+
+        public bool UpdateDataTransmited(string dataIn)
+        {
+            bool bRet = false;
+            if (dataIn == null) return bRet;
+
+            tbDataRecieve.AppendText(dataIn);
+            tbDataRecieve.Focus();
+            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+            tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
+            bRet = true;
+
+            return bRet;
         }
 
         /// <summary>
@@ -251,6 +265,24 @@ namespace TestAME
         {  
             // Do something if it in need!
             UpdateStatusWindow();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void BTSetupCmd_Click(object sender, EventArgs e)
+        {
+            SW_SetupUserCommand SubFormCmd = new SW_SetupUserCommand();
+            SubFormCmd.FormClosed += new FormClosedEventHandler(SubFormCmdClosed);
+            SubFormCmd.ShowDialog();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void SubFormCmdClosed(object sender, FormClosedEventArgs e)
+        { 
+        
         }
 
         /// <summary>
@@ -367,6 +399,7 @@ namespace TestAME
             if (tbDataSend.Text != null)
             {
                 ComPort.SendData(tbDataSend.Text, FlagSendLF);
+                UpdateDataTransmited(tbDataSend.Text);
             }
         }
 
@@ -406,10 +439,25 @@ namespace TestAME
         /// </summary>
         private void SelectCharacterSet_DoubleClick(object sender, EventArgs e)
         {
-            
+            foreach (ListViewItem element in lvCharSet.Items)
+            {
+                if (element.Selected == true)
+                {
+                    if (FlagSendTo == true)
+                    {
+                        ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF);
+                        UpdateDataRecieved(Int32.Parse(element.SubItems[1].Text), false);
+                        break;
+                    }
+                    else
+                    {
+                        string temp = ComPort.IntToAssciiStr(Int32.Parse(element.SubItems[1].Text), false, false);
+                        tbDataSend.AppendText(temp);
+                        break;
+                    }
+                }
+            }
         }
-
-
 
 
     }

@@ -87,6 +87,7 @@
             this.LVSerialPort.GridLines = true;
             this.LVSerialPort.Location = new System.Drawing.Point(11, 17);
             this.LVSerialPort.Name = "LVSerialPort";
+            this.LVSerialPort.Scrollable = false;
             this.LVSerialPort.Size = new System.Drawing.Size(224, 374);
             this.LVSerialPort.TabIndex = 0;
             this.LVSerialPort.UseCompatibleStateImageBehavior = false;

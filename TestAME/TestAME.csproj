@@ -71,6 +71,12 @@
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
     </Compile>
     <Compile Include="SerialComPort.cs" />
+    <Compile Include="SW_SetupUserCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SW_SetupUserCommand.Designer.cs">
+      <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MW_AmeTest.resx">
       <DependentUpon>MW_AmeTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SW_SerialComSetUp.resx">
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SW_SetupUserCommand.resx">
+      <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

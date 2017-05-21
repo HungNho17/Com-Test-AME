@@ -12,9 +12,9 @@ F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.exe
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.pdb
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Release\TestAME.exe
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Release\TestAME.pdb
-F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.csprojResolveAssemblyReference.cache
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.g.resources
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.MW_AmeTest.resources
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.Properties.Resources.resources
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.SW_SerialComSetUp.resources
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.csproj.GenerateResource.Cache
+F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Release\TestAME.SW_SetupUserCommand.resources

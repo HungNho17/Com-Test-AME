@@ -77,6 +77,7 @@
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.lvCharSet = new System.Windows.Forms.ListView();
             this.Char = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Decimal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -88,7 +89,7 @@
             this.lbToCommunicate = new System.Windows.Forms.Label();
             this.btCharToLo = new System.Windows.Forms.Button();
             this.btCharToCo = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.BTSetupCmd = new System.Windows.Forms.Button();
             this.BTSPort = new System.Windows.Forms.Button();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
@@ -233,7 +234,7 @@
             this.groupBox1.Size = new System.Drawing.Size(575, 235);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Communications (Recieved = Yellow, Transmitted = Green)";
+            this.groupBox1.Text = "Communications (Recieved = Yellow, Transmitted = Green):";
             // 
             // tbDataRecieve
             // 
@@ -269,9 +270,9 @@
             // btNewLineCo
             // 
             this.btNewLineCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNewLineCo.Location = new System.Drawing.Point(467, 196);
+            this.btNewLineCo.Location = new System.Drawing.Point(475, 196);
             this.btNewLineCo.Name = "btNewLineCo";
-            this.btNewLineCo.Size = new System.Drawing.Size(102, 24);
+            this.btNewLineCo.Size = new System.Drawing.Size(94, 24);
             this.btNewLineCo.TabIndex = 3;
             this.btNewLineCo.Text = "New Line";
             this.btNewLineCo.UseVisualStyleBackColor = true;
@@ -280,9 +281,9 @@
             // btClearCo
             // 
             this.btClearCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearCo.Location = new System.Drawing.Point(467, 166);
+            this.btClearCo.Location = new System.Drawing.Point(475, 166);
             this.btClearCo.Name = "btClearCo";
-            this.btClearCo.Size = new System.Drawing.Size(102, 24);
+            this.btClearCo.Size = new System.Drawing.Size(94, 24);
             this.btClearCo.TabIndex = 2;
             this.btClearCo.Text = "Clear Text";
             this.btClearCo.UseVisualStyleBackColor = true;
@@ -314,7 +315,7 @@
             this.groupBox2.Size = new System.Drawing.Size(575, 115);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Local Command";
+            this.groupBox2.Text = "Local Command:";
             // 
             // lbSendLF
             // 
@@ -330,9 +331,9 @@
             // btSend
             // 
             this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSend.Location = new System.Drawing.Point(467, 85);
+            this.btSend.Location = new System.Drawing.Point(475, 85);
             this.btSend.Name = "btSend";
-            this.btSend.Size = new System.Drawing.Size(102, 24);
+            this.btSend.Size = new System.Drawing.Size(94, 24);
             this.btSend.TabIndex = 3;
             this.btSend.Text = "Send";
             this.btSend.UseVisualStyleBackColor = true;
@@ -341,9 +342,9 @@
             // btClearLo
             // 
             this.btClearLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearLo.Location = new System.Drawing.Point(468, 56);
+            this.btClearLo.Location = new System.Drawing.Point(475, 56);
             this.btClearLo.Name = "btClearLo";
-            this.btClearLo.Size = new System.Drawing.Size(102, 23);
+            this.btClearLo.Size = new System.Drawing.Size(94, 23);
             this.btClearLo.TabIndex = 2;
             this.btClearLo.Text = "Clear Text";
             this.btClearLo.UseVisualStyleBackColor = true;
@@ -381,6 +382,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox3.Controls.Add(this.btCmd7);
             this.groupBox3.Controls.Add(this.btCmd3);
             this.groupBox3.Controls.Add(this.btCmd6);
@@ -394,13 +396,14 @@
             this.groupBox3.Size = new System.Drawing.Size(575, 106);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "User Commands";
+            this.groupBox3.Text = "User Commands:";
             // 
             // btCmd7
             // 
+            this.btCmd7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd7.Enabled = false;
-            this.btCmd7.Location = new System.Drawing.Point(414, 78);
+            this.btCmd7.Location = new System.Drawing.Point(451, 64);
             this.btCmd7.Name = "btCmd7";
             this.btCmd7.Size = new System.Drawing.Size(118, 23);
             this.btCmd7.TabIndex = 7;
@@ -409,9 +412,10 @@
             // 
             // btCmd3
             // 
+            this.btCmd3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd3.Enabled = false;
-            this.btCmd3.Location = new System.Drawing.Point(414, 30);
+            this.btCmd3.Location = new System.Drawing.Point(451, 25);
             this.btCmd3.Name = "btCmd3";
             this.btCmd3.Size = new System.Drawing.Size(118, 23);
             this.btCmd3.TabIndex = 6;
@@ -420,9 +424,10 @@
             // 
             // btCmd6
             // 
+            this.btCmd6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd6.Enabled = false;
-            this.btCmd6.Location = new System.Drawing.Point(284, 78);
+            this.btCmd6.Location = new System.Drawing.Point(308, 64);
             this.btCmd6.Name = "btCmd6";
             this.btCmd6.Size = new System.Drawing.Size(118, 23);
             this.btCmd6.TabIndex = 5;
@@ -431,9 +436,10 @@
             // 
             // btCmd2
             // 
+            this.btCmd2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd2.Enabled = false;
-            this.btCmd2.Location = new System.Drawing.Point(284, 30);
+            this.btCmd2.Location = new System.Drawing.Point(308, 25);
             this.btCmd2.Name = "btCmd2";
             this.btCmd2.Size = new System.Drawing.Size(118, 23);
             this.btCmd2.TabIndex = 4;
@@ -442,9 +448,10 @@
             // 
             // btCmd5
             // 
+            this.btCmd5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd5.Enabled = false;
-            this.btCmd5.Location = new System.Drawing.Point(160, 78);
+            this.btCmd5.Location = new System.Drawing.Point(163, 64);
             this.btCmd5.Name = "btCmd5";
             this.btCmd5.Size = new System.Drawing.Size(118, 23);
             this.btCmd5.TabIndex = 3;
@@ -453,9 +460,10 @@
             // 
             // btCmd1
             // 
+            this.btCmd1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd1.Enabled = false;
-            this.btCmd1.Location = new System.Drawing.Point(160, 30);
+            this.btCmd1.Location = new System.Drawing.Point(163, 25);
             this.btCmd1.Name = "btCmd1";
             this.btCmd1.Size = new System.Drawing.Size(118, 23);
             this.btCmd1.TabIndex = 2;
@@ -464,9 +472,10 @@
             // 
             // btCmd4
             // 
+            this.btCmd4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd4.Enabled = false;
-            this.btCmd4.Location = new System.Drawing.Point(36, 78);
+            this.btCmd4.Location = new System.Drawing.Point(12, 64);
             this.btCmd4.Name = "btCmd4";
             this.btCmd4.Size = new System.Drawing.Size(118, 23);
             this.btCmd4.TabIndex = 1;
@@ -475,9 +484,10 @@
             // 
             // btCmd0
             // 
+            this.btCmd0.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd0.Enabled = false;
-            this.btCmd0.Location = new System.Drawing.Point(36, 30);
+            this.btCmd0.Location = new System.Drawing.Point(12, 25);
             this.btCmd0.Name = "btCmd0";
             this.btCmd0.Size = new System.Drawing.Size(118, 23);
             this.btCmd0.TabIndex = 0;
@@ -546,7 +556,7 @@
             // 
             this.btConnectSP.Location = new System.Drawing.Point(42, 22);
             this.btConnectSP.Name = "btConnectSP";
-            this.btConnectSP.Size = new System.Drawing.Size(135, 23);
+            this.btConnectSP.Size = new System.Drawing.Size(126, 23);
             this.btConnectSP.TabIndex = 3;
             this.btConnectSP.Text = "Serial Port";
             this.btConnectSP.UseVisualStyleBackColor = true;
@@ -556,7 +566,7 @@
             // 
             this.btDisplayRCData.Location = new System.Drawing.Point(42, 51);
             this.btDisplayRCData.Name = "btDisplayRCData";
-            this.btDisplayRCData.Size = new System.Drawing.Size(135, 23);
+            this.btDisplayRCData.Size = new System.Drawing.Size(126, 23);
             this.btDisplayRCData.TabIndex = 2;
             this.btDisplayRCData.Text = "Display Received Data";
             this.btDisplayRCData.UseVisualStyleBackColor = true;
@@ -566,7 +576,7 @@
             // 
             this.btShowSpace.Location = new System.Drawing.Point(42, 80);
             this.btShowSpace.Name = "btShowSpace";
-            this.btShowSpace.Size = new System.Drawing.Size(135, 23);
+            this.btShowSpace.Size = new System.Drawing.Size(126, 23);
             this.btShowSpace.TabIndex = 1;
             this.btShowSpace.Text = "Show Space In {}";
             this.btShowSpace.UseVisualStyleBackColor = true;
@@ -576,7 +586,7 @@
             // 
             this.btShowLF.Location = new System.Drawing.Point(42, 109);
             this.btShowLF.Name = "btShowLF";
-            this.btShowLF.Size = new System.Drawing.Size(135, 23);
+            this.btShowLF.Size = new System.Drawing.Size(126, 23);
             this.btShowLF.TabIndex = 0;
             this.btShowLF.Text = "Show CR & LF in {}";
             this.btShowLF.UseVisualStyleBackColor = true;
@@ -586,6 +596,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.lvCharSet);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label2);
@@ -594,15 +605,25 @@
             this.groupBox5.Controls.Add(this.lbToCommunicate);
             this.groupBox5.Controls.Add(this.btCharToLo);
             this.groupBox5.Controls.Add(this.btCharToCo);
-            this.groupBox5.Location = new System.Drawing.Point(596, 208);
+            this.groupBox5.Location = new System.Drawing.Point(596, 195);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 259);
+            this.groupBox5.Size = new System.Drawing.Size(184, 255);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Charracter Set:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Double-click char to send";
+            // 
             // lvCharSet
             // 
+            this.lvCharSet.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.lvCharSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvCharSet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -615,7 +636,7 @@
             this.lvCharSet.Location = new System.Drawing.Point(22, 38);
             this.lvCharSet.MultiSelect = false;
             this.lvCharSet.Name = "lvCharSet";
-            this.lvCharSet.Size = new System.Drawing.Size(155, 144);
+            this.lvCharSet.Size = new System.Drawing.Size(146, 127);
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
@@ -624,7 +645,7 @@
             // Char
             // 
             this.Char.Text = "";
-            this.Char.Width = 50;
+            this.Char.Width = 45;
             // 
             // Decimal
             // 
@@ -639,7 +660,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 22);
+            this.label3.Location = new System.Drawing.Point(105, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 16;
@@ -648,7 +669,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 22);
+            this.label2.Location = new System.Drawing.Point(54, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 15;
@@ -657,7 +678,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 22);
+            this.label1.Location = new System.Drawing.Point(19, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 14;
@@ -668,7 +689,7 @@
             this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToLocalCMD.AutoSize = true;
             this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(19, 224);
+            this.lbToLocalCMD.Location = new System.Drawing.Point(19, 226);
             this.lbToLocalCMD.Name = "lbToLocalCMD";
             this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
             this.lbToLocalCMD.TabIndex = 13;
@@ -679,7 +700,7 @@
             this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToCommunicate.AutoSize = true;
             this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(19, 194);
+            this.lbToCommunicate.Location = new System.Drawing.Point(19, 197);
             this.lbToCommunicate.Name = "lbToCommunicate";
             this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
             this.lbToCommunicate.TabIndex = 12;
@@ -688,9 +709,9 @@
             // btCharToLo
             // 
             this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToLo.Location = new System.Drawing.Point(42, 219);
+            this.btCharToLo.Location = new System.Drawing.Point(42, 221);
             this.btCharToLo.Name = "btCharToLo";
-            this.btCharToLo.Size = new System.Drawing.Size(135, 23);
+            this.btCharToLo.Size = new System.Drawing.Size(126, 23);
             this.btCharToLo.TabIndex = 2;
             this.btCharToLo.Text = "To Local Command";
             this.btCharToLo.UseVisualStyleBackColor = true;
@@ -699,31 +720,32 @@
             // btCharToCo
             // 
             this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToCo.Location = new System.Drawing.Point(42, 189);
+            this.btCharToCo.Location = new System.Drawing.Point(42, 192);
             this.btCharToCo.Name = "btCharToCo";
-            this.btCharToCo.Size = new System.Drawing.Size(135, 23);
+            this.btCharToCo.Size = new System.Drawing.Size(126, 23);
             this.btCharToCo.TabIndex = 1;
             this.btCharToCo.Text = "To Communications";
             this.btCharToCo.UseVisualStyleBackColor = true;
             this.btCharToCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // button21
+            // BTSetupCmd
             // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button21.Location = new System.Drawing.Point(594, 480);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(90, 23);
-            this.button21.TabIndex = 6;
-            this.button21.Text = "Set Up";
-            this.button21.UseVisualStyleBackColor = true;
+            this.BTSetupCmd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BTSetupCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BTSetupCmd.Location = new System.Drawing.Point(596, 456);
+            this.BTSetupCmd.Name = "BTSetupCmd";
+            this.BTSetupCmd.Size = new System.Drawing.Size(73, 23);
+            this.BTSetupCmd.TabIndex = 6;
+            this.BTSetupCmd.Text = "Set Up";
+            this.BTSetupCmd.UseVisualStyleBackColor = true;
+            this.BTSetupCmd.Click += new System.EventHandler(this.BTSetupCmd_Click);
             // 
             // BTSPort
             // 
             this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTSPort.Location = new System.Drawing.Point(690, 480);
+            this.BTSPort.Location = new System.Drawing.Point(690, 456);
             this.BTSPort.Name = "BTSPort";
-            this.BTSPort.Size = new System.Drawing.Size(90, 23);
+            this.BTSPort.Size = new System.Drawing.Size(74, 23);
             this.BTSPort.TabIndex = 7;
             this.BTSPort.Text = "Serial Port";
             this.BTSPort.UseVisualStyleBackColor = true;
@@ -740,7 +762,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 519);
             this.Controls.Add(this.BTSPort);
-            this.Controls.Add(this.button21);
+            this.Controls.Add(this.BTSetupCmd);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -813,7 +835,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btCharToLo;
         private System.Windows.Forms.Button btCharToCo;
-        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button BTSetupCmd;
         private System.Windows.Forms.Button BTSPort;
         private System.IO.Ports.SerialPort SPort;
         private System.Windows.Forms.Label lbConnect;
@@ -832,6 +854,7 @@
         private System.Windows.Forms.ColumnHeader Char;
         private System.Windows.Forms.ColumnHeader Decimal;
         private System.Windows.Forms.ColumnHeader Hex;
+        private System.Windows.Forms.Label label4;
     }
 }
 
