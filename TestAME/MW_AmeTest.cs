@@ -508,7 +508,7 @@ namespace TestAME
         protected override bool ProcessCmdKey(ref Message message, Keys keys)
         {
             UpdateKeyboarStatus();
-            return true;
+            return false;
         }
 
         /// <summary>
