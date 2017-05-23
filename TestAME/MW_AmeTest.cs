@@ -465,8 +465,10 @@ namespace TestAME
         {
             if (tbDataSend.Text != null)
             {
-                ComPort.SendData(tbDataSend.Text, FlagSendLF);
-                UpdateDataTransmited(tbDataSend.Text);
+                if (ComPort.SendData(tbDataSend.Text, FlagSendLF))
+                {
+                    UpdateDataTransmited(tbDataSend.Text);
+                }
             }
         }
 
@@ -522,8 +524,10 @@ namespace TestAME
                 {
                     if (FlagSendTo == true)
                     {
-                        ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF);
-                        UpdateDataRecieved(Int32.Parse(element.SubItems[1].Text), false);
+                        if(ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF))
+                        {
+                            UpdateDataRecieved(Int32.Parse(element.SubItems[1].Text), false);
+                        }
                         break;
                     }
                     else
@@ -548,6 +552,16 @@ namespace TestAME
         {
             UserCmd.ChangeCurrentUser(true);
             UpdateUserButtonCmd();
+        }
+
+        /// <summary>
+        /// DETECT COMPORT CHANGE STATUS
+        /// </summary>
+        private void SPort_PinChanged(object sender, SerialPinChangedEventArgs e)
+        {
+            ComPort.CloseSPort();
+            FlagConnectStatus = false;
+            UpdateStatusWindow();
         }
 
 

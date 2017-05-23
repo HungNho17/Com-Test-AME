@@ -69,11 +69,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LVSerialPort);
-            this.groupBox1.Location = new System.Drawing.Point(12, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(16, 14);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(240, 396);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(320, 487);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Serial Ports";
@@ -86,10 +86,10 @@
             this.Description});
             this.LVSerialPort.FullRowSelect = true;
             this.LVSerialPort.GridLines = true;
-            this.LVSerialPort.Location = new System.Drawing.Point(11, 17);
+            this.LVSerialPort.Location = new System.Drawing.Point(15, 21);
+            this.LVSerialPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LVSerialPort.Name = "LVSerialPort";
-            this.LVSerialPort.Scrollable = false;
-            this.LVSerialPort.Size = new System.Drawing.Size(224, 374);
+            this.LVSerialPort.Size = new System.Drawing.Size(297, 459);
             this.LVSerialPort.TabIndex = 0;
             this.LVSerialPort.UseCompatibleStateImageBehavior = false;
             this.LVSerialPort.View = System.Windows.Forms.View.Details;
@@ -98,11 +98,12 @@
             // Port
             // 
             this.Port.Text = "Ports";
+            this.Port.Width = 76;
             // 
             // Description
             // 
             this.Description.Text = "Registry Description";
-            this.Description.Width = 200;
+            this.Description.Width = 251;
             // 
             // groupBox2
             // 
@@ -117,11 +118,11 @@
             this.groupBox2.Controls.Add(this.RB1200);
             this.groupBox2.Controls.Add(this.RB600);
             this.groupBox2.Controls.Add(this.RB300);
-            this.groupBox2.Location = new System.Drawing.Point(271, 11);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(361, 14);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(193, 107);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(257, 132);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Baud Rate:";
@@ -129,10 +130,10 @@
             // RB115200
             // 
             this.RB115200.AutoSize = true;
-            this.RB115200.Location = new System.Drawing.Point(138, 66);
-            this.RB115200.Margin = new System.Windows.Forms.Padding(2);
+            this.RB115200.Location = new System.Drawing.Point(184, 81);
+            this.RB115200.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB115200.Name = "RB115200";
-            this.RB115200.Size = new System.Drawing.Size(59, 17);
+            this.RB115200.Size = new System.Drawing.Size(74, 21);
             this.RB115200.TabIndex = 10;
             this.RB115200.TabStop = true;
             this.RB115200.Text = "115.2K";
@@ -142,10 +143,10 @@
             // RB57600
             // 
             this.RB57600.AutoSize = true;
-            this.RB57600.Location = new System.Drawing.Point(138, 44);
-            this.RB57600.Margin = new System.Windows.Forms.Padding(2);
+            this.RB57600.Location = new System.Drawing.Point(184, 54);
+            this.RB57600.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB57600.Name = "RB57600";
-            this.RB57600.Size = new System.Drawing.Size(53, 17);
+            this.RB57600.Size = new System.Drawing.Size(66, 21);
             this.RB57600.TabIndex = 9;
             this.RB57600.TabStop = true;
             this.RB57600.Text = "57.6K";
@@ -155,10 +156,10 @@
             // RB38400
             // 
             this.RB38400.AutoSize = true;
-            this.RB38400.Location = new System.Drawing.Point(138, 22);
-            this.RB38400.Margin = new System.Windows.Forms.Padding(2);
+            this.RB38400.Location = new System.Drawing.Point(184, 27);
+            this.RB38400.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB38400.Name = "RB38400";
-            this.RB38400.Size = new System.Drawing.Size(53, 17);
+            this.RB38400.Size = new System.Drawing.Size(66, 21);
             this.RB38400.TabIndex = 8;
             this.RB38400.TabStop = true;
             this.RB38400.Text = "38.4K";
@@ -168,10 +169,10 @@
             // RB19200
             // 
             this.RB19200.AutoSize = true;
-            this.RB19200.Location = new System.Drawing.Point(76, 85);
-            this.RB19200.Margin = new System.Windows.Forms.Padding(2);
+            this.RB19200.Location = new System.Drawing.Point(101, 105);
+            this.RB19200.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB19200.Name = "RB19200";
-            this.RB19200.Size = new System.Drawing.Size(53, 17);
+            this.RB19200.Size = new System.Drawing.Size(66, 21);
             this.RB19200.TabIndex = 7;
             this.RB19200.TabStop = true;
             this.RB19200.Text = "19.2K";
@@ -181,10 +182,10 @@
             // RB14400
             // 
             this.RB14400.AutoSize = true;
-            this.RB14400.Location = new System.Drawing.Point(76, 66);
-            this.RB14400.Margin = new System.Windows.Forms.Padding(2);
+            this.RB14400.Location = new System.Drawing.Point(101, 81);
+            this.RB14400.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB14400.Name = "RB14400";
-            this.RB14400.Size = new System.Drawing.Size(53, 17);
+            this.RB14400.Size = new System.Drawing.Size(66, 21);
             this.RB14400.TabIndex = 6;
             this.RB14400.TabStop = true;
             this.RB14400.Text = "14.4K";
@@ -194,10 +195,10 @@
             // RB9600
             // 
             this.RB9600.AutoSize = true;
-            this.RB9600.Location = new System.Drawing.Point(76, 44);
-            this.RB9600.Margin = new System.Windows.Forms.Padding(2);
+            this.RB9600.Location = new System.Drawing.Point(101, 54);
+            this.RB9600.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB9600.Name = "RB9600";
-            this.RB9600.Size = new System.Drawing.Size(49, 17);
+            this.RB9600.Size = new System.Drawing.Size(61, 21);
             this.RB9600.TabIndex = 5;
             this.RB9600.TabStop = true;
             this.RB9600.Text = "9600";
@@ -207,10 +208,10 @@
             // RB4800
             // 
             this.RB4800.AutoSize = true;
-            this.RB4800.Location = new System.Drawing.Point(76, 22);
-            this.RB4800.Margin = new System.Windows.Forms.Padding(2);
+            this.RB4800.Location = new System.Drawing.Point(101, 27);
+            this.RB4800.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB4800.Name = "RB4800";
-            this.RB4800.Size = new System.Drawing.Size(49, 17);
+            this.RB4800.Size = new System.Drawing.Size(61, 21);
             this.RB4800.TabIndex = 4;
             this.RB4800.TabStop = true;
             this.RB4800.Text = "4800";
@@ -220,10 +221,10 @@
             // RB2400
             // 
             this.RB2400.AutoSize = true;
-            this.RB2400.Location = new System.Drawing.Point(11, 85);
-            this.RB2400.Margin = new System.Windows.Forms.Padding(2);
+            this.RB2400.Location = new System.Drawing.Point(15, 105);
+            this.RB2400.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB2400.Name = "RB2400";
-            this.RB2400.Size = new System.Drawing.Size(49, 17);
+            this.RB2400.Size = new System.Drawing.Size(61, 21);
             this.RB2400.TabIndex = 3;
             this.RB2400.TabStop = true;
             this.RB2400.Text = "2400";
@@ -233,10 +234,10 @@
             // RB1200
             // 
             this.RB1200.AutoSize = true;
-            this.RB1200.Location = new System.Drawing.Point(11, 66);
-            this.RB1200.Margin = new System.Windows.Forms.Padding(2);
+            this.RB1200.Location = new System.Drawing.Point(15, 81);
+            this.RB1200.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB1200.Name = "RB1200";
-            this.RB1200.Size = new System.Drawing.Size(49, 17);
+            this.RB1200.Size = new System.Drawing.Size(61, 21);
             this.RB1200.TabIndex = 2;
             this.RB1200.TabStop = true;
             this.RB1200.Text = "1200";
@@ -246,10 +247,10 @@
             // RB600
             // 
             this.RB600.AutoSize = true;
-            this.RB600.Location = new System.Drawing.Point(11, 44);
-            this.RB600.Margin = new System.Windows.Forms.Padding(2);
+            this.RB600.Location = new System.Drawing.Point(15, 54);
+            this.RB600.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB600.Name = "RB600";
-            this.RB600.Size = new System.Drawing.Size(43, 17);
+            this.RB600.Size = new System.Drawing.Size(53, 21);
             this.RB600.TabIndex = 1;
             this.RB600.TabStop = true;
             this.RB600.Text = "600";
@@ -259,10 +260,10 @@
             // RB300
             // 
             this.RB300.AutoSize = true;
-            this.RB300.Location = new System.Drawing.Point(10, 22);
-            this.RB300.Margin = new System.Windows.Forms.Padding(2);
+            this.RB300.Location = new System.Drawing.Point(13, 27);
+            this.RB300.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RB300.Name = "RB300";
-            this.RB300.Size = new System.Drawing.Size(43, 17);
+            this.RB300.Size = new System.Drawing.Size(53, 21);
             this.RB300.TabIndex = 0;
             this.RB300.TabStop = true;
             this.RB300.Text = "300";
@@ -274,11 +275,11 @@
             this.groupBox3.Controls.Add(this.RBParityNone);
             this.groupBox3.Controls.Add(this.RBParityOdd);
             this.groupBox3.Controls.Add(this.RBParityEven);
-            this.groupBox3.Location = new System.Drawing.Point(272, 124);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Location = new System.Drawing.Point(363, 153);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(192, 55);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(256, 68);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parity:";
@@ -286,10 +287,10 @@
             // RBParityNone
             // 
             this.RBParityNone.AutoSize = true;
-            this.RBParityNone.Location = new System.Drawing.Point(137, 24);
-            this.RBParityNone.Margin = new System.Windows.Forms.Padding(2);
+            this.RBParityNone.Location = new System.Drawing.Point(183, 30);
+            this.RBParityNone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBParityNone.Name = "RBParityNone";
-            this.RBParityNone.Size = new System.Drawing.Size(51, 17);
+            this.RBParityNone.Size = new System.Drawing.Size(63, 21);
             this.RBParityNone.TabIndex = 2;
             this.RBParityNone.TabStop = true;
             this.RBParityNone.Text = "None";
@@ -299,10 +300,10 @@
             // RBParityOdd
             // 
             this.RBParityOdd.AutoSize = true;
-            this.RBParityOdd.Location = new System.Drawing.Point(75, 24);
-            this.RBParityOdd.Margin = new System.Windows.Forms.Padding(2);
+            this.RBParityOdd.Location = new System.Drawing.Point(100, 30);
+            this.RBParityOdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBParityOdd.Name = "RBParityOdd";
-            this.RBParityOdd.Size = new System.Drawing.Size(45, 17);
+            this.RBParityOdd.Size = new System.Drawing.Size(56, 21);
             this.RBParityOdd.TabIndex = 1;
             this.RBParityOdd.TabStop = true;
             this.RBParityOdd.Text = "Odd";
@@ -312,10 +313,10 @@
             // RBParityEven
             // 
             this.RBParityEven.AutoSize = true;
-            this.RBParityEven.Location = new System.Drawing.Point(10, 24);
-            this.RBParityEven.Margin = new System.Windows.Forms.Padding(2);
+            this.RBParityEven.Location = new System.Drawing.Point(13, 30);
+            this.RBParityEven.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBParityEven.Name = "RBParityEven";
-            this.RBParityEven.Size = new System.Drawing.Size(50, 17);
+            this.RBParityEven.Size = new System.Drawing.Size(61, 21);
             this.RBParityEven.TabIndex = 0;
             this.RBParityEven.TabStop = true;
             this.RBParityEven.Text = "Even";
@@ -326,11 +327,11 @@
             // 
             this.groupBox4.Controls.Add(this.RBDataB8);
             this.groupBox4.Controls.Add(this.RBDataB7);
-            this.groupBox4.Location = new System.Drawing.Point(272, 194);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Location = new System.Drawing.Point(363, 239);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(93, 41);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(124, 50);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Data bits:";
@@ -338,10 +339,10 @@
             // RBDataB8
             // 
             this.RBDataB8.AutoSize = true;
-            this.RBDataB8.Location = new System.Drawing.Point(61, 17);
-            this.RBDataB8.Margin = new System.Windows.Forms.Padding(2);
+            this.RBDataB8.Location = new System.Drawing.Point(81, 21);
+            this.RBDataB8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBDataB8.Name = "RBDataB8";
-            this.RBDataB8.Size = new System.Drawing.Size(31, 17);
+            this.RBDataB8.Size = new System.Drawing.Size(37, 21);
             this.RBDataB8.TabIndex = 1;
             this.RBDataB8.TabStop = true;
             this.RBDataB8.Text = "8";
@@ -351,10 +352,10 @@
             // RBDataB7
             // 
             this.RBDataB7.AutoSize = true;
-            this.RBDataB7.Location = new System.Drawing.Point(11, 17);
-            this.RBDataB7.Margin = new System.Windows.Forms.Padding(2);
+            this.RBDataB7.Location = new System.Drawing.Point(15, 21);
+            this.RBDataB7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBDataB7.Name = "RBDataB7";
-            this.RBDataB7.Size = new System.Drawing.Size(31, 17);
+            this.RBDataB7.Size = new System.Drawing.Size(37, 21);
             this.RBDataB7.TabIndex = 0;
             this.RBDataB7.TabStop = true;
             this.RBDataB7.Text = "7";
@@ -365,11 +366,11 @@
             // 
             this.groupBox5.Controls.Add(this.RBStopB2);
             this.groupBox5.Controls.Add(this.RBStopB1);
-            this.groupBox5.Location = new System.Drawing.Point(370, 194);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Location = new System.Drawing.Point(493, 239);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(94, 41);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(125, 50);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stop bits:";
@@ -377,10 +378,10 @@
             // RBStopB2
             // 
             this.RBStopB2.AutoSize = true;
-            this.RBStopB2.Location = new System.Drawing.Point(59, 17);
-            this.RBStopB2.Margin = new System.Windows.Forms.Padding(2);
+            this.RBStopB2.Location = new System.Drawing.Point(79, 21);
+            this.RBStopB2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBStopB2.Name = "RBStopB2";
-            this.RBStopB2.Size = new System.Drawing.Size(31, 17);
+            this.RBStopB2.Size = new System.Drawing.Size(37, 21);
             this.RBStopB2.TabIndex = 1;
             this.RBStopB2.TabStop = true;
             this.RBStopB2.Text = "2";
@@ -390,10 +391,10 @@
             // RBStopB1
             // 
             this.RBStopB1.AutoSize = true;
-            this.RBStopB1.Location = new System.Drawing.Point(12, 17);
-            this.RBStopB1.Margin = new System.Windows.Forms.Padding(2);
+            this.RBStopB1.Location = new System.Drawing.Point(16, 21);
+            this.RBStopB1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RBStopB1.Name = "RBStopB1";
-            this.RBStopB1.Size = new System.Drawing.Size(31, 17);
+            this.RBStopB1.Size = new System.Drawing.Size(37, 21);
             this.RBStopB1.TabIndex = 0;
             this.RBStopB1.TabStop = true;
             this.RBStopB1.Text = "1";
@@ -402,20 +403,21 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Location = new System.Drawing.Point(273, 249);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Location = new System.Drawing.Point(364, 306);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(179, 116);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.Size = new System.Drawing.Size(239, 143);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Serial port information:";
             // 
             // btOK
             // 
-            this.btOK.Location = new System.Drawing.Point(334, 379);
+            this.btOK.Location = new System.Drawing.Point(445, 466);
+            this.btOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(58, 26);
+            this.btOK.Size = new System.Drawing.Size(77, 32);
             this.btOK.TabIndex = 6;
             this.btOK.Text = "OK";
             this.btOK.UseVisualStyleBackColor = true;
@@ -423,9 +425,10 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(398, 379);
+            this.btCancel.Location = new System.Drawing.Point(531, 466);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(58, 26);
+            this.btCancel.Size = new System.Drawing.Size(77, 32);
             this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -433,9 +436,10 @@
             // 
             // btRefresh
             // 
-            this.btRefresh.Location = new System.Drawing.Point(270, 379);
+            this.btRefresh.Location = new System.Drawing.Point(360, 466);
+            this.btRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btRefresh.Name = "btRefresh";
-            this.btRefresh.Size = new System.Drawing.Size(58, 26);
+            this.btRefresh.Size = new System.Drawing.Size(77, 32);
             this.btRefresh.TabIndex = 8;
             this.btRefresh.Text = "Refresh";
             this.btRefresh.UseVisualStyleBackColor = true;
@@ -443,9 +447,9 @@
             // 
             // SW_SerialComSetUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 419);
+            this.ClientSize = new System.Drawing.Size(633, 516);
             this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOK);
@@ -456,7 +460,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SW_SerialComSetUp";
             this.ShowIcon = false;
             this.Text = "Serial Comport Setting";

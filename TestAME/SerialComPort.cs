@@ -260,6 +260,7 @@ namespace TestAME
                 }
                 catch
                 {
+                    CurrentComPort.Close();
                     return false;
                 }
             }
@@ -292,6 +293,7 @@ namespace TestAME
                 }
                 catch
                 {
+                    CurrentComPort.Close();
                     return false;
                 }
             }
