@@ -345,9 +345,9 @@
             this.FlagInsertLF.AutoSize = true;
             this.FlagInsertLF.Location = new System.Drawing.Point(30, 327);
             this.FlagInsertLF.Name = "FlagInsertLF";
-            this.FlagInsertLF.Size = new System.Drawing.Size(214, 17);
+            this.FlagInsertLF.Size = new System.Drawing.Size(223, 17);
             this.FlagInsertLF.TabIndex = 5;
-            this.FlagInsertLF.Text = "Auto insert {LF} at the end of command.";
+            this.FlagInsertLF.Text = "Auto insert { CR } at the end of command.";
             this.FlagInsertLF.UseVisualStyleBackColor = true;
             this.FlagInsertLF.CheckedChanged += new System.EventHandler(this.FlagInsertLF_CheckedChanged);
             // 
@@ -355,7 +355,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 356);
+            this.ClientSize = new System.Drawing.Size(473, 355);
             this.Controls.Add(this.FlagInsertLF);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.btCancel);

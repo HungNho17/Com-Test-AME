@@ -559,9 +559,17 @@ namespace TestAME
         /// </summary>
         private void SPort_PinChanged(object sender, SerialPinChangedEventArgs e)
         {
-            ComPort.CloseSPort();
-            FlagConnectStatus = false;
-            UpdateStatusWindow();
+            if(ComPort.CheckSport() == false)
+            {
+                ComPort.CloseSPort();
+                FlagConnectStatus = false;
+                UpdateStatusWindow();
+            }
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nothing to checking... version xx.x !");
         }
 
 

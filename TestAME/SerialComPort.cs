@@ -209,6 +209,31 @@ namespace TestAME
             return true;
         }
 
+        public bool CheckSport()
+        {
+            bool bRet = true;
+            if (CurrentComPort != null)
+            {
+                if (CurrentComPort.IsOpen == true)
+                {
+                    string[] port = null;
+                    port = SerialPort.GetPortNames();
+                    if (port.Length > 0)
+                    { 
+                        foreach (string element in port)
+                        {
+                            if (element == CurrentComPort.PortName)
+                            {
+                                return bRet;
+                            }
+                        }
+                        bRet = false;
+                    }
+                }
+            }
+            return bRet;
+        }
+
         public string IntToAssciiStr(int dataIn, bool flagShowLF, bool flagShowSpace)
         {
             string sResult = null;
@@ -254,7 +279,7 @@ namespace TestAME
 
                     if (flagSendLF)
                     {
-                        dataBytes[0] = 13;
+                        dataBytes[0] = 10;
                         CurrentComPort.Write(dataBytes, 0, 1);
                     }
                 }
@@ -287,7 +312,7 @@ namespace TestAME
 
                     if (flagSendLF)
                     {
-                        dataBytes[0] = 13;
+                        dataBytes[0] = 10;
                         CurrentComPort.Write(dataBytes, 0, 1);
                     }
                 }
