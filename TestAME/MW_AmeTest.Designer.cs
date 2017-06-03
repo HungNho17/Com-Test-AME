@@ -32,26 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MW_AmeTest));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbDataRecieve = new System.Windows.Forms.RichTextBox();
+            this.lbWrapText = new System.Windows.Forms.Label();
             this.btNewLineCo = new System.Windows.Forms.Button();
             this.btClearCo = new System.Windows.Forms.Button();
             this.btWrapTextCo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbSendLF = new System.Windows.Forms.Label();
             this.btSend = new System.Windows.Forms.Button();
             this.btClearLo = new System.Windows.Forms.Button();
             this.btSendLFLo = new System.Windows.Forms.Button();
@@ -69,6 +66,24 @@
             this.btCmd4 = new System.Windows.Forms.Button();
             this.btCmd0 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbDSRILow = new System.Windows.Forms.Label();
+            this.lbDSRIHigh = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lbDTROLow = new System.Windows.Forms.Label();
+            this.lbDTROHigh = new System.Windows.Forms.Label();
+            this.btDTR = new System.Windows.Forms.Button();
+            this.lbCTSOHigh = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lbCTSOLow = new System.Windows.Forms.Label();
+            this.lbCTSIHigh = new System.Windows.Forms.Label();
+            this.lbCTSILow = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btCTS = new System.Windows.Forms.Button();
+            this.lbShowLF = new System.Windows.Forms.Label();
+            this.lbShowSpace = new System.Windows.Forms.Label();
+            this.lbDisplayRCData = new System.Windows.Forms.Label();
+            this.lbConnect = new System.Windows.Forms.Label();
             this.btConnectSP = new System.Windows.Forms.Button();
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
@@ -82,6 +97,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbToLocalCMD = new System.Windows.Forms.Label();
+            this.lbToCommunicate = new System.Windows.Forms.Label();
             this.btCharToLo = new System.Windows.Forms.Button();
             this.btCharToCo = new System.Windows.Forms.Button();
             this.BTSetupCmd = new System.Windows.Forms.Button();
@@ -93,30 +110,9 @@
             this.lbCap = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btCTS = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.btDTR = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbToLocalCMD = new System.Windows.Forms.Label();
-            this.lbToCommunicate = new System.Windows.Forms.Label();
-            this.lbDSRILow = new System.Windows.Forms.Label();
-            this.lbDSRIHigh = new System.Windows.Forms.Label();
-            this.lbDTROLow = new System.Windows.Forms.Label();
-            this.lbDTROHigh = new System.Windows.Forms.Label();
-            this.lbCTSOHigh = new System.Windows.Forms.Label();
-            this.lbCTSOLow = new System.Windows.Forms.Label();
-            this.lbCTSIHigh = new System.Windows.Forms.Label();
-            this.lbCTSILow = new System.Windows.Forms.Label();
-            this.lbShowLF = new System.Windows.Forms.Label();
-            this.lbShowSpace = new System.Windows.Forms.Label();
-            this.lbDisplayRCData = new System.Windows.Forms.Label();
-            this.lbConnect = new System.Windows.Forms.Label();
-            this.lbSendLF = new System.Windows.Forms.Label();
-            this.lbWrapText = new System.Windows.Forms.Label();
             this.lbTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.aMESupportTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,91 +143,60 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.saveAsToolStripMenuItem.Text = "Save as";
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.paseToolStripMenuItem});
+            this.copyToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.undoToolStripMenuItem.Text = "Undo";
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.cutToolStripMenuItem.Text = "Cut";
-            // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.copyToolStripMenuItem.Text = "Copy";
-            // 
-            // paseToolStripMenuItem
-            // 
-            this.paseToolStripMenuItem.Name = "paseToolStripMenuItem";
-            this.paseToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.paseToolStripMenuItem.Text = "Pase";
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullScreenToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.viewToolStripMenuItem.Text = "View";
             // 
+            // fullScreenToolStripMenuItem
+            // 
+            this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.fullScreenToolStripMenuItem.Text = "Full Screen";
+            // 
             // toolsToolStripMenuItem
             // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logSettingToolStripMenuItem,
+            this.aMESupportTestToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // logSettingToolStripMenuItem
+            // 
+            this.logSettingToolStripMenuItem.Name = "logSettingToolStripMenuItem";
+            this.logSettingToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.logSettingToolStripMenuItem.Text = "Log Setting";
             // 
             // helpToolStripMenuItem
             // 
@@ -260,9 +225,9 @@
             this.groupBox1.Controls.Add(this.btClearCo);
             this.groupBox1.Controls.Add(this.btWrapTextCo);
             this.groupBox1.Location = new System.Drawing.Point(0, 49);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(767, 289);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -278,7 +243,7 @@
             this.tbDataRecieve.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold);
             this.tbDataRecieve.ForeColor = System.Drawing.Color.Lime;
             this.tbDataRecieve.Location = new System.Drawing.Point(16, 23);
-            this.tbDataRecieve.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbDataRecieve.Margin = new System.Windows.Forms.Padding(4);
             this.tbDataRecieve.Name = "tbDataRecieve";
             this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.tbDataRecieve.Size = new System.Drawing.Size(621, 247);
@@ -289,11 +254,23 @@
             this.tbDataRecieve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WindowKeyPress_Event);
             this.tbDataRecieve.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WindowKeyUp_Event);
             // 
+            // lbWrapText
+            // 
+            this.lbWrapText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbWrapText.AutoSize = true;
+            this.lbWrapText.Image = ((System.Drawing.Image)(resources.GetObject("lbWrapText.Image")));
+            this.lbWrapText.Location = new System.Drawing.Point(645, 182);
+            this.lbWrapText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbWrapText.Name = "lbWrapText";
+            this.lbWrapText.Size = new System.Drawing.Size(20, 17);
+            this.lbWrapText.TabIndex = 10;
+            this.lbWrapText.Text = "   ";
+            // 
             // btNewLineCo
             // 
             this.btNewLineCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btNewLineCo.Location = new System.Drawing.Point(649, 241);
-            this.btNewLineCo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btNewLineCo.Margin = new System.Windows.Forms.Padding(4);
             this.btNewLineCo.Name = "btNewLineCo";
             this.btNewLineCo.Size = new System.Drawing.Size(109, 25);
             this.btNewLineCo.TabIndex = 3;
@@ -305,7 +282,7 @@
             // 
             this.btClearCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btClearCo.Location = new System.Drawing.Point(649, 209);
-            this.btClearCo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btClearCo.Margin = new System.Windows.Forms.Padding(4);
             this.btClearCo.Name = "btClearCo";
             this.btClearCo.Size = new System.Drawing.Size(109, 25);
             this.btClearCo.TabIndex = 2;
@@ -317,7 +294,7 @@
             // 
             this.btWrapTextCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btWrapTextCo.Location = new System.Drawing.Point(671, 177);
-            this.btWrapTextCo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btWrapTextCo.Margin = new System.Windows.Forms.Padding(4);
             this.btWrapTextCo.Name = "btWrapTextCo";
             this.btWrapTextCo.Size = new System.Drawing.Size(88, 25);
             this.btWrapTextCo.TabIndex = 1;
@@ -336,19 +313,31 @@
             this.groupBox2.Controls.Add(this.btSendLFLo);
             this.groupBox2.Controls.Add(this.tbDataSend);
             this.groupBox2.Location = new System.Drawing.Point(0, 346);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(767, 142);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Local Command:";
             // 
+            // lbSendLF
+            // 
+            this.lbSendLF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSendLF.AutoSize = true;
+            this.lbSendLF.Image = ((System.Drawing.Image)(resources.GetObject("lbSendLF.Image")));
+            this.lbSendLF.Location = new System.Drawing.Point(645, 46);
+            this.lbSendLF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbSendLF.Name = "lbSendLF";
+            this.lbSendLF.Size = new System.Drawing.Size(20, 17);
+            this.lbSendLF.TabIndex = 11;
+            this.lbSendLF.Text = "   ";
+            // 
             // btSend
             // 
             this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btSend.Location = new System.Drawing.Point(649, 105);
-            this.btSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSend.Margin = new System.Windows.Forms.Padding(4);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(109, 25);
             this.btSend.TabIndex = 3;
@@ -360,7 +349,7 @@
             // 
             this.btClearLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btClearLo.Location = new System.Drawing.Point(649, 73);
-            this.btClearLo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btClearLo.Margin = new System.Windows.Forms.Padding(4);
             this.btClearLo.Name = "btClearLo";
             this.btClearLo.Size = new System.Drawing.Size(109, 25);
             this.btClearLo.TabIndex = 2;
@@ -372,7 +361,7 @@
             // 
             this.btSendLFLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btSendLFLo.Location = new System.Drawing.Point(671, 41);
-            this.btSendLFLo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSendLFLo.Margin = new System.Windows.Forms.Padding(4);
             this.btSendLFLo.Name = "btSendLFLo";
             this.btSendLFLo.Size = new System.Drawing.Size(88, 25);
             this.btSendLFLo.TabIndex = 1;
@@ -390,7 +379,7 @@
             this.tbDataSend.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDataSend.ForeColor = System.Drawing.Color.Lime;
             this.tbDataSend.Location = new System.Drawing.Point(16, 23);
-            this.tbDataSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbDataSend.Margin = new System.Windows.Forms.Padding(4);
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -415,9 +404,9 @@
             this.groupBox3.Controls.Add(this.btCmd4);
             this.groupBox3.Controls.Add(this.btCmd0);
             this.groupBox3.Location = new System.Drawing.Point(0, 495);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(767, 138);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
@@ -468,7 +457,7 @@
             this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd7.Enabled = false;
             this.btCmd7.Location = new System.Drawing.Point(601, 85);
-            this.btCmd7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd7.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd7.Name = "btCmd7";
             this.btCmd7.Size = new System.Drawing.Size(157, 28);
             this.btCmd7.TabIndex = 7;
@@ -482,7 +471,7 @@
             this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd3.Enabled = false;
             this.btCmd3.Location = new System.Drawing.Point(601, 34);
-            this.btCmd3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd3.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd3.Name = "btCmd3";
             this.btCmd3.Size = new System.Drawing.Size(157, 28);
             this.btCmd3.TabIndex = 6;
@@ -496,7 +485,7 @@
             this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd6.Enabled = false;
             this.btCmd6.Location = new System.Drawing.Point(411, 85);
-            this.btCmd6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd6.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd6.Name = "btCmd6";
             this.btCmd6.Size = new System.Drawing.Size(157, 28);
             this.btCmd6.TabIndex = 5;
@@ -510,7 +499,7 @@
             this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd2.Enabled = false;
             this.btCmd2.Location = new System.Drawing.Point(411, 34);
-            this.btCmd2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd2.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd2.Name = "btCmd2";
             this.btCmd2.Size = new System.Drawing.Size(157, 28);
             this.btCmd2.TabIndex = 4;
@@ -524,7 +513,7 @@
             this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd5.Enabled = false;
             this.btCmd5.Location = new System.Drawing.Point(217, 85);
-            this.btCmd5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd5.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd5.Name = "btCmd5";
             this.btCmd5.Size = new System.Drawing.Size(157, 28);
             this.btCmd5.TabIndex = 3;
@@ -538,7 +527,7 @@
             this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd1.Enabled = false;
             this.btCmd1.Location = new System.Drawing.Point(217, 34);
-            this.btCmd1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd1.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd1.Name = "btCmd1";
             this.btCmd1.Size = new System.Drawing.Size(157, 28);
             this.btCmd1.TabIndex = 2;
@@ -552,7 +541,7 @@
             this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd4.Enabled = false;
             this.btCmd4.Location = new System.Drawing.Point(16, 85);
-            this.btCmd4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd4.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd4.Name = "btCmd4";
             this.btCmd4.Size = new System.Drawing.Size(157, 28);
             this.btCmd4.TabIndex = 1;
@@ -566,7 +555,7 @@
             this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd0.Enabled = false;
             this.btCmd0.Location = new System.Drawing.Point(16, 34);
-            this.btCmd0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCmd0.Margin = new System.Windows.Forms.Padding(4);
             this.btCmd0.Name = "btCmd0";
             this.btCmd0.Size = new System.Drawing.Size(157, 28);
             this.btCmd0.TabIndex = 0;
@@ -600,18 +589,206 @@
             this.groupBox4.Controls.Add(this.btShowSpace);
             this.groupBox4.Controls.Add(this.btShowLF);
             this.groupBox4.Location = new System.Drawing.Point(795, 49);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(245, 280);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connection Status";
             // 
+            // lbDSRILow
+            // 
+            this.lbDSRILow.AutoSize = true;
+            this.lbDSRILow.Image = ((System.Drawing.Image)(resources.GetObject("lbDSRILow.Image")));
+            this.lbDSRILow.Location = new System.Drawing.Point(28, 48);
+            this.lbDSRILow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDSRILow.Name = "lbDSRILow";
+            this.lbDSRILow.Size = new System.Drawing.Size(20, 17);
+            this.lbDSRILow.TabIndex = 27;
+            this.lbDSRILow.Text = "   ";
+            // 
+            // lbDSRIHigh
+            // 
+            this.lbDSRIHigh.AutoSize = true;
+            this.lbDSRIHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbDSRIHigh.Image")));
+            this.lbDSRIHigh.Location = new System.Drawing.Point(48, 48);
+            this.lbDSRIHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDSRIHigh.Name = "lbDSRIHigh";
+            this.lbDSRIHigh.Size = new System.Drawing.Size(20, 17);
+            this.lbDSRIHigh.TabIndex = 26;
+            this.lbDSRIHigh.Text = "   ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(72, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 17);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "DSR (Input H/S)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(22, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(216, 17);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "__________________________";
+            // 
+            // lbDTROLow
+            // 
+            this.lbDTROLow.AutoSize = true;
+            this.lbDTROLow.Image = ((System.Drawing.Image)(resources.GetObject("lbDTROLow.Image")));
+            this.lbDTROLow.Location = new System.Drawing.Point(28, 113);
+            this.lbDTROLow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDTROLow.Name = "lbDTROLow";
+            this.lbDTROLow.Size = new System.Drawing.Size(20, 17);
+            this.lbDTROLow.TabIndex = 23;
+            this.lbDTROLow.Text = "   ";
+            // 
+            // lbDTROHigh
+            // 
+            this.lbDTROHigh.AutoSize = true;
+            this.lbDTROHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbDTROHigh.Image")));
+            this.lbDTROHigh.Location = new System.Drawing.Point(48, 113);
+            this.lbDTROHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDTROHigh.Name = "lbDTROHigh";
+            this.lbDTROHigh.Size = new System.Drawing.Size(20, 17);
+            this.lbDTROHigh.TabIndex = 24;
+            this.lbDTROHigh.Text = "   ";
+            // 
+            // btDTR
+            // 
+            this.btDTR.Location = new System.Drawing.Point(70, 110);
+            this.btDTR.Name = "btDTR";
+            this.btDTR.Size = new System.Drawing.Size(154, 23);
+            this.btDTR.TabIndex = 23;
+            this.btDTR.Text = "DTR (Output H/S)";
+            this.btDTR.UseVisualStyleBackColor = true;
+            // 
+            // lbCTSOHigh
+            // 
+            this.lbCTSOHigh.AutoSize = true;
+            this.lbCTSOHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOHigh.Image")));
+            this.lbCTSOHigh.Location = new System.Drawing.Point(48, 84);
+            this.lbCTSOHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCTSOHigh.Name = "lbCTSOHigh";
+            this.lbCTSOHigh.Size = new System.Drawing.Size(20, 17);
+            this.lbCTSOHigh.TabIndex = 22;
+            this.lbCTSOHigh.Text = "   ";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(22, 124);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(216, 17);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "__________________________";
+            // 
+            // lbCTSOLow
+            // 
+            this.lbCTSOLow.AutoSize = true;
+            this.lbCTSOLow.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOLow.Image")));
+            this.lbCTSOLow.Location = new System.Drawing.Point(28, 84);
+            this.lbCTSOLow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCTSOLow.Name = "lbCTSOLow";
+            this.lbCTSOLow.Size = new System.Drawing.Size(20, 17);
+            this.lbCTSOLow.TabIndex = 21;
+            this.lbCTSOLow.Text = "   ";
+            // 
+            // lbCTSIHigh
+            // 
+            this.lbCTSIHigh.AutoSize = true;
+            this.lbCTSIHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSIHigh.Image")));
+            this.lbCTSIHigh.Location = new System.Drawing.Point(48, 31);
+            this.lbCTSIHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCTSIHigh.Name = "lbCTSIHigh";
+            this.lbCTSIHigh.Size = new System.Drawing.Size(20, 17);
+            this.lbCTSIHigh.TabIndex = 18;
+            this.lbCTSIHigh.Text = "   ";
+            // 
+            // lbCTSILow
+            // 
+            this.lbCTSILow.AutoSize = true;
+            this.lbCTSILow.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSILow.Image")));
+            this.lbCTSILow.Location = new System.Drawing.Point(28, 31);
+            this.lbCTSILow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbCTSILow.Name = "lbCTSILow";
+            this.lbCTSILow.Size = new System.Drawing.Size(20, 17);
+            this.lbCTSILow.TabIndex = 17;
+            this.lbCTSILow.Text = "   ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(75, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 17);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "CTS (Input H/S)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btCTS
+            // 
+            this.btCTS.Location = new System.Drawing.Point(70, 81);
+            this.btCTS.Name = "btCTS";
+            this.btCTS.Size = new System.Drawing.Size(154, 23);
+            this.btCTS.TabIndex = 14;
+            this.btCTS.Text = "CTS (Output H/S)";
+            this.btCTS.UseVisualStyleBackColor = true;
+            // 
+            // lbShowLF
+            // 
+            this.lbShowLF.AutoSize = true;
+            this.lbShowLF.Image = ((System.Drawing.Image)(resources.GetObject("lbShowLF.Image")));
+            this.lbShowLF.Location = new System.Drawing.Point(28, 245);
+            this.lbShowLF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbShowLF.Name = "lbShowLF";
+            this.lbShowLF.Size = new System.Drawing.Size(20, 17);
+            this.lbShowLF.TabIndex = 12;
+            this.lbShowLF.Text = "   ";
+            // 
+            // lbShowSpace
+            // 
+            this.lbShowSpace.AutoSize = true;
+            this.lbShowSpace.Image = ((System.Drawing.Image)(resources.GetObject("lbShowSpace.Image")));
+            this.lbShowSpace.Location = new System.Drawing.Point(28, 213);
+            this.lbShowSpace.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbShowSpace.Name = "lbShowSpace";
+            this.lbShowSpace.Size = new System.Drawing.Size(20, 17);
+            this.lbShowSpace.TabIndex = 11;
+            this.lbShowSpace.Text = "   ";
+            // 
+            // lbDisplayRCData
+            // 
+            this.lbDisplayRCData.AutoSize = true;
+            this.lbDisplayRCData.Image = ((System.Drawing.Image)(resources.GetObject("lbDisplayRCData.Image")));
+            this.lbDisplayRCData.Location = new System.Drawing.Point(28, 183);
+            this.lbDisplayRCData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbDisplayRCData.Name = "lbDisplayRCData";
+            this.lbDisplayRCData.Size = new System.Drawing.Size(20, 17);
+            this.lbDisplayRCData.TabIndex = 10;
+            this.lbDisplayRCData.Text = "   ";
+            // 
+            // lbConnect
+            // 
+            this.lbConnect.AutoSize = true;
+            this.lbConnect.Image = ((System.Drawing.Image)(resources.GetObject("lbConnect.Image")));
+            this.lbConnect.Location = new System.Drawing.Point(28, 153);
+            this.lbConnect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbConnect.Name = "lbConnect";
+            this.lbConnect.Size = new System.Drawing.Size(20, 17);
+            this.lbConnect.TabIndex = 9;
+            this.lbConnect.Text = "   ";
+            // 
             // btConnectSP
             // 
             this.btConnectSP.Location = new System.Drawing.Point(56, 149);
-            this.btConnectSP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btConnectSP.Margin = new System.Windows.Forms.Padding(4);
             this.btConnectSP.Name = "btConnectSP";
             this.btConnectSP.Size = new System.Drawing.Size(168, 25);
             this.btConnectSP.TabIndex = 3;
@@ -622,7 +799,7 @@
             // btDisplayRCData
             // 
             this.btDisplayRCData.Location = new System.Drawing.Point(56, 179);
-            this.btDisplayRCData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btDisplayRCData.Margin = new System.Windows.Forms.Padding(4);
             this.btDisplayRCData.Name = "btDisplayRCData";
             this.btDisplayRCData.Size = new System.Drawing.Size(168, 25);
             this.btDisplayRCData.TabIndex = 2;
@@ -633,7 +810,7 @@
             // btShowSpace
             // 
             this.btShowSpace.Location = new System.Drawing.Point(56, 209);
-            this.btShowSpace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btShowSpace.Margin = new System.Windows.Forms.Padding(4);
             this.btShowSpace.Name = "btShowSpace";
             this.btShowSpace.Size = new System.Drawing.Size(168, 25);
             this.btShowSpace.TabIndex = 1;
@@ -644,7 +821,7 @@
             // btShowLF
             // 
             this.btShowLF.Location = new System.Drawing.Point(56, 241);
-            this.btShowLF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btShowLF.Margin = new System.Windows.Forms.Padding(4);
             this.btShowLF.Name = "btShowLF";
             this.btShowLF.Size = new System.Drawing.Size(168, 25);
             this.btShowLF.TabIndex = 0;
@@ -666,9 +843,9 @@
             this.groupBox5.Controls.Add(this.btCharToLo);
             this.groupBox5.Controls.Add(this.btCharToCo);
             this.groupBox5.Location = new System.Drawing.Point(795, 337);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(245, 219);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
@@ -698,9 +875,10 @@
             this.lvCharSet.FullRowSelect = true;
             this.lvCharSet.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvCharSet.Location = new System.Drawing.Point(29, 47);
-            this.lvCharSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvCharSet.Margin = new System.Windows.Forms.Padding(4);
             this.lvCharSet.MultiSelect = false;
             this.lvCharSet.Name = "lvCharSet";
+            this.lvCharSet.RightToLeftLayout = true;
             this.lvCharSet.Size = new System.Drawing.Size(193, 75);
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
@@ -752,11 +930,35 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Char";
             // 
+            // lbToLocalCMD
+            // 
+            this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbToLocalCMD.AutoSize = true;
+            this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
+            this.lbToLocalCMD.Location = new System.Drawing.Point(28, 185);
+            this.lbToLocalCMD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbToLocalCMD.Name = "lbToLocalCMD";
+            this.lbToLocalCMD.Size = new System.Drawing.Size(20, 17);
+            this.lbToLocalCMD.TabIndex = 13;
+            this.lbToLocalCMD.Text = "   ";
+            // 
+            // lbToCommunicate
+            // 
+            this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbToCommunicate.AutoSize = true;
+            this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
+            this.lbToCommunicate.Location = new System.Drawing.Point(28, 152);
+            this.lbToCommunicate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbToCommunicate.Name = "lbToCommunicate";
+            this.lbToCommunicate.Size = new System.Drawing.Size(20, 17);
+            this.lbToCommunicate.TabIndex = 12;
+            this.lbToCommunicate.Text = "   ";
+            // 
             // btCharToLo
             // 
             this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCharToLo.Location = new System.Drawing.Point(56, 177);
-            this.btCharToLo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCharToLo.Margin = new System.Windows.Forms.Padding(4);
             this.btCharToLo.Name = "btCharToLo";
             this.btCharToLo.Size = new System.Drawing.Size(168, 25);
             this.btCharToLo.TabIndex = 2;
@@ -768,7 +970,7 @@
             // 
             this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCharToCo.Location = new System.Drawing.Point(56, 148);
-            this.btCharToCo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCharToCo.Margin = new System.Windows.Forms.Padding(4);
             this.btCharToCo.Name = "btCharToCo";
             this.btCharToCo.Size = new System.Drawing.Size(168, 25);
             this.btCharToCo.TabIndex = 1;
@@ -781,7 +983,7 @@
             this.BTSetupCmd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BTSetupCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BTSetupCmd.Location = new System.Drawing.Point(16, 16);
-            this.BTSetupCmd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTSetupCmd.Margin = new System.Windows.Forms.Padding(4);
             this.BTSetupCmd.Name = "BTSetupCmd";
             this.BTSetupCmd.Size = new System.Drawing.Size(97, 28);
             this.BTSetupCmd.TabIndex = 6;
@@ -793,7 +995,7 @@
             // 
             this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BTSPort.Location = new System.Drawing.Point(125, 16);
-            this.BTSPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTSPort.Margin = new System.Windows.Forms.Padding(4);
             this.BTSPort.Name = "BTSPort";
             this.BTSPort.Size = new System.Drawing.Size(99, 28);
             this.BTSPort.TabIndex = 7;
@@ -814,9 +1016,9 @@
             this.groupBox6.Controls.Add(this.lbNum);
             this.groupBox6.Controls.Add(this.lbCap);
             this.groupBox6.Location = new System.Drawing.Point(795, 597);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(244, 36);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
@@ -860,9 +1062,9 @@
             this.groupBox7.Controls.Add(this.BTSPort);
             this.groupBox7.Controls.Add(this.BTSetupCmd);
             this.groupBox7.Location = new System.Drawing.Point(795, 548);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(245, 53);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
@@ -872,242 +1074,6 @@
             this.Timer1.Enabled = true;
             this.Timer1.Interval = 1000;
             this.Timer1.Tick += new System.EventHandler(this.TimeTracking_Tick);
-            // 
-            // btCTS
-            // 
-            this.btCTS.Location = new System.Drawing.Point(70, 81);
-            this.btCTS.Name = "btCTS";
-            this.btCTS.Size = new System.Drawing.Size(154, 23);
-            this.btCTS.TabIndex = 14;
-            this.btCTS.Text = "CTS (Output H/S)";
-            this.btCTS.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 17);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "CTS (Input H/S)";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(22, 124);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(216, 17);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "__________________________";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(22, 56);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(216, 17);
-            this.label16.TabIndex = 25;
-            this.label16.Text = "__________________________";
-            // 
-            // btDTR
-            // 
-            this.btDTR.Location = new System.Drawing.Point(70, 110);
-            this.btDTR.Name = "btDTR";
-            this.btDTR.Size = new System.Drawing.Size(154, 23);
-            this.btDTR.TabIndex = 23;
-            this.btDTR.Text = "DTR (Output H/S)";
-            this.btDTR.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(72, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 17);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "DSR (Input H/S)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbToLocalCMD
-            // 
-            this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbToLocalCMD.AutoSize = true;
-            this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(25, 184);
-            this.lbToLocalCMD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbToLocalCMD.Name = "lbToLocalCMD";
-            this.lbToLocalCMD.Size = new System.Drawing.Size(20, 17);
-            this.lbToLocalCMD.TabIndex = 13;
-            this.lbToLocalCMD.Text = "   ";
-            // 
-            // lbToCommunicate
-            // 
-            this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbToCommunicate.AutoSize = true;
-            this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(28, 152);
-            this.lbToCommunicate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbToCommunicate.Name = "lbToCommunicate";
-            this.lbToCommunicate.Size = new System.Drawing.Size(20, 17);
-            this.lbToCommunicate.TabIndex = 12;
-            this.lbToCommunicate.Text = "   ";
-            // 
-            // lbDSRILow
-            // 
-            this.lbDSRILow.AutoSize = true;
-            this.lbDSRILow.Image = ((System.Drawing.Image)(resources.GetObject("lbDSRILow.Image")));
-            this.lbDSRILow.Location = new System.Drawing.Point(28, 48);
-            this.lbDSRILow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDSRILow.Name = "lbDSRILow";
-            this.lbDSRILow.Size = new System.Drawing.Size(20, 17);
-            this.lbDSRILow.TabIndex = 27;
-            this.lbDSRILow.Text = "   ";
-            // 
-            // lbDSRIHigh
-            // 
-            this.lbDSRIHigh.AutoSize = true;
-            this.lbDSRIHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbDSRIHigh.Image")));
-            this.lbDSRIHigh.Location = new System.Drawing.Point(48, 48);
-            this.lbDSRIHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDSRIHigh.Name = "lbDSRIHigh";
-            this.lbDSRIHigh.Size = new System.Drawing.Size(20, 17);
-            this.lbDSRIHigh.TabIndex = 26;
-            this.lbDSRIHigh.Text = "   ";
-            // 
-            // lbDTROLow
-            // 
-            this.lbDTROLow.AutoSize = true;
-            this.lbDTROLow.Image = ((System.Drawing.Image)(resources.GetObject("lbDTROLow.Image")));
-            this.lbDTROLow.Location = new System.Drawing.Point(28, 113);
-            this.lbDTROLow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDTROLow.Name = "lbDTROLow";
-            this.lbDTROLow.Size = new System.Drawing.Size(20, 17);
-            this.lbDTROLow.TabIndex = 23;
-            this.lbDTROLow.Text = "   ";
-            // 
-            // lbDTROHigh
-            // 
-            this.lbDTROHigh.AutoSize = true;
-            this.lbDTROHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbDTROHigh.Image")));
-            this.lbDTROHigh.Location = new System.Drawing.Point(48, 113);
-            this.lbDTROHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDTROHigh.Name = "lbDTROHigh";
-            this.lbDTROHigh.Size = new System.Drawing.Size(20, 17);
-            this.lbDTROHigh.TabIndex = 24;
-            this.lbDTROHigh.Text = "   ";
-            // 
-            // lbCTSOHigh
-            // 
-            this.lbCTSOHigh.AutoSize = true;
-            this.lbCTSOHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOHigh.Image")));
-            this.lbCTSOHigh.Location = new System.Drawing.Point(48, 84);
-            this.lbCTSOHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCTSOHigh.Name = "lbCTSOHigh";
-            this.lbCTSOHigh.Size = new System.Drawing.Size(20, 17);
-            this.lbCTSOHigh.TabIndex = 22;
-            this.lbCTSOHigh.Text = "   ";
-            // 
-            // lbCTSOLow
-            // 
-            this.lbCTSOLow.AutoSize = true;
-            this.lbCTSOLow.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOLow.Image")));
-            this.lbCTSOLow.Location = new System.Drawing.Point(28, 84);
-            this.lbCTSOLow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCTSOLow.Name = "lbCTSOLow";
-            this.lbCTSOLow.Size = new System.Drawing.Size(20, 17);
-            this.lbCTSOLow.TabIndex = 21;
-            this.lbCTSOLow.Text = "   ";
-            // 
-            // lbCTSIHigh
-            // 
-            this.lbCTSIHigh.AutoSize = true;
-            this.lbCTSIHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSIHigh.Image")));
-            this.lbCTSIHigh.Location = new System.Drawing.Point(48, 31);
-            this.lbCTSIHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCTSIHigh.Name = "lbCTSIHigh";
-            this.lbCTSIHigh.Size = new System.Drawing.Size(20, 17);
-            this.lbCTSIHigh.TabIndex = 18;
-            this.lbCTSIHigh.Text = "   ";
-            // 
-            // lbCTSILow
-            // 
-            this.lbCTSILow.AutoSize = true;
-            this.lbCTSILow.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSILow.Image")));
-            this.lbCTSILow.Location = new System.Drawing.Point(28, 31);
-            this.lbCTSILow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCTSILow.Name = "lbCTSILow";
-            this.lbCTSILow.Size = new System.Drawing.Size(20, 17);
-            this.lbCTSILow.TabIndex = 17;
-            this.lbCTSILow.Text = "   ";
-            // 
-            // lbShowLF
-            // 
-            this.lbShowLF.AutoSize = true;
-            this.lbShowLF.Image = ((System.Drawing.Image)(resources.GetObject("lbShowLF.Image")));
-            this.lbShowLF.Location = new System.Drawing.Point(28, 245);
-            this.lbShowLF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbShowLF.Name = "lbShowLF";
-            this.lbShowLF.Size = new System.Drawing.Size(20, 17);
-            this.lbShowLF.TabIndex = 12;
-            this.lbShowLF.Text = "   ";
-            // 
-            // lbShowSpace
-            // 
-            this.lbShowSpace.AutoSize = true;
-            this.lbShowSpace.Image = ((System.Drawing.Image)(resources.GetObject("lbShowSpace.Image")));
-            this.lbShowSpace.Location = new System.Drawing.Point(28, 213);
-            this.lbShowSpace.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbShowSpace.Name = "lbShowSpace";
-            this.lbShowSpace.Size = new System.Drawing.Size(20, 17);
-            this.lbShowSpace.TabIndex = 11;
-            this.lbShowSpace.Text = "   ";
-            // 
-            // lbDisplayRCData
-            // 
-            this.lbDisplayRCData.AutoSize = true;
-            this.lbDisplayRCData.Image = ((System.Drawing.Image)(resources.GetObject("lbDisplayRCData.Image")));
-            this.lbDisplayRCData.Location = new System.Drawing.Point(28, 183);
-            this.lbDisplayRCData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDisplayRCData.Name = "lbDisplayRCData";
-            this.lbDisplayRCData.Size = new System.Drawing.Size(20, 17);
-            this.lbDisplayRCData.TabIndex = 10;
-            this.lbDisplayRCData.Text = "   ";
-            // 
-            // lbConnect
-            // 
-            this.lbConnect.AutoSize = true;
-            this.lbConnect.Image = ((System.Drawing.Image)(resources.GetObject("lbConnect.Image")));
-            this.lbConnect.Location = new System.Drawing.Point(28, 153);
-            this.lbConnect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbConnect.Name = "lbConnect";
-            this.lbConnect.Size = new System.Drawing.Size(20, 17);
-            this.lbConnect.TabIndex = 9;
-            this.lbConnect.Text = "   ";
-            // 
-            // lbSendLF
-            // 
-            this.lbSendLF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSendLF.AutoSize = true;
-            this.lbSendLF.Image = ((System.Drawing.Image)(resources.GetObject("lbSendLF.Image")));
-            this.lbSendLF.Location = new System.Drawing.Point(645, 46);
-            this.lbSendLF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbSendLF.Name = "lbSendLF";
-            this.lbSendLF.Size = new System.Drawing.Size(20, 17);
-            this.lbSendLF.TabIndex = 11;
-            this.lbSendLF.Text = "   ";
-            // 
-            // lbWrapText
-            // 
-            this.lbWrapText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbWrapText.AutoSize = true;
-            this.lbWrapText.Image = ((System.Drawing.Image)(resources.GetObject("lbWrapText.Image")));
-            this.lbWrapText.Location = new System.Drawing.Point(645, 182);
-            this.lbWrapText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbWrapText.Name = "lbWrapText";
-            this.lbWrapText.Size = new System.Drawing.Size(20, 17);
-            this.lbWrapText.TabIndex = 10;
-            this.lbWrapText.Text = "   ";
             // 
             // lbTime
             // 
@@ -1131,6 +1097,13 @@
             this.panel1.Size = new System.Drawing.Size(244, 27);
             this.panel1.TabIndex = 11;
             // 
+            // aMESupportTestToolStripMenuItem
+            // 
+            this.aMESupportTestToolStripMenuItem.Name = "aMESupportTestToolStripMenuItem";
+            this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.aMESupportTestToolStripMenuItem.Text = "AME Support Test";
+            this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
+            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1147,7 +1120,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1074, 674);
             this.Name = "MW_AmeTest";
             this.Text = "DATALOGIC R&D - Serial Com Test Support";
@@ -1178,16 +1151,9 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -1263,6 +1229,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem fullScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aMESupportTestToolStripMenuItem;
     }
 }
 

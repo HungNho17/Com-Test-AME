@@ -30,3 +30,4 @@ C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.Properti
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_SerialComSetUp.resources
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_SetupUserCommand.resources
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csproj.GenerateResource.Cache
+C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_AME_Test.resources

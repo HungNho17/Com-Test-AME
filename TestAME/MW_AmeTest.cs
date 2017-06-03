@@ -35,8 +35,6 @@ namespace TestAME
         bool FlagSendLF = false;
         bool FlagSendTo = true;
 
-
-
         public delegate void AddDataDelegate(int datain);
         public AddDataDelegate myDelegate;
 
@@ -52,6 +50,11 @@ namespace TestAME
         {
             ReInitializeAllComponents();
             this.myDelegate = new AddDataDelegate(AddDataMethod);
+        }
+
+        private void AME_APP_TEST_Close(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 //==============================================================================
@@ -307,7 +310,7 @@ namespace TestAME
         static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
 
 //==============================================================================
-// Event Process
+// Sub-Form Process
 //==============================================================================
         /// <summary>
         /// SUB FORM SET UP SERIAL PORT ENTER
@@ -345,6 +348,16 @@ namespace TestAME
         {
             UpdateUserButtonCmd();
         }
+
+        private void AME_Test_Load(object sender, EventArgs e)
+        {
+            SW_AME_Test SubFormAMETest = new SW_AME_Test();
+            SubFormAMETest.Show();
+        }
+
+//==============================================================================
+// Event Process
+//==============================================================================
 
         /// <summary>
         /// PROCESS MULTI BUTTON - CONNECTING ACTION
