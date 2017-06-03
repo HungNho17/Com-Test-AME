@@ -150,6 +150,18 @@ namespace TestAME
                 lbToCommunicate.Image = TestAME.Properties.Resources.Red;
                 lbToLocalCMD.Image = TestAME.Properties.Resources.Green;
             }
+
+            // temp init but do not tracking yet...
+            lbCTSILow.Image = TestAME.Properties.Resources.D_green;
+            lbDSRILow.Image = TestAME.Properties.Resources.D_green;
+            lbCTSOLow.Image = TestAME.Properties.Resources.D_green;
+            lbDTROLow.Image = TestAME.Properties.Resources.D_green;
+
+            lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbCTSOHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDTROHigh.Image = TestAME.Properties.Resources.D_brown;
+
         }
 
         public void UpdateCharSetTable()
@@ -570,6 +582,11 @@ namespace TestAME
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Nothing to checking... version xx.x !");
+        }
+
+        private void TimeTracking_Tick(object sender, EventArgs e)
+        {
+            lbTime.Text = DateTime.Now.ToString("hh : mm : ss tt");
         }
 
 

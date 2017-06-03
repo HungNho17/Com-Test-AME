@@ -115,6 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ResourceImage\datalogic.ico" />
+    <Content Include="ResourceImage\D_brown.png" />
+    <Content Include="ResourceImage\D_green.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

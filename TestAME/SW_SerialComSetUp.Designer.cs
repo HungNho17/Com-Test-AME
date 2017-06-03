@@ -87,7 +87,7 @@
             this.LVSerialPort.FullRowSelect = true;
             this.LVSerialPort.GridLines = true;
             this.LVSerialPort.Location = new System.Drawing.Point(15, 21);
-            this.LVSerialPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LVSerialPort.Margin = new System.Windows.Forms.Padding(4);
             this.LVSerialPort.Name = "LVSerialPort";
             this.LVSerialPort.Size = new System.Drawing.Size(297, 459);
             this.LVSerialPort.TabIndex = 0;
@@ -405,9 +405,11 @@
             // 
             this.groupBox6.Location = new System.Drawing.Point(364, 306);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.MaximumSize = new System.Drawing.Size(240, 145);
+            this.groupBox6.MinimumSize = new System.Drawing.Size(240, 145);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox6.Size = new System.Drawing.Size(239, 143);
+            this.groupBox6.Size = new System.Drawing.Size(240, 145);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Serial port information:";
@@ -415,7 +417,7 @@
             // btOK
             // 
             this.btOK.Location = new System.Drawing.Point(445, 466);
-            this.btOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btOK.Margin = new System.Windows.Forms.Padding(4);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(77, 32);
             this.btOK.TabIndex = 6;
@@ -426,7 +428,7 @@
             // btCancel
             // 
             this.btCancel.Location = new System.Drawing.Point(531, 466);
-            this.btCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(77, 32);
             this.btCancel.TabIndex = 7;
@@ -437,7 +439,7 @@
             // btRefresh
             // 
             this.btRefresh.Location = new System.Drawing.Point(360, 466);
-            this.btRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btRefresh.Name = "btRefresh";
             this.btRefresh.Size = new System.Drawing.Size(77, 32);
             this.btRefresh.TabIndex = 8;
@@ -461,6 +463,8 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(651, 561);
+            this.MinimumSize = new System.Drawing.Size(651, 561);
             this.Name = "SW_SerialComSetUp";
             this.ShowIcon = false;
             this.Text = "Serial Comport Setting";

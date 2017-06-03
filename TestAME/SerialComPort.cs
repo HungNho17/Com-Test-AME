@@ -279,7 +279,7 @@ namespace TestAME
 
                     if (flagSendLF)
                     {
-                        dataBytes[0] = 10;
+                        dataBytes[0] = 13;
                         CurrentComPort.Write(dataBytes, 0, 1);
                     }
                 }
@@ -312,7 +312,7 @@ namespace TestAME
 
                     if (flagSendLF)
                     {
-                        dataBytes[0] = 10;
+                        dataBytes[0] = 13;
                         CurrentComPort.Write(dataBytes, 0, 1);
                     }
                 }
