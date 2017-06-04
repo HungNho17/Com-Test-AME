@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TestAME
 {
-    public class SerialComPort 
+    public class P_SerialComPort 
     {
         static SerialPort CurrentComPort = null;
         string RecieveData = null;
@@ -146,7 +146,7 @@ namespace TestAME
         };
 
 
-        public SerialComPort(SerialPort a)
+        public P_SerialComPort(SerialPort a)
         {
             string[] port = null;
             CurrentComPort = a;

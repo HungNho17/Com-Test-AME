@@ -31,3 +31,7 @@ C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_Seria
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_SetupUserCommand.resources
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csproj.GenerateResource.Cache
 C:\Users\pnguyen\Documents\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_AME_Test.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Release\TestAME.exe.config
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_AME_Test.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_SetupUserCommand.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csproj.ResolveComReference.cache

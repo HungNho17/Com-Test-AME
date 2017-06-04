@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestAME
 {
-    class UserCommandManagement
+    class P_UserCommandManagement
     {
         string[] btNameList = new string[8];
         string[] cmdList = new string[8];

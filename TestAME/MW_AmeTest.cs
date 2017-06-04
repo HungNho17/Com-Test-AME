@@ -18,8 +18,8 @@ namespace TestAME
 //==============================================================================
 // All Atributes.
 //==============================================================================
-        SerialComPort ComPort = null;
-        UserCommandManagement UserCmd = null;
+        P_SerialComPort ComPort = null;
+        P_UserCommandManagement UserCmd = null;
         List<Button> CommandBTList = null;
         List<Button> ConnectStatusBTList = null;
         List<Button> ControlUIBTList = null;
@@ -63,8 +63,8 @@ namespace TestAME
 
         public void ReInitializeAllComponents()
         {
-            ComPort = new SerialComPort(SPort);
-            UserCmd = new UserCommandManagement();
+            ComPort = new P_SerialComPort(SPort);
+            UserCmd = new P_UserCommandManagement();
             SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
