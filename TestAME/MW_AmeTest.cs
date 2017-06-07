@@ -34,6 +34,10 @@ namespace TestAME
         bool FlagWrapText = true;
         bool FlagSendLF = false;
         bool FlagSendTo = true;
+        bool FlagTimeStamping = false;
+
+        bool FlagCTSOutput = false;
+        bool FlagDTROutput = false;
 
         public delegate void AddDataDelegate(int datain);
         public AddDataDelegate myDelegate;
@@ -72,6 +76,7 @@ namespace TestAME
             UpdateStatusWindow();
             UpdateCharSetTable();
             UpdateUserButtonCmd();
+            UpdateRightContextManu();
             UpdateKeyboarStatus();
         }
 
@@ -191,6 +196,9 @@ namespace TestAME
             if (!FlagDisplayDataRecieve || (data == -1)) 
                 return ret;
 
+            tbDataRecieve.Focus();
+            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+
             string temp = ComPort.IntToAssciiStr(data, FlagShowLF, FlagShowSpace);
             
             tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
@@ -200,8 +208,12 @@ namespace TestAME
                 tbDataRecieve.SelectionColor = Color.Yellow;
 
             tbDataRecieve.AppendText(temp);
-            tbDataRecieve.Focus();
-            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+            if (temp == "\r" || temp == "\n")
+            {
+                string temp1 = UpdateTimeStamping(FlagTimeStamping);
+                if (temp1 != null)
+                    tbDataRecieve.AppendText(temp1);
+            }
             tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
             return ret;
         }
@@ -265,6 +277,47 @@ namespace TestAME
             if (Control.IsKeyLocked(Keys.Scroll)) lbSclr.Enabled = true;
             
             return bRet;
+        }
+
+        public bool UpdateRightContextManu()
+        {
+            bool bRet = false;
+
+            // Menu of Data Recieve text box
+            ContextMenu cm = new ContextMenu();
+            cm.MenuItems.Add("Copy", new EventHandler(DataRecieveTB_copy));
+            cm.MenuItems.Add("Pase", new EventHandler(DataRecieveTB_pase));
+            tbDataRecieve.ContextMenu = cm; 
+
+            return bRet;
+        }
+        public void DataRecieveTB_copy(object s, EventArgs e)
+        {
+            if (tbDataRecieve.SelectedText != "")
+            {
+                Clipboard.SetText(tbDataRecieve.SelectedText);
+            }
+            else
+            {
+                Clipboard.SetText(tbDataRecieve.Text);
+            }
+            
+        }
+        public void DataRecieveTB_pase(object s, EventArgs e)
+        {
+            tbDataRecieve.Text += Clipboard.GetText();
+        }
+
+        public string UpdateTimeStamping(bool flagTimeStamping)
+        {
+            string sRet = null;
+
+            if (flagTimeStamping)
+            {
+                sRet = "[ " + DateTime.Now.ToString("hh:mm:ss.fff") + " ]";
+            }
+
+            return sRet;
         }
 
         /// <summary>
@@ -498,15 +551,6 @@ namespace TestAME
         }
 
         /// <summary>
-        /// TEXT BOX DATA RECIEVE SELECTION
-        /// </summary>
-        private void TBDataRecive_Click(object sender, EventArgs e)
-        {
-            tbDataRecieve.Focus();
-            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
-        }
-
-        /// <summary>
         /// PROCESS WINDOW KEYBOARD PRESS ON TEXTBOX DATA RECIEVE
         /// </summary>
         private void WindowKeyDown_Event(object sender, KeyEventArgs e)
@@ -592,6 +636,25 @@ namespace TestAME
             }
         }
 
+        /// <summary>
+        /// SAVE LOG FILE
+        /// </summary>
+        private void SaveLog_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Filter = "text file|*.txt";
+            fileDialog.Title = "Save log file !";
+            fileDialog.FileName = "Monster_LogFile.txt";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (fileDialog.FileName != "")
+                {
+                    System.IO.File.WriteAllText(@fileDialog.FileName, tbDataRecieve.Text);
+                }
+            }
+        }
+
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Nothing to checking... version xx.x !");
@@ -600,6 +663,16 @@ namespace TestAME
         private void TimeTracking_Tick(object sender, EventArgs e)
         {
             lbTime.Text = DateTime.Now.ToString("hh : mm : ss tt");
+        }
+
+        private void tsmiTimeStamping_Click(object sender, EventArgs e)
+        {
+            // update time stamping flag
+            FlagTimeStamping = false;
+            if (tsmiTimeStamping.Checked == true)
+            { 
+                FlagTimeStamping = true;
+            }
         }
 
 
