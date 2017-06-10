@@ -23,6 +23,7 @@ namespace TestAME
         List<Button> CommandBTList = null;
         List<Button> ConnectStatusBTList = null;
         List<Button> ControlUIBTList = null;
+        static int IndextCounter = 0;
 
         string[] btNameListCurrent = null;
         string[] cmdListCurrent = null;
@@ -35,11 +36,12 @@ namespace TestAME
         bool FlagSendLF = false;
         bool FlagSendTo = true;
         bool FlagTimeStamping = false;
+        bool FlagIndexStamping = false;
 
         bool FlagCTSOutput = false;
         bool FlagDTROutput = false;
 
-        public delegate void AddDataDelegate(int datain);
+        public delegate void AddDataDelegate(string datain);
         public AddDataDelegate myDelegate;
 
 //==============================================================================
@@ -188,33 +190,43 @@ namespace TestAME
             lvCharSet.FullRowSelect = true;
         }
 
-        public bool UpdateDataRecieved(int data, bool flagFromSP)
+        public bool UpdateDataRecieved(string data, bool flagFromSP)
         {
             bool ret = true;
 
-            // Do nothing.
-            if (!FlagDisplayDataRecieve || (data == -1)) 
-                return ret;
-
-            tbDataRecieve.Focus();
-            tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
-
-            string temp = ComPort.IntToAssciiStr(data, FlagShowLF, FlagShowSpace);
-            
-            tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
-            tbDataRecieve.SelectionLength = 0;
-
-            if (flagFromSP)
-                tbDataRecieve.SelectionColor = Color.Yellow;
-
-            tbDataRecieve.AppendText(temp);
-            if (temp == "\r" || temp == "\n")
+            if (FlagDisplayDataRecieve && (data != null))
             {
-                string temp1 = UpdateTimeStamping(FlagTimeStamping);
-                if (temp1 != null)
-                    tbDataRecieve.AppendText(temp1);
+                tbDataRecieve.Focus();
+                tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
+
+                string temp = ComPort.ProcessPureString(data, FlagShowLF, FlagShowSpace);
+
+                if (temp != null)
+                {
+                    tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
+                    tbDataRecieve.SelectionLength = 0;
+
+                    if (flagFromSP)
+                        tbDataRecieve.SelectionColor = Color.Yellow;
+
+                    if (FlagIndexStamping)
+                    {
+                        string temp2 = UpdateSuffix(2);
+                        tbDataRecieve.AppendText(temp2);
+                        IndextCounter++;
+                    }
+
+                    if (FlagTimeStamping)
+                    {
+                        string temp1 = UpdateSuffix(1);
+                        tbDataRecieve.AppendText(temp1);
+                    }
+
+                    tbDataRecieve.AppendText(temp);
+                    tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
+                }
             }
-            tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
+
             return ret;
         }
 
@@ -281,7 +293,7 @@ namespace TestAME
 
         public bool UpdateRightContextManu()
         {
-            bool bRet = false;
+            bool bRet = true;
 
             // Menu of Data Recieve text box
             ContextMenu cm = new ContextMenu();
@@ -308,16 +320,32 @@ namespace TestAME
             tbDataRecieve.Text += Clipboard.GetText();
         }
 
-        public string UpdateTimeStamping(bool flagTimeStamping)
+        public string UpdateSuffix(int iType)
         {
             string sRet = null;
 
-            if (flagTimeStamping)
+            switch (iType)
             {
-                sRet = "[ " + DateTime.Now.ToString("hh:mm:ss.fff") + " ]";
+                case 1:
+                    sRet = "[ " + DateTime.Now.ToString("hh:mm:ss.fff") + " ]";
+                    break;
+
+                case 2:
+                    sRet = "[ " + IndextCounter.ToString() + " ]";
+                    break;
+
+                default:
+                    break;
             }
 
             return sRet;
+        }
+
+        public bool UpdateCTSaDTRStatus()
+        {
+            bool bRet = false;
+
+            return bRet;
         }
 
         /// <summary>
@@ -472,6 +500,7 @@ namespace TestAME
 
                 case 1: // bt clear co
                     tbDataRecieve.Text = "";
+                    IndextCounter = 0;
                     break;
                 case 2: // bt new line
                     tbDataRecieve.Text += "\n";
@@ -517,23 +546,23 @@ namespace TestAME
         /// <summary>
         /// PROCESS DATA RECIEVE FORM SERIAL PORT
         /// </summary>
-        public void AddDataMethod(int dataIn)
+        public void AddDataMethod(string dataIn)
         {
             UpdateDataRecieved(dataIn, true); // from SP
         }
         void SPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
-            int indata = 0;
-            while (indata != (-1))
+            string sData = null;
+
+            // read all buff
+            try 
             {
-                try
-                {
-                    indata = sp.ReadByte();
-                    this.Invoke(this.myDelegate, new Object[] { indata });
-                }
-                catch { break; }
+                sData = sp.ReadExisting();
+                this.Invoke(this.myDelegate, new Object[] { sData });
             }
+            catch { }
+            
         }
 
         /// <summary>
@@ -555,13 +584,15 @@ namespace TestAME
         /// </summary>
         private void WindowKeyDown_Event(object sender, KeyEventArgs e)
         {
-            int temp = 0;
+            int iTemp = 0;
+            string sTemp = null;
             e.Handled = true;
 
-            temp = KeyCodeToUnicode(e.KeyCode);
-            UpdateDataRecieved(temp, false); // from keyboard
+            iTemp = KeyCodeToUnicode(e.KeyCode);
+            sTemp = ComPort.IntToAssciiStr(iTemp, FlagShowLF, FlagShowSpace);
+            UpdateDataRecieved(sTemp, false); // from keyboard
 
-            ComPort.SendData(temp, FlagSendLF);
+            ComPort.SendData(iTemp, FlagSendLF);
         }
         private void WindowKeyUp_Event(object sender, KeyEventArgs e)
         {
@@ -595,7 +626,7 @@ namespace TestAME
                     {
                         if(ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF))
                         {
-                            UpdateDataRecieved(Int32.Parse(element.SubItems[1].Text), false);
+                            UpdateDataRecieved(element.SubItems[1].Text, false);
                         }
                         break;
                     }
@@ -655,11 +686,6 @@ namespace TestAME
             }
         }
 
-        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Nothing to checking... version xx.x !");
-        }
-
         private void TimeTracking_Tick(object sender, EventArgs e)
         {
             lbTime.Text = DateTime.Now.ToString("hh : mm : ss tt");
@@ -670,9 +696,24 @@ namespace TestAME
             // update time stamping flag
             FlagTimeStamping = false;
             if (tsmiTimeStamping.Checked == true)
-            { 
+            {
                 FlagTimeStamping = true;
             }
+        }
+
+        private void indexStamping_Click(object sender, EventArgs e)
+        {
+            // update time stamping flag
+            FlagIndexStamping = false;
+            if (tsmiIndexStamping.Checked == true)
+            {
+                FlagIndexStamping = true;
+            }
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nothing to checking... version xx.x !");
         }
 
 

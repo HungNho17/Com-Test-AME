@@ -82,10 +82,14 @@ namespace TestAME
 
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
-                    if (queryObj["Caption"].ToString().Contains(portName))
+                    try
                     {
-                       sResult = queryObj["Caption"].ToString();
+                        if (queryObj["Caption"].ToString().Contains(portName))
+                        {
+                            sResult = queryObj["Caption"].ToString();
+                        }
                     }
+                    catch { }
                 }
             }
             catch (ManagementException e)

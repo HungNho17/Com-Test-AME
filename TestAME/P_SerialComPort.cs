@@ -9,8 +9,6 @@ namespace TestAME
     public class P_SerialComPort 
     {
         static SerialPort CurrentComPort = null;
-        string RecieveData = null;
-        string SendingData = null;
 
         int[] AssciiDecimalList = 
         { 
@@ -259,6 +257,42 @@ namespace TestAME
                 if (dataIn == ' ') sResult = " ";
             }
 
+            return sResult;
+        }
+
+        public string ProcessPureString(string dataIn, bool flagShowLF, bool flagShowSpace)
+        {
+            string sResult = null;
+            string sTemp = null;
+
+            foreach (var element in dataIn)
+            {
+                int iTemp = (int)element;
+                int idx = 0;
+                foreach (var element1 in AssciiDecimalList)
+                {
+                    if (iTemp == element1)
+                    {
+                        sTemp = AssciiDisplayList[idx];
+                        break;
+                    }
+                    idx++;
+                }
+
+                if (!flagShowLF)
+                {
+                    if (iTemp == '\n') sTemp = "\n";
+                    if (iTemp == '\r') sTemp = "\r";
+                }
+
+                if (!flagShowSpace)
+                {
+                    if (iTemp == ' ') sTemp = " ";
+                }
+
+                sResult += sTemp;
+            }
+            
             return sResult;
         }
 

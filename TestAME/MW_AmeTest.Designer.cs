@@ -35,8 +35,9 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLogSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.aMESupportTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLogSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTimeStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -110,7 +111,7 @@
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tsmiTimeStamping = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiIndexStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,14 +148,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLog_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
@@ -167,20 +168,30 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // tsmiLogSetting
-            // 
-            this.tsmiLogSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiTimeStamping});
-            this.tsmiLogSetting.Name = "tsmiLogSetting";
-            this.tsmiLogSetting.Size = new System.Drawing.Size(168, 22);
-            this.tsmiLogSetting.Text = "Log Setting";
-            // 
             // aMESupportTestToolStripMenuItem
             // 
             this.aMESupportTestToolStripMenuItem.Name = "aMESupportTestToolStripMenuItem";
             this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.aMESupportTestToolStripMenuItem.Text = "AME Support Test";
             this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
+            // 
+            // tsmiLogSetting
+            // 
+            this.tsmiLogSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiTimeStamping,
+            this.tsmiIndexStamping});
+            this.tsmiLogSetting.Name = "tsmiLogSetting";
+            this.tsmiLogSetting.Size = new System.Drawing.Size(168, 22);
+            this.tsmiLogSetting.Text = "Log Setting";
+            // 
+            // tsmiTimeStamping
+            // 
+            this.tsmiTimeStamping.CheckOnClick = true;
+            this.tsmiTimeStamping.DoubleClickEnabled = true;
+            this.tsmiTimeStamping.Name = "tsmiTimeStamping";
+            this.tsmiTimeStamping.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTimeStamping.Text = "Time Stamp";
+            this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -193,7 +204,7 @@
             // aboutUsToolStripMenuItem
             // 
             this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.aboutUsToolStripMenuItem.Text = "About Us";
             this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
             // 
@@ -1023,14 +1034,13 @@
             this.panel1.Size = new System.Drawing.Size(183, 22);
             this.panel1.TabIndex = 11;
             // 
-            // tsmiTimeStamping
+            // tsmiIndexStamping
             // 
-            this.tsmiTimeStamping.CheckOnClick = true;
-            this.tsmiTimeStamping.DoubleClickEnabled = true;
-            this.tsmiTimeStamping.Name = "tsmiTimeStamping";
-            this.tsmiTimeStamping.Size = new System.Drawing.Size(155, 22);
-            this.tsmiTimeStamping.Text = "Time Stamping";
-            this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
+            this.tsmiIndexStamping.CheckOnClick = true;
+            this.tsmiIndexStamping.Name = "tsmiIndexStamping";
+            this.tsmiIndexStamping.Size = new System.Drawing.Size(152, 22);
+            this.tsmiIndexStamping.Text = "Index Stamp";
+            this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
             // 
             // MW_AmeTest
             // 
@@ -1157,6 +1167,7 @@
         private System.Windows.Forms.ToolStripMenuItem aMESupportTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiTimeStamping;
+        private System.Windows.Forms.ToolStripMenuItem tsmiIndexStamping;
     }
 }
 
