@@ -11,11 +11,29 @@ namespace TestAME
 {
     public partial class SW_AME_Test : Form
     {
+        enum TEST_MODE_TYPE
+        {
+            UNDEF_MODE = 0,
+            MANUAL_MODE,
+            AUTO_MODE
+        };
 //==============================================================================
 // All Atributes.
 //==============================================================================
         P_AME_ExcelFileProcess comExcel = null;
         string pathFileSelected = null;
+        List<Button> listBtManual = null;
+        List<Button> listBtAuto = null;
+
+        int iNumberOfCurrentCmd = 0;
+        COMMAND_TYPE CurrentCmd;
+
+        int iNumberOfCmd = 0;
+        bool FlagFlip = false;
+
+        TEST_MODE_TYPE TestMode = TEST_MODE_TYPE.UNDEF_MODE;
+        public delegate bool SendDataDelegate(string datain);
+        public SendDataDelegate myDelegate;
 
 //==============================================================================
 // Window Actions.
@@ -24,11 +42,24 @@ namespace TestAME
         {
             InitializeComponent();
             comExcel = new P_AME_ExcelFileProcess();
+            listBtManual = new List<Button> { btPrevious, btNext, btSend };
+            listBtAuto = new List<Button> { btStart, btPause, btStop };
+        }
+
+        public SW_AME_Test(Func<string, bool> function)
+        {
+            InitializeComponent();
+            comExcel = new P_AME_ExcelFileProcess();
+            listBtManual = new List<Button> { btPrevious, btNext, btSend };
+            listBtAuto = new List<Button> { btStart, btPause, btStop };
+
+            this.myDelegate = new SendDataDelegate(function);
         }
 
         private void SW_AME_Test_Load(object sender, EventArgs e)
         {
-            UpdateFileInformation();
+            UpdateCommonInfo();
+            btClose.Select();
         }
 
         private void SW_AME_Test_FormClosed(object sender, FormClosedEventArgs e)
@@ -43,24 +74,88 @@ namespace TestAME
 // Internal Actions.
 //==============================================================================
 
-        public void UpdateFileInformation()
+        public bool UpdateSystemInfo(bool SystemStatus)
         {
+            bool bRet = false;
+            
+            if (SystemStatus == true)
+            {
+                gbCommonInfo.Enabled = true;
+                gbCurrentCmdStatus.Enabled = true;
+            }
+            else
+            { 
+                gbCommonInfo.Enabled = false;
+                gbCurrentCmdStatus.Enabled = false;
+                gbManualMode.Enabled = false;
+                gbAutoMode.Enabled = false;
+                Timer.Enabled = false;
+            }
+
+            return bRet;
+        }
+
+        public bool UpdateCommonInfo()
+        {
+            bool bRet = true;
             if (comExcel.IsFileExist() == true)
             {
                 lbFileStatus.Text = "Process Done!";
-                lbTotalCmd.Text = comExcel.NumberOfCommand.ToString();
-                lbCurrentCmd.Text = "1";
-                lbCurrentDesc.Text = comExcel.ListDescription[0];
-                lbCurrentContent.Text = comExcel.ListCommand[0];
+                lbTotalCmd.Text = iNumberOfCmd.ToString();
             }
             else
             {
                 lbFileStatus.Text = "No file processed!";
                 lbTotalCmd.Text = "...";
+            }
+            return bRet;
+        }
+
+        public bool UpdateCurrentCmd(int CmdNumber)
+        {
+            bool bRet = false;
+            if (comExcel.IsFileExist() == true)
+            {
+                CurrentCmd = comExcel.GetCommand(CmdNumber);
+                if (CurrentCmd.number > 0)
+                {
+                    lbCurrentCmd.Text = CurrentCmd.number.ToString();
+                    lbCurrentDesc.Text = CurrentCmd.desc;
+                    lbCurrentContent.Text = CurrentCmd.cmd;
+                }
+                
+            }
+            else
+            {
                 lbCurrentCmd.Text = "...";
                 lbCurrentDesc.Text = "...";
                 lbCurrentContent.Text = "...";
             }
+            return bRet;
+        }
+
+        public bool UpdateStatusTestMode(bool flip)
+        {
+            bool bRet = true;
+
+            if (TestMode == TEST_MODE_TYPE.MANUAL_MODE)
+            {
+                lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
+                if (flip)
+                    lbManualStatus.Image = TestAME.Properties.Resources.Green;
+                else
+                    lbManualStatus.Image = TestAME.Properties.Resources.D_green;
+            }
+            else if (TestMode == TEST_MODE_TYPE.AUTO_MODE)
+            {
+                lbManualStatus.Image = TestAME.Properties.Resources.D_green;
+                if (flip)
+                    lbAutoStatus.Image = TestAME.Properties.Resources.Green;
+                else
+                    lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
+            }
+
+            return bRet;
         }
 
 //==============================================================================
@@ -85,14 +180,91 @@ namespace TestAME
             {
                 if(comExcel.ExcelOpenFile(pathFileSelected))
                 {
-                    if (comExcel.FileCommandParser() > 0)
+                    iNumberOfCmd = comExcel.FileCommandParser();
+                    if (iNumberOfCmd > 0)
                     {
-                        UpdateFileInformation();
+                        UpdateCommonInfo();
+                        UpdateCurrentCmd(iNumberOfCurrentCmd);
                     }
                 }
             }
-            
         }
+
+        private void TestMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbManual.Checked == true)
+            {
+                TestMode = TEST_MODE_TYPE.MANUAL_MODE;
+                gbManualMode.Enabled = true;
+                gbAutoMode.Enabled = false;
+            }
+            else if (rbAuto.Checked == true)
+            {
+                TestMode = TEST_MODE_TYPE.AUTO_MODE;
+                gbManualMode.Enabled = false;
+                gbAutoMode.Enabled = true;
+            }
+            Timer.Enabled = true;
+        }
+
+        private void btControlManual_Handle(object sender, EventArgs e)
+        {
+            int IndexBt = listBtManual.IndexOf(sender as Button);
+            switch (IndexBt)
+            {
+                case 0: // previous
+                    if (iNumberOfCurrentCmd > 0) iNumberOfCurrentCmd -= 1;
+                    UpdateCurrentCmd(iNumberOfCurrentCmd);
+                    break;
+                case 1: // next
+                    if (iNumberOfCurrentCmd < iNumberOfCmd) iNumberOfCurrentCmd += 1;
+                    UpdateCurrentCmd(iNumberOfCurrentCmd);
+                    break;
+                case 2: // send
+                    this.Invoke(this.myDelegate, new Object[] { (CurrentCmd.cmd + "\r") });
+                    if (iNumberOfCurrentCmd < iNumberOfCmd) iNumberOfCurrentCmd += 1;
+                    UpdateCurrentCmd(iNumberOfCurrentCmd);
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
+        private void btControlAuto_Handle(object sender, EventArgs e)
+        {
+            int IndexBt = listBtAuto.IndexOf(sender as Button);
+            switch (IndexBt)
+            {
+                case 0: // start
+                    break;
+                case 1: // pause
+                    break;
+                case 2: // stop
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        /// <summary>
+        /// CLOSE BUTTON CLICK
+        /// </summary>
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// TIMER TICK PROCESS
+        /// </summary>
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            FlagFlip ^= true;
+            UpdateStatusTestMode(FlagFlip);
+        }
+
+
 
     }
 }

@@ -7,6 +7,13 @@ using System.Windows.Forms;
 
 namespace TestAME
 {
+    public struct COMMAND_TYPE
+    {
+        public int number;
+        public string desc;
+        public string cmd;
+    };
+
     class P_AME_ExcelFileProcess
     {
         Excel.Application xlApp = new Excel.Application();
@@ -16,7 +23,7 @@ namespace TestAME
 
         public List<string> ListDescription = null;
         public List<string> ListCommand = null;
-        public int NumberOfCommand = 0;
+        int NumberOfCommand = 0;
 
         int rowCount = 0;
         int colCount = 0;
@@ -55,7 +62,6 @@ namespace TestAME
 
                     rowCount = xlRange.Rows.Count;
                     colCount = xlRange.Columns.Count;
-                    NumberOfCommand = rowCount - 1;
 
                     FlagFileExist = true;
                     bRet = true;
@@ -77,7 +83,7 @@ namespace TestAME
             {
                 try
                 {
-                    xlWorkbook.Save();
+                    //xlWorkbook.Save();
                     xlWorkbook.Close();
                     FlagFileExist = false;
                     bRet = true;
@@ -105,22 +111,36 @@ namespace TestAME
                     {
                         try
                         {
-                            if (xlWorksheet.Cells[rowIdx, 2] != null)
-                            {
+                            if (xlWorksheet.Cells[rowIdx, 2].value != null)
                                 tempDescription = xlWorksheet.Cells[rowIdx, 2].value.ToString();
-                                ListDescription.Add(tempDescription);
-                            }
-                            if (xlWorksheet.Cells[rowIdx, 3] != null)
-                            {
+                            else tempDescription = " "; 
+                            ListDescription.Add(tempDescription);
+                           
+                            if (xlWorksheet.Cells[rowIdx, 3].value != null)
                                 tempCommand = xlWorksheet.Cells[rowIdx, 3].value.ToString();
-                                ListCommand.Add(tempCommand);
-                            }
+                            else tempCommand = " ";
+                            ListCommand.Add(tempCommand);
+                            iRet++;
                         }
                         catch { }
                     }
-                    iRet = rowIdx - 1;
             }
+
+            NumberOfCommand = iRet;
             return iRet;
+        }
+
+        public COMMAND_TYPE GetCommand(int CmdNumber)
+        {
+            COMMAND_TYPE cmdRet = new COMMAND_TYPE();
+            cmdRet.number = 0;
+            if (CmdNumber < NumberOfCommand)
+            {
+                cmdRet.number = CmdNumber+1;
+                cmdRet.desc = ListDescription[CmdNumber];
+                cmdRet.cmd = ListCommand[CmdNumber];
+            }
+            return cmdRet;
         }
     }
 }

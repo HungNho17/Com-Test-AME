@@ -44,6 +44,10 @@ namespace TestAME
         public delegate void AddDataDelegate(string datain);
         public AddDataDelegate myDelegate;
 
+        SW_SerialComSetUp SubFormSPort = null;
+        SW_SetupUserCommand SubFormCmd = null;
+        SW_AME_Test SubFormAMETest = null;
+
 //==============================================================================
 // Window Actions.
 //==============================================================================
@@ -348,6 +352,17 @@ namespace TestAME
             return bRet;
         }
 
+        public bool SendDataMethode(string dataIn)
+        {
+            bool bRet = false;
+            if (ComPort.SendData(dataIn, FlagSendLF))
+            {
+                UpdateDataTransmited(dataIn);
+                bRet = true;
+            }
+            return bRet;
+        }
+
         /// <summary>
         /// CONVERT KEYCODE TO INT OF ASSCII CHARACTER
         /// </summary>
@@ -394,46 +409,51 @@ namespace TestAME
 // Sub-Form Process
 //==============================================================================
         /// <summary>
-        /// SUB FORM SET UP SERIAL PORT ENTER
+        /// SUB FORM SET UP SERIAL PORT
         /// </summary>
         private void BTSPort_Click(object sender, EventArgs e)
         {
-            SW_SerialComSetUp SubFormSPort = new SW_SerialComSetUp(SPort);
+            SubFormSPort = new SW_SerialComSetUp(SPort);
             SubFormSPort.FormClosed += new FormClosedEventHandler(SubFormSPortClosed); 
             SubFormSPort.ShowDialog();
         }
-
-        /// <summary>
-        /// SUP FORM SET UP SERIAL PORT CLOSE
-        /// </summary>
         void SubFormSPortClosed(object sender, FormClosedEventArgs e)  
         {  
-            // Do something if it in need!
+            SubFormSPort = null;
             UpdateStatusWindow();
         }
 
         /// <summary>
-        /// SUB FORM USER SETTING COMMAND ENTER
+        /// SUB FORM USER SETTING COMMAND
         /// </summary>
         private void BTSetupCmd_Click(object sender, EventArgs e)
         {
-            SW_SetupUserCommand SubFormCmd = new SW_SetupUserCommand();
+            SubFormCmd = new SW_SetupUserCommand();
             SubFormCmd.FormClosed += new FormClosedEventHandler(SubFormCmdClosed);
             SubFormCmd.ShowDialog();
         }
-
-        /// <summary>
-        /// SUB FORM USER SETTING COMMAND CLOSE
-        /// </summary>
         void SubFormCmdClosed(object sender, FormClosedEventArgs e)
         {
+            SubFormCmd = null;
             UpdateUserButtonCmd();
         }
 
+        /// <summary>
+        /// SUB FORM AME TEST SUPPORT
+        /// </summary>
         private void AME_Test_Load(object sender, EventArgs e)
         {
-            SW_AME_Test SubFormAMETest = new SW_AME_Test();
-            SubFormAMETest.Show();
+            if (SubFormAMETest == null)
+            {
+                SubFormAMETest = new SW_AME_Test(SendDataMethode);
+                SubFormAMETest.FormClosed += new FormClosedEventHandler(SubFormAMETestClosed);
+                SubFormAMETest.Show();
+                SubFormAMETest.UpdateSystemInfo(FlagConnectStatus);
+            }
+        }
+        void SubFormAMETestClosed(object sender, FormClosedEventArgs e)
+        {
+            SubFormAMETest = null;
         }
 
 //==============================================================================
@@ -467,6 +487,9 @@ namespace TestAME
                             FlagConnectStatus = false;
                         }
                     }
+
+                    if (SubFormAMETest != null)
+                        SubFormAMETest.UpdateSystemInfo(FlagConnectStatus);
                     break;
 
                 case 1: // bt datarecieve display
@@ -500,6 +523,7 @@ namespace TestAME
 
                 case 1: // bt clear co
                     tbDataRecieve.Text = "";
+
                     IndextCounter = 0;
                     break;
                 case 2: // bt new line
@@ -572,10 +596,7 @@ namespace TestAME
         {
             if (tbDataSend.Text != null)
             {
-                if (ComPort.SendData(tbDataSend.Text, FlagSendLF))
-                {
-                    UpdateDataTransmited(tbDataSend.Text);
-                }
+                SendDataMethode(tbDataSend.Text);
             }
         }
 
