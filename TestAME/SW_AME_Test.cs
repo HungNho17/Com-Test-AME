@@ -80,11 +80,13 @@ namespace TestAME
             
             if (SystemStatus == true)
             {
+                lbSystemStatus.Text = "Device Connected!";
                 gbCommonInfo.Enabled = true;
                 gbCurrentCmdStatus.Enabled = true;
             }
             else
-            { 
+            {
+                lbSystemStatus.Text = "Device Disconnected!";
                 gbCommonInfo.Enabled = false;
                 gbCurrentCmdStatus.Enabled = false;
                 gbManualMode.Enabled = false;
@@ -111,25 +113,37 @@ namespace TestAME
             return bRet;
         }
 
+        public bool UpdateAllCommand()
+        {
+            bool bRet = false;
+            if (comExcel.IsFileExist() == true)
+            {
+                for (int idx = 0; idx < iNumberOfCmd; idx++ )
+                {
+                    CurrentCmd = comExcel.GetCommand(idx);
+                    cbCurrentNumber.Items.Add(CurrentCmd.number.ToString());
+                    cbCurrentDesc.Items.Add(CurrentCmd.desc);
+                    cbCurrentCmd.Items.Add(CurrentCmd.cmd);
+                }
+
+            }
+            return bRet;
+        }
+
         public bool UpdateCurrentCmd(int CmdNumber)
         {
             bool bRet = false;
             if (comExcel.IsFileExist() == true)
             {
-                CurrentCmd = comExcel.GetCommand(CmdNumber);
-                if (CurrentCmd.number > 0)
+                if (iNumberOfCmd > 0 && CmdNumber < iNumberOfCmd)
                 {
-                    lbCurrentCmd.Text = CurrentCmd.number.ToString();
-                    lbCurrentDesc.Text = CurrentCmd.desc;
-                    lbCurrentContent.Text = CurrentCmd.cmd;
+                    CurrentCmd = comExcel.GetCommand(CmdNumber);
+
+                    cbCurrentNumber.SelectedIndex = CmdNumber;
+                    cbCurrentDesc.SelectedIndex = CmdNumber;
+                    cbCurrentCmd.SelectedIndex = CmdNumber;
                 }
                 
-            }
-            else
-            {
-                lbCurrentCmd.Text = "...";
-                lbCurrentDesc.Text = "...";
-                lbCurrentContent.Text = "...";
             }
             return bRet;
         }
@@ -158,6 +172,12 @@ namespace TestAME
             return bRet;
         }
 
+        public bool UpdateLocation(int x, int y)
+        {
+            bool bRet = true;
+            this.Location = new Point(x, y);
+            return bRet;
+        }
 //==============================================================================
 // Event Process
 //==============================================================================
@@ -184,6 +204,7 @@ namespace TestAME
                     if (iNumberOfCmd > 0)
                     {
                         UpdateCommonInfo();
+                        UpdateAllCommand();
                         UpdateCurrentCmd(iNumberOfCurrentCmd);
                     }
                 }
@@ -247,24 +268,23 @@ namespace TestAME
 
             }
         }
-        /// <summary>
-        /// CLOSE BUTTON CLICK
-        /// </summary>
+
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        /// <summary>
-        /// TIMER TICK PROCESS
-        /// </summary>
         private void Timer_Tick(object sender, EventArgs e)
         {
             FlagFlip ^= true;
             UpdateStatusTestMode(FlagFlip);
         }
 
-
+        private void cbCurrentCmd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int iTempIxd = (sender as ComboBox).SelectedIndex;
+            UpdateCurrentCmd(iTempIxd);
+        }
 
     }
 }

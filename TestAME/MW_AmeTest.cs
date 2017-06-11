@@ -166,15 +166,7 @@ namespace TestAME
             }
 
             // temp init but do not tracking yet...
-            lbCTSILow.Image = TestAME.Properties.Resources.D_green;
-            lbDSRILow.Image = TestAME.Properties.Resources.D_green;
-            lbCTSOLow.Image = TestAME.Properties.Resources.D_green;
-            lbDTROLow.Image = TestAME.Properties.Resources.D_green;
-
-            lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
-            lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
-            lbCTSOHigh.Image = TestAME.Properties.Resources.D_brown;
-            lbDTROHigh.Image = TestAME.Properties.Resources.D_brown;
+            UpdateCTSaDTRStatus();
 
         }
 
@@ -207,25 +199,15 @@ namespace TestAME
 
                 if (temp != null)
                 {
+                    string temp1 = UpdateStamping(temp, !flagFromSP);
+                    if (temp1 != null)
+                        tbDataRecieve.AppendText(temp1);
+
                     tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
                     tbDataRecieve.SelectionLength = 0;
 
                     if (flagFromSP)
                         tbDataRecieve.SelectionColor = Color.Yellow;
-
-                    if (FlagIndexStamping)
-                    {
-                        string temp2 = UpdateSuffix(2);
-                        tbDataRecieve.AppendText(temp2);
-                        IndextCounter++;
-                    }
-
-                    if (FlagTimeStamping)
-                    {
-                        string temp1 = UpdateSuffix(1);
-                        tbDataRecieve.AppendText(temp1);
-                    }
-
                     tbDataRecieve.AppendText(temp);
                     tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
                 }
@@ -238,6 +220,10 @@ namespace TestAME
         {
             bool bRet = false;
             if (dataIn == null) return bRet;
+
+            string temp1 = UpdateStamping(null, false);
+            if (temp1 != null)
+                tbDataRecieve.AppendText(temp1);
 
             tbDataRecieve.AppendText(dataIn);
             tbDataRecieve.Focus();
@@ -331,11 +317,11 @@ namespace TestAME
             switch (iType)
             {
                 case 1:
-                    sRet = "[ " + DateTime.Now.ToString("hh:mm:ss.fff") + " ]";
+                    sRet = "[" + DateTime.Now.ToString("hh:mm:ss.fff") + "]";
                     break;
 
                 case 2:
-                    sRet = "[ " + IndextCounter.ToString() + " ]";
+                    sRet = "[" + IndextCounter.ToString() + "]";
                     break;
 
                 default:
@@ -345,10 +331,76 @@ namespace TestAME
             return sRet;
         }
 
+        public string UpdateStamping(string dataIn, bool flagSwitch)
+        {
+            string sRet = null;
+
+            if (FlagIndexStamping)
+            {
+                string temp2 = UpdateSuffix(2);
+                sRet = temp2;
+                IndextCounter++;
+            }
+
+            if (FlagTimeStamping)
+            {
+                string temp1 = UpdateSuffix(1);
+                sRet += temp1;
+            }
+
+            if (flagSwitch == true)
+            {
+                if (tsmiIndexStamping.Checked)
+                {
+                    FlagIndexStamping = false;
+                    if (dataIn == "\r" || dataIn == "\n")
+                    {
+                        FlagIndexStamping = true;
+                    }
+                }
+
+                if (tsmiTimeStamping.Checked)
+                {
+                    FlagTimeStamping = false;
+                    if (dataIn == "\r" || dataIn == "\n")
+                    {
+                        FlagTimeStamping = true;
+                    }
+                }
+            }
+
+            return sRet;
+        }
+
         public bool UpdateCTSaDTRStatus()
         {
-            bool bRet = false;
+            bool bRet = true;
 
+            lbCTSILow.Image = TestAME.Properties.Resources.D_green;
+            lbDSRILow.Image = TestAME.Properties.Resources.D_green;
+            lbCTSOLow.Image = TestAME.Properties.Resources.D_green;
+            lbDTROLow.Image = TestAME.Properties.Resources.D_green;
+
+            lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbCTSOHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDTROHigh.Image = TestAME.Properties.Resources.D_brown;
+
+            if (FlagConnectStatus == false)
+            {
+                lbCTSStatus.Enabled = false;
+                lbDSRStatus.Enabled = false;
+                btCTS.Enabled = false;
+                btDTR.Enabled = false;
+            }
+            else
+            {
+                lbCTSStatus.Enabled = true;
+                lbDSRStatus.Enabled = true;
+                btCTS.Enabled = true;
+                btDTR.Enabled = true;
+            }
+            
             return bRet;
         }
 
