@@ -7,7 +7,6 @@ D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_Se
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csproj.GenerateResource.Cache
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.exe
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.pdb
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csprojResolveAssemblyReference.cache
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Release\TestAME.exe.config
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Release\TestAME.exe
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Release\TestAME.pdb
