@@ -37,13 +37,10 @@
             this.rbAuto = new System.Windows.Forms.RadioButton();
             this.lbTotalCmd = new System.Windows.Forms.Label();
             this.lbFileStatus = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbSystemStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbTotalCmd1 = new System.Windows.Forms.Label();
             this.lbFileStatus1 = new System.Windows.Forms.Label();
-            this.lbCurrentContent = new System.Windows.Forms.Label();
-            this.lbCurrentDesc = new System.Windows.Forms.Label();
-            this.lbCurrentCmd = new System.Windows.Forms.Label();
             this.gbManualMode = new System.Windows.Forms.GroupBox();
             this.lbManualStatus = new System.Windows.Forms.Label();
             this.btSend = new System.Windows.Forms.Button();
@@ -54,10 +51,12 @@
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btPause = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.gbCurrentCmdStatus = new System.Windows.Forms.GroupBox();
+            this.cbCurrentNumber = new System.Windows.Forms.ComboBox();
+            this.cbCurrentCmd = new System.Windows.Forms.ComboBox();
+            this.cbCurrentDesc = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,10 +82,10 @@
             // 
             // tbFilePath
             // 
-            this.tbFilePath.Location = new System.Drawing.Point(64, 19);
+            this.tbFilePath.Location = new System.Drawing.Point(66, 19);
             this.tbFilePath.Margin = new System.Windows.Forms.Padding(2);
             this.tbFilePath.Name = "tbFilePath";
-            this.tbFilePath.Size = new System.Drawing.Size(242, 20);
+            this.tbFilePath.Size = new System.Drawing.Size(240, 20);
             this.tbFilePath.TabIndex = 1;
             // 
             // btFileBrowser
@@ -106,7 +105,7 @@
             this.gbCommonInfo.Controls.Add(this.rbAuto);
             this.gbCommonInfo.Controls.Add(this.lbTotalCmd);
             this.gbCommonInfo.Controls.Add(this.lbFileStatus);
-            this.gbCommonInfo.Controls.Add(this.label4);
+            this.gbCommonInfo.Controls.Add(this.lbSystemStatus);
             this.gbCommonInfo.Controls.Add(this.label3);
             this.gbCommonInfo.Controls.Add(this.lbTotalCmd1);
             this.gbCommonInfo.Controls.Add(this.lbFileStatus1);
@@ -114,11 +113,11 @@
             this.gbCommonInfo.Controls.Add(this.tbFilePath);
             this.gbCommonInfo.Controls.Add(this.btLoadProcess);
             this.gbCommonInfo.Enabled = false;
-            this.gbCommonInfo.Location = new System.Drawing.Point(5, 3);
+            this.gbCommonInfo.Location = new System.Drawing.Point(5, 22);
             this.gbCommonInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbCommonInfo.Name = "gbCommonInfo";
             this.gbCommonInfo.Padding = new System.Windows.Forms.Padding(2);
-            this.gbCommonInfo.Size = new System.Drawing.Size(373, 118);
+            this.gbCommonInfo.Size = new System.Drawing.Size(373, 122);
             this.gbCommonInfo.TabIndex = 3;
             this.gbCommonInfo.TabStop = false;
             this.gbCommonInfo.Text = "Common Information";
@@ -126,7 +125,7 @@
             // rbManual
             // 
             this.rbManual.AutoSize = true;
-            this.rbManual.Location = new System.Drawing.Point(246, 97);
+            this.rbManual.Location = new System.Drawing.Point(246, 94);
             this.rbManual.Margin = new System.Windows.Forms.Padding(2);
             this.rbManual.Name = "rbManual";
             this.rbManual.Size = new System.Drawing.Size(60, 17);
@@ -139,7 +138,7 @@
             // rbAuto
             // 
             this.rbAuto.AutoSize = true;
-            this.rbAuto.Location = new System.Drawing.Point(318, 97);
+            this.rbAuto.Location = new System.Drawing.Point(318, 94);
             this.rbAuto.Margin = new System.Windows.Forms.Padding(2);
             this.rbAuto.Name = "rbAuto";
             this.rbAuto.Size = new System.Drawing.Size(47, 17);
@@ -169,15 +168,15 @@
             this.lbFileStatus.TabIndex = 7;
             this.lbFileStatus.Text = "...";
             // 
-            // label4
+            // lbSystemStatus
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(122, 46);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "...";
+            this.lbSystemStatus.AutoSize = true;
+            this.lbSystemStatus.Location = new System.Drawing.Point(122, 46);
+            this.lbSystemStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSystemStatus.Name = "lbSystemStatus";
+            this.lbSystemStatus.Size = new System.Drawing.Size(16, 13);
+            this.lbSystemStatus.TabIndex = 6;
+            this.lbSystemStatus.Text = "...";
             // 
             // label3
             // 
@@ -209,36 +208,6 @@
             this.lbFileStatus1.TabIndex = 3;
             this.lbFileStatus1.Text = "- File Status:";
             // 
-            // lbCurrentContent
-            // 
-            this.lbCurrentContent.AutoSize = true;
-            this.lbCurrentContent.Location = new System.Drawing.Point(78, 64);
-            this.lbCurrentContent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbCurrentContent.Name = "lbCurrentContent";
-            this.lbCurrentContent.Size = new System.Drawing.Size(16, 13);
-            this.lbCurrentContent.TabIndex = 14;
-            this.lbCurrentContent.Text = "...";
-            // 
-            // lbCurrentDesc
-            // 
-            this.lbCurrentDesc.AutoSize = true;
-            this.lbCurrentDesc.Location = new System.Drawing.Point(78, 42);
-            this.lbCurrentDesc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbCurrentDesc.Name = "lbCurrentDesc";
-            this.lbCurrentDesc.Size = new System.Drawing.Size(16, 13);
-            this.lbCurrentDesc.TabIndex = 13;
-            this.lbCurrentDesc.Text = "...";
-            // 
-            // lbCurrentCmd
-            // 
-            this.lbCurrentCmd.AutoSize = true;
-            this.lbCurrentCmd.Location = new System.Drawing.Point(78, 20);
-            this.lbCurrentCmd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbCurrentCmd.Name = "lbCurrentCmd";
-            this.lbCurrentCmd.Size = new System.Drawing.Size(16, 13);
-            this.lbCurrentCmd.TabIndex = 10;
-            this.lbCurrentCmd.Text = "...";
-            // 
             // gbManualMode
             // 
             this.gbManualMode.Controls.Add(this.lbManualStatus);
@@ -246,11 +215,11 @@
             this.gbManualMode.Controls.Add(this.btNext);
             this.gbManualMode.Controls.Add(this.btPrevious);
             this.gbManualMode.Enabled = false;
-            this.gbManualMode.Location = new System.Drawing.Point(5, 222);
+            this.gbManualMode.Location = new System.Drawing.Point(5, 261);
             this.gbManualMode.Margin = new System.Windows.Forms.Padding(2);
             this.gbManualMode.Name = "gbManualMode";
             this.gbManualMode.Padding = new System.Windows.Forms.Padding(2);
-            this.gbManualMode.Size = new System.Drawing.Size(373, 53);
+            this.gbManualMode.Size = new System.Drawing.Size(373, 46);
             this.gbManualMode.TabIndex = 4;
             this.gbManualMode.TabStop = false;
             this.gbManualMode.Text = "Manual Test Mode";
@@ -306,11 +275,11 @@
             this.gbAutoMode.Controls.Add(this.btStop);
             this.gbAutoMode.Controls.Add(this.btPause);
             this.gbAutoMode.Enabled = false;
-            this.gbAutoMode.Location = new System.Drawing.Point(5, 279);
+            this.gbAutoMode.Location = new System.Drawing.Point(5, 311);
             this.gbAutoMode.Margin = new System.Windows.Forms.Padding(2);
             this.gbAutoMode.Name = "gbAutoMode";
             this.gbAutoMode.Padding = new System.Windows.Forms.Padding(2);
-            this.gbAutoMode.Size = new System.Drawing.Size(373, 55);
+            this.gbAutoMode.Size = new System.Drawing.Size(373, 46);
             this.gbAutoMode.TabIndex = 5;
             this.gbAutoMode.TabStop = false;
             this.gbAutoMode.Text = "Auto Test Mode";
@@ -356,19 +325,10 @@
             this.btPause.Text = "Pause";
             this.btPause.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(148, 349);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 20);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "SAVE";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(79, 349);
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.Location = new System.Drawing.Point(79, 485);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(65, 20);
@@ -378,7 +338,8 @@
             // 
             // btClose
             // 
-            this.btClose.Location = new System.Drawing.Point(305, 349);
+            this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btClose.Location = new System.Drawing.Point(305, 485);
             this.btClose.Margin = new System.Windows.Forms.Padding(2);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(65, 20);
@@ -389,23 +350,52 @@
             // 
             // gbCurrentCmdStatus
             // 
+            this.gbCurrentCmdStatus.Controls.Add(this.cbCurrentNumber);
+            this.gbCurrentCmdStatus.Controls.Add(this.cbCurrentCmd);
+            this.gbCurrentCmdStatus.Controls.Add(this.cbCurrentDesc);
             this.gbCurrentCmdStatus.Controls.Add(this.label5);
             this.gbCurrentCmdStatus.Controls.Add(this.label2);
             this.gbCurrentCmdStatus.Controls.Add(this.label1);
-            this.gbCurrentCmdStatus.Controls.Add(this.lbCurrentContent);
-            this.gbCurrentCmdStatus.Controls.Add(this.lbCurrentCmd);
-            this.gbCurrentCmdStatus.Controls.Add(this.lbCurrentDesc);
-            this.gbCurrentCmdStatus.Location = new System.Drawing.Point(5, 126);
+            this.gbCurrentCmdStatus.Location = new System.Drawing.Point(5, 149);
             this.gbCurrentCmdStatus.Name = "gbCurrentCmdStatus";
-            this.gbCurrentCmdStatus.Size = new System.Drawing.Size(373, 91);
+            this.gbCurrentCmdStatus.Size = new System.Drawing.Size(373, 107);
             this.gbCurrentCmdStatus.TabIndex = 19;
             this.gbCurrentCmdStatus.TabStop = false;
             this.gbCurrentCmdStatus.Text = "Current Command Status";
             // 
+            // cbCurrentNumber
+            // 
+            this.cbCurrentNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCurrentNumber.FormattingEnabled = true;
+            this.cbCurrentNumber.Location = new System.Drawing.Point(66, 19);
+            this.cbCurrentNumber.Name = "cbCurrentNumber";
+            this.cbCurrentNumber.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbCurrentNumber.Size = new System.Drawing.Size(144, 21);
+            this.cbCurrentNumber.TabIndex = 20;
+            this.cbCurrentNumber.SelectedIndexChanged += new System.EventHandler(this.cbCurrentCmd_SelectedIndexChanged);
+            // 
+            // cbCurrentCmd
+            // 
+            this.cbCurrentCmd.FormattingEnabled = true;
+            this.cbCurrentCmd.Location = new System.Drawing.Point(66, 75);
+            this.cbCurrentCmd.Name = "cbCurrentCmd";
+            this.cbCurrentCmd.Size = new System.Drawing.Size(299, 21);
+            this.cbCurrentCmd.TabIndex = 19;
+            this.cbCurrentCmd.SelectedIndexChanged += new System.EventHandler(this.cbCurrentCmd_SelectedIndexChanged);
+            // 
+            // cbCurrentDesc
+            // 
+            this.cbCurrentDesc.FormattingEnabled = true;
+            this.cbCurrentDesc.Location = new System.Drawing.Point(66, 47);
+            this.cbCurrentDesc.Name = "cbCurrentDesc";
+            this.cbCurrentDesc.Size = new System.Drawing.Size(299, 21);
+            this.cbCurrentDesc.TabIndex = 18;
+            this.cbCurrentDesc.SelectedIndexChanged += new System.EventHandler(this.cbCurrentCmd_SelectedIndexChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 64);
+            this.label5.Location = new System.Drawing.Point(13, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 17;
@@ -414,7 +404,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 42);
+            this.label2.Location = new System.Drawing.Point(13, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 16;
@@ -423,7 +413,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 20);
+            this.label1.Location = new System.Drawing.Point(13, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 15;
@@ -431,7 +421,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 349);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(9, 485);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 20);
             this.button1.TabIndex = 20;
@@ -447,19 +438,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 380);
+            this.ClientSize = new System.Drawing.Size(384, 516);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbCurrentCmdStatus);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.gbAutoMode);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.gbManualMode);
             this.Controls.Add(this.gbCommonInfo);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(400, 4000);
+            this.MinimumSize = new System.Drawing.Size(400, 555);
             this.Name = "SW_AME_Test";
             this.ShowIcon = false;
             this.Text = "AME Support Test";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SW_AME_Test_FormClosed);
             this.Load += new System.EventHandler(this.SW_AME_Test_Load);
             this.gbCommonInfo.ResumeLayout(false);
@@ -480,12 +473,9 @@
         private System.Windows.Forms.TextBox tbFilePath;
         private System.Windows.Forms.Button btFileBrowser;
         private System.Windows.Forms.GroupBox gbCommonInfo;
-        private System.Windows.Forms.Label lbCurrentContent;
-        private System.Windows.Forms.Label lbCurrentDesc;
-        private System.Windows.Forms.Label lbCurrentCmd;
         private System.Windows.Forms.Label lbTotalCmd;
         private System.Windows.Forms.Label lbFileStatus;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbSystemStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbTotalCmd1;
         private System.Windows.Forms.Label lbFileStatus1;
@@ -497,7 +487,6 @@
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btPause;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Label lbManualStatus;
@@ -510,5 +499,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer Timer;
+        private System.Windows.Forms.ComboBox cbCurrentCmd;
+        private System.Windows.Forms.ComboBox cbCurrentNumber;
+        private System.Windows.Forms.ComboBox cbCurrentDesc;
     }
 }

@@ -38,6 +38,7 @@
             this.aMESupportTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLogSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeStamping = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiIndexStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lbDSRILow = new System.Windows.Forms.Label();
             this.lbDSRIHigh = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbDSRStatus = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lbDTROLow = new System.Windows.Forms.Label();
             this.lbDTROHigh = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             this.lbCTSOLow = new System.Windows.Forms.Label();
             this.lbCTSIHigh = new System.Windows.Forms.Label();
             this.lbCTSILow = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbCTSStatus = new System.Windows.Forms.Label();
             this.btCTS = new System.Windows.Forms.Button();
             this.lbShowLF = new System.Windows.Forms.Label();
             this.lbShowSpace = new System.Windows.Forms.Label();
@@ -111,7 +112,6 @@
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tsmiIndexStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -132,7 +132,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(795, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(794, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -189,9 +189,17 @@
             this.tsmiTimeStamping.CheckOnClick = true;
             this.tsmiTimeStamping.DoubleClickEnabled = true;
             this.tsmiTimeStamping.Name = "tsmiTimeStamping";
-            this.tsmiTimeStamping.Size = new System.Drawing.Size(152, 22);
+            this.tsmiTimeStamping.Size = new System.Drawing.Size(139, 22);
             this.tsmiTimeStamping.Text = "Time Stamp";
             this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
+            // 
+            // tsmiIndexStamping
+            // 
+            this.tsmiIndexStamping.CheckOnClick = true;
+            this.tsmiIndexStamping.Name = "tsmiIndexStamping";
+            this.tsmiIndexStamping.Size = new System.Drawing.Size(139, 22);
+            this.tsmiIndexStamping.Text = "Index Stamp";
+            this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -221,7 +229,7 @@
             this.groupBox1.Controls.Add(this.btWrapTextCo);
             this.groupBox1.Location = new System.Drawing.Point(0, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(575, 235);
+            this.groupBox1.Size = new System.Drawing.Size(574, 232);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Communications (Recieved = Yellow, Transmitted = Green):";
@@ -238,7 +246,7 @@
             this.tbDataRecieve.Location = new System.Drawing.Point(12, 19);
             this.tbDataRecieve.Name = "tbDataRecieve";
             this.tbDataRecieve.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.tbDataRecieve.Size = new System.Drawing.Size(466, 201);
+            this.tbDataRecieve.Size = new System.Drawing.Size(465, 198);
             this.tbDataRecieve.TabIndex = 11;
             this.tbDataRecieve.Text = "";
             this.tbDataRecieve.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WindowKeyDown_Event);
@@ -250,7 +258,7 @@
             this.lbWrapText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbWrapText.AutoSize = true;
             this.lbWrapText.Image = ((System.Drawing.Image)(resources.GetObject("lbWrapText.Image")));
-            this.lbWrapText.Location = new System.Drawing.Point(484, 148);
+            this.lbWrapText.Location = new System.Drawing.Point(483, 145);
             this.lbWrapText.Name = "lbWrapText";
             this.lbWrapText.Size = new System.Drawing.Size(16, 13);
             this.lbWrapText.TabIndex = 10;
@@ -259,7 +267,7 @@
             // btNewLineCo
             // 
             this.btNewLineCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNewLineCo.Location = new System.Drawing.Point(487, 196);
+            this.btNewLineCo.Location = new System.Drawing.Point(486, 193);
             this.btNewLineCo.Name = "btNewLineCo";
             this.btNewLineCo.Size = new System.Drawing.Size(82, 20);
             this.btNewLineCo.TabIndex = 3;
@@ -270,7 +278,7 @@
             // btClearCo
             // 
             this.btClearCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearCo.Location = new System.Drawing.Point(487, 170);
+            this.btClearCo.Location = new System.Drawing.Point(486, 167);
             this.btClearCo.Name = "btClearCo";
             this.btClearCo.Size = new System.Drawing.Size(82, 20);
             this.btClearCo.TabIndex = 2;
@@ -281,7 +289,7 @@
             // btWrapTextCo
             // 
             this.btWrapTextCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btWrapTextCo.Location = new System.Drawing.Point(503, 144);
+            this.btWrapTextCo.Location = new System.Drawing.Point(502, 141);
             this.btWrapTextCo.Name = "btWrapTextCo";
             this.btWrapTextCo.Size = new System.Drawing.Size(66, 20);
             this.btWrapTextCo.TabIndex = 1;
@@ -299,9 +307,9 @@
             this.groupBox2.Controls.Add(this.btClearLo);
             this.groupBox2.Controls.Add(this.btSendLFLo);
             this.groupBox2.Controls.Add(this.tbDataSend);
-            this.groupBox2.Location = new System.Drawing.Point(0, 281);
+            this.groupBox2.Location = new System.Drawing.Point(0, 278);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(575, 115);
+            this.groupBox2.Size = new System.Drawing.Size(574, 115);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Local Command:";
@@ -311,7 +319,7 @@
             this.lbSendLF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSendLF.AutoSize = true;
             this.lbSendLF.Image = ((System.Drawing.Image)(resources.GetObject("lbSendLF.Image")));
-            this.lbSendLF.Location = new System.Drawing.Point(484, 37);
+            this.lbSendLF.Location = new System.Drawing.Point(483, 37);
             this.lbSendLF.Name = "lbSendLF";
             this.lbSendLF.Size = new System.Drawing.Size(16, 13);
             this.lbSendLF.TabIndex = 11;
@@ -320,7 +328,7 @@
             // btSend
             // 
             this.btSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSend.Location = new System.Drawing.Point(487, 85);
+            this.btSend.Location = new System.Drawing.Point(486, 85);
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(82, 20);
             this.btSend.TabIndex = 3;
@@ -331,7 +339,7 @@
             // btClearLo
             // 
             this.btClearLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearLo.Location = new System.Drawing.Point(487, 59);
+            this.btClearLo.Location = new System.Drawing.Point(486, 59);
             this.btClearLo.Name = "btClearLo";
             this.btClearLo.Size = new System.Drawing.Size(82, 20);
             this.btClearLo.TabIndex = 2;
@@ -342,7 +350,7 @@
             // btSendLFLo
             // 
             this.btSendLFLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSendLFLo.Location = new System.Drawing.Point(503, 33);
+            this.btSendLFLo.Location = new System.Drawing.Point(502, 33);
             this.btSendLFLo.Name = "btSendLFLo";
             this.btSendLFLo.Size = new System.Drawing.Size(66, 20);
             this.btSendLFLo.TabIndex = 1;
@@ -363,7 +371,7 @@
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbDataSend.Size = new System.Drawing.Size(466, 90);
+            this.tbDataSend.Size = new System.Drawing.Size(465, 90);
             this.tbDataSend.TabIndex = 0;
             this.tbDataSend.WordWrap = false;
             // 
@@ -383,9 +391,9 @@
             this.groupBox3.Controls.Add(this.btCmd1);
             this.groupBox3.Controls.Add(this.btCmd4);
             this.groupBox3.Controls.Add(this.btCmd0);
-            this.groupBox3.Location = new System.Drawing.Point(0, 402);
+            this.groupBox3.Location = new System.Drawing.Point(0, 399);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(575, 112);
+            this.groupBox3.Size = new System.Drawing.Size(574, 112);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "User Commands:";
@@ -395,7 +403,7 @@
             this.lbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNext.AutoSize = true;
             this.lbNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNext.Location = new System.Drawing.Point(548, 6);
+            this.lbNext.Location = new System.Drawing.Point(547, 6);
             this.lbNext.Name = "lbNext";
             this.lbNext.Size = new System.Drawing.Size(21, 13);
             this.lbNext.TabIndex = 10;
@@ -407,7 +415,7 @@
             this.lbPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPrevious.AutoSize = true;
             this.lbPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrevious.Location = new System.Drawing.Point(521, 6);
+            this.lbPrevious.Location = new System.Drawing.Point(520, 6);
             this.lbPrevious.Name = "lbPrevious";
             this.lbPrevious.Size = new System.Drawing.Size(21, 13);
             this.lbPrevious.TabIndex = 9;
@@ -535,7 +543,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.lbDSRILow);
             this.groupBox4.Controls.Add(this.lbDSRIHigh);
-            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.lbDSRStatus);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.lbDTROLow);
             this.groupBox4.Controls.Add(this.lbDTROHigh);
@@ -545,7 +553,7 @@
             this.groupBox4.Controls.Add(this.lbCTSOLow);
             this.groupBox4.Controls.Add(this.lbCTSIHigh);
             this.groupBox4.Controls.Add(this.lbCTSILow);
-            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.lbCTSStatus);
             this.groupBox4.Controls.Add(this.btCTS);
             this.groupBox4.Controls.Add(this.lbShowLF);
             this.groupBox4.Controls.Add(this.lbShowSpace);
@@ -555,7 +563,7 @@
             this.groupBox4.Controls.Add(this.btDisplayRCData);
             this.groupBox4.Controls.Add(this.btShowSpace);
             this.groupBox4.Controls.Add(this.btShowLF);
-            this.groupBox4.Location = new System.Drawing.Point(596, 40);
+            this.groupBox4.Location = new System.Drawing.Point(595, 40);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(184, 228);
             this.groupBox4.TabIndex = 4;
@@ -582,16 +590,16 @@
             this.lbDSRIHigh.TabIndex = 26;
             this.lbDSRIHigh.Text = "   ";
             // 
-            // label5
+            // lbDSRStatus
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "DSR (Input H/S)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbDSRStatus.AutoSize = true;
+            this.lbDSRStatus.Location = new System.Drawing.Point(54, 39);
+            this.lbDSRStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDSRStatus.Name = "lbDSRStatus";
+            this.lbDSRStatus.Size = new System.Drawing.Size(86, 13);
+            this.lbDSRStatus.TabIndex = 21;
+            this.lbDSRStatus.Text = "DSR (Input H/S)";
+            this.lbDSRStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label16
             // 
@@ -683,16 +691,16 @@
             this.lbCTSILow.TabIndex = 17;
             this.lbCTSILow.Text = "   ";
             // 
-            // label6
+            // lbCTSStatus
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "CTS (Input H/S)";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCTSStatus.AutoSize = true;
+            this.lbCTSStatus.Location = new System.Drawing.Point(56, 25);
+            this.lbCTSStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbCTSStatus.Name = "lbCTSStatus";
+            this.lbCTSStatus.Size = new System.Drawing.Size(84, 13);
+            this.lbCTSStatus.TabIndex = 16;
+            this.lbCTSStatus.Text = "CTS (Input H/S)";
+            this.lbCTSStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btCTS
             // 
@@ -797,9 +805,9 @@
             this.groupBox5.Controls.Add(this.lbToCommunicate);
             this.groupBox5.Controls.Add(this.btCharToLo);
             this.groupBox5.Controls.Add(this.btCharToCo);
-            this.groupBox5.Location = new System.Drawing.Point(596, 274);
+            this.groupBox5.Location = new System.Drawing.Point(595, 274);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 178);
+            this.groupBox5.Size = new System.Drawing.Size(184, 175);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Charracter Set:";
@@ -808,7 +816,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 102);
+            this.label4.Location = new System.Drawing.Point(29, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 13);
             this.label4.TabIndex = 18;
@@ -830,7 +838,7 @@
             this.lvCharSet.MultiSelect = false;
             this.lvCharSet.Name = "lvCharSet";
             this.lvCharSet.RightToLeftLayout = true;
-            this.lvCharSet.Size = new System.Drawing.Size(146, 62);
+            this.lvCharSet.Size = new System.Drawing.Size(146, 59);
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
@@ -883,7 +891,7 @@
             this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToLocalCMD.AutoSize = true;
             this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 150);
+            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 147);
             this.lbToLocalCMD.Name = "lbToLocalCMD";
             this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
             this.lbToLocalCMD.TabIndex = 13;
@@ -894,7 +902,7 @@
             this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToCommunicate.AutoSize = true;
             this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(21, 124);
+            this.lbToCommunicate.Location = new System.Drawing.Point(21, 121);
             this.lbToCommunicate.Name = "lbToCommunicate";
             this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
             this.lbToCommunicate.TabIndex = 12;
@@ -903,7 +911,7 @@
             // btCharToLo
             // 
             this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToLo.Location = new System.Drawing.Point(42, 144);
+            this.btCharToLo.Location = new System.Drawing.Point(42, 141);
             this.btCharToLo.Name = "btCharToLo";
             this.btCharToLo.Size = new System.Drawing.Size(126, 20);
             this.btCharToLo.TabIndex = 2;
@@ -914,7 +922,7 @@
             // btCharToCo
             // 
             this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToCo.Location = new System.Drawing.Point(42, 120);
+            this.btCharToCo.Location = new System.Drawing.Point(42, 117);
             this.btCharToCo.Name = "btCharToCo";
             this.btCharToCo.Size = new System.Drawing.Size(126, 20);
             this.btCharToCo.TabIndex = 1;
@@ -957,7 +965,7 @@
             this.groupBox6.Controls.Add(this.lbSclr);
             this.groupBox6.Controls.Add(this.lbNum);
             this.groupBox6.Controls.Add(this.lbCap);
-            this.groupBox6.Location = new System.Drawing.Point(596, 485);
+            this.groupBox6.Location = new System.Drawing.Point(595, 482);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(183, 29);
             this.groupBox6.TabIndex = 8;
@@ -998,7 +1006,7 @@
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.BTSPort);
             this.groupBox7.Controls.Add(this.BTSetupCmd);
-            this.groupBox7.Location = new System.Drawing.Point(596, 445);
+            this.groupBox7.Location = new System.Drawing.Point(595, 442);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(184, 43);
             this.groupBox7.TabIndex = 9;
@@ -1028,25 +1036,17 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.MintCream;
             this.panel1.Controls.Add(this.lbTime);
-            this.panel1.Location = new System.Drawing.Point(596, 1);
+            this.panel1.Location = new System.Drawing.Point(595, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(183, 22);
             this.panel1.TabIndex = 11;
             // 
-            // tsmiIndexStamping
-            // 
-            this.tsmiIndexStamping.CheckOnClick = true;
-            this.tsmiIndexStamping.Name = "tsmiIndexStamping";
-            this.tsmiIndexStamping.Size = new System.Drawing.Size(152, 22);
-            this.tsmiIndexStamping.Text = "Index Stamp";
-            this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
-            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 519);
+            this.ClientSize = new System.Drawing.Size(794, 516);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -1152,12 +1152,12 @@
         private System.Windows.Forms.Label lbCTSOLow;
         private System.Windows.Forms.Label lbCTSIHigh;
         private System.Windows.Forms.Label lbCTSILow;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbCTSStatus;
         private System.Windows.Forms.Button btCTS;
         private System.Windows.Forms.Timer Timer1;
         private System.Windows.Forms.Label lbDSRILow;
         private System.Windows.Forms.Label lbDSRIHigh;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbDSRStatus;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btDTR;
         private System.Windows.Forms.Label label15;
