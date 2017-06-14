@@ -112,6 +112,7 @@
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbTime = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sampleLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -162,6 +163,7 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sampleLabelsToolStripMenuItem,
             this.aMESupportTestToolStripMenuItem,
             this.tsmiLogSetting});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -1042,6 +1044,13 @@
             this.panel1.Size = new System.Drawing.Size(183, 22);
             this.panel1.TabIndex = 11;
             // 
+            // sampleLabelsToolStripMenuItem
+            // 
+            this.sampleLabelsToolStripMenuItem.Name = "sampleLabelsToolStripMenuItem";
+            this.sampleLabelsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.sampleLabelsToolStripMenuItem.Text = "Sample Labels";
+            this.sampleLabelsToolStripMenuItem.Click += new System.EventHandler(this.SampleLabels_Load);
+            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1168,6 +1177,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiTimeStamping;
         private System.Windows.Forms.ToolStripMenuItem tsmiIndexStamping;
+        private System.Windows.Forms.ToolStripMenuItem sampleLabelsToolStripMenuItem;
     }
 }
 

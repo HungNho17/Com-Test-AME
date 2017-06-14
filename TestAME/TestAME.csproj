@@ -71,6 +71,12 @@
     <Compile Include="SW_AME_Test.Designer.cs">
       <DependentUpon>SW_AME_Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="SW_LabelsProgramming.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SW_LabelsProgramming.Designer.cs">
+      <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>
+    </Compile>
     <Compile Include="SW_SerialComSetUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SW_AME_Test.resx">
       <DependentUpon>SW_AME_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SW_LabelsProgramming.resx">
+      <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SW_SerialComSetUp.resx">
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
