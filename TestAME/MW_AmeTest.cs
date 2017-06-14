@@ -47,6 +47,7 @@ namespace TestAME
         SW_SerialComSetUp SubFormSPort = null;
         SW_SetupUserCommand SubFormCmd = null;
         SW_AME_Test SubFormAMETest = null;
+        SW_LabelsProgramming SubFormSampleLabels = null;
 
 //==============================================================================
 // Window Actions.
@@ -193,21 +194,24 @@ namespace TestAME
             if (FlagDisplayDataRecieve && (data != null))
             {
                 tbDataRecieve.Focus();
-                tbDataRecieve.SelectionStart = tbDataRecieve.Text.Length;
-
                 string temp = ComPort.ProcessPureString(data, FlagShowLF, FlagShowSpace);
 
                 if (temp != null)
                 {
-                    string temp1 = UpdateStamping(temp, !flagFromSP);
+                    string temp1 = UpdateStamping(temp.Substring(temp.Length-1,1));
                     if (temp1 != null)
+                    {
+                        tbDataRecieve.SelectionColor  = tbDataRecieve.ForeColor;
                         tbDataRecieve.AppendText(temp1);
-
-                    tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
-                    tbDataRecieve.SelectionLength = 0;
+                    }
 
                     if (flagFromSP)
+                    {
+                        tbDataRecieve.SelectionStart = tbDataRecieve.TextLength;
+                        tbDataRecieve.SelectionLength = 0;
                         tbDataRecieve.SelectionColor = Color.Yellow;
+                    }
+
                     tbDataRecieve.AppendText(temp);
                     tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
                 }
@@ -221,7 +225,7 @@ namespace TestAME
             bool bRet = false;
             if (dataIn == null) return bRet;
 
-            string temp1 = UpdateStamping(null, false);
+            string temp1 = UpdateStamping(dataIn.Substring(dataIn.Length-1,1));
             if (temp1 != null)
                 tbDataRecieve.AppendText(temp1);
 
@@ -331,41 +335,39 @@ namespace TestAME
             return sRet;
         }
 
-        public string UpdateStamping(string dataIn, bool flagSwitch)
+        public string UpdateStamping(string dataIn)
         {
             string sRet = null;
+
+            if (!tsmiIndexStamping.Checked && !tsmiTimeStamping.Checked)
+                return sRet;
 
             if (FlagIndexStamping)
             {
                 string temp2 = UpdateSuffix(2);
                 sRet = temp2;
                 IndextCounter++;
+                FlagIndexStamping = false;
+            }
+            if (tsmiIndexStamping.Checked)
+            {
+                if (dataIn == "\r" || dataIn == "\n")
+                {
+                    FlagIndexStamping = true;
+                }
             }
 
             if (FlagTimeStamping)
             {
                 string temp1 = UpdateSuffix(1);
                 sRet += temp1;
+                FlagTimeStamping = false;
             }
-
-            if (flagSwitch == true)
+            if (tsmiTimeStamping.Checked)
             {
-                if (tsmiIndexStamping.Checked)
+                if (dataIn == "\r" || dataIn == "\n")
                 {
-                    FlagIndexStamping = false;
-                    if (dataIn == "\r" || dataIn == "\n")
-                    {
-                        FlagIndexStamping = true;
-                    }
-                }
-
-                if (tsmiTimeStamping.Checked)
-                {
-                    FlagTimeStamping = false;
-                    if (dataIn == "\r" || dataIn == "\n")
-                    {
-                        FlagTimeStamping = true;
-                    }
+                    FlagTimeStamping = true;
                 }
             }
 
@@ -506,6 +508,23 @@ namespace TestAME
         void SubFormAMETestClosed(object sender, FormClosedEventArgs e)
         {
             SubFormAMETest = null;
+        }
+
+        /// <summary>
+        /// SUB FORM SAMPLE LABELS SUPPORT
+        /// </summary>
+        private void SampleLabels_Load(object sender, EventArgs e)
+        {
+            if (SubFormSampleLabels == null)
+            {
+                SubFormSampleLabels = new SW_LabelsProgramming();
+                SubFormSampleLabels.FormClosed += new FormClosedEventHandler(SubFormSampleLabelsClosed);
+                SubFormSampleLabels.Show();
+            }
+        }
+        void SubFormSampleLabelsClosed(object sender, FormClosedEventArgs e)
+        {
+            SubFormSampleLabels = null;
         }
 
 //==============================================================================
@@ -699,7 +718,9 @@ namespace TestAME
                     {
                         if(ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF))
                         {
-                            UpdateDataRecieved(element.SubItems[1].Text, false);
+                            string sTemp = null;
+                            sTemp = ComPort.IntToAssciiStr(Int32.Parse(element.SubItems[1].Text), FlagShowLF, FlagShowSpace);
+                            UpdateDataRecieved(sTemp, false);
                         }
                         break;
                     }
