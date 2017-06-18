@@ -49,3 +49,5 @@ D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.exe.config
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csproj.ResolveComReference.cache
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_AME_Test.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SetupUserCommand.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_LabelsProgramming.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csprojResolveAssemblyReference.cache

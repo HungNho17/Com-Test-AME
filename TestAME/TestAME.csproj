@@ -65,6 +65,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="P_XmlFileProcess.cs" />
     <Compile Include="SW_AME_Test.cs">
       <SubType>Form</SubType>
     </Compile>
