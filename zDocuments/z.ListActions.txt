@@ -1,0 +1,11 @@
+XML
+*Load XML configuration file to Excel file
+    .Process Page:
+        .Expert Page.
+        .Basic Page.
+    .Process Items:
+        .Load all Items form root element Parametter.
+        .Load all Items but filter with Field from Page.
+    .Load value Table Referent:
+        .Load all table type from root element TableList.
+    .Load Rule.
