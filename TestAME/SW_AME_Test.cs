@@ -283,6 +283,7 @@ namespace TestAME
         private void cbCurrentCmd_SelectedIndexChanged(object sender, EventArgs e)
         {
             int iTempIxd = (sender as ComboBox).SelectedIndex;
+            if (iTempIxd < iNumberOfCmd) iNumberOfCurrentCmd = iTempIxd;
             UpdateCurrentCmd(iTempIxd);
         }
 

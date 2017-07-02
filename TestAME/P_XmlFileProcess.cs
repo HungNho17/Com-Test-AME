@@ -8,15 +8,17 @@ using System.Xml.Linq;
 
 namespace TestAME
 {
+    public struct ImageInfo
+    {
+        public string ImageName;
+        public string Group;
+        public string Desc;
+        public string Conte;
+    };
+
     class P_XmlFileProcess
     {
-        public struct ImageInfo
-        {
-            public string ImageName;
-            public string Group;
-            public string Desc;
-            public string Conte;
-        };
+        
 
         //==============================================================================
         // Attributes.
@@ -50,26 +52,29 @@ namespace TestAME
 
         public List<ImageInfo> GetImageListInfo()
         {
-            List<ImageInfo> listRet = null;
-
+            List<ImageInfo> listRet = new List<ImageInfo>();
             ImageInfo tempImageInfo = new ImageInfo();
-            XmlNodeList tempList;
 
-            XmlNode root = XMLFileCurr.SelectSingleNode("/ImageManage");
-            tempList = root.SelectNodes("Image");
+            XmlNode root = XMLFileCurr.SelectSingleNode("ImageManage");
+            XMLNodeListFile = root.SelectNodes("Image");
             foreach (XmlNode element in XMLNodeListFile)
             {
                 tempImageInfo.ImageName = ((XmlElement)element).GetAttribute("name");
                 tempImageInfo.Group = ((XmlElement)((XmlElement)element).SelectSingleNode("Group")).GetAttribute("name");
                 tempImageInfo.Desc = ((XmlElement)((XmlElement)element).SelectSingleNode("Desc")).GetAttribute("name");
                 tempImageInfo.Conte = ((XmlElement)((XmlElement)element).SelectSingleNode("Conte")).GetAttribute("name");
-                ListOfImageInfo.Add(tempImageInfo);
+                listRet.Add(tempImageInfo);
             }
 
-            if (ListOfImageInfo.Count > 0)
+            try
             {
-                listRet = ListOfImageInfo;
-            }
+                if (listRet.Count > 0)
+                {
+                    ListOfImageInfo = listRet;
+                }
+            } catch { }
+
+            
 
             return listRet;
         }

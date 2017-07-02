@@ -807,7 +807,7 @@ namespace TestAME
 
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nothing to checking... version xx.x !");
+            MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
 
 
