@@ -96,8 +96,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
             // toolToolStripMenuItem
             // 
@@ -114,14 +115,14 @@
             this.tsmiEditEnable,
             this.tsmiEditDisable});
             this.newLabelToolStripMenuItem.Name = "newLabelToolStripMenuItem";
-            this.newLabelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newLabelToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.newLabelToolStripMenuItem.Text = "Edit Picture";
             // 
             // tsmiEditEnable
             // 
             this.tsmiEditEnable.CheckOnClick = true;
             this.tsmiEditEnable.Name = "tsmiEditEnable";
-            this.tsmiEditEnable.Size = new System.Drawing.Size(152, 22);
+            this.tsmiEditEnable.Size = new System.Drawing.Size(112, 22);
             this.tsmiEditEnable.Text = "Enable";
             this.tsmiEditEnable.Click += new System.EventHandler(this.tsmiEditPicture_Click);
             // 
@@ -131,7 +132,7 @@
             this.tsmiEditDisable.CheckOnClick = true;
             this.tsmiEditDisable.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiEditDisable.Name = "tsmiEditDisable";
-            this.tsmiEditDisable.Size = new System.Drawing.Size(152, 22);
+            this.tsmiEditDisable.Size = new System.Drawing.Size(112, 22);
             this.tsmiEditDisable.Text = "Disable";
             this.tsmiEditDisable.Click += new System.EventHandler(this.tsmiEditPicture_Click);
             // 
@@ -142,24 +143,24 @@
             this.tsmiMedium,
             this.tsmiNormal});
             this.pictureSizeToolStripMenuItem.Name = "pictureSizeToolStripMenuItem";
-            this.pictureSizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pictureSizeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.pictureSizeToolStripMenuItem.Text = "Picture Size";
             // 
             // tsmiSmall
             // 
             this.tsmiSmall.CheckOnClick = true;
             this.tsmiSmall.Name = "tsmiSmall";
-            this.tsmiSmall.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSmall.Size = new System.Drawing.Size(119, 22);
             this.tsmiSmall.Text = "Small";
-            this.tsmiSmall.Click += new System.EventHandler(this.tsmiSmall_Click);
+            this.tsmiSmall.Click += new System.EventHandler(this.tsmiChangeResolution_Click);
             // 
             // tsmiMedium
             // 
             this.tsmiMedium.CheckOnClick = true;
             this.tsmiMedium.Name = "tsmiMedium";
-            this.tsmiMedium.Size = new System.Drawing.Size(152, 22);
+            this.tsmiMedium.Size = new System.Drawing.Size(119, 22);
             this.tsmiMedium.Text = "Medium";
-            this.tsmiMedium.Click += new System.EventHandler(this.tsmiSmall_Click);
+            this.tsmiMedium.Click += new System.EventHandler(this.tsmiChangeResolution_Click);
             // 
             // tsmiNormal
             // 
@@ -167,9 +168,9 @@
             this.tsmiNormal.CheckOnClick = true;
             this.tsmiNormal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiNormal.Name = "tsmiNormal";
-            this.tsmiNormal.Size = new System.Drawing.Size(152, 22);
+            this.tsmiNormal.Size = new System.Drawing.Size(119, 22);
             this.tsmiNormal.Text = "Normal";
-            this.tsmiNormal.Click += new System.EventHandler(this.tsmiSmall_Click);
+            this.tsmiNormal.Click += new System.EventHandler(this.tsmiChangeResolution_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -185,6 +186,7 @@
             this.btPreviousImage.TabIndex = 2;
             this.btPreviousImage.Text = "Previous";
             this.btPreviousImage.UseVisualStyleBackColor = true;
+            this.btPreviousImage.Click += new System.EventHandler(this.btControlSelect_Handle);
             // 
             // btNextImage
             // 
@@ -194,6 +196,7 @@
             this.btNextImage.TabIndex = 3;
             this.btNextImage.Text = "Next";
             this.btNextImage.UseVisualStyleBackColor = true;
+            this.btNextImage.Click += new System.EventHandler(this.btControlSelect_Handle);
             // 
             // btClose
             // 
@@ -203,57 +206,61 @@
             this.btClose.TabIndex = 4;
             this.btClose.Text = "Close";
             this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "_Group:";
+            this.label1.Text = "_Group";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "_Desc :";
+            this.label2.Text = "_Description";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 65);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "_Cont  :";
+            this.label3.Text = "_Content";
             // 
             // cbGroup
             // 
             this.cbGroup.FormattingEnabled = true;
-            this.cbGroup.Location = new System.Drawing.Point(49, 8);
+            this.cbGroup.Location = new System.Drawing.Point(77, 9);
             this.cbGroup.Name = "cbGroup";
             this.cbGroup.Size = new System.Drawing.Size(326, 21);
             this.cbGroup.TabIndex = 8;
+            this.cbGroup.SelectedIndexChanged += new System.EventHandler(this.cbImage_SelectedIndexChanged);
             // 
             // cbDesc
             // 
             this.cbDesc.FormattingEnabled = true;
-            this.cbDesc.Location = new System.Drawing.Point(49, 35);
+            this.cbDesc.Location = new System.Drawing.Point(77, 35);
             this.cbDesc.Name = "cbDesc";
             this.cbDesc.Size = new System.Drawing.Size(326, 21);
             this.cbDesc.TabIndex = 9;
+            this.cbDesc.SelectedIndexChanged += new System.EventHandler(this.cbImage_SelectedIndexChanged);
             // 
             // cbCont
             // 
             this.cbCont.FormattingEnabled = true;
-            this.cbCont.Location = new System.Drawing.Point(49, 62);
+            this.cbCont.Location = new System.Drawing.Point(77, 62);
             this.cbCont.Name = "cbCont";
             this.cbCont.Size = new System.Drawing.Size(326, 21);
             this.cbCont.TabIndex = 10;
+            this.cbCont.SelectedIndexChanged += new System.EventHandler(this.cbImage_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -275,7 +282,7 @@
             // btClear
             // 
             this.btClear.Enabled = false;
-            this.btClear.Location = new System.Drawing.Point(404, 61);
+            this.btClear.Location = new System.Drawing.Point(420, 62);
             this.btClear.Name = "btClear";
             this.btClear.Size = new System.Drawing.Size(90, 21);
             this.btClear.TabIndex = 12;
@@ -296,7 +303,7 @@
             // btAddImage
             // 
             this.btAddImage.Enabled = false;
-            this.btAddImage.Location = new System.Drawing.Point(404, 8);
+            this.btAddImage.Location = new System.Drawing.Point(420, 8);
             this.btAddImage.Name = "btAddImage";
             this.btAddImage.Size = new System.Drawing.Size(90, 21);
             this.btAddImage.TabIndex = 12;
@@ -307,7 +314,7 @@
             // btDeleteImage
             // 
             this.btDeleteImage.Enabled = false;
-            this.btDeleteImage.Location = new System.Drawing.Point(404, 35);
+            this.btDeleteImage.Location = new System.Drawing.Point(420, 35);
             this.btDeleteImage.Name = "btDeleteImage";
             this.btDeleteImage.Size = new System.Drawing.Size(90, 21);
             this.btDeleteImage.TabIndex = 11;
@@ -330,7 +337,7 @@
             this.MinimumSize = new System.Drawing.Size(560, 380);
             this.Name = "SW_LabelsProgramming";
             this.ShowIcon = false;
-            this.Text = "Sample Labels";
+            this.Text = "SAMPLE LABELS";
             this.Load += new System.EventHandler(this.SW_LabelsProgramming_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbCurrentPicture)).EndInit();
             this.menuStrip1.ResumeLayout(false);

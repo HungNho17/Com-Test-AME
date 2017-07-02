@@ -27,13 +27,17 @@ namespace TestAME
         string ImageResourceName = "\\ImageResource";
         string ImageResourcePath = null;
 
-        Bitmap ImageCurrent = null;
-        string ImageGroup = null;
-        string ImageDesc = null;
-        string ImageConte = null;
+        string sGroup = null;
+        string sDesc = null;
+        string sConte = null;
 
         string XMLFileName = "\\ImageManage.XML";
         P_XmlFileProcess ImageManageXML = null;
+        List<ImageInfo> ListOfImageInfo = null;
+        List<ImageInfo> ListOfImageGroup = null;
+        int iTotalImageValid = 0;
+        int iTotalImageInGroupSelected = 0;
+        int iImageIndexSelected = 0;
         #endregion
         //==============================================================================
         // Operations -- WINDOW ACTIONS
@@ -46,10 +50,11 @@ namespace TestAME
         }
         private void SW_LabelsProgramming_Load(object sender, EventArgs e)
         {
-            UpdateRightContextManu();
+            UpdateRightContextMenu();
             CheckImageResource();
 
             ImageManageXML = new P_XmlFileProcess(ImageResourcePath+ XMLFileName);
+            UpdateImageResourceInfo();
         }
         #endregion
         //==============================================================================
@@ -63,6 +68,111 @@ namespace TestAME
         //==============================================================================
         #region INTERNAL_ACTIONS
 
+        private bool UpdateImageResourceInfo()
+        {
+            bool bRet = false;
+            if (ImageManageXML != null)
+            {
+                iTotalImageValid = 0;
+                ListOfImageInfo = ImageManageXML.GetImageListInfo();
+                try
+                {
+                    iTotalImageValid = ListOfImageInfo.Count;
+                }
+                catch { }
+                if (iTotalImageValid > 0)
+                {
+                    foreach (ImageInfo element in ListOfImageInfo)
+                    {
+                        if (cbGroup.Items.Count > 0)
+                        {
+                            try
+                            {
+                                foreach (string element1 in cbGroup.Items)
+                                {
+                                    if (element1 != element.Group)
+                                    {
+                                        cbGroup.Items.Add(element.Group);
+                                    }
+                                }
+                            } catch { }
+                        }
+                        else
+                            cbGroup.Items.Add(element.Group);
+                    }
+
+                    UpdateGroupSelected(0);
+                }
+                else
+                    MessageBox.Show("No Label stored!");
+                bRet = true;
+            }
+            return bRet;
+        }
+        private bool UpdateGroupSelected(int index)
+        {
+            bool bRet = false;
+            if (cbGroup.Items.Count > 0 && index < cbGroup.Items.Count)
+            {
+                cbGroup.SelectedIndex = index;
+                ListOfImageGroup = new List<ImageInfo>();
+                iTotalImageInGroupSelected = 0;
+                cbDesc.Items.Clear();
+                cbCont.Items.Clear();
+                iImageIndexSelected = 0;
+
+                foreach (ImageInfo element in ListOfImageInfo)
+                {
+                    if (cbGroup.Text == element.Group)
+                    {
+                        ListOfImageGroup.Add(element);
+                        iTotalImageInGroupSelected++;
+                        cbDesc.Items.Add(element.Desc);
+                        cbCont.Items.Add(element.Conte);
+                    }
+                }
+
+                UpdateImageSelected(iImageIndexSelected);
+            }
+            return bRet;
+        }
+        private bool UpdateImageSelected(int idx)
+        {
+            bool bRet = false;
+            if (idx < iTotalImageInGroupSelected && iTotalImageInGroupSelected > 0)
+            {
+                ImageInfo ImageInfo = ListOfImageGroup[idx];
+                Bitmap temp = LoadPicture(ImageInfo.ImageName);
+                if(temp != null)
+                {
+                    pbCurrentPicture.Image = temp;
+                    iImageIndexSelected = idx;
+                    cbDesc.SelectedIndex = iImageIndexSelected;
+                    cbCont.SelectedIndex = iImageIndexSelected;
+                    bRet = true;
+                }
+            }
+            return bRet;
+        }
+        private bool VerifyImageInfo(string sGroup,string sDesc,string sCont)
+        {
+            bool bRet = true;
+
+            if (sGroup == "" || sDesc == "" || sCont == "") return false;
+
+            if (ListOfImageInfo != null)
+            {
+                foreach (ImageInfo element in ListOfImageInfo)
+                {
+                    if (sGroup == element.Group && sDesc == element.Desc && sCont == element.Conte)
+                    {
+                        bRet = false;
+                        break;
+                    }
+                }
+            }
+            return bRet;
+        }
         private bool CheckImageResource()
         {
             bool bRet = false;
@@ -84,14 +194,14 @@ namespace TestAME
             }
             return bRet;
         }
-
         private bool CheckResourceManage()
         {
             bool bRet = false;
 
             return bRet;
         }
-        private bool UpdateRightContextManu()
+
+        private bool UpdateRightContextMenu()
         {
             bool bRet = true;
             
@@ -116,6 +226,26 @@ namespace TestAME
                 SetPicture(Clipboard.GetImage(), Image_Normal);
             }
         }
+
+        private string ImageNameGenerate()
+        {
+            string sRet = null;
+            string sTemp = null;
+            int iTemp = 0;
+
+            try
+            {
+                ImageInfo LastElement = ListOfImageInfo.Last();
+                sTemp = string.Join("",LastElement.ImageName.Where(char.IsDigit));
+                iTemp = int.Parse(sTemp);
+            }
+            catch { }
+            
+            iTemp += 1;
+            sRet = "image_" + iTemp.ToString();
+
+            return sRet;
+        }
         private bool SetPicture(Image iImage, Size iSize)
         {
             bool bRet = true;
@@ -139,18 +269,6 @@ namespace TestAME
             bTempImage.Save(sTempPath, ImageFormat.Png);
             return bRet;
         }
-        private Bitmap LoadPicture(string iImageName)
-        {
-            Bitmap ImageRet = null;
-
-            string sTempPath = ImageResourcePath + "\\" + iImageName;
-            if (File.Exists(sTempPath))
-            {
-                ImageRet = (Bitmap) Image.FromFile(sTempPath);
-            }
-
-            return ImageRet;
-        }
         private bool RemovePicture(string iImageName)
         {
             bool bRet = false;
@@ -165,6 +283,18 @@ namespace TestAME
             }
             return bRet;
         }
+        private Bitmap LoadPicture(string iImageName)
+        {
+            Bitmap ImageRet = null;
+
+            string sTempPath = ImageResourcePath + "\\" + iImageName;
+            if (File.Exists(sTempPath))
+            {
+                ImageRet = new Bitmap(Image.FromFile(sTempPath));
+            }
+
+            return ImageRet;
+        }
 
         #endregion
         //==============================================================================
@@ -177,8 +307,7 @@ namespace TestAME
         // Operations -- EVENT PROCESS
         //==============================================================================
         #region EVENT_PROCESS
-
-        private void tsmiSmall_Click(object sender, EventArgs e)
+        private void tsmiChangeResolution_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem tempObject = sender as ToolStripMenuItem;
             tsmiSmall.Checked = false;
@@ -201,7 +330,6 @@ namespace TestAME
                 SetPicture(pbCurrentPicture.Image, Image_Normal);
             }
         }
-
         private void tsmiEditPicture_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem tempObject = sender as ToolStripMenuItem;
@@ -223,36 +351,88 @@ namespace TestAME
                 btClear.Enabled = false;
             }
         }
-        private void btClear_Click(object sender, EventArgs e)
+        private void tsmiExit_Click(object sender, EventArgs e)
         {
-            Bitmap temp = LoadPicture("image_001");
-            pbCurrentPicture.Image = temp;
+            this.Close();
         }
 
+        private void btClear_Click(object sender, EventArgs e)
+        {
+            pbCurrentPicture.Image = null;
+            cbGroup.Text = "";
+            cbDesc.Text = "";
+            cbCont.Text = "";
+        }
         private void btAddImage_Click(object sender, EventArgs e)
         {
             if (pbCurrentPicture.Image != null)
             {
-                if (cbGroup.Text == "" || cbDesc.Text == "" || cbCont.Text == "")
+                if (VerifyImageInfo(cbGroup.Text, cbDesc.Text, cbCont.Text))
                 {
-                    MessageBox.Show("Please give enough information in _Group, _Desc, _Conte !");
+                    string sName = ImageNameGenerate();
+                    SavePicture(pbCurrentPicture.Image, sName);
+                    ImageManageXML.AddNewImage(sName, cbGroup.Text, cbDesc.Text, cbCont.Text);
+                    UpdateImageResourceInfo();
+                    sGroup = cbGroup.Text; sDesc = cbDesc.Text; sConte = cbCont.Text;
+                    MessageBox.Show("Add done !");
                 }
                 else
                 {
-                    SavePicture(pbCurrentPicture.Image, "image_001");
-                    ImageManageXML.AddNewImage("image_001", cbGroup.Text, cbDesc.Text, cbCont.Text);
-                    MessageBox.Show("Add done !");
+                    MessageBox.Show("Info invalid !");
+                }
+            }
+        }
+        private void btDeleteImage_Click(object sender, EventArgs e)
+        {
+            if (iImageIndexSelected < iTotalImageValid)
+            {
+                ImageInfo ImageSelect = ListOfImageInfo[iImageIndexSelected];
+                RemovePicture(ImageSelect.ImageName);
+                ImageManageXML.RemoveImage (ImageSelect.ImageName);
+                UpdateImageResourceInfo();
+                if (iImageIndexSelected > iTotalImageValid)
+                    iImageIndexSelected = iTotalImageValid - 1;
+            }
+            
+        }
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btControlSelect_Handle(object sender, EventArgs e)
+        {
+            if ((sender as Button) == btPreviousImage)
+            {
+                if (iImageIndexSelected > 0)
+                {
+                    iImageIndexSelected--;
+                    UpdateImageSelected(iImageIndexSelected);
+                }
+            }
+            else if ((sender as Button) == btNextImage)
+            {
+                if (iImageIndexSelected < iTotalImageInGroupSelected)
+                {
+                    iImageIndexSelected++;
+                    UpdateImageSelected(iImageIndexSelected);
                 }
             }
         }
 
-        private void btDeleteImage_Click(object sender, EventArgs e)
+        private void cbImage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RemovePicture("image_001");
-            ImageManageXML.RemoveImage ("image_001");
+            int iTempIxd = (sender as ComboBox).SelectedIndex;
+            if ((sender as ComboBox) == cbGroup)
+            {
+                UpdateGroupSelected(iTempIxd);
+            }
+            else
+            {
+                if (iTempIxd < iTotalImageInGroupSelected) iImageIndexSelected = iTempIxd;
+                UpdateImageSelected(iTempIxd);
+            }
         }
-
-
         #endregion
+
     }
 }

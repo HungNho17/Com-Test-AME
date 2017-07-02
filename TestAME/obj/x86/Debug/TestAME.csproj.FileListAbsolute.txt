@@ -24,15 +24,6 @@ F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
 F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
 F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.exe
 F:\4.GIT_HUB\2.TestAME\TestAME\obj\x86\Debug\TestAME.pdb
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.exe
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.pdb
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.exe
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.pdb
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.g.resources
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.MW_AmeTest.resources
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.Properties.Resources.resources
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Debug\TestAME.exe
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Debug\TestAME.pdb
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Debug\TestAME.exe
@@ -46,8 +37,17 @@ F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateR
 F:\2_GitRepositories\1_ComTestAME\TestAME\bin\Debug\TestAME.exe.config
 F:\2_GitRepositories\1_ComTestAME\TestAME\obj\x86\Debug\TestAME.SW_SetupUserCommand.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.exe.config
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.exe
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\bin\Debug\TestAME.pdb
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csproj.ResolveComReference.cache
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.g.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.MW_AmeTest.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.Properties.Resources.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_AME_Test.resources
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SetupUserCommand.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_LabelsProgramming.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SetupUserCommand.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csproj.GenerateResource.Cache
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.exe
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.pdb
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csprojResolveAssemblyReference.cache
