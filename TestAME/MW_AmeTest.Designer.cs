@@ -34,7 +34,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSimpleView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFullView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,17 +61,18 @@
             this.btSendLFLo = new System.Windows.Forms.Button();
             this.tbDataSend = new System.Windows.Forms.TextBox();
             this.gbUserCmd = new System.Windows.Forms.GroupBox();
-            this.lbNext = new System.Windows.Forms.Label();
-            this.lbPrevious = new System.Windows.Forms.Label();
-            this.lbCurrentUser = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btCmd0 = new System.Windows.Forms.Button();
+            this.btCmd4 = new System.Windows.Forms.Button();
+            this.btCmd5 = new System.Windows.Forms.Button();
             this.btCmd7 = new System.Windows.Forms.Button();
             this.btCmd3 = new System.Windows.Forms.Button();
             this.btCmd6 = new System.Windows.Forms.Button();
             this.btCmd2 = new System.Windows.Forms.Button();
-            this.btCmd5 = new System.Windows.Forms.Button();
             this.btCmd1 = new System.Windows.Forms.Button();
-            this.btCmd4 = new System.Windows.Forms.Button();
-            this.btCmd0 = new System.Windows.Forms.Button();
+            this.lbNext = new System.Windows.Forms.Label();
+            this.lbPrevious = new System.Windows.Forms.Label();
+            this.lbCurrentUser = new System.Windows.Forms.Label();
             this.SPort = new System.IO.Ports.SerialPort(this.components);
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbTime = new System.Windows.Forms.Label();
@@ -119,10 +120,13 @@
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
+            this.lbTempStatus = new System.Windows.Forms.Label();
+            this.btTempConnect = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.gbCommunicate.SuspendLayout();
             this.gbLocalCmd.SuspendLayout();
             this.gbUserCmd.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.pnTime.SuspendLayout();
             this.gbSetUp.SuspendLayout();
             this.gbCapStatus.SuspendLayout();
@@ -135,7 +139,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem,
+            this.tsmiView,
             this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -156,28 +160,29 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLog_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
-            // viewToolStripMenuItem
+            // tsmiView
             // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiSimpleView,
             this.tsmiFullView});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.tsmiView.Name = "tsmiView";
+            this.tsmiView.Size = new System.Drawing.Size(44, 20);
+            this.tsmiView.Text = "View";
             // 
             // tsmiSimpleView
             // 
+            this.tsmiSimpleView.CheckOnClick = true;
             this.tsmiSimpleView.Name = "tsmiSimpleView";
             this.tsmiSimpleView.Size = new System.Drawing.Size(152, 22);
             this.tsmiSimpleView.Text = "Simple";
@@ -185,6 +190,7 @@
             // 
             // tsmiFullView
             // 
+            this.tsmiFullView.CheckOnClick = true;
             this.tsmiFullView.Name = "tsmiFullView";
             this.tsmiFullView.Size = new System.Drawing.Size(152, 22);
             this.tsmiFullView.Text = "Full";
@@ -229,7 +235,7 @@
             this.tsmiTimeStamping.CheckOnClick = true;
             this.tsmiTimeStamping.DoubleClickEnabled = true;
             this.tsmiTimeStamping.Name = "tsmiTimeStamping";
-            this.tsmiTimeStamping.Size = new System.Drawing.Size(139, 22);
+            this.tsmiTimeStamping.Size = new System.Drawing.Size(152, 22);
             this.tsmiTimeStamping.Text = "Time Stamp";
             this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
             // 
@@ -237,7 +243,7 @@
             // 
             this.tsmiIndexStamping.CheckOnClick = true;
             this.tsmiIndexStamping.Name = "tsmiIndexStamping";
-            this.tsmiIndexStamping.Size = new System.Drawing.Size(139, 22);
+            this.tsmiIndexStamping.Size = new System.Drawing.Size(152, 22);
             this.tsmiIndexStamping.Text = "Index Stamp";
             this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
             // 
@@ -253,14 +259,14 @@
             // setUpUserCMDToolStripMenuItem
             // 
             this.setUpUserCMDToolStripMenuItem.Name = "setUpUserCMDToolStripMenuItem";
-            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.setUpUserCMDToolStripMenuItem.Text = "User CMD";
             this.setUpUserCMDToolStripMenuItem.Click += new System.EventHandler(this.BTSetupCmd_Click);
             // 
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.BTSPort_Click);
             // 
@@ -275,7 +281,7 @@
             // aboutUsToolStripMenuItem
             // 
             this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutUsToolStripMenuItem.Text = "About Us";
             this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
             // 
@@ -285,7 +291,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbCommunicate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbCommunicate.Controls.Add(this.lbTempStatus);
             this.gbCommunicate.Controls.Add(this.tbDataRecieve);
+            this.gbCommunicate.Controls.Add(this.btTempConnect);
             this.gbCommunicate.Controls.Add(this.lbWrapText);
             this.gbCommunicate.Controls.Add(this.btNewLineCo);
             this.gbCommunicate.Controls.Add(this.btClearCo);
@@ -443,30 +451,153 @@
             this.gbUserCmd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbUserCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbUserCmd.Controls.Add(this.tableLayoutPanel1);
             this.gbUserCmd.Controls.Add(this.lbNext);
             this.gbUserCmd.Controls.Add(this.lbPrevious);
             this.gbUserCmd.Controls.Add(this.lbCurrentUser);
-            this.gbUserCmd.Controls.Add(this.btCmd7);
-            this.gbUserCmd.Controls.Add(this.btCmd3);
-            this.gbUserCmd.Controls.Add(this.btCmd6);
-            this.gbUserCmd.Controls.Add(this.btCmd2);
-            this.gbUserCmd.Controls.Add(this.btCmd5);
-            this.gbUserCmd.Controls.Add(this.btCmd1);
-            this.gbUserCmd.Controls.Add(this.btCmd4);
-            this.gbUserCmd.Controls.Add(this.btCmd0);
-            this.gbUserCmd.Location = new System.Drawing.Point(0, 399);
+            this.gbUserCmd.Location = new System.Drawing.Point(0, 405);
             this.gbUserCmd.Name = "gbUserCmd";
-            this.gbUserCmd.Size = new System.Drawing.Size(574, 112);
+            this.gbUserCmd.Size = new System.Drawing.Size(574, 106);
             this.gbUserCmd.TabIndex = 3;
             this.gbUserCmd.TabStop = false;
             this.gbUserCmd.Text = "User Commands:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.btCmd0, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd5, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd7, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd3, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd6, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btCmd1, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 22);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(556, 71);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
+            // btCmd0
+            // 
+            this.btCmd0.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd0.Enabled = false;
+            this.btCmd0.Location = new System.Drawing.Point(3, 6);
+            this.btCmd0.Name = "btCmd0";
+            this.btCmd0.Size = new System.Drawing.Size(133, 23);
+            this.btCmd0.TabIndex = 0;
+            this.btCmd0.Text = "undefine";
+            this.btCmd0.UseVisualStyleBackColor = true;
+            this.btCmd0.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd4
+            // 
+            this.btCmd4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd4.Enabled = false;
+            this.btCmd4.Location = new System.Drawing.Point(3, 41);
+            this.btCmd4.Name = "btCmd4";
+            this.btCmd4.Size = new System.Drawing.Size(133, 23);
+            this.btCmd4.TabIndex = 1;
+            this.btCmd4.Text = "undefine";
+            this.btCmd4.UseVisualStyleBackColor = true;
+            this.btCmd4.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd5
+            // 
+            this.btCmd5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd5.Enabled = false;
+            this.btCmd5.Location = new System.Drawing.Point(142, 41);
+            this.btCmd5.Name = "btCmd5";
+            this.btCmd5.Size = new System.Drawing.Size(133, 23);
+            this.btCmd5.TabIndex = 3;
+            this.btCmd5.Text = "undefine";
+            this.btCmd5.UseVisualStyleBackColor = true;
+            this.btCmd5.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd7
+            // 
+            this.btCmd7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd7.Enabled = false;
+            this.btCmd7.Location = new System.Drawing.Point(420, 41);
+            this.btCmd7.Name = "btCmd7";
+            this.btCmd7.Size = new System.Drawing.Size(133, 23);
+            this.btCmd7.TabIndex = 7;
+            this.btCmd7.Text = "undefine";
+            this.btCmd7.UseVisualStyleBackColor = true;
+            this.btCmd7.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd3
+            // 
+            this.btCmd3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd3.Enabled = false;
+            this.btCmd3.Location = new System.Drawing.Point(420, 6);
+            this.btCmd3.Name = "btCmd3";
+            this.btCmd3.Size = new System.Drawing.Size(133, 23);
+            this.btCmd3.TabIndex = 6;
+            this.btCmd3.Text = "undefine";
+            this.btCmd3.UseVisualStyleBackColor = true;
+            this.btCmd3.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd6
+            // 
+            this.btCmd6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd6.Enabled = false;
+            this.btCmd6.Location = new System.Drawing.Point(281, 41);
+            this.btCmd6.Name = "btCmd6";
+            this.btCmd6.Size = new System.Drawing.Size(133, 23);
+            this.btCmd6.TabIndex = 5;
+            this.btCmd6.Text = "undefine";
+            this.btCmd6.UseVisualStyleBackColor = true;
+            this.btCmd6.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd2
+            // 
+            this.btCmd2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd2.Enabled = false;
+            this.btCmd2.Location = new System.Drawing.Point(281, 6);
+            this.btCmd2.Name = "btCmd2";
+            this.btCmd2.Size = new System.Drawing.Size(133, 23);
+            this.btCmd2.TabIndex = 4;
+            this.btCmd2.Text = "undefine";
+            this.btCmd2.UseVisualStyleBackColor = true;
+            this.btCmd2.Click += new System.EventHandler(this.BTControlUserCmd_Click);
+            // 
+            // btCmd1
+            // 
+            this.btCmd1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCmd1.Enabled = false;
+            this.btCmd1.Location = new System.Drawing.Point(142, 6);
+            this.btCmd1.Name = "btCmd1";
+            this.btCmd1.Size = new System.Drawing.Size(133, 23);
+            this.btCmd1.TabIndex = 2;
+            this.btCmd1.Text = "undefine";
+            this.btCmd1.UseVisualStyleBackColor = true;
+            this.btCmd1.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // lbNext
             // 
             this.lbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbNext.AutoSize = true;
             this.lbNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNext.Location = new System.Drawing.Point(547, 6);
+            this.lbNext.Location = new System.Drawing.Point(547, 0);
             this.lbNext.Name = "lbNext";
             this.lbNext.Size = new System.Drawing.Size(21, 13);
             this.lbNext.TabIndex = 10;
@@ -478,7 +609,7 @@
             this.lbPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPrevious.AutoSize = true;
             this.lbPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrevious.Location = new System.Drawing.Point(520, 6);
+            this.lbPrevious.Location = new System.Drawing.Point(520, 0);
             this.lbPrevious.Name = "lbPrevious";
             this.lbPrevious.Size = new System.Drawing.Size(21, 13);
             this.lbPrevious.TabIndex = 9;
@@ -496,110 +627,6 @@
             this.lbCurrentUser.TabIndex = 8;
             this.lbCurrentUser.Text = "...";
             this.lbCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btCmd7
-            // 
-            this.btCmd7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd7.Enabled = false;
-            this.btCmd7.Location = new System.Drawing.Point(451, 69);
-            this.btCmd7.Name = "btCmd7";
-            this.btCmd7.Size = new System.Drawing.Size(118, 23);
-            this.btCmd7.TabIndex = 7;
-            this.btCmd7.Text = "undefine";
-            this.btCmd7.UseVisualStyleBackColor = true;
-            this.btCmd7.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd3
-            // 
-            this.btCmd3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd3.Enabled = false;
-            this.btCmd3.Location = new System.Drawing.Point(451, 28);
-            this.btCmd3.Name = "btCmd3";
-            this.btCmd3.Size = new System.Drawing.Size(118, 23);
-            this.btCmd3.TabIndex = 6;
-            this.btCmd3.Text = "undefine";
-            this.btCmd3.UseVisualStyleBackColor = true;
-            this.btCmd3.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd6
-            // 
-            this.btCmd6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd6.Enabled = false;
-            this.btCmd6.Location = new System.Drawing.Point(308, 69);
-            this.btCmd6.Name = "btCmd6";
-            this.btCmd6.Size = new System.Drawing.Size(118, 23);
-            this.btCmd6.TabIndex = 5;
-            this.btCmd6.Text = "undefine";
-            this.btCmd6.UseVisualStyleBackColor = true;
-            this.btCmd6.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd2
-            // 
-            this.btCmd2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd2.Enabled = false;
-            this.btCmd2.Location = new System.Drawing.Point(308, 28);
-            this.btCmd2.Name = "btCmd2";
-            this.btCmd2.Size = new System.Drawing.Size(118, 23);
-            this.btCmd2.TabIndex = 4;
-            this.btCmd2.Text = "undefine";
-            this.btCmd2.UseVisualStyleBackColor = true;
-            this.btCmd2.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd5
-            // 
-            this.btCmd5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd5.Enabled = false;
-            this.btCmd5.Location = new System.Drawing.Point(163, 69);
-            this.btCmd5.Name = "btCmd5";
-            this.btCmd5.Size = new System.Drawing.Size(118, 23);
-            this.btCmd5.TabIndex = 3;
-            this.btCmd5.Text = "undefine";
-            this.btCmd5.UseVisualStyleBackColor = true;
-            this.btCmd5.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd1
-            // 
-            this.btCmd1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd1.Enabled = false;
-            this.btCmd1.Location = new System.Drawing.Point(163, 28);
-            this.btCmd1.Name = "btCmd1";
-            this.btCmd1.Size = new System.Drawing.Size(118, 23);
-            this.btCmd1.TabIndex = 2;
-            this.btCmd1.Text = "undefine";
-            this.btCmd1.UseVisualStyleBackColor = true;
-            this.btCmd1.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd4
-            // 
-            this.btCmd4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd4.Enabled = false;
-            this.btCmd4.Location = new System.Drawing.Point(12, 69);
-            this.btCmd4.Name = "btCmd4";
-            this.btCmd4.Size = new System.Drawing.Size(118, 23);
-            this.btCmd4.TabIndex = 1;
-            this.btCmd4.Text = "undefine";
-            this.btCmd4.UseVisualStyleBackColor = true;
-            this.btCmd4.Click += new System.EventHandler(this.BTControlUserCmd_Click);
-            // 
-            // btCmd0
-            // 
-            this.btCmd0.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btCmd0.Enabled = false;
-            this.btCmd0.Location = new System.Drawing.Point(12, 28);
-            this.btCmd0.Name = "btCmd0";
-            this.btCmd0.Size = new System.Drawing.Size(118, 23);
-            this.btCmd0.TabIndex = 0;
-            this.btCmd0.Text = "undefine";
-            this.btCmd0.UseVisualStyleBackColor = true;
-            this.btCmd0.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
             // SPort
             // 
@@ -772,17 +799,17 @@
             // Decimal
             // 
             this.Decimal.Text = "";
-            this.Decimal.Width = 50;
+            this.Decimal.Width = 30;
             // 
             // Hex
             // 
             this.Hex.Text = "";
-            this.Hex.Width = 45;
+            this.Hex.Width = 40;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(105, 22);
+            this.label3.Location = new System.Drawing.Point(109, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 16;
@@ -791,7 +818,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 22);
+            this.label2.Location = new System.Drawing.Point(60, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 15;
@@ -800,7 +827,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 22);
+            this.label1.Location = new System.Drawing.Point(25, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 14;
@@ -811,7 +838,7 @@
             this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToLocalCMD.AutoSize = true;
             this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 147);
+            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 150);
             this.lbToLocalCMD.Name = "lbToLocalCMD";
             this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
             this.lbToLocalCMD.TabIndex = 13;
@@ -822,7 +849,7 @@
             this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbToCommunicate.AutoSize = true;
             this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(21, 121);
+            this.lbToCommunicate.Location = new System.Drawing.Point(21, 124);
             this.lbToCommunicate.Name = "lbToCommunicate";
             this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
             this.lbToCommunicate.TabIndex = 12;
@@ -831,7 +858,7 @@
             // btCharToLo
             // 
             this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToLo.Location = new System.Drawing.Point(42, 141);
+            this.btCharToLo.Location = new System.Drawing.Point(42, 144);
             this.btCharToLo.Name = "btCharToLo";
             this.btCharToLo.Size = new System.Drawing.Size(126, 20);
             this.btCharToLo.TabIndex = 2;
@@ -842,7 +869,7 @@
             // btCharToCo
             // 
             this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToCo.Location = new System.Drawing.Point(42, 117);
+            this.btCharToCo.Location = new System.Drawing.Point(42, 120);
             this.btCharToCo.Name = "btCharToCo";
             this.btCharToCo.Size = new System.Drawing.Size(126, 20);
             this.btCharToCo.TabIndex = 1;
@@ -1104,6 +1131,30 @@
             this.btShowLF.UseVisualStyleBackColor = true;
             this.btShowLF.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
+            // lbTempStatus
+            // 
+            this.lbTempStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTempStatus.AutoSize = true;
+            this.lbTempStatus.Image = ((System.Drawing.Image)(resources.GetObject("lbTempStatus.Image")));
+            this.lbTempStatus.Location = new System.Drawing.Point(483, 119);
+            this.lbTempStatus.Name = "lbTempStatus";
+            this.lbTempStatus.Size = new System.Drawing.Size(16, 13);
+            this.lbTempStatus.TabIndex = 29;
+            this.lbTempStatus.Text = "   ";
+            this.lbTempStatus.Visible = false;
+            // 
+            // btTempConnect
+            // 
+            this.btTempConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btTempConnect.Location = new System.Drawing.Point(502, 115);
+            this.btTempConnect.Name = "btTempConnect";
+            this.btTempConnect.Size = new System.Drawing.Size(66, 20);
+            this.btTempConnect.TabIndex = 28;
+            this.btTempConnect.Text = "Serial Port";
+            this.btTempConnect.UseVisualStyleBackColor = true;
+            this.btTempConnect.Visible = false;
+            this.btTempConnect.Click += new System.EventHandler(this.BTConnectStatus_Click);
+            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1112,8 +1163,8 @@
             this.Controls.Add(this.gbSetUp);
             this.Controls.Add(this.gbCapStatus);
             this.Controls.Add(this.pnTime);
-            this.Controls.Add(this.gbCharSetStatus);
             this.Controls.Add(this.gbUserCmd);
+            this.Controls.Add(this.gbCharSetStatus);
             this.Controls.Add(this.gbConnectStatus);
             this.Controls.Add(this.gbLocalCmd);
             this.Controls.Add(this.gbCommunicate);
@@ -1132,6 +1183,7 @@
             this.gbLocalCmd.PerformLayout();
             this.gbUserCmd.ResumeLayout(false);
             this.gbUserCmd.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.pnTime.ResumeLayout(false);
             this.pnTime.PerformLayout();
             this.gbSetUp.ResumeLayout(false);
@@ -1188,7 +1240,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiTimeStamping;
         private System.Windows.Forms.ToolStripMenuItem tsmiIndexStamping;
         private System.Windows.Forms.ToolStripMenuItem sampleLabelsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiView;
         private System.Windows.Forms.ToolStripMenuItem tsmiSimpleView;
         private System.Windows.Forms.ToolStripMenuItem tsmiFullView;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
@@ -1237,6 +1289,9 @@
         private System.Windows.Forms.Button btDisplayRCData;
         private System.Windows.Forms.Button btShowSpace;
         private System.Windows.Forms.Button btShowLF;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lbTempStatus;
+        private System.Windows.Forms.Button btTempConnect;
     }
 }
 

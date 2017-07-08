@@ -52,9 +52,9 @@ namespace TestAME
         Size FormDefaultSize = new Size();
         bool FlagFlipView = false;
 
-//==============================================================================
-// Window Actions.
-//==============================================================================
+        //==============================================================================
+        // Window Actions.
+        //==============================================================================
         public MW_AmeTest()
         {
             InitializeComponent();
@@ -81,7 +81,7 @@ namespace TestAME
             ComPort = new P_SerialComPort(SPort);
             UserCmd = new P_UserCommandManagement();
             SPort.DataReceived += new SerialDataReceivedEventHandler(SPort_DataReceived);
-            ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF};
+            ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF,btTempConnect};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
             CommandBTList = new List<Button>() { btCmd0,btCmd1,btCmd2,btCmd3,btCmd4,btCmd5,btCmd6,btCmd7};
             UpdateStatusWindow();
@@ -93,14 +93,16 @@ namespace TestAME
 
         public void UpdateStatusWindow()
         {
-            if (SPort.PortName != null)
+            if (SPort != null)
             {
+                ComPort.LoadOldComPort();
                 btConnectSP.Text = "Serial " + SPort.PortName;
             }
 
             if (FlagConnectStatus) // update status connection
             {
                 lbConnect.Image = TestAME.Properties.Resources.Green;
+                lbTempStatus.Image = TestAME.Properties.Resources.Green;
 
                 if (FlagDisplayDataRecieve == false) // update status data recieve display
                 {
@@ -116,6 +118,7 @@ namespace TestAME
             else
             {
                 lbConnect.Image = TestAME.Properties.Resources.Red;
+                lbTempStatus.Image = TestAME.Properties.Resources.Red;
 
                 tbDataRecieve.BackColor = Color.Navy;
                 lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
@@ -544,10 +547,12 @@ namespace TestAME
             switch (IndexSender)
             { 
                 case 0: // bt connect
+                case 4: // bt temp connect
                     if (FlagConnectStatus == false)
                     {
                         if (ComPort.OpenSPort())
                         {
+                            ComPort.SaveComPort();
                             FlagConnectStatus = true;
                         }
                         else
@@ -815,12 +820,18 @@ namespace TestAME
             if (FlagFlipView == false)
             {
                 FlagFlipView = true;
+                tsmiSimpleView.Checked = true;
+                tsmiFullView.Checked = false;
 
                 pnTime.Visible = false;
                 gbConnectStatus.Visible = false;
                 gbCharSetStatus.Visible = false;
                 gbSetUp.Visible = false;
                 gbCapStatus.Visible = false;
+
+                btTempConnect.Visible = true;
+                lbTempStatus.Visible = true;
+                if (SPort.PortName != "") btTempConnect.Text = SPort.PortName;
 
                 this.MinimumSize = new Size(this.MinimumSize.Width - pnTime.Width, this.MinimumSize.Height);
                 this.Width = this.Width - pnTime.Width;
@@ -837,12 +848,17 @@ namespace TestAME
             if (FlagFlipView)
             {
                 FlagFlipView = false;
+                tsmiSimpleView.Checked = false;
+                tsmiFullView.Checked = true;
 
                 pnTime.Visible = true;
                 gbConnectStatus.Visible = true;
                 gbCharSetStatus.Visible = true;
                 gbSetUp.Visible = true;
                 gbCapStatus.Visible = true;
+
+                btTempConnect.Visible = false;
+                lbTempStatus.Visible = false;
 
                 this.MinimumSize = new Size(this.MinimumSize.Width + pnTime.Width, this.MinimumSize.Height);
                 this.Width = this.Width + pnTime.Width;
@@ -853,6 +869,7 @@ namespace TestAME
                 this.Refresh();
             }
         }
+
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

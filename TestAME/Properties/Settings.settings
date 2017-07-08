@@ -212,5 +212,20 @@
     <Setting Name="user4_cmd8" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="PortName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PortBaudrate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PortParity" Type="System.IO.Ports.Parity" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="PortDataBit" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PortStopBit" Type="System.IO.Ports.StopBits" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

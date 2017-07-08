@@ -23,6 +23,7 @@ namespace TestAME
         Size Image_Small = new Size(270, 90);
         Size Image_Medium = new Size(360, 90);
         Size Image_Normal = new Size(450, 90);
+        Size Image_Default = new Size(450, 90);
 
         string ImageResourceName = "\\ImageResource";
         string ImageResourcePath = null;
@@ -146,6 +147,7 @@ namespace TestAME
                 if(temp != null)
                 {
                     pbCurrentPicture.Image = temp;
+                    SetPicture(pbCurrentPicture.Image, Image_Default);
                     iImageIndexSelected = idx;
                     cbDesc.SelectedIndex = iImageIndexSelected;
                     cbCont.SelectedIndex = iImageIndexSelected;
@@ -317,16 +319,19 @@ namespace TestAME
             if (tempObject == tsmiSmall)
             {
                 tsmiSmall.Checked = true;
+                Image_Default = Image_Small;
                 SetPicture(pbCurrentPicture.Image, Image_Small);
             }
             else if (tempObject == tsmiMedium)
             {
                 tsmiMedium.Checked = true;
+                Image_Default = Image_Medium;
                 SetPicture(pbCurrentPicture.Image, Image_Medium);
             }
             else if (tempObject == tsmiNormal)
             {
                 tsmiNormal.Checked = true;
+                Image_Default = Image_Normal;
                 SetPicture(pbCurrentPicture.Image, Image_Normal);
             }
         }

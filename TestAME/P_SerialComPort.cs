@@ -384,5 +384,45 @@ namespace TestAME
 
             return dtResult;
         }
+
+        public bool SaveComPort()
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen)
+            {
+                Properties.Settings.Default.PortName = CurrentComPort.PortName;
+                Properties.Settings.Default.PortBaudrate = CurrentComPort.BaudRate;
+                Properties.Settings.Default.PortDataBit = CurrentComPort.DataBits;
+                Properties.Settings.Default.PortStopBit = CurrentComPort.StopBits;
+                Properties.Settings.Default.Save();
+                bRet = true;
+            }
+            return bRet;
+        }
+        public bool LoadOldComPort()
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen == false)
+            {
+                if (Properties.Settings.Default.PortName != null)
+                {
+                    string[] port = SerialPort.GetPortNames();
+
+                    foreach (string element in port)
+                    {
+                        if(element == Properties.Settings.Default.PortName)
+                        {
+                            CurrentComPort.PortName = Properties.Settings.Default.PortName;
+                            CurrentComPort.BaudRate = Properties.Settings.Default.PortBaudrate;
+                            CurrentComPort.DataBits = Properties.Settings.Default.PortDataBit;
+                            CurrentComPort.StopBits = Properties.Settings.Default.PortStopBit;
+                            bRet = true;
+                        }
+                    }
+                    
+                }
+            }
+            return bRet;
+        }
     }
 }

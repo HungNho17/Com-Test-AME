@@ -46,15 +46,7 @@ namespace TestAME
 
         private void SelectAndConfigSP_Load(object sender, EventArgs e)
         {
-            
-            if (ComPort.IsOpen)
-            {
-                LoadVariableSPort();
-            }
-            else
-            {
-                LoadVariableDefault();
-            }
+            LoadVariableDefault();
         }
 
 //==============================================================================
@@ -103,23 +95,22 @@ namespace TestAME
         public void LoadVariableDefault()
         {
             RefreshComport();
-            PortName = null;
-            PortBaudRate = 9600;
-            PortParity = Parity.None;
-            PortDataBits = 8;
-            PortStopBit = StopBits.One;
-
-            LoadStatusWindow();
-        }
-
-        public void LoadVariableSPort()
-        {
-            RefreshComport();
-            PortName = ComPort.PortName;
-            PortBaudRate = ComPort.BaudRate;
-            PortParity = ComPort.Parity;
-            PortDataBits = ComPort.DataBits;
-            PortStopBit = ComPort.StopBits;
+            if (ComPort == null)
+            {
+                PortName = null;
+                PortBaudRate = 9600;
+                PortParity = Parity.None;
+                PortDataBits = 8;
+                PortStopBit = StopBits.One;
+            }
+            else
+            {
+                PortName = ComPort.PortName;
+                PortBaudRate = ComPort.BaudRate;
+                PortParity = ComPort.Parity;
+                PortDataBits = ComPort.DataBits;
+                PortStopBit = ComPort.StopBits;
+            }
 
             LoadStatusWindow();
         }
@@ -318,7 +309,7 @@ namespace TestAME
 
         private void btRefresh_Click(object sender, EventArgs e)
         {
-            
+            //
         }
 
     }
