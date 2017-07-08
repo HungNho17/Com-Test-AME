@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Management;
 using System.Runtime.InteropServices;
-
+using Microsoft.Win32;
 
 namespace TestAME
 {
@@ -68,17 +68,18 @@ namespace TestAME
         public string GetSerialPortInfo(string portName)
         {
             string sResult = null;
+            RegistryKey regKey = Registry.LocalMachine;
+            regKey = regKey.OpenSubKey("HARDWARE\\DEVICEMAP\\SERIALCOMM");
+            
             try
             {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity");
-
-                foreach (ManagementObject queryObj in searcher.Get())
+                foreach (string element in regKey.GetValueNames())
                 {
                     try
                     {
-                        if (queryObj["Caption"].ToString().Contains(portName))
+                        if (regKey.GetValue(element).ToString() == portName)
                         {
-                            sResult = queryObj["Caption"].ToString();
+                            sResult = element;
                         }
                     }
                     catch { }

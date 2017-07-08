@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO.Ports;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using System.Management;
+using System.Diagnostics;
+using System.Security.AccessControl;
 
 namespace TestAME
 {
@@ -873,6 +877,38 @@ namespace TestAME
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+
+        private void clearAllSerialPortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistryKey regKey = Registry.LocalMachine;
+            regKey = regKey.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\COM Name Arbiter");
+            try
+            {
+                foreach (string element in regKey.GetValueNames())
+                {
+                    try
+                    {
+                        if (element == "ComDB")
+                        {
+                            RegistrySecurity rs = new RegistrySecurity(); // it is right string for this code
+                            string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
+                            rs.AddAccessRule(new RegistryAccessRule(currentUserStr, RegistryRights.WriteKey | RegistryRights.FullControl, AccessControlType.Allow));
+                            regKey.SetAccessControl(rs);
+                            regKey.SetValue("ComDB", 0, RegistryValueKind.DWord);
+                            DialogResult result = MessageBox.Show("Need to restart system to update setting!", "It's up to you!", MessageBoxButtons.YesNo);
+
+                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                Process.Start("shutdown", "-s -f -t 0");
+                                this.Close();
+                            }
+                        }
+                    }
+                    catch { }
+                }
+            }
+            catch { }
         }
     }
 }
