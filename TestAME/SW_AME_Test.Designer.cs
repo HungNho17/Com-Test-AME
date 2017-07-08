@@ -47,6 +47,16 @@
             this.btNext = new System.Windows.Forms.Button();
             this.btPrevious = new System.Windows.Forms.Button();
             this.gbAutoMode = new System.Windows.Forms.GroupBox();
+            this.cbLoopTest = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbAction = new System.Windows.Forms.GroupBox();
+            this.rbStop = new System.Windows.Forms.RadioButton();
+            this.rbPause = new System.Windows.Forms.RadioButton();
+            this.rbDoNothing = new System.Windows.Forms.RadioButton();
+            this.gbMethode = new System.Windows.Forms.GroupBox();
+            this.rbCompareResp = new System.Windows.Forms.RadioButton();
+            this.rbYesNo = new System.Windows.Forms.RadioButton();
+            this.rbDontVerify = new System.Windows.Forms.RadioButton();
             this.lbAutoStatus = new System.Windows.Forms.Label();
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
@@ -62,9 +72,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.Timer_WaitRespond = new System.Windows.Forms.Timer(this.components);
             this.gbCommonInfo.SuspendLayout();
             this.gbManualMode.SuspendLayout();
             this.gbAutoMode.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.gbAction.SuspendLayout();
+            this.gbMethode.SuspendLayout();
             this.gbCurrentCmdStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -270,6 +284,8 @@
             // 
             // gbAutoMode
             // 
+            this.gbAutoMode.Controls.Add(this.cbLoopTest);
+            this.gbAutoMode.Controls.Add(this.groupBox1);
             this.gbAutoMode.Controls.Add(this.lbAutoStatus);
             this.gbAutoMode.Controls.Add(this.btStart);
             this.gbAutoMode.Controls.Add(this.btStop);
@@ -279,10 +295,121 @@
             this.gbAutoMode.Margin = new System.Windows.Forms.Padding(2);
             this.gbAutoMode.Name = "gbAutoMode";
             this.gbAutoMode.Padding = new System.Windows.Forms.Padding(2);
-            this.gbAutoMode.Size = new System.Drawing.Size(373, 46);
+            this.gbAutoMode.Size = new System.Drawing.Size(373, 169);
             this.gbAutoMode.TabIndex = 5;
             this.gbAutoMode.TabStop = false;
             this.gbAutoMode.Text = "Auto Test Mode";
+            // 
+            // cbLoopTest
+            // 
+            this.cbLoopTest.AutoSize = true;
+            this.cbLoopTest.Location = new System.Drawing.Point(33, 22);
+            this.cbLoopTest.Name = "cbLoopTest";
+            this.cbLoopTest.Size = new System.Drawing.Size(74, 17);
+            this.cbLoopTest.TabIndex = 11;
+            this.cbLoopTest.Text = "Loop Test";
+            this.cbLoopTest.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.gbAction);
+            this.groupBox1.Controls.Add(this.gbMethode);
+            this.groupBox1.Location = new System.Drawing.Point(8, 53);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(356, 110);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Verify Respond";
+            // 
+            // gbAction
+            // 
+            this.gbAction.Controls.Add(this.rbStop);
+            this.gbAction.Controls.Add(this.rbPause);
+            this.gbAction.Controls.Add(this.rbDoNothing);
+            this.gbAction.Location = new System.Drawing.Point(189, 19);
+            this.gbAction.Name = "gbAction";
+            this.gbAction.Size = new System.Drawing.Size(161, 82);
+            this.gbAction.TabIndex = 1;
+            this.gbAction.TabStop = false;
+            this.gbAction.Text = "Action On Fail";
+            // 
+            // rbStop
+            // 
+            this.rbStop.AutoSize = true;
+            this.rbStop.Location = new System.Drawing.Point(17, 62);
+            this.rbStop.Name = "rbStop";
+            this.rbStop.Size = new System.Drawing.Size(47, 17);
+            this.rbStop.TabIndex = 2;
+            this.rbStop.TabStop = true;
+            this.rbStop.Text = "Stop";
+            this.rbStop.UseVisualStyleBackColor = true;
+            // 
+            // rbPause
+            // 
+            this.rbPause.AutoSize = true;
+            this.rbPause.Location = new System.Drawing.Point(17, 39);
+            this.rbPause.Name = "rbPause";
+            this.rbPause.Size = new System.Drawing.Size(55, 17);
+            this.rbPause.TabIndex = 1;
+            this.rbPause.TabStop = true;
+            this.rbPause.Text = "Pause";
+            this.rbPause.UseVisualStyleBackColor = true;
+            // 
+            // rbDoNothing
+            // 
+            this.rbDoNothing.AutoSize = true;
+            this.rbDoNothing.Location = new System.Drawing.Point(17, 16);
+            this.rbDoNothing.Name = "rbDoNothing";
+            this.rbDoNothing.Size = new System.Drawing.Size(77, 17);
+            this.rbDoNothing.TabIndex = 0;
+            this.rbDoNothing.TabStop = true;
+            this.rbDoNothing.Text = "Do nothing";
+            this.rbDoNothing.UseVisualStyleBackColor = true;
+            // 
+            // gbMethode
+            // 
+            this.gbMethode.Controls.Add(this.rbCompareResp);
+            this.gbMethode.Controls.Add(this.rbYesNo);
+            this.gbMethode.Controls.Add(this.rbDontVerify);
+            this.gbMethode.Location = new System.Drawing.Point(8, 19);
+            this.gbMethode.Name = "gbMethode";
+            this.gbMethode.Size = new System.Drawing.Size(175, 82);
+            this.gbMethode.TabIndex = 0;
+            this.gbMethode.TabStop = false;
+            this.gbMethode.Text = "Methode";
+            // 
+            // rbCompareResp
+            // 
+            this.rbCompareResp.AutoSize = true;
+            this.rbCompareResp.Location = new System.Drawing.Point(9, 62);
+            this.rbCompareResp.Name = "rbCompareResp";
+            this.rbCompareResp.Size = new System.Drawing.Size(113, 17);
+            this.rbCompareResp.TabIndex = 2;
+            this.rbCompareResp.TabStop = true;
+            this.rbCompareResp.Text = "Compare Respond";
+            this.rbCompareResp.UseVisualStyleBackColor = true;
+            // 
+            // rbYesNo
+            // 
+            this.rbYesNo.AutoSize = true;
+            this.rbYesNo.Location = new System.Drawing.Point(9, 39);
+            this.rbYesNo.Name = "rbYesNo";
+            this.rbYesNo.Size = new System.Drawing.Size(68, 17);
+            this.rbYesNo.TabIndex = 1;
+            this.rbYesNo.TabStop = true;
+            this.rbYesNo.Text = "Yes / No";
+            this.rbYesNo.UseVisualStyleBackColor = true;
+            // 
+            // rbDontVerify
+            // 
+            this.rbDontVerify.AutoSize = true;
+            this.rbDontVerify.Location = new System.Drawing.Point(9, 16);
+            this.rbDontVerify.Name = "rbDontVerify";
+            this.rbDontVerify.Size = new System.Drawing.Size(85, 17);
+            this.rbDontVerify.TabIndex = 0;
+            this.rbDontVerify.TabStop = true;
+            this.rbDontVerify.Text = "Do not verify";
+            this.rbDontVerify.UseVisualStyleBackColor = true;
             // 
             // lbAutoStatus
             // 
@@ -304,6 +431,7 @@
             this.btStart.TabIndex = 2;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btControlAuto_Handle);
             // 
             // btStop
             // 
@@ -314,6 +442,7 @@
             this.btStop.TabIndex = 1;
             this.btStop.Text = "Stop";
             this.btStop.UseVisualStyleBackColor = true;
+            this.btStop.Click += new System.EventHandler(this.btControlAuto_Handle);
             // 
             // btPause
             // 
@@ -324,6 +453,7 @@
             this.btPause.TabIndex = 0;
             this.btPause.Text = "Pause";
             this.btPause.UseVisualStyleBackColor = true;
+            this.btPause.Click += new System.EventHandler(this.btControlAuto_Handle);
             // 
             // button4
             // 
@@ -434,6 +564,10 @@
             this.Timer.Interval = 300;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // Timer_WaitRespond
+            // 
+            this.Timer_WaitRespond.Tick += new System.EventHandler(this.Timer_WaitRespond_Tick);
+            // 
             // SW_AME_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,7 +585,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 555);
             this.Name = "SW_AME_Test";
             this.ShowIcon = false;
-            this.Text = "AME Support Test";
+            this.Text = "List Commands Support Test";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SW_AME_Test_FormClosed);
             this.Load += new System.EventHandler(this.SW_AME_Test_Load);
@@ -461,6 +595,11 @@
             this.gbManualMode.PerformLayout();
             this.gbAutoMode.ResumeLayout(false);
             this.gbAutoMode.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.gbAction.ResumeLayout(false);
+            this.gbAction.PerformLayout();
+            this.gbMethode.ResumeLayout(false);
+            this.gbMethode.PerformLayout();
             this.gbCurrentCmdStatus.ResumeLayout(false);
             this.gbCurrentCmdStatus.PerformLayout();
             this.ResumeLayout(false);
@@ -502,5 +641,16 @@
         private System.Windows.Forms.ComboBox cbCurrentCmd;
         private System.Windows.Forms.ComboBox cbCurrentNumber;
         private System.Windows.Forms.ComboBox cbCurrentDesc;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbAction;
+        private System.Windows.Forms.RadioButton rbStop;
+        private System.Windows.Forms.RadioButton rbPause;
+        private System.Windows.Forms.RadioButton rbDoNothing;
+        private System.Windows.Forms.GroupBox gbMethode;
+        private System.Windows.Forms.RadioButton rbCompareResp;
+        private System.Windows.Forms.RadioButton rbYesNo;
+        private System.Windows.Forms.RadioButton rbDontVerify;
+        private System.Windows.Forms.Timer Timer_WaitRespond;
+        private System.Windows.Forms.CheckBox cbLoopTest;
     }
 }

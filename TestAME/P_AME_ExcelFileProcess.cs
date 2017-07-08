@@ -12,6 +12,8 @@ namespace TestAME
         public int number;
         public string desc;
         public string cmd;
+        public string timeWait;
+        public string resultExpect;
     };
 
     class P_AME_ExcelFileProcess
@@ -21,8 +23,7 @@ namespace TestAME
         Excel._Worksheet xlWorksheet = null;
         Excel.Range xlRange = null;
 
-        public List<string> ListDescription = null;
-        public List<string> ListCommand = null;
+        public List<COMMAND_TYPE> ListCommands = null;
         int NumberOfCommand = 0;
 
         int rowCount = 0;
@@ -32,8 +33,7 @@ namespace TestAME
 
         public P_AME_ExcelFileProcess()
         {
-            ListDescription = new List<string>();
-            ListCommand = new List<string>();
+            ListCommands = new List<COMMAND_TYPE>();
         }
 
         ~ P_AME_ExcelFileProcess()
@@ -102,8 +102,7 @@ namespace TestAME
             int iRet = 0;
             int rowIdx = 0;
 
-            string tempDescription = null;
-            string tempCommand = null;
+            COMMAND_TYPE tempCmd = new COMMAND_TYPE();
 
             if (FlagFileExist == true)
             {
@@ -112,14 +111,23 @@ namespace TestAME
                         try
                         {
                             if (xlWorksheet.Cells[rowIdx, 2].value != null)
-                                tempDescription = xlWorksheet.Cells[rowIdx, 2].value.ToString();
-                            else tempDescription = " "; 
-                            ListDescription.Add(tempDescription);
+                                tempCmd.desc = xlWorksheet.Cells[rowIdx, 2].value.ToString();
+                            else tempCmd.desc = " ";
                            
                             if (xlWorksheet.Cells[rowIdx, 3].value != null)
-                                tempCommand = xlWorksheet.Cells[rowIdx, 3].value.ToString();
-                            else tempCommand = " ";
-                            ListCommand.Add(tempCommand);
+                                tempCmd.cmd = xlWorksheet.Cells[rowIdx, 3].value.ToString();
+                            else tempCmd.cmd = " ";
+
+                            if (xlWorksheet.Cells[rowIdx, 4].value != null)
+                                tempCmd.timeWait = xlWorksheet.Cells[rowIdx, 4].value.ToString();
+                            else tempCmd.timeWait = " ";
+
+                            if (xlWorksheet.Cells[rowIdx, 5].value != null)
+                                tempCmd.resultExpect = xlWorksheet.Cells[rowIdx, 5].value.ToString();
+                            else tempCmd.resultExpect = " ";
+
+                            tempCmd.number = iRet+1;
+                            ListCommands.Add(tempCmd);
                             iRet++;
                         }
                         catch { }
@@ -133,12 +141,9 @@ namespace TestAME
         public COMMAND_TYPE GetCommand(int CmdNumber)
         {
             COMMAND_TYPE cmdRet = new COMMAND_TYPE();
-            cmdRet.number = 0;
             if (CmdNumber < NumberOfCommand)
             {
-                cmdRet.number = CmdNumber+1;
-                cmdRet.desc = ListDescription[CmdNumber];
-                cmdRet.cmd = ListCommand[CmdNumber];
+                cmdRet = ListCommands[CmdNumber];
             }
             return cmdRet;
         }

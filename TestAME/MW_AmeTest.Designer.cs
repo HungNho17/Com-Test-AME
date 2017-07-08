@@ -34,26 +34,33 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSimpleView = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFullView = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sampleLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aMESupportTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLogSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIndexStamping = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setUpUserCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbCommunicate = new System.Windows.Forms.GroupBox();
             this.tbDataRecieve = new System.Windows.Forms.RichTextBox();
             this.lbWrapText = new System.Windows.Forms.Label();
             this.btNewLineCo = new System.Windows.Forms.Button();
             this.btClearCo = new System.Windows.Forms.Button();
             this.btWrapTextCo = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbLocalCmd = new System.Windows.Forms.GroupBox();
             this.lbSendLF = new System.Windows.Forms.Label();
             this.btSend = new System.Windows.Forms.Button();
             this.btClearLo = new System.Windows.Forms.Button();
             this.btSendLFLo = new System.Windows.Forms.Button();
             this.tbDataSend = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbUserCmd = new System.Windows.Forms.GroupBox();
             this.lbNext = new System.Windows.Forms.Label();
             this.lbPrevious = new System.Windows.Forms.Label();
             this.lbCurrentUser = new System.Windows.Forms.Label();
@@ -65,7 +72,31 @@
             this.btCmd1 = new System.Windows.Forms.Button();
             this.btCmd4 = new System.Windows.Forms.Button();
             this.btCmd0 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.SPort = new System.IO.Ports.SerialPort(this.components);
+            this.Timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbTime = new System.Windows.Forms.Label();
+            this.pnTime = new System.Windows.Forms.Panel();
+            this.gbSetUp = new System.Windows.Forms.GroupBox();
+            this.BTSPort = new System.Windows.Forms.Button();
+            this.BTSetupCmd = new System.Windows.Forms.Button();
+            this.gbCapStatus = new System.Windows.Forms.GroupBox();
+            this.lbSclr = new System.Windows.Forms.Label();
+            this.lbNum = new System.Windows.Forms.Label();
+            this.lbCap = new System.Windows.Forms.Label();
+            this.gbCharSetStatus = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lvCharSet = new System.Windows.Forms.ListView();
+            this.Char = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Decimal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Hex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbToLocalCMD = new System.Windows.Forms.Label();
+            this.lbToCommunicate = new System.Windows.Forms.Label();
+            this.btCharToLo = new System.Windows.Forms.Button();
+            this.btCharToCo = new System.Windows.Forms.Button();
+            this.gbConnectStatus = new System.Windows.Forms.GroupBox();
             this.lbDSRILow = new System.Windows.Forms.Label();
             this.lbDSRIHigh = new System.Windows.Forms.Label();
             this.lbDSRStatus = new System.Windows.Forms.Label();
@@ -88,40 +119,15 @@
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lvCharSet = new System.Windows.Forms.ListView();
-            this.Char = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Decimal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Hex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbToLocalCMD = new System.Windows.Forms.Label();
-            this.lbToCommunicate = new System.Windows.Forms.Label();
-            this.btCharToLo = new System.Windows.Forms.Button();
-            this.btCharToCo = new System.Windows.Forms.Button();
-            this.BTSetupCmd = new System.Windows.Forms.Button();
-            this.BTSPort = new System.Windows.Forms.Button();
-            this.SPort = new System.IO.Ports.SerialPort(this.components);
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lbSclr = new System.Windows.Forms.Label();
-            this.lbNum = new System.Windows.Forms.Label();
-            this.lbCap = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.Timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbTime = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.sampleLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.gbCommunicate.SuspendLayout();
+            this.gbLocalCmd.SuspendLayout();
+            this.gbUserCmd.SuspendLayout();
+            this.pnTime.SuspendLayout();
+            this.gbSetUp.SuspendLayout();
+            this.gbCapStatus.SuspendLayout();
+            this.gbCharSetStatus.SuspendLayout();
+            this.gbConnectStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,6 +135,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -160,21 +167,52 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSimpleView,
+            this.tsmiFullView});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // tsmiSimpleView
+            // 
+            this.tsmiSimpleView.Name = "tsmiSimpleView";
+            this.tsmiSimpleView.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSimpleView.Text = "Simple";
+            this.tsmiSimpleView.Click += new System.EventHandler(this.simpleViewOption_Click);
+            // 
+            // tsmiFullView
+            // 
+            this.tsmiFullView.Name = "tsmiFullView";
+            this.tsmiFullView.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFullView.Text = "Full";
+            this.tsmiFullView.Click += new System.EventHandler(this.fullViewOption_Click);
+            // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sampleLabelsToolStripMenuItem,
             this.aMESupportTestToolStripMenuItem,
-            this.tsmiLogSetting});
+            this.tsmiLogSetting,
+            this.configurationToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
+            // sampleLabelsToolStripMenuItem
+            // 
+            this.sampleLabelsToolStripMenuItem.Name = "sampleLabelsToolStripMenuItem";
+            this.sampleLabelsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sampleLabelsToolStripMenuItem.Text = "Sample Labels";
+            this.sampleLabelsToolStripMenuItem.Click += new System.EventHandler(this.SampleLabels_Load);
+            // 
             // aMESupportTestToolStripMenuItem
             // 
             this.aMESupportTestToolStripMenuItem.Name = "aMESupportTestToolStripMenuItem";
-            this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.aMESupportTestToolStripMenuItem.Text = "AME Support Test";
+            this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.aMESupportTestToolStripMenuItem.Text = "Multi Commands";
             this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
             // 
             // tsmiLogSetting
@@ -183,7 +221,7 @@
             this.tsmiTimeStamping,
             this.tsmiIndexStamping});
             this.tsmiLogSetting.Name = "tsmiLogSetting";
-            this.tsmiLogSetting.Size = new System.Drawing.Size(168, 22);
+            this.tsmiLogSetting.Size = new System.Drawing.Size(167, 22);
             this.tsmiLogSetting.Text = "Log Setting";
             // 
             // tsmiTimeStamping
@@ -203,6 +241,29 @@
             this.tsmiIndexStamping.Text = "Index Stamp";
             this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
             // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setUpUserCMDToolStripMenuItem,
+            this.serialPortToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // setUpUserCMDToolStripMenuItem
+            // 
+            this.setUpUserCMDToolStripMenuItem.Name = "setUpUserCMDToolStripMenuItem";
+            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.setUpUserCMDToolStripMenuItem.Text = "User CMD";
+            this.setUpUserCMDToolStripMenuItem.Click += new System.EventHandler(this.BTSetupCmd_Click);
+            // 
+            // serialPortToolStripMenuItem
+            // 
+            this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.serialPortToolStripMenuItem.Text = "Serial Port";
+            this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.BTSPort_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -218,23 +279,23 @@
             this.aboutUsToolStripMenuItem.Text = "About Us";
             this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // gbCommunicate
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gbCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.tbDataRecieve);
-            this.groupBox1.Controls.Add(this.lbWrapText);
-            this.groupBox1.Controls.Add(this.btNewLineCo);
-            this.groupBox1.Controls.Add(this.btClearCo);
-            this.groupBox1.Controls.Add(this.btWrapTextCo);
-            this.groupBox1.Location = new System.Drawing.Point(0, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(574, 232);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Communications (Recieved = Yellow, Transmitted = Green):";
+            this.gbCommunicate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbCommunicate.Controls.Add(this.tbDataRecieve);
+            this.gbCommunicate.Controls.Add(this.lbWrapText);
+            this.gbCommunicate.Controls.Add(this.btNewLineCo);
+            this.gbCommunicate.Controls.Add(this.btClearCo);
+            this.gbCommunicate.Controls.Add(this.btWrapTextCo);
+            this.gbCommunicate.Location = new System.Drawing.Point(0, 40);
+            this.gbCommunicate.Name = "gbCommunicate";
+            this.gbCommunicate.Size = new System.Drawing.Size(574, 232);
+            this.gbCommunicate.TabIndex = 1;
+            this.gbCommunicate.TabStop = false;
+            this.gbCommunicate.Text = "Communications (Recieved = Yellow, Transmitted = Green):";
             // 
             // tbDataRecieve
             // 
@@ -299,22 +360,22 @@
             this.btWrapTextCo.UseVisualStyleBackColor = true;
             this.btWrapTextCo.Click += new System.EventHandler(this.BTControlUI_Click);
             // 
-            // groupBox2
+            // gbLocalCmd
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbLocalCmd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox2.Controls.Add(this.lbSendLF);
-            this.groupBox2.Controls.Add(this.btSend);
-            this.groupBox2.Controls.Add(this.btClearLo);
-            this.groupBox2.Controls.Add(this.btSendLFLo);
-            this.groupBox2.Controls.Add(this.tbDataSend);
-            this.groupBox2.Location = new System.Drawing.Point(0, 278);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(574, 115);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Local Command:";
+            this.gbLocalCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbLocalCmd.Controls.Add(this.lbSendLF);
+            this.gbLocalCmd.Controls.Add(this.btSend);
+            this.gbLocalCmd.Controls.Add(this.btClearLo);
+            this.gbLocalCmd.Controls.Add(this.btSendLFLo);
+            this.gbLocalCmd.Controls.Add(this.tbDataSend);
+            this.gbLocalCmd.Location = new System.Drawing.Point(0, 278);
+            this.gbLocalCmd.Name = "gbLocalCmd";
+            this.gbLocalCmd.Size = new System.Drawing.Size(574, 115);
+            this.gbLocalCmd.TabIndex = 2;
+            this.gbLocalCmd.TabStop = false;
+            this.gbLocalCmd.Text = "Local Command:";
             // 
             // lbSendLF
             // 
@@ -377,28 +438,28 @@
             this.tbDataSend.TabIndex = 0;
             this.tbDataSend.WordWrap = false;
             // 
-            // groupBox3
+            // gbUserCmd
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbUserCmd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox3.Controls.Add(this.lbNext);
-            this.groupBox3.Controls.Add(this.lbPrevious);
-            this.groupBox3.Controls.Add(this.lbCurrentUser);
-            this.groupBox3.Controls.Add(this.btCmd7);
-            this.groupBox3.Controls.Add(this.btCmd3);
-            this.groupBox3.Controls.Add(this.btCmd6);
-            this.groupBox3.Controls.Add(this.btCmd2);
-            this.groupBox3.Controls.Add(this.btCmd5);
-            this.groupBox3.Controls.Add(this.btCmd1);
-            this.groupBox3.Controls.Add(this.btCmd4);
-            this.groupBox3.Controls.Add(this.btCmd0);
-            this.groupBox3.Location = new System.Drawing.Point(0, 399);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(574, 112);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "User Commands:";
+            this.gbUserCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbUserCmd.Controls.Add(this.lbNext);
+            this.gbUserCmd.Controls.Add(this.lbPrevious);
+            this.gbUserCmd.Controls.Add(this.lbCurrentUser);
+            this.gbUserCmd.Controls.Add(this.btCmd7);
+            this.gbUserCmd.Controls.Add(this.btCmd3);
+            this.gbUserCmd.Controls.Add(this.btCmd6);
+            this.gbUserCmd.Controls.Add(this.btCmd2);
+            this.gbUserCmd.Controls.Add(this.btCmd5);
+            this.gbUserCmd.Controls.Add(this.btCmd1);
+            this.gbUserCmd.Controls.Add(this.btCmd4);
+            this.gbUserCmd.Controls.Add(this.btCmd0);
+            this.gbUserCmd.Location = new System.Drawing.Point(0, 399);
+            this.gbUserCmd.Name = "gbUserCmd";
+            this.gbUserCmd.Size = new System.Drawing.Size(574, 112);
+            this.gbUserCmd.TabIndex = 3;
+            this.gbUserCmd.TabStop = false;
+            this.gbUserCmd.Text = "User Commands:";
             // 
             // lbNext
             // 
@@ -540,37 +601,286 @@
             this.btCmd0.UseVisualStyleBackColor = true;
             this.btCmd0.Click += new System.EventHandler(this.BTControlUserCmd_Click);
             // 
-            // groupBox4
+            // SPort
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.lbDSRILow);
-            this.groupBox4.Controls.Add(this.lbDSRIHigh);
-            this.groupBox4.Controls.Add(this.lbDSRStatus);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.lbDTROLow);
-            this.groupBox4.Controls.Add(this.lbDTROHigh);
-            this.groupBox4.Controls.Add(this.btDTR);
-            this.groupBox4.Controls.Add(this.lbCTSOHigh);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.lbCTSOLow);
-            this.groupBox4.Controls.Add(this.lbCTSIHigh);
-            this.groupBox4.Controls.Add(this.lbCTSILow);
-            this.groupBox4.Controls.Add(this.lbCTSStatus);
-            this.groupBox4.Controls.Add(this.btCTS);
-            this.groupBox4.Controls.Add(this.lbShowLF);
-            this.groupBox4.Controls.Add(this.lbShowSpace);
-            this.groupBox4.Controls.Add(this.lbDisplayRCData);
-            this.groupBox4.Controls.Add(this.lbConnect);
-            this.groupBox4.Controls.Add(this.btConnectSP);
-            this.groupBox4.Controls.Add(this.btDisplayRCData);
-            this.groupBox4.Controls.Add(this.btShowSpace);
-            this.groupBox4.Controls.Add(this.btShowLF);
-            this.groupBox4.Location = new System.Drawing.Point(595, 40);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(184, 228);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Connection Status";
+            this.SPort.ReadTimeout = 10;
+            this.SPort.PinChanged += new System.IO.Ports.SerialPinChangedEventHandler(this.SPort_PinChanged);
+            this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
+            // 
+            // Timer1
+            // 
+            this.Timer1.Enabled = true;
+            this.Timer1.Interval = 1000;
+            this.Timer1.Tick += new System.EventHandler(this.TimeTracking_Tick);
+            // 
+            // lbTime
+            // 
+            this.lbTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTime.AutoSize = true;
+            this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.Location = new System.Drawing.Point(76, 2);
+            this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(103, 17);
+            this.lbTime.TabIndex = 10;
+            this.lbTime.Text = "... : ... : ... ...";
+            this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnTime
+            // 
+            this.pnTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnTime.BackColor = System.Drawing.Color.MintCream;
+            this.pnTime.Controls.Add(this.lbTime);
+            this.pnTime.Location = new System.Drawing.Point(586, 1);
+            this.pnTime.Margin = new System.Windows.Forms.Padding(2);
+            this.pnTime.Name = "pnTime";
+            this.pnTime.Size = new System.Drawing.Size(208, 22);
+            this.pnTime.TabIndex = 11;
+            // 
+            // gbSetUp
+            // 
+            this.gbSetUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbSetUp.Controls.Add(this.BTSPort);
+            this.gbSetUp.Controls.Add(this.BTSetupCmd);
+            this.gbSetUp.Location = new System.Drawing.Point(598, 442);
+            this.gbSetUp.Name = "gbSetUp";
+            this.gbSetUp.Size = new System.Drawing.Size(184, 43);
+            this.gbSetUp.TabIndex = 14;
+            this.gbSetUp.TabStop = false;
+            // 
+            // BTSPort
+            // 
+            this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BTSPort.Location = new System.Drawing.Point(94, 13);
+            this.BTSPort.Name = "BTSPort";
+            this.BTSPort.Size = new System.Drawing.Size(74, 23);
+            this.BTSPort.TabIndex = 7;
+            this.BTSPort.Text = "Serial Port";
+            this.BTSPort.UseVisualStyleBackColor = true;
+            this.BTSPort.Click += new System.EventHandler(this.BTSPort_Click);
+            // 
+            // BTSetupCmd
+            // 
+            this.BTSetupCmd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BTSetupCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BTSetupCmd.Location = new System.Drawing.Point(12, 13);
+            this.BTSetupCmd.Name = "BTSetupCmd";
+            this.BTSetupCmd.Size = new System.Drawing.Size(73, 23);
+            this.BTSetupCmd.TabIndex = 6;
+            this.BTSetupCmd.Text = "Set Up";
+            this.BTSetupCmd.UseVisualStyleBackColor = true;
+            this.BTSetupCmd.Click += new System.EventHandler(this.BTSetupCmd_Click);
+            // 
+            // gbCapStatus
+            // 
+            this.gbCapStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCapStatus.Controls.Add(this.lbSclr);
+            this.gbCapStatus.Controls.Add(this.lbNum);
+            this.gbCapStatus.Controls.Add(this.lbCap);
+            this.gbCapStatus.Location = new System.Drawing.Point(598, 482);
+            this.gbCapStatus.Name = "gbCapStatus";
+            this.gbCapStatus.Size = new System.Drawing.Size(183, 29);
+            this.gbCapStatus.TabIndex = 13;
+            this.gbCapStatus.TabStop = false;
+            // 
+            // lbSclr
+            // 
+            this.lbSclr.AutoSize = true;
+            this.lbSclr.Enabled = false;
+            this.lbSclr.Location = new System.Drawing.Point(132, 10);
+            this.lbSclr.Name = "lbSclr";
+            this.lbSclr.Size = new System.Drawing.Size(35, 13);
+            this.lbSclr.TabIndex = 2;
+            this.lbSclr.Text = "SCLR";
+            // 
+            // lbNum
+            // 
+            this.lbNum.AutoSize = true;
+            this.lbNum.Enabled = false;
+            this.lbNum.Location = new System.Drawing.Point(91, 10);
+            this.lbNum.Name = "lbNum";
+            this.lbNum.Size = new System.Drawing.Size(32, 13);
+            this.lbNum.TabIndex = 1;
+            this.lbNum.Text = "NUM";
+            // 
+            // lbCap
+            // 
+            this.lbCap.AutoSize = true;
+            this.lbCap.Enabled = false;
+            this.lbCap.Location = new System.Drawing.Point(54, 10);
+            this.lbCap.Name = "lbCap";
+            this.lbCap.Size = new System.Drawing.Size(28, 13);
+            this.lbCap.TabIndex = 0;
+            this.lbCap.Text = "CAP";
+            // 
+            // gbCharSetStatus
+            // 
+            this.gbCharSetStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCharSetStatus.Controls.Add(this.label4);
+            this.gbCharSetStatus.Controls.Add(this.lvCharSet);
+            this.gbCharSetStatus.Controls.Add(this.label3);
+            this.gbCharSetStatus.Controls.Add(this.label2);
+            this.gbCharSetStatus.Controls.Add(this.label1);
+            this.gbCharSetStatus.Controls.Add(this.lbToLocalCMD);
+            this.gbCharSetStatus.Controls.Add(this.lbToCommunicate);
+            this.gbCharSetStatus.Controls.Add(this.btCharToLo);
+            this.gbCharSetStatus.Controls.Add(this.btCharToCo);
+            this.gbCharSetStatus.Location = new System.Drawing.Point(598, 274);
+            this.gbCharSetStatus.Name = "gbCharSetStatus";
+            this.gbCharSetStatus.Size = new System.Drawing.Size(184, 175);
+            this.gbCharSetStatus.TabIndex = 12;
+            this.gbCharSetStatus.TabStop = false;
+            this.gbCharSetStatus.Text = "Charracter Set:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Double-click char to send";
+            // 
+            // lvCharSet
+            // 
+            this.lvCharSet.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.lvCharSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvCharSet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Char,
+            this.Decimal,
+            this.Hex});
+            this.lvCharSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvCharSet.FullRowSelect = true;
+            this.lvCharSet.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvCharSet.Location = new System.Drawing.Point(22, 38);
+            this.lvCharSet.MultiSelect = false;
+            this.lvCharSet.Name = "lvCharSet";
+            this.lvCharSet.RightToLeftLayout = true;
+            this.lvCharSet.Size = new System.Drawing.Size(146, 59);
+            this.lvCharSet.TabIndex = 17;
+            this.lvCharSet.UseCompatibleStateImageBehavior = false;
+            this.lvCharSet.View = System.Windows.Forms.View.Details;
+            // 
+            // Char
+            // 
+            this.Char.Text = "";
+            this.Char.Width = 50;
+            // 
+            // Decimal
+            // 
+            this.Decimal.Text = "";
+            this.Decimal.Width = 50;
+            // 
+            // Hex
+            // 
+            this.Hex.Text = "";
+            this.Hex.Width = 45;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(105, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Hex";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(54, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Decimal";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Char";
+            // 
+            // lbToLocalCMD
+            // 
+            this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbToLocalCMD.AutoSize = true;
+            this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
+            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 147);
+            this.lbToLocalCMD.Name = "lbToLocalCMD";
+            this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
+            this.lbToLocalCMD.TabIndex = 13;
+            this.lbToLocalCMD.Text = "   ";
+            // 
+            // lbToCommunicate
+            // 
+            this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbToCommunicate.AutoSize = true;
+            this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
+            this.lbToCommunicate.Location = new System.Drawing.Point(21, 121);
+            this.lbToCommunicate.Name = "lbToCommunicate";
+            this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
+            this.lbToCommunicate.TabIndex = 12;
+            this.lbToCommunicate.Text = "   ";
+            // 
+            // btCharToLo
+            // 
+            this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCharToLo.Location = new System.Drawing.Point(42, 141);
+            this.btCharToLo.Name = "btCharToLo";
+            this.btCharToLo.Size = new System.Drawing.Size(126, 20);
+            this.btCharToLo.TabIndex = 2;
+            this.btCharToLo.Text = "To Local Command";
+            this.btCharToLo.UseVisualStyleBackColor = true;
+            this.btCharToLo.Click += new System.EventHandler(this.BTControlUI_Click);
+            // 
+            // btCharToCo
+            // 
+            this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCharToCo.Location = new System.Drawing.Point(42, 117);
+            this.btCharToCo.Name = "btCharToCo";
+            this.btCharToCo.Size = new System.Drawing.Size(126, 20);
+            this.btCharToCo.TabIndex = 1;
+            this.btCharToCo.Text = "To Communications";
+            this.btCharToCo.UseVisualStyleBackColor = true;
+            this.btCharToCo.Click += new System.EventHandler(this.BTControlUI_Click);
+            // 
+            // gbConnectStatus
+            // 
+            this.gbConnectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbConnectStatus.Controls.Add(this.lbDSRILow);
+            this.gbConnectStatus.Controls.Add(this.lbDSRIHigh);
+            this.gbConnectStatus.Controls.Add(this.lbDSRStatus);
+            this.gbConnectStatus.Controls.Add(this.label16);
+            this.gbConnectStatus.Controls.Add(this.lbDTROLow);
+            this.gbConnectStatus.Controls.Add(this.lbDTROHigh);
+            this.gbConnectStatus.Controls.Add(this.btDTR);
+            this.gbConnectStatus.Controls.Add(this.lbCTSOHigh);
+            this.gbConnectStatus.Controls.Add(this.label15);
+            this.gbConnectStatus.Controls.Add(this.lbCTSOLow);
+            this.gbConnectStatus.Controls.Add(this.lbCTSIHigh);
+            this.gbConnectStatus.Controls.Add(this.lbCTSILow);
+            this.gbConnectStatus.Controls.Add(this.lbCTSStatus);
+            this.gbConnectStatus.Controls.Add(this.btCTS);
+            this.gbConnectStatus.Controls.Add(this.lbShowLF);
+            this.gbConnectStatus.Controls.Add(this.lbShowSpace);
+            this.gbConnectStatus.Controls.Add(this.lbDisplayRCData);
+            this.gbConnectStatus.Controls.Add(this.lbConnect);
+            this.gbConnectStatus.Controls.Add(this.btConnectSP);
+            this.gbConnectStatus.Controls.Add(this.btDisplayRCData);
+            this.gbConnectStatus.Controls.Add(this.btShowSpace);
+            this.gbConnectStatus.Controls.Add(this.btShowLF);
+            this.gbConnectStatus.Location = new System.Drawing.Point(598, 40);
+            this.gbConnectStatus.Name = "gbConnectStatus";
+            this.gbConnectStatus.Size = new System.Drawing.Size(184, 228);
+            this.gbConnectStatus.TabIndex = 11;
+            this.gbConnectStatus.TabStop = false;
+            this.gbConnectStatus.Text = "Connection Status";
             // 
             // lbDSRILow
             // 
@@ -794,276 +1104,19 @@
             this.btShowLF.UseVisualStyleBackColor = true;
             this.btShowLF.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.lvCharSet);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.lbToLocalCMD);
-            this.groupBox5.Controls.Add(this.lbToCommunicate);
-            this.groupBox5.Controls.Add(this.btCharToLo);
-            this.groupBox5.Controls.Add(this.btCharToCo);
-            this.groupBox5.Location = new System.Drawing.Point(595, 274);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 175);
-            this.groupBox5.TabIndex = 5;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Charracter Set:";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Double-click char to send";
-            // 
-            // lvCharSet
-            // 
-            this.lvCharSet.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.lvCharSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvCharSet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Char,
-            this.Decimal,
-            this.Hex});
-            this.lvCharSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvCharSet.FullRowSelect = true;
-            this.lvCharSet.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvCharSet.Location = new System.Drawing.Point(22, 38);
-            this.lvCharSet.MultiSelect = false;
-            this.lvCharSet.Name = "lvCharSet";
-            this.lvCharSet.RightToLeftLayout = true;
-            this.lvCharSet.Size = new System.Drawing.Size(146, 59);
-            this.lvCharSet.TabIndex = 17;
-            this.lvCharSet.UseCompatibleStateImageBehavior = false;
-            this.lvCharSet.View = System.Windows.Forms.View.Details;
-            this.lvCharSet.DoubleClick += new System.EventHandler(this.SelectCharacterSet_DoubleClick);
-            // 
-            // Char
-            // 
-            this.Char.Text = "";
-            this.Char.Width = 50;
-            // 
-            // Decimal
-            // 
-            this.Decimal.Text = "";
-            this.Decimal.Width = 50;
-            // 
-            // Hex
-            // 
-            this.Hex.Text = "";
-            this.Hex.Width = 45;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(105, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Hex";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Decimal";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Char";
-            // 
-            // lbToLocalCMD
-            // 
-            this.lbToLocalCMD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbToLocalCMD.AutoSize = true;
-            this.lbToLocalCMD.Image = ((System.Drawing.Image)(resources.GetObject("lbToLocalCMD.Image")));
-            this.lbToLocalCMD.Location = new System.Drawing.Point(21, 147);
-            this.lbToLocalCMD.Name = "lbToLocalCMD";
-            this.lbToLocalCMD.Size = new System.Drawing.Size(16, 13);
-            this.lbToLocalCMD.TabIndex = 13;
-            this.lbToLocalCMD.Text = "   ";
-            // 
-            // lbToCommunicate
-            // 
-            this.lbToCommunicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbToCommunicate.AutoSize = true;
-            this.lbToCommunicate.Image = ((System.Drawing.Image)(resources.GetObject("lbToCommunicate.Image")));
-            this.lbToCommunicate.Location = new System.Drawing.Point(21, 121);
-            this.lbToCommunicate.Name = "lbToCommunicate";
-            this.lbToCommunicate.Size = new System.Drawing.Size(16, 13);
-            this.lbToCommunicate.TabIndex = 12;
-            this.lbToCommunicate.Text = "   ";
-            // 
-            // btCharToLo
-            // 
-            this.btCharToLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToLo.Location = new System.Drawing.Point(42, 141);
-            this.btCharToLo.Name = "btCharToLo";
-            this.btCharToLo.Size = new System.Drawing.Size(126, 20);
-            this.btCharToLo.TabIndex = 2;
-            this.btCharToLo.Text = "To Local Command";
-            this.btCharToLo.UseVisualStyleBackColor = true;
-            this.btCharToLo.Click += new System.EventHandler(this.BTControlUI_Click);
-            // 
-            // btCharToCo
-            // 
-            this.btCharToCo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCharToCo.Location = new System.Drawing.Point(42, 117);
-            this.btCharToCo.Name = "btCharToCo";
-            this.btCharToCo.Size = new System.Drawing.Size(126, 20);
-            this.btCharToCo.TabIndex = 1;
-            this.btCharToCo.Text = "To Communications";
-            this.btCharToCo.UseVisualStyleBackColor = true;
-            this.btCharToCo.Click += new System.EventHandler(this.BTControlUI_Click);
-            // 
-            // BTSetupCmd
-            // 
-            this.BTSetupCmd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTSetupCmd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BTSetupCmd.Location = new System.Drawing.Point(12, 13);
-            this.BTSetupCmd.Name = "BTSetupCmd";
-            this.BTSetupCmd.Size = new System.Drawing.Size(73, 23);
-            this.BTSetupCmd.TabIndex = 6;
-            this.BTSetupCmd.Text = "Set Up";
-            this.BTSetupCmd.UseVisualStyleBackColor = true;
-            this.BTSetupCmd.Click += new System.EventHandler(this.BTSetupCmd_Click);
-            // 
-            // BTSPort
-            // 
-            this.BTSPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTSPort.Location = new System.Drawing.Point(94, 13);
-            this.BTSPort.Name = "BTSPort";
-            this.BTSPort.Size = new System.Drawing.Size(74, 23);
-            this.BTSPort.TabIndex = 7;
-            this.BTSPort.Text = "Serial Port";
-            this.BTSPort.UseVisualStyleBackColor = true;
-            this.BTSPort.Click += new System.EventHandler(this.BTSPort_Click);
-            // 
-            // SPort
-            // 
-            this.SPort.ReadTimeout = 10;
-            this.SPort.PinChanged += new System.IO.Ports.SerialPinChangedEventHandler(this.SPort_PinChanged);
-            this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.lbSclr);
-            this.groupBox6.Controls.Add(this.lbNum);
-            this.groupBox6.Controls.Add(this.lbCap);
-            this.groupBox6.Location = new System.Drawing.Point(595, 482);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(183, 29);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            // 
-            // lbSclr
-            // 
-            this.lbSclr.AutoSize = true;
-            this.lbSclr.Enabled = false;
-            this.lbSclr.Location = new System.Drawing.Point(132, 10);
-            this.lbSclr.Name = "lbSclr";
-            this.lbSclr.Size = new System.Drawing.Size(35, 13);
-            this.lbSclr.TabIndex = 2;
-            this.lbSclr.Text = "SCLR";
-            // 
-            // lbNum
-            // 
-            this.lbNum.AutoSize = true;
-            this.lbNum.Enabled = false;
-            this.lbNum.Location = new System.Drawing.Point(91, 10);
-            this.lbNum.Name = "lbNum";
-            this.lbNum.Size = new System.Drawing.Size(32, 13);
-            this.lbNum.TabIndex = 1;
-            this.lbNum.Text = "NUM";
-            // 
-            // lbCap
-            // 
-            this.lbCap.AutoSize = true;
-            this.lbCap.Enabled = false;
-            this.lbCap.Location = new System.Drawing.Point(54, 10);
-            this.lbCap.Name = "lbCap";
-            this.lbCap.Size = new System.Drawing.Size(28, 13);
-            this.lbCap.TabIndex = 0;
-            this.lbCap.Text = "CAP";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.BTSPort);
-            this.groupBox7.Controls.Add(this.BTSetupCmd);
-            this.groupBox7.Location = new System.Drawing.Point(595, 442);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(184, 43);
-            this.groupBox7.TabIndex = 9;
-            this.groupBox7.TabStop = false;
-            // 
-            // Timer1
-            // 
-            this.Timer1.Enabled = true;
-            this.Timer1.Interval = 1000;
-            this.Timer1.Tick += new System.EventHandler(this.TimeTracking_Tick);
-            // 
-            // lbTime
-            // 
-            this.lbTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTime.AutoSize = true;
-            this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.Location = new System.Drawing.Point(51, 2);
-            this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(103, 17);
-            this.lbTime.TabIndex = 10;
-            this.lbTime.Text = "... : ... : ... ...";
-            this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.MintCream;
-            this.panel1.Controls.Add(this.lbTime);
-            this.panel1.Location = new System.Drawing.Point(595, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(183, 22);
-            this.panel1.TabIndex = 11;
-            // 
-            // sampleLabelsToolStripMenuItem
-            // 
-            this.sampleLabelsToolStripMenuItem.Name = "sampleLabelsToolStripMenuItem";
-            this.sampleLabelsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.sampleLabelsToolStripMenuItem.Text = "Sample Labels";
-            this.sampleLabelsToolStripMenuItem.Click += new System.EventHandler(this.SampleLabels_Load);
-            // 
             // MW_AmeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 516);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbSetUp);
+            this.Controls.Add(this.gbCapStatus);
+            this.Controls.Add(this.pnTime);
+            this.Controls.Add(this.gbCharSetStatus);
+            this.Controls.Add(this.gbUserCmd);
+            this.Controls.Add(this.gbConnectStatus);
+            this.Controls.Add(this.gbLocalCmd);
+            this.Controls.Add(this.gbCommunicate);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -1073,21 +1126,21 @@
             this.Load += new System.EventHandler(this.AME_APP_TEST_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.gbCommunicate.ResumeLayout(false);
+            this.gbCommunicate.PerformLayout();
+            this.gbLocalCmd.ResumeLayout(false);
+            this.gbLocalCmd.PerformLayout();
+            this.gbUserCmd.ResumeLayout(false);
+            this.gbUserCmd.PerformLayout();
+            this.pnTime.ResumeLayout(false);
+            this.pnTime.PerformLayout();
+            this.gbSetUp.ResumeLayout(false);
+            this.gbCapStatus.ResumeLayout(false);
+            this.gbCapStatus.PerformLayout();
+            this.gbCharSetStatus.ResumeLayout(false);
+            this.gbCharSetStatus.PerformLayout();
+            this.gbConnectStatus.ResumeLayout(false);
+            this.gbConnectStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1101,13 +1154,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbCommunicate;
         private System.Windows.Forms.Button btNewLineCo;
         private System.Windows.Forms.Button btClearCo;
         private System.Windows.Forms.Button btWrapTextCo;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbLocalCmd;
         private System.Windows.Forms.TextBox tbDataSend;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbUserCmd;
         private System.Windows.Forms.Button btSend;
         private System.Windows.Forms.Button btClearLo;
         private System.Windows.Forms.Button btSendLFLo;
@@ -1119,65 +1172,71 @@
         private System.Windows.Forms.Button btCmd1;
         private System.Windows.Forms.Button btCmd4;
         private System.Windows.Forms.Button btCmd0;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btConnectSP;
-        private System.Windows.Forms.Button btDisplayRCData;
-        private System.Windows.Forms.Button btShowSpace;
-        private System.Windows.Forms.Button btShowLF;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btCharToLo;
-        private System.Windows.Forms.Button btCharToCo;
-        private System.Windows.Forms.Button BTSetupCmd;
-        private System.Windows.Forms.Button BTSPort;
         private System.IO.Ports.SerialPort SPort;
-        private System.Windows.Forms.Label lbConnect;
         private System.Windows.Forms.Label lbWrapText;
         private System.Windows.Forms.Label lbSendLF;
-        private System.Windows.Forms.Label lbShowLF;
-        private System.Windows.Forms.Label lbShowSpace;
-        private System.Windows.Forms.Label lbDisplayRCData;
-        private System.Windows.Forms.Label lbToLocalCMD;
-        private System.Windows.Forms.Label lbToCommunicate;
         private System.Windows.Forms.RichTextBox tbDataRecieve;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lvCharSet;
-        private System.Windows.Forms.ColumnHeader Char;
-        private System.Windows.Forms.ColumnHeader Decimal;
-        private System.Windows.Forms.ColumnHeader Hex;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbNext;
         private System.Windows.Forms.Label lbPrevious;
         private System.Windows.Forms.Label lbCurrentUser;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label lbSclr;
-        private System.Windows.Forms.Label lbNum;
-        private System.Windows.Forms.Label lbCap;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label lbDTROHigh;
-        private System.Windows.Forms.Label lbDTROLow;
-        private System.Windows.Forms.Label lbCTSOHigh;
-        private System.Windows.Forms.Label lbCTSOLow;
-        private System.Windows.Forms.Label lbCTSIHigh;
-        private System.Windows.Forms.Label lbCTSILow;
-        private System.Windows.Forms.Label lbCTSStatus;
-        private System.Windows.Forms.Button btCTS;
         private System.Windows.Forms.Timer Timer1;
-        private System.Windows.Forms.Label lbDSRILow;
-        private System.Windows.Forms.Label lbDSRIHigh;
-        private System.Windows.Forms.Label lbDSRStatus;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btDTR;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lbTime;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnTime;
         private System.Windows.Forms.ToolStripMenuItem tsmiLogSetting;
         private System.Windows.Forms.ToolStripMenuItem aMESupportTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiTimeStamping;
         private System.Windows.Forms.ToolStripMenuItem tsmiIndexStamping;
         private System.Windows.Forms.ToolStripMenuItem sampleLabelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSimpleView;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFullView;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setUpUserCMDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serialPortToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gbSetUp;
+        private System.Windows.Forms.Button BTSPort;
+        private System.Windows.Forms.Button BTSetupCmd;
+        private System.Windows.Forms.GroupBox gbCapStatus;
+        private System.Windows.Forms.Label lbSclr;
+        private System.Windows.Forms.Label lbNum;
+        private System.Windows.Forms.Label lbCap;
+        private System.Windows.Forms.GroupBox gbCharSetStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView lvCharSet;
+        private System.Windows.Forms.ColumnHeader Char;
+        private System.Windows.Forms.ColumnHeader Decimal;
+        private System.Windows.Forms.ColumnHeader Hex;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbToLocalCMD;
+        private System.Windows.Forms.Label lbToCommunicate;
+        private System.Windows.Forms.Button btCharToLo;
+        private System.Windows.Forms.Button btCharToCo;
+        private System.Windows.Forms.GroupBox gbConnectStatus;
+        private System.Windows.Forms.Label lbDSRILow;
+        private System.Windows.Forms.Label lbDSRIHigh;
+        private System.Windows.Forms.Label lbDSRStatus;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbDTROLow;
+        private System.Windows.Forms.Label lbDTROHigh;
+        private System.Windows.Forms.Button btDTR;
+        private System.Windows.Forms.Label lbCTSOHigh;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbCTSOLow;
+        private System.Windows.Forms.Label lbCTSIHigh;
+        private System.Windows.Forms.Label lbCTSILow;
+        private System.Windows.Forms.Label lbCTSStatus;
+        private System.Windows.Forms.Button btCTS;
+        private System.Windows.Forms.Label lbShowLF;
+        private System.Windows.Forms.Label lbShowSpace;
+        private System.Windows.Forms.Label lbDisplayRCData;
+        private System.Windows.Forms.Label lbConnect;
+        private System.Windows.Forms.Button btConnectSP;
+        private System.Windows.Forms.Button btDisplayRCData;
+        private System.Windows.Forms.Button btShowSpace;
+        private System.Windows.Forms.Button btShowLF;
     }
 }
 

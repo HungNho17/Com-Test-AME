@@ -49,6 +49,9 @@ namespace TestAME
         SW_AME_Test SubFormAMETest = null;
         SW_LabelsProgramming SubFormSampleLabels = null;
 
+        Size FormDefaultSize = new Size();
+        bool FlagFlipView = false;
+
 //==============================================================================
 // Window Actions.
 //==============================================================================
@@ -59,6 +62,7 @@ namespace TestAME
 
         private void AME_APP_TEST_Load(object sender, EventArgs e)
         {
+            FormDefaultSize = this.Size;
             ReInitializeAllComponents();
             this.myDelegate = new AddDataDelegate(AddDataMethod);
         }
@@ -805,11 +809,53 @@ namespace TestAME
             }
         }
 
+
+        private void simpleViewOption_Click(object sender, EventArgs e)
+        {
+            if (FlagFlipView == false)
+            {
+                FlagFlipView = true;
+
+                pnTime.Visible = false;
+                gbConnectStatus.Visible = false;
+                gbCharSetStatus.Visible = false;
+                gbSetUp.Visible = false;
+                gbCapStatus.Visible = false;
+
+                this.MinimumSize = new Size(this.MinimumSize.Width - pnTime.Width, this.MinimumSize.Height);
+                this.Width = this.Width - pnTime.Width;
+
+                gbCommunicate.Width += pnTime.Width;
+                gbLocalCmd.Width += pnTime.Width;
+                gbUserCmd.Width += pnTime.Width;
+                this.Refresh();
+            }
+        }
+
+        private void fullViewOption_Click(object sender, EventArgs e)
+        {
+            if (FlagFlipView)
+            {
+                FlagFlipView = false;
+
+                pnTime.Visible = true;
+                gbConnectStatus.Visible = true;
+                gbCharSetStatus.Visible = true;
+                gbSetUp.Visible = true;
+                gbCapStatus.Visible = true;
+
+                this.MinimumSize = new Size(this.MinimumSize.Width + pnTime.Width, this.MinimumSize.Height);
+                this.Width = this.Width + pnTime.Width;
+
+                gbCommunicate.Width -= pnTime.Width;
+                gbLocalCmd.Width -= pnTime.Width;
+                gbUserCmd.Width -= pnTime.Width;
+                this.Refresh();
+            }
+        }
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
-
-
     }
 }
