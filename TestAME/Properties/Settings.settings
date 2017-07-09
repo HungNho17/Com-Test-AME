@@ -227,5 +227,8 @@
     <Setting Name="PortStopBit" Type="System.IO.Ports.StopBits" Scope="User">
       <Value Profile="(Default)">None</Value>
     </Setting>
+    <Setting Name="AutoReconnect" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

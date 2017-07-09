@@ -46,6 +46,7 @@
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setUpUserCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbCommunicate = new System.Windows.Forms.GroupBox();
@@ -122,7 +123,7 @@
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
-            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAutoReconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.gbCommunicate.SuspendLayout();
             this.gbLocalCmd.SuspendLayout();
@@ -253,7 +254,8 @@
             // 
             this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setUpUserCMDToolStripMenuItem,
-            this.serialPortToolStripMenuItem});
+            this.serialPortToolStripMenuItem,
+            this.tsmiAutoReconnect});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
             this.configurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.configurationToolStripMenuItem.Text = "Configuration";
@@ -261,16 +263,23 @@
             // setUpUserCMDToolStripMenuItem
             // 
             this.setUpUserCMDToolStripMenuItem.Name = "setUpUserCMDToolStripMenuItem";
-            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.setUpUserCMDToolStripMenuItem.Text = "User CMD";
             this.setUpUserCMDToolStripMenuItem.Click += new System.EventHandler(this.BTSetupCmd_Click);
             // 
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.BTSPort_Click);
+            // 
+            // clearAllSerialPortToolStripMenuItem
+            // 
+            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
+            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
+            this.clearAllSerialPortToolStripMenuItem.Click += new System.EventHandler(this.tsmiClearAllComPort_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1157,12 +1166,15 @@
             this.btShowLF.UseVisualStyleBackColor = true;
             this.btShowLF.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
-            // clearAllSerialPortToolStripMenuItem
+            // tsmiAutoReconnect
             // 
-            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
-            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
-            this.clearAllSerialPortToolStripMenuItem.Click += new System.EventHandler(this.clearAllSerialPortToolStripMenuItem_Click);
+            this.tsmiAutoReconnect.Checked = true;
+            this.tsmiAutoReconnect.CheckOnClick = true;
+            this.tsmiAutoReconnect.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiAutoReconnect.Name = "tsmiAutoReconnect";
+            this.tsmiAutoReconnect.Size = new System.Drawing.Size(159, 22);
+            this.tsmiAutoReconnect.Text = "Auto Reconnect";
+            this.tsmiAutoReconnect.Click += new System.EventHandler(this.tsmiAutoReconnect_Click);
             // 
             // MW_AmeTest
             // 
@@ -1302,6 +1314,7 @@
         private System.Windows.Forms.Label lbTempStatus;
         private System.Windows.Forms.Button btTempConnect;
         private System.Windows.Forms.ToolStripMenuItem clearAllSerialPortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAutoReconnect;
     }
 }
 

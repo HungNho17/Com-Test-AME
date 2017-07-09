@@ -88,18 +88,33 @@ namespace TestAME
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF,btTempConnect};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
             CommandBTList = new List<Button>() { btCmd0,btCmd1,btCmd2,btCmd3,btCmd4,btCmd5,btCmd6,btCmd7};
+
+            UpdateOldPortAndAutoReconnect();
             UpdateStatusWindow();
             UpdateCharSetTable();
             UpdateUserButtonCmd();
             UpdateRightContextManu();
             UpdateKeyboarStatus();
+
+            
+        }
+        public void UpdateOldPortAndAutoReconnect()
+        {
+            if (ComPort.LoadOldComPort())
+            {
+                tsmiAutoReconnect.Checked = false;
+                if (Properties.Settings.Default.AutoReconnect == true)
+                {
+                    tsmiAutoReconnect.Checked = true;
+                    btConnectSP.PerformClick();
+                }
+            }
         }
 
         public void UpdateStatusWindow()
         {
             if (SPort != null)
             {
-                ComPort.LoadOldComPort();
                 btConnectSP.Text = "Serial " + SPort.PortName;
             }
 
@@ -879,7 +894,7 @@ namespace TestAME
             MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
 
-        private void clearAllSerialPortToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiClearAllComPort_Click(object sender, EventArgs e)
         {
             RegistryKey regKey = Registry.LocalMachine;
             regKey = regKey.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\COM Name Arbiter");
@@ -909,6 +924,20 @@ namespace TestAME
                 }
             }
             catch { }
+        }
+
+        private void tsmiAutoReconnect_Click(object sender, EventArgs e)
+        {
+            if (tsmiAutoReconnect.Checked)
+            {
+                Properties.Settings.Default.AutoReconnect = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.AutoReconnect = false;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
