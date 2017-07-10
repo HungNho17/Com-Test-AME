@@ -29,6 +29,7 @@ namespace TestAME
         COMMAND_TYPE CurrentCmd;
 
         int iNumberOfCmd = 0;
+        bool FlagFileLoaded = false;
         bool FlagFlipTestMode = false;
 
         TEST_MODE_TYPE TestMode = TEST_MODE_TYPE.UNDEF_MODE;
@@ -295,6 +296,8 @@ namespace TestAME
                         UpdateCommonInfo();
                         UpdateCommandInfo();
                         UpdateCurrentCmd(iCurrentCmdNumber);
+                        FlagFileLoaded = true;
+                        TestMode_CheckedChanged(sender,e);
                     }
                 }
                 else
@@ -304,6 +307,7 @@ namespace TestAME
 
         private void TestMode_CheckedChanged(object sender, EventArgs e)
         {
+            if (FlagFileLoaded == false) return;
             if (rbManual.Checked == true)
             {
                 TestMode = TEST_MODE_TYPE.MANUAL_MODE;

@@ -211,6 +211,10 @@ namespace TestAME
                 lvCharSet.Items.Add(TempItem);
             }
             lvCharSet.FullRowSelect = true;
+
+            lvCharSet.Columns[0].Width = (lvCharSet.Width * 33) / 100;
+            lvCharSet.Columns[1].Width = (lvCharSet.Width * 20) / 100;
+            lvCharSet.Columns[2].Width = (lvCharSet.Width * 27) / 100;
         }
 
         public bool UpdateDataRecieved(string data, bool flagFromSP)
@@ -240,6 +244,11 @@ namespace TestAME
 
                     tbDataRecieve.AppendText(temp);
                     tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
+
+                    if ((SubFormAMETest != null) && flagFromSP)
+                    {
+                        SubFormAMETest.UpdateFeedBackSending(temp);
+                    }
                 }
             }
 
@@ -693,7 +702,7 @@ namespace TestAME
         /// </summary>
         private void btSend_Click(object sender, EventArgs e)
         {
-            if (tbDataSend.Text != null)
+            if ((tbDataSend.Text != null)&& (tbDataSend.Text != ""))
             {
                 SendDataMethode(tbDataSend.Text);
             }

@@ -506,6 +506,8 @@
             // 
             // cbCurrentCmd
             // 
+            this.cbCurrentCmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCurrentCmd.ForeColor = System.Drawing.Color.Blue;
             this.cbCurrentCmd.FormattingEnabled = true;
             this.cbCurrentCmd.Location = new System.Drawing.Point(66, 75);
             this.cbCurrentCmd.Name = "cbCurrentCmd";
@@ -515,6 +517,8 @@
             // 
             // cbCurrentDesc
             // 
+            this.cbCurrentDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCurrentDesc.ForeColor = System.Drawing.Color.Red;
             this.cbCurrentDesc.FormattingEnabled = true;
             this.cbCurrentDesc.Location = new System.Drawing.Point(66, 47);
             this.cbCurrentDesc.Name = "cbCurrentDesc";

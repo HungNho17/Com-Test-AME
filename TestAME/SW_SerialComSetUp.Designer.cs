@@ -85,9 +85,11 @@
             this.Port,
             this.Description});
             this.LVSerialPort.FullRowSelect = true;
+            this.LVSerialPort.GridLines = true;
             this.LVSerialPort.Location = new System.Drawing.Point(5, 17);
             this.LVSerialPort.Name = "LVSerialPort";
-            this.LVSerialPort.Size = new System.Drawing.Size(243, 374);
+            this.LVSerialPort.Size = new System.Drawing.Size(245, 375);
+            this.LVSerialPort.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.LVSerialPort.TabIndex = 0;
             this.LVSerialPort.UseCompatibleStateImageBehavior = false;
             this.LVSerialPort.View = System.Windows.Forms.View.Details;
@@ -96,7 +98,7 @@
             // Port
             // 
             this.Port.Text = "Ports";
-            this.Port.Width = 80;
+            this.Port.Width = 74;
             // 
             // Description
             // 

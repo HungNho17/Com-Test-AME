@@ -47,6 +47,7 @@ namespace TestAME
         private void SelectAndConfigSP_Load(object sender, EventArgs e)
         {
             LoadVariableDefault();
+            LVSerialPort.Columns[0].Width = (LVSerialPort.Width * 31) / 100;
         }
 
 //==============================================================================

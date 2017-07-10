@@ -46,7 +46,7 @@
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setUpUserCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAutoReconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbCommunicate = new System.Windows.Forms.GroupBox();
@@ -123,7 +123,8 @@
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
-            this.tsmiAutoReconnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.gbCommunicate.SuspendLayout();
             this.gbLocalCmd.SuspendLayout();
@@ -138,6 +139,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -162,14 +164,16 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.saveToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLog_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.exitToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
@@ -186,7 +190,8 @@
             // 
             this.tsmiSimpleView.CheckOnClick = true;
             this.tsmiSimpleView.Name = "tsmiSimpleView";
-            this.tsmiSimpleView.Size = new System.Drawing.Size(110, 22);
+            this.tsmiSimpleView.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiSimpleView.Size = new System.Drawing.Size(152, 26);
             this.tsmiSimpleView.Text = "Simple";
             this.tsmiSimpleView.Click += new System.EventHandler(this.simpleViewOption_Click);
             // 
@@ -194,7 +199,8 @@
             // 
             this.tsmiFullView.CheckOnClick = true;
             this.tsmiFullView.Name = "tsmiFullView";
-            this.tsmiFullView.Size = new System.Drawing.Size(110, 22);
+            this.tsmiFullView.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiFullView.Size = new System.Drawing.Size(152, 26);
             this.tsmiFullView.Text = "Full";
             this.tsmiFullView.Click += new System.EventHandler(this.fullViewOption_Click);
             // 
@@ -203,9 +209,9 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sampleLabelsToolStripMenuItem,
             this.aMESupportTestToolStripMenuItem,
+            this.toolStripSeparator1,
             this.tsmiLogSetting,
-            this.configurationToolStripMenuItem,
-            this.clearAllSerialPortToolStripMenuItem});
+            this.configurationToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -213,14 +219,16 @@
             // sampleLabelsToolStripMenuItem
             // 
             this.sampleLabelsToolStripMenuItem.Name = "sampleLabelsToolStripMenuItem";
-            this.sampleLabelsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.sampleLabelsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.sampleLabelsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.sampleLabelsToolStripMenuItem.Text = "Sample Labels";
             this.sampleLabelsToolStripMenuItem.Click += new System.EventHandler(this.SampleLabels_Load);
             // 
             // aMESupportTestToolStripMenuItem
             // 
             this.aMESupportTestToolStripMenuItem.Name = "aMESupportTestToolStripMenuItem";
-            this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.aMESupportTestToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.aMESupportTestToolStripMenuItem.Text = "Multi Commands";
             this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
             // 
@@ -230,7 +238,8 @@
             this.tsmiTimeStamping,
             this.tsmiIndexStamping});
             this.tsmiLogSetting.Name = "tsmiLogSetting";
-            this.tsmiLogSetting.Size = new System.Drawing.Size(171, 22);
+            this.tsmiLogSetting.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiLogSetting.Size = new System.Drawing.Size(167, 26);
             this.tsmiLogSetting.Text = "Log Setting";
             // 
             // tsmiTimeStamping
@@ -238,7 +247,8 @@
             this.tsmiTimeStamping.CheckOnClick = true;
             this.tsmiTimeStamping.DoubleClickEnabled = true;
             this.tsmiTimeStamping.Name = "tsmiTimeStamping";
-            this.tsmiTimeStamping.Size = new System.Drawing.Size(139, 22);
+            this.tsmiTimeStamping.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiTimeStamping.Size = new System.Drawing.Size(152, 26);
             this.tsmiTimeStamping.Text = "Time Stamp";
             this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
             // 
@@ -246,7 +256,8 @@
             // 
             this.tsmiIndexStamping.CheckOnClick = true;
             this.tsmiIndexStamping.Name = "tsmiIndexStamping";
-            this.tsmiIndexStamping.Size = new System.Drawing.Size(139, 22);
+            this.tsmiIndexStamping.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiIndexStamping.Size = new System.Drawing.Size(152, 26);
             this.tsmiIndexStamping.Text = "Index Stamp";
             this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
             // 
@@ -255,31 +266,39 @@
             this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setUpUserCMDToolStripMenuItem,
             this.serialPortToolStripMenuItem,
-            this.tsmiAutoReconnect});
+            this.tsmiAutoReconnect,
+            this.clearAllSerialPortToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.configurationToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // setUpUserCMDToolStripMenuItem
             // 
             this.setUpUserCMDToolStripMenuItem.Name = "setUpUserCMDToolStripMenuItem";
-            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.setUpUserCMDToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.setUpUserCMDToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.setUpUserCMDToolStripMenuItem.Text = "User CMD";
             this.setUpUserCMDToolStripMenuItem.Click += new System.EventHandler(this.BTSetupCmd_Click);
             // 
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.serialPortToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.BTSPort_Click);
             // 
-            // clearAllSerialPortToolStripMenuItem
+            // tsmiAutoReconnect
             // 
-            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
-            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
-            this.clearAllSerialPortToolStripMenuItem.Click += new System.EventHandler(this.tsmiClearAllComPort_Click);
+            this.tsmiAutoReconnect.Checked = true;
+            this.tsmiAutoReconnect.CheckOnClick = true;
+            this.tsmiAutoReconnect.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiAutoReconnect.Name = "tsmiAutoReconnect";
+            this.tsmiAutoReconnect.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.tsmiAutoReconnect.Size = new System.Drawing.Size(171, 26);
+            this.tsmiAutoReconnect.Text = "Auto Reconnect";
+            this.tsmiAutoReconnect.Click += new System.EventHandler(this.tsmiAutoReconnect_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -821,7 +840,7 @@
             this.lvCharSet.MultiSelect = false;
             this.lvCharSet.Name = "lvCharSet";
             this.lvCharSet.RightToLeftLayout = true;
-            this.lvCharSet.Size = new System.Drawing.Size(146, 59);
+            this.lvCharSet.Size = new System.Drawing.Size(150, 60);
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
@@ -1013,6 +1032,7 @@
             this.btDTR.Size = new System.Drawing.Size(116, 19);
             this.btDTR.TabIndex = 23;
             this.btDTR.Text = "DTR (Output H/S)";
+            this.btDTR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btDTR.UseVisualStyleBackColor = true;
             // 
             // lbCTSOHigh
@@ -1084,6 +1104,7 @@
             this.btCTS.Size = new System.Drawing.Size(116, 19);
             this.btCTS.TabIndex = 14;
             this.btCTS.Text = "CTS (Output H/S)";
+            this.btCTS.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btCTS.UseVisualStyleBackColor = true;
             // 
             // lbShowLF
@@ -1133,6 +1154,7 @@
             this.btConnectSP.Size = new System.Drawing.Size(126, 20);
             this.btConnectSP.TabIndex = 3;
             this.btConnectSP.Text = "Serial Port";
+            this.btConnectSP.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btConnectSP.UseVisualStyleBackColor = true;
             this.btConnectSP.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
@@ -1143,6 +1165,7 @@
             this.btDisplayRCData.Size = new System.Drawing.Size(126, 20);
             this.btDisplayRCData.TabIndex = 2;
             this.btDisplayRCData.Text = "Display Received Data";
+            this.btDisplayRCData.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btDisplayRCData.UseVisualStyleBackColor = true;
             this.btDisplayRCData.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
@@ -1153,6 +1176,7 @@
             this.btShowSpace.Size = new System.Drawing.Size(126, 20);
             this.btShowSpace.TabIndex = 1;
             this.btShowSpace.Text = "Show Space In { }";
+            this.btShowSpace.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btShowSpace.UseVisualStyleBackColor = true;
             this.btShowSpace.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
@@ -1163,18 +1187,21 @@
             this.btShowLF.Size = new System.Drawing.Size(126, 20);
             this.btShowLF.TabIndex = 0;
             this.btShowLF.Text = "Show CR / LF in { }";
+            this.btShowLF.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btShowLF.UseVisualStyleBackColor = true;
             this.btShowLF.Click += new System.EventHandler(this.BTConnectStatus_Click);
             // 
-            // tsmiAutoReconnect
+            // clearAllSerialPortToolStripMenuItem
             // 
-            this.tsmiAutoReconnect.Checked = true;
-            this.tsmiAutoReconnect.CheckOnClick = true;
-            this.tsmiAutoReconnect.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tsmiAutoReconnect.Name = "tsmiAutoReconnect";
-            this.tsmiAutoReconnect.Size = new System.Drawing.Size(159, 22);
-            this.tsmiAutoReconnect.Text = "Auto Reconnect";
-            this.tsmiAutoReconnect.Click += new System.EventHandler(this.tsmiAutoReconnect_Click);
+            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
+            this.clearAllSerialPortToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // MW_AmeTest
             // 
@@ -1313,8 +1340,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lbTempStatus;
         private System.Windows.Forms.Button btTempConnect;
-        private System.Windows.Forms.ToolStripMenuItem clearAllSerialPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiAutoReconnect;
+        private System.Windows.Forms.ToolStripMenuItem clearAllSerialPortToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
