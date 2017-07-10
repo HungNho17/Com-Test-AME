@@ -35,4 +35,3 @@ D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.SW_Se
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csproj.GenerateResource.Cache
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.exe
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.pdb
-D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Release\TestAME.csprojResolveAssemblyReference.cache
