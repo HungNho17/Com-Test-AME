@@ -40,13 +40,20 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sampleLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aMESupportTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiLogSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIndexStamping = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setUpUserCMDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.handshakingSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRequestToSend = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiXonXoff = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBoth = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNone = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutoReconnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbCommunicate = new System.Windows.Forms.GroupBox();
@@ -108,13 +115,13 @@
             this.lbDTROLow = new System.Windows.Forms.Label();
             this.lbDTROHigh = new System.Windows.Forms.Label();
             this.btDTR = new System.Windows.Forms.Button();
-            this.lbCTSOHigh = new System.Windows.Forms.Label();
+            this.lbRTSOHigh = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.lbCTSOLow = new System.Windows.Forms.Label();
+            this.lbRTSOLow = new System.Windows.Forms.Label();
             this.lbCTSIHigh = new System.Windows.Forms.Label();
             this.lbCTSILow = new System.Windows.Forms.Label();
             this.lbCTSStatus = new System.Windows.Forms.Label();
-            this.btCTS = new System.Windows.Forms.Button();
+            this.btRTS = new System.Windows.Forms.Button();
             this.lbShowLF = new System.Windows.Forms.Label();
             this.lbShowSpace = new System.Windows.Forms.Label();
             this.lbDisplayRCData = new System.Windows.Forms.Label();
@@ -123,8 +130,6 @@
             this.btDisplayRCData = new System.Windows.Forms.Button();
             this.btShowSpace = new System.Windows.Forms.Button();
             this.btShowLF = new System.Windows.Forms.Button();
-            this.clearAllSerialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.gbCommunicate.SuspendLayout();
             this.gbLocalCmd.SuspendLayout();
@@ -165,7 +170,7 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveLog_Click);
             // 
@@ -173,7 +178,7 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.AME_APP_TEST_Close);
             // 
@@ -191,18 +196,18 @@
             this.tsmiSimpleView.CheckOnClick = true;
             this.tsmiSimpleView.Name = "tsmiSimpleView";
             this.tsmiSimpleView.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.tsmiSimpleView.Size = new System.Drawing.Size(152, 26);
+            this.tsmiSimpleView.Size = new System.Drawing.Size(110, 26);
             this.tsmiSimpleView.Text = "Simple";
-            this.tsmiSimpleView.Click += new System.EventHandler(this.simpleViewOption_Click);
+            this.tsmiSimpleView.Click += new System.EventHandler(this.tsmiSimpleViewOption_Click);
             // 
             // tsmiFullView
             // 
             this.tsmiFullView.CheckOnClick = true;
             this.tsmiFullView.Name = "tsmiFullView";
             this.tsmiFullView.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.tsmiFullView.Size = new System.Drawing.Size(152, 26);
+            this.tsmiFullView.Size = new System.Drawing.Size(110, 26);
             this.tsmiFullView.Text = "Full";
-            this.tsmiFullView.Click += new System.EventHandler(this.fullViewOption_Click);
+            this.tsmiFullView.Click += new System.EventHandler(this.tsmiFullViewOption_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -232,6 +237,11 @@
             this.aMESupportTestToolStripMenuItem.Text = "Multi Commands";
             this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            // 
             // tsmiLogSetting
             // 
             this.tsmiLogSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -248,7 +258,7 @@
             this.tsmiTimeStamping.DoubleClickEnabled = true;
             this.tsmiTimeStamping.Name = "tsmiTimeStamping";
             this.tsmiTimeStamping.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.tsmiTimeStamping.Size = new System.Drawing.Size(152, 26);
+            this.tsmiTimeStamping.Size = new System.Drawing.Size(139, 26);
             this.tsmiTimeStamping.Text = "Time Stamp";
             this.tsmiTimeStamping.Click += new System.EventHandler(this.tsmiTimeStamping_Click);
             // 
@@ -257,15 +267,16 @@
             this.tsmiIndexStamping.CheckOnClick = true;
             this.tsmiIndexStamping.Name = "tsmiIndexStamping";
             this.tsmiIndexStamping.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.tsmiIndexStamping.Size = new System.Drawing.Size(152, 26);
+            this.tsmiIndexStamping.Size = new System.Drawing.Size(139, 26);
             this.tsmiIndexStamping.Text = "Index Stamp";
-            this.tsmiIndexStamping.Click += new System.EventHandler(this.indexStamping_Click);
+            this.tsmiIndexStamping.Click += new System.EventHandler(this.tsmiIndexStamping_Click);
             // 
             // configurationToolStripMenuItem
             // 
             this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setUpUserCMDToolStripMenuItem,
             this.serialPortToolStripMenuItem,
+            this.handshakingSettingToolStripMenuItem,
             this.tsmiAutoReconnect,
             this.clearAllSerialPortToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
@@ -289,6 +300,46 @@
             this.serialPortToolStripMenuItem.Text = "Serial Port";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.BTSPort_Click);
             // 
+            // handshakingSettingToolStripMenuItem
+            // 
+            this.handshakingSettingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRequestToSend,
+            this.tsmiXonXoff,
+            this.tsmiBoth,
+            this.tsmiNone});
+            this.handshakingSettingToolStripMenuItem.Name = "handshakingSettingToolStripMenuItem";
+            this.handshakingSettingToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.handshakingSettingToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.handshakingSettingToolStripMenuItem.Text = "Handshake Mode";
+            // 
+            // tsmiRequestToSend
+            // 
+            this.tsmiRequestToSend.Name = "tsmiRequestToSend";
+            this.tsmiRequestToSend.Size = new System.Drawing.Size(161, 22);
+            this.tsmiRequestToSend.Text = "Request To Send";
+            this.tsmiRequestToSend.Click += new System.EventHandler(this.tsmiRequestToSend_Click);
+            // 
+            // tsmiXonXoff
+            // 
+            this.tsmiXonXoff.Name = "tsmiXonXoff";
+            this.tsmiXonXoff.Size = new System.Drawing.Size(161, 22);
+            this.tsmiXonXoff.Text = "Xon Xoff";
+            this.tsmiXonXoff.Click += new System.EventHandler(this.tsmiXonXoff_Click);
+            // 
+            // tsmiBoth
+            // 
+            this.tsmiBoth.Name = "tsmiBoth";
+            this.tsmiBoth.Size = new System.Drawing.Size(161, 22);
+            this.tsmiBoth.Text = "Both";
+            this.tsmiBoth.Click += new System.EventHandler(this.tsmiBoth_Click);
+            // 
+            // tsmiNone
+            // 
+            this.tsmiNone.Name = "tsmiNone";
+            this.tsmiNone.Size = new System.Drawing.Size(161, 22);
+            this.tsmiNone.Text = "None";
+            this.tsmiNone.Click += new System.EventHandler(this.tsmiNone_Click);
+            // 
             // tsmiAutoReconnect
             // 
             this.tsmiAutoReconnect.Checked = true;
@@ -299,6 +350,13 @@
             this.tsmiAutoReconnect.Size = new System.Drawing.Size(171, 26);
             this.tsmiAutoReconnect.Text = "Auto Reconnect";
             this.tsmiAutoReconnect.Click += new System.EventHandler(this.tsmiAutoReconnect_Click);
+            // 
+            // clearAllSerialPortToolStripMenuItem
+            // 
+            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
+            this.clearAllSerialPortToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
+            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
             // 
             // helpToolStripMenuItem
             // 
@@ -844,6 +902,7 @@
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
+            this.lvCharSet.SelectedIndexChanged += new System.EventHandler(this.SelectCharacterSet_DoubleClick);
             // 
             // Char
             // 
@@ -941,13 +1000,13 @@
             this.gbConnectStatus.Controls.Add(this.lbDTROLow);
             this.gbConnectStatus.Controls.Add(this.lbDTROHigh);
             this.gbConnectStatus.Controls.Add(this.btDTR);
-            this.gbConnectStatus.Controls.Add(this.lbCTSOHigh);
+            this.gbConnectStatus.Controls.Add(this.lbRTSOHigh);
             this.gbConnectStatus.Controls.Add(this.label15);
-            this.gbConnectStatus.Controls.Add(this.lbCTSOLow);
+            this.gbConnectStatus.Controls.Add(this.lbRTSOLow);
             this.gbConnectStatus.Controls.Add(this.lbCTSIHigh);
             this.gbConnectStatus.Controls.Add(this.lbCTSILow);
             this.gbConnectStatus.Controls.Add(this.lbCTSStatus);
-            this.gbConnectStatus.Controls.Add(this.btCTS);
+            this.gbConnectStatus.Controls.Add(this.btRTS);
             this.gbConnectStatus.Controls.Add(this.lbShowLF);
             this.gbConnectStatus.Controls.Add(this.lbShowSpace);
             this.gbConnectStatus.Controls.Add(this.lbDisplayRCData);
@@ -1026,24 +1085,25 @@
             // 
             // btDTR
             // 
-            this.btDTR.Location = new System.Drawing.Point(52, 89);
+            this.btDTR.Location = new System.Drawing.Point(52, 88);
             this.btDTR.Margin = new System.Windows.Forms.Padding(2);
             this.btDTR.Name = "btDTR";
-            this.btDTR.Size = new System.Drawing.Size(116, 19);
+            this.btDTR.Size = new System.Drawing.Size(116, 20);
             this.btDTR.TabIndex = 23;
             this.btDTR.Text = "DTR (Output H/S)";
             this.btDTR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btDTR.UseVisualStyleBackColor = true;
+            this.btDTR.Click += new System.EventHandler(this.BTRTSorDTR_Click);
             // 
-            // lbCTSOHigh
+            // lbRTSOHigh
             // 
-            this.lbCTSOHigh.AutoSize = true;
-            this.lbCTSOHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOHigh.Image")));
-            this.lbCTSOHigh.Location = new System.Drawing.Point(36, 68);
-            this.lbCTSOHigh.Name = "lbCTSOHigh";
-            this.lbCTSOHigh.Size = new System.Drawing.Size(16, 13);
-            this.lbCTSOHigh.TabIndex = 22;
-            this.lbCTSOHigh.Text = "   ";
+            this.lbRTSOHigh.AutoSize = true;
+            this.lbRTSOHigh.Image = ((System.Drawing.Image)(resources.GetObject("lbRTSOHigh.Image")));
+            this.lbRTSOHigh.Location = new System.Drawing.Point(36, 68);
+            this.lbRTSOHigh.Name = "lbRTSOHigh";
+            this.lbRTSOHigh.Size = new System.Drawing.Size(16, 13);
+            this.lbRTSOHigh.TabIndex = 22;
+            this.lbRTSOHigh.Text = "   ";
             // 
             // label15
             // 
@@ -1055,15 +1115,15 @@
             this.label15.TabIndex = 10;
             this.label15.Text = "__________________________";
             // 
-            // lbCTSOLow
+            // lbRTSOLow
             // 
-            this.lbCTSOLow.AutoSize = true;
-            this.lbCTSOLow.Image = ((System.Drawing.Image)(resources.GetObject("lbCTSOLow.Image")));
-            this.lbCTSOLow.Location = new System.Drawing.Point(21, 68);
-            this.lbCTSOLow.Name = "lbCTSOLow";
-            this.lbCTSOLow.Size = new System.Drawing.Size(16, 13);
-            this.lbCTSOLow.TabIndex = 21;
-            this.lbCTSOLow.Text = "   ";
+            this.lbRTSOLow.AutoSize = true;
+            this.lbRTSOLow.Image = ((System.Drawing.Image)(resources.GetObject("lbRTSOLow.Image")));
+            this.lbRTSOLow.Location = new System.Drawing.Point(21, 68);
+            this.lbRTSOLow.Name = "lbRTSOLow";
+            this.lbRTSOLow.Size = new System.Drawing.Size(16, 13);
+            this.lbRTSOLow.TabIndex = 21;
+            this.lbRTSOLow.Text = "   ";
             // 
             // lbCTSIHigh
             // 
@@ -1096,16 +1156,17 @@
             this.lbCTSStatus.Text = "CTS (Input H/S)";
             this.lbCTSStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btCTS
+            // btRTS
             // 
-            this.btCTS.Location = new System.Drawing.Point(52, 66);
-            this.btCTS.Margin = new System.Windows.Forms.Padding(2);
-            this.btCTS.Name = "btCTS";
-            this.btCTS.Size = new System.Drawing.Size(116, 19);
-            this.btCTS.TabIndex = 14;
-            this.btCTS.Text = "CTS (Output H/S)";
-            this.btCTS.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btCTS.UseVisualStyleBackColor = true;
+            this.btRTS.Location = new System.Drawing.Point(52, 63);
+            this.btRTS.Margin = new System.Windows.Forms.Padding(2);
+            this.btRTS.Name = "btRTS";
+            this.btRTS.Size = new System.Drawing.Size(116, 20);
+            this.btRTS.TabIndex = 14;
+            this.btRTS.Text = "RTS (Output H/S)";
+            this.btRTS.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btRTS.UseVisualStyleBackColor = true;
+            this.btRTS.Click += new System.EventHandler(this.BTRTSorDTR_Click);
             // 
             // lbShowLF
             // 
@@ -1190,18 +1251,6 @@
             this.btShowLF.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btShowLF.UseVisualStyleBackColor = true;
             this.btShowLF.Click += new System.EventHandler(this.BTConnectStatus_Click);
-            // 
-            // clearAllSerialPortToolStripMenuItem
-            // 
-            this.clearAllSerialPortToolStripMenuItem.Name = "clearAllSerialPortToolStripMenuItem";
-            this.clearAllSerialPortToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
-            this.clearAllSerialPortToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.clearAllSerialPortToolStripMenuItem.Text = "Clear All SerialPort";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // MW_AmeTest
             // 
@@ -1322,13 +1371,13 @@
         private System.Windows.Forms.Label lbDTROLow;
         private System.Windows.Forms.Label lbDTROHigh;
         private System.Windows.Forms.Button btDTR;
-        private System.Windows.Forms.Label lbCTSOHigh;
+        private System.Windows.Forms.Label lbRTSOHigh;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lbCTSOLow;
+        private System.Windows.Forms.Label lbRTSOLow;
         private System.Windows.Forms.Label lbCTSIHigh;
         private System.Windows.Forms.Label lbCTSILow;
         private System.Windows.Forms.Label lbCTSStatus;
-        private System.Windows.Forms.Button btCTS;
+        private System.Windows.Forms.Button btRTS;
         private System.Windows.Forms.Label lbShowLF;
         private System.Windows.Forms.Label lbShowSpace;
         private System.Windows.Forms.Label lbDisplayRCData;
@@ -1343,6 +1392,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAutoReconnect;
         private System.Windows.Forms.ToolStripMenuItem clearAllSerialPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem handshakingSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRequestToSend;
+        private System.Windows.Forms.ToolStripMenuItem tsmiXonXoff;
+        private System.Windows.Forms.ToolStripMenuItem tsmiBoth;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNone;
     }
 }
 

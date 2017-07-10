@@ -6,6 +6,14 @@ using System.Text;
 
 namespace TestAME
 {
+    public enum HANDSHAKE_TYPE
+    {
+        REQUEST_TO_SEND = 1,
+        XON_XOFF,
+        BOTH,
+        NONE
+    }
+
     public class P_SerialComPort 
     {
         static SerialPort CurrentComPort = null;
@@ -143,7 +151,6 @@ namespace TestAME
             "{\\xF8}"  ,"{\\xF9}"  ,"{\\xFA}"  ,"{\\xFB}"  ,"{\\xFC}"  ,"{\\xFD}"  ,"{\\xFE}"  ,"{\\xFF}"   
         };
 
-
         public P_SerialComPort(SerialPort a)
         {
             string[] port = null;
@@ -228,6 +235,77 @@ namespace TestAME
                         bRet = false;
                     }
                 }
+            }
+            return bRet;
+        }
+
+        public bool HandshakeSetting(HANDSHAKE_TYPE iMode)
+        {
+            bool bRet = false;
+            try
+            {
+                switch ((int)iMode)
+                {
+                    case 0:
+                        CurrentComPort.Handshake = Handshake.RequestToSend;
+                        break;
+
+                    case 1:
+                        CurrentComPort.Handshake = Handshake.XOnXOff;
+                        break;
+
+                    case 2:
+                        CurrentComPort.Handshake = Handshake.RequestToSendXOnXOff;
+                        break;
+
+                    case 3:
+                    default:
+                        CurrentComPort.Handshake = Handshake.None;
+                        break;
+                }
+                bRet = true;
+            }
+            catch { }
+
+            return bRet;
+        }
+
+        public bool DTRSetting(bool FlagEnable)
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen)
+            {
+                CurrentComPort.DtrEnable = FlagEnable;
+                bRet = true;
+            }
+            return bRet;
+        }
+        public bool RTSSetting(bool FlagEnable)
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen)
+            {
+                if (FlagEnable == false) CurrentComPort.BaseStream.Flush();
+                CurrentComPort.RtsEnable = FlagEnable;
+                bRet = true;
+            }
+            return bRet;
+        }
+        public bool CTSGetting()
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen)
+            {
+                bRet = CurrentComPort.CtsHolding;
+            }
+            return bRet;
+        }
+        public bool DSRGetting()
+        {
+            bool bRet = false;
+            if (CurrentComPort.IsOpen)
+            {
+                bRet = CurrentComPort.DsrHolding;
             }
             return bRet;
         }

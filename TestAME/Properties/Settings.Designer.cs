@@ -934,5 +934,17 @@ namespace TestAME.Properties {
                 this["AutoReconnect"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Handshake {
+            get {
+                return ((int)(this["Handshake"]));
+            }
+            set {
+                this["Handshake"] = value;
+            }
+        }
     }
 }

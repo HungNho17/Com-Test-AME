@@ -28,6 +28,7 @@ namespace TestAME
         List<Button> ConnectStatusBTList = null;
         List<Button> ControlUIBTList = null;
         static int IndextCounter = 0;
+        static int TimerCounterCheckComport = 0;
 
         string[] btNameListCurrent = null;
         string[] cmdListCurrent = null;
@@ -42,8 +43,9 @@ namespace TestAME
         bool FlagTimeStamping = false;
         bool FlagIndexStamping = false;
 
-        bool FlagCTSOutput = false;
-        bool FlagDTROutput = false;
+        bool FlagRTSOutput = true;
+        bool FlagDTROutput = true;
+        HANDSHAKE_TYPE HandshakeMode = HANDSHAKE_TYPE.BOTH;
 
         public delegate void AddDataDelegate(string datain);
         public AddDataDelegate myDelegate;
@@ -96,7 +98,10 @@ namespace TestAME
             UpdateRightContextManu();
             UpdateKeyboarStatus();
 
-            
+            if (Properties.Settings.Default.Handshake > 0)
+            {
+                HandshakeMode = (HANDSHAKE_TYPE)Properties.Settings.Default.Handshake;
+            }
         }
         public void UpdateOldPortAndAutoReconnect()
         {
@@ -415,29 +420,79 @@ namespace TestAME
 
             lbCTSILow.Image = TestAME.Properties.Resources.D_green;
             lbDSRILow.Image = TestAME.Properties.Resources.D_green;
-            lbCTSOLow.Image = TestAME.Properties.Resources.D_green;
+            lbRTSOLow.Image = TestAME.Properties.Resources.D_green;
             lbDTROLow.Image = TestAME.Properties.Resources.D_green;
 
             lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
             lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
-            lbCTSOHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbRTSOHigh.Image = TestAME.Properties.Resources.D_brown;
             lbDTROHigh.Image = TestAME.Properties.Resources.D_brown;
-
-            if (FlagConnectStatus == false)
-            {
-                lbCTSStatus.Enabled = false;
-                lbDSRStatus.Enabled = false;
-                btCTS.Enabled = false;
-                btDTR.Enabled = false;
-            }
-            else
-            {
-                lbCTSStatus.Enabled = true;
-                lbDSRStatus.Enabled = true;
-                btCTS.Enabled = true;
-                btDTR.Enabled = true;
-            }
             
+            lbCTSStatus.Enabled = false;
+            lbDSRStatus.Enabled = false;
+            btRTS.Enabled = false;
+            btDTR.Enabled = false;
+
+            tsmiRequestToSend.Checked = false;
+            tsmiXonXoff.Checked = false;
+            tsmiBoth.Checked = false;
+            tsmiNone.Checked = false;
+            
+            if (HandshakeMode != (HANDSHAKE_TYPE)Properties.Settings.Default.Handshake)
+            {
+                Properties.Settings.Default.Handshake = (int)HandshakeMode;
+                Properties.Settings.Default.Save();
+            }
+
+            if (FlagConnectStatus == true)
+            {
+                if (HandshakeMode == HANDSHAKE_TYPE.BOTH)
+                {
+                    lbCTSStatus.Enabled = true;
+                    lbDSRStatus.Enabled = true;
+                    btRTS.Enabled = true;
+                    btDTR.Enabled = true;
+                    tsmiBoth.Checked = true;
+                }
+                else if (HandshakeMode == HANDSHAKE_TYPE.REQUEST_TO_SEND)
+                {
+                    lbCTSStatus.Enabled = true;
+                    btRTS.Enabled = true;
+                    tsmiRequestToSend.Checked = true;
+                }
+                else if (HandshakeMode == HANDSHAKE_TYPE.XON_XOFF)
+                {
+                    lbDSRStatus.Enabled = true;
+                    btDTR.Enabled = true;
+                    tsmiXonXoff.Checked = true;
+                }
+                else
+                {
+                    tsmiNone.Checked = true;
+                    return bRet;
+                }
+                
+                if (ComPort.CTSGetting())
+                    lbCTSIHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbCTSILow.Image = TestAME.Properties.Resources.Green;
+
+                if (ComPort.DSRGetting())
+                    lbDSRIHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbDSRILow.Image = TestAME.Properties.Resources.Green;
+
+                if (FlagRTSOutput)
+                    lbRTSOHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbRTSOLow.Image = TestAME.Properties.Resources.Green;
+
+                if (FlagDTROutput)
+                    lbDTROHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbDTROLow.Image = TestAME.Properties.Resources.Green;
+            }
+
             return bRet;
         }
 
@@ -616,7 +671,22 @@ namespace TestAME
 
             UpdateStatusWindow();
         }
-
+        
+        private void BTRTSorDTR_Click(object sender, EventArgs e)
+        {
+            if ((sender as Button) == btRTS)
+            {
+                FlagRTSOutput ^= true;
+                ComPort.RTSSetting(FlagRTSOutput);
+                UpdateCTSaDTRStatus();
+            }
+            else if ((sender as Button) == btDTR)
+            {
+                FlagDTROutput ^= true;
+                ComPort.DTRSetting(FlagDTROutput);
+                UpdateCTSaDTRStatus();
+            }
+        }
         /// <summary>
         /// PROCESS MULTI BUTTON - CONTROL UI
         /// </summary>
@@ -769,6 +839,7 @@ namespace TestAME
                     }
                 }
             }
+            
         }
 
         /// <summary>
@@ -792,9 +863,26 @@ namespace TestAME
         {
             if(ComPort.CheckSport() == false)
             {
-                ComPort.CloseSPort();
-                FlagConnectStatus = false;
-                UpdateStatusWindow();
+                TimerCounterCheckComport = 6;
+            }
+            //UpdateCTSaDTRStatus();
+
+            if (HandshakeMode != HANDSHAKE_TYPE.NONE)
+            {
+                lbCTSILow.Image = TestAME.Properties.Resources.D_green;
+                lbDSRILow.Image = TestAME.Properties.Resources.D_green;
+                lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
+                lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
+
+                if (ComPort.CTSGetting())
+                    lbCTSIHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbCTSILow.Image = TestAME.Properties.Resources.Green;
+
+                if (ComPort.DSRGetting())
+                    lbDSRIHigh.Image = TestAME.Properties.Resources.Red;
+                else
+                    lbDSRILow.Image = TestAME.Properties.Resources.Green;
             }
         }
 
@@ -816,12 +904,58 @@ namespace TestAME
                 }
             }
         }
-
         private void TimeTracking_Tick(object sender, EventArgs e)
         {
             lbTime.Text = DateTime.Now.ToString("hh : mm : ss tt");
+
+            if (TimerCounterCheckComport > 0)
+            {
+                if (TimerCounterCheckComport == 1)
+                {
+                    TimerCounterCheckComport = 0;
+                    if (ComPort.CheckSport() == false)
+                    {
+                        ComPort.CloseSPort();
+                        FlagConnectStatus = false;
+                        UpdateStatusWindow();
+                    }
+                }
+                else
+                    TimerCounterCheckComport--;
+            }
         }
 
+        /// <summary>
+        /// HANDSHAKE PROTOCOL PROCESS
+        /// </summary>
+        private void tsmiRequestToSend_Click(object sender, EventArgs e)
+        {
+            HandshakeMode = HANDSHAKE_TYPE.REQUEST_TO_SEND;
+            ComPort.HandshakeSetting(HandshakeMode);
+            UpdateCTSaDTRStatus();
+        }
+        private void tsmiXonXoff_Click(object sender, EventArgs e)
+        {
+            HandshakeMode = HANDSHAKE_TYPE.XON_XOFF;
+            ComPort.HandshakeSetting(HandshakeMode);
+            UpdateCTSaDTRStatus();
+        }
+        private void tsmiBoth_Click(object sender, EventArgs e)
+        {
+            HandshakeMode = HANDSHAKE_TYPE.BOTH;
+            ComPort.HandshakeSetting(HandshakeMode);
+            UpdateCTSaDTRStatus();
+        }
+        private void tsmiNone_Click(object sender, EventArgs e)
+        {
+            HandshakeMode = HANDSHAKE_TYPE.NONE;
+            ComPort.HandshakeSetting(HandshakeMode);
+            UpdateCTSaDTRStatus();
+        }
+
+        /// <summary>
+        /// OTHERS
+        /// </summary>
         private void tsmiTimeStamping_Click(object sender, EventArgs e)
         {
             // update time stamping flag
@@ -831,8 +965,7 @@ namespace TestAME
                 FlagTimeStamping = true;
             }
         }
-
-        private void indexStamping_Click(object sender, EventArgs e)
+        private void tsmiIndexStamping_Click(object sender, EventArgs e)
         {
             // update time stamping flag
             FlagIndexStamping = false;
@@ -841,9 +974,7 @@ namespace TestAME
                 FlagIndexStamping = true;
             }
         }
-
-
-        private void simpleViewOption_Click(object sender, EventArgs e)
+        private void tsmiSimpleViewOption_Click(object sender, EventArgs e)
         {
             if (FlagFlipView == false)
             {
@@ -870,8 +1001,7 @@ namespace TestAME
                 this.Refresh();
             }
         }
-
-        private void fullViewOption_Click(object sender, EventArgs e)
+        private void tsmiFullViewOption_Click(object sender, EventArgs e)
         {
             if (FlagFlipView)
             {
@@ -897,12 +1027,6 @@ namespace TestAME
                 this.Refresh();
             }
         }
-
-        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
-
         private void tsmiClearAllComPort_Click(object sender, EventArgs e)
         {
             RegistryKey regKey = Registry.LocalMachine;
@@ -934,7 +1058,6 @@ namespace TestAME
             }
             catch { }
         }
-
         private void tsmiAutoReconnect_Click(object sender, EventArgs e)
         {
             if (tsmiAutoReconnect.Checked)
@@ -948,5 +1071,15 @@ namespace TestAME
                 Properties.Settings.Default.Save();
             }
         }
+        
+
+        /// <summary>
+        /// ABOUT US
+        /// </summary>
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ComTest Version I.01", "**_MonsterClaww_**", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+
     }
 }
