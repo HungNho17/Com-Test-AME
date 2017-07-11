@@ -187,9 +187,12 @@ namespace TestAME
         public bool UpdateFeedBackSending(string sRespond)
         {
             bool bRet = false;
-            if (DoVerifyMethode(sRespond))
+            if (TestMode == TEST_MODE_TYPE.AUTO_MODE)
             {
-                ProcessAutoSendCmd();
+                if (DoVerifyMethode(sRespond))
+                {
+                    ProcessAutoSendCmd();
+                }
             }
             return bRet;
         }
@@ -413,6 +416,12 @@ namespace TestAME
             }
             else if (iCounterValue > 0) iCounterValue--;
             
+        }
+
+        private void btReset_Click(object sender, EventArgs e)
+        {
+            iCurrentCmdNumber = 0;
+            UpdateCurrentCmd(iCurrentCmdNumber);
         }
     }
 }

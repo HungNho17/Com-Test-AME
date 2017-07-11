@@ -61,7 +61,7 @@
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btPause = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btReset = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.gbCurrentCmdStatus = new System.Windows.Forms.GroupBox();
             this.cbCurrentNumber = new System.Windows.Forms.ComboBox();
@@ -455,16 +455,17 @@
             this.btPause.UseVisualStyleBackColor = true;
             this.btPause.Click += new System.EventHandler(this.btControlAuto_Handle);
             // 
-            // button4
+            // btReset
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(79, 485);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 20);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "RESET";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btReset.Location = new System.Drawing.Point(79, 485);
+            this.btReset.Margin = new System.Windows.Forms.Padding(2);
+            this.btReset.Name = "btReset";
+            this.btReset.Size = new System.Drawing.Size(65, 20);
+            this.btReset.TabIndex = 16;
+            this.btReset.Text = "RESET";
+            this.btReset.UseVisualStyleBackColor = true;
+            this.btReset.Click += new System.EventHandler(this.btReset_Click);
             // 
             // btClose
             // 
@@ -580,7 +581,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbCurrentCmdStatus);
             this.Controls.Add(this.btClose);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btReset);
             this.Controls.Add(this.gbAutoMode);
             this.Controls.Add(this.gbManualMode);
             this.Controls.Add(this.gbCommonInfo);
@@ -630,7 +631,7 @@
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btPause;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btReset;
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Label lbManualStatus;
         private System.Windows.Forms.RadioButton rbManual;
