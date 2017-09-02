@@ -85,21 +85,30 @@ namespace TestAME
                 {
                     foreach (ImageInfo element in ListOfImageInfo)
                     {
-                        if (cbGroup.Items.Count > 0)
+                        if (cbGroup.Items.Count == 0)
+                        {
+                            cbGroup.Items.Add(element.Group);
+                        }
+                        else
                         {
                             try
                             {
+                                bool bTempFlag = true;
                                 foreach (string element1 in cbGroup.Items)
                                 {
-                                    if (element1 != element.Group)
+                                    if (element1 == element.Group)
                                     {
-                                        cbGroup.Items.Add(element.Group);
+                                        bTempFlag = false;
+                                        break;
                                     }
                                 }
-                            } catch { }
+                                if (bTempFlag)
+                                {
+                                    cbGroup.Items.Add(element.Group);
+                                }
+                            }
+                            catch { }
                         }
-                        else
-                            cbGroup.Items.Add(element.Group);
                     }
 
                     UpdateGroupSelected(0);

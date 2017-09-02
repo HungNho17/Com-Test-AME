@@ -602,7 +602,7 @@
             // 
             // btCmd0
             // 
-            this.btCmd0.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd0.Enabled = false;
             this.btCmd0.Location = new System.Drawing.Point(3, 6);
@@ -615,7 +615,7 @@
             // 
             // btCmd4
             // 
-            this.btCmd4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd4.Enabled = false;
             this.btCmd4.Location = new System.Drawing.Point(3, 41);
@@ -628,7 +628,7 @@
             // 
             // btCmd5
             // 
-            this.btCmd5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd5.Enabled = false;
             this.btCmd5.Location = new System.Drawing.Point(142, 41);
@@ -641,7 +641,7 @@
             // 
             // btCmd7
             // 
-            this.btCmd7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd7.Enabled = false;
             this.btCmd7.Location = new System.Drawing.Point(420, 41);
@@ -654,7 +654,7 @@
             // 
             // btCmd3
             // 
-            this.btCmd3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd3.Enabled = false;
             this.btCmd3.Location = new System.Drawing.Point(420, 6);
@@ -667,7 +667,7 @@
             // 
             // btCmd6
             // 
-            this.btCmd6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd6.Enabled = false;
             this.btCmd6.Location = new System.Drawing.Point(281, 41);
@@ -680,7 +680,7 @@
             // 
             // btCmd2
             // 
-            this.btCmd2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd2.Enabled = false;
             this.btCmd2.Location = new System.Drawing.Point(281, 6);
@@ -693,7 +693,7 @@
             // 
             // btCmd1
             // 
-            this.btCmd1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btCmd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btCmd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btCmd1.Enabled = false;
             this.btCmd1.Location = new System.Drawing.Point(142, 6);
@@ -902,7 +902,7 @@
             this.lvCharSet.TabIndex = 17;
             this.lvCharSet.UseCompatibleStateImageBehavior = false;
             this.lvCharSet.View = System.Windows.Forms.View.Details;
-            this.lvCharSet.SelectedIndexChanged += new System.EventHandler(this.SelectCharacterSet_DoubleClick);
+            this.lvCharSet.DoubleClick += new System.EventHandler(this.SelectCharacterSet_DoubleClick);
             // 
             // Char
             // 
@@ -1270,7 +1270,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(810, 555);
             this.Name = "MW_AmeTest";
-            this.Text = "DATALOGIC R&D - Serial Com Test Support";
+            this.Text = "DATALOGIC R&D - Com Test Support";
             this.Load += new System.EventHandler(this.AME_APP_TEST_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
