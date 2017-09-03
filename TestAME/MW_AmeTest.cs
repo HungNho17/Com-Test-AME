@@ -339,6 +339,8 @@ namespace TestAME
         }
         public void DataRecieveTB_copy(object s, EventArgs e)
         {
+            if (tbDataRecieve.Text == "") return;
+
             if (tbDataRecieve.SelectedText != "")
             {
                 Clipboard.SetText(tbDataRecieve.SelectedText);
@@ -351,7 +353,11 @@ namespace TestAME
         }
         public void DataRecieveTB_pase(object s, EventArgs e)
         {
-            tbDataRecieve.Text += Clipboard.GetText();
+            string sTemp = Clipboard.GetText();
+            if (sTemp != null)
+            {
+                tbDataRecieve.Text += sTemp;
+            }
         }
 
         public string UpdateSuffix(int iType)
