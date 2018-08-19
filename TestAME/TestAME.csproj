@@ -51,11 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SOURCEs\P_AME_ExcelFileProcess.cs" />
-    <Compile Include="FORM_GUIs\MW_AmeTest.cs">
+    <Compile Include="_SOURCEs\I_SerialComPort.cs" />
+    <Compile Include="_SOURCEs\P_AME_ExcelFileProcess.cs" />
+    <Compile Include="_FORM_GUIs\MW_AmeTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM_GUIs\MW_AmeTest.Designer.cs">
+    <Compile Include="_FORM_GUIs\MW_AmeTest.Designer.cs">
       <DependentUpon>MW_AmeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -65,34 +66,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SOURCEs\P_XmlFileProcess.cs" />
-    <Compile Include="FORM_GUIs\SW_AME_Test.cs">
+    <Compile Include="_SOURCEs\P_XmlFileProcess.cs" />
+    <Compile Include="_FORM_GUIs\SW_AME_Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_AME_Test.Designer.cs">
+    <Compile Include="_FORM_GUIs\SW_AME_Test.Designer.cs">
       <DependentUpon>SW_AME_Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_LabelsProgramming.cs">
+    <Compile Include="_FORM_GUIs\SW_LabelsProgramming.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_LabelsProgramming.Designer.cs">
+    <Compile Include="_FORM_GUIs\SW_LabelsProgramming.Designer.cs">
       <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_SerialComSetUp.cs">
+    <Compile Include="_FORM_GUIs\SW_SerialComSetUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_SerialComSetUp.Designer.cs">
+    <Compile Include="_FORM_GUIs\SW_SerialComSetUp.Designer.cs">
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="SOURCEs\P_SerialComPort.cs" />
-    <Compile Include="FORM_GUIs\SW_SetupUserCommand.cs">
+    <Compile Include="_SOURCEs\P_SerialComPort.cs" />
+    <Compile Include="_FORM_GUIs\SW_SetupUserCommand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM_GUIs\SW_SetupUserCommand.Designer.cs">
+    <Compile Include="_FORM_GUIs\SW_SetupUserCommand.Designer.cs">
       <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
     </Compile>
-    <Compile Include="SOURCEs\P_UserCommandManagement.cs" />
-    <EmbeddedResource Include="FORM_GUIs\MW_AmeTest.resx">
+    <Compile Include="_SOURCEs\P_UserCommandManagement.cs" />
+    <EmbeddedResource Include="_FORM_GUIs\MW_AmeTest.resx">
       <DependentUpon>MW_AmeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -100,16 +101,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM_GUIs\SW_AME_Test.resx">
+    <EmbeddedResource Include="_FORM_GUIs\SW_AME_Test.resx">
       <DependentUpon>SW_AME_Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM_GUIs\SW_LabelsProgramming.resx">
+    <EmbeddedResource Include="_FORM_GUIs\SW_LabelsProgramming.resx">
       <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM_GUIs\SW_SerialComSetUp.resx">
+    <EmbeddedResource Include="_FORM_GUIs\SW_SerialComSetUp.resx">
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM_GUIs\SW_SetupUserCommand.resx">
+    <EmbeddedResource Include="_FORM_GUIs\SW_SetupUserCommand.resx">
       <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />

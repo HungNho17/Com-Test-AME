@@ -1,4 +1,4 @@
-﻿namespace TestAME
+﻿namespace SerialComPort
 {
     partial class MW_AmeTest
     {
@@ -744,7 +744,6 @@
             // 
             this.SPort.ReadTimeout = 10;
             this.SPort.PinChanged += new System.IO.Ports.SerialPinChangedEventHandler(this.SPort_PinChanged);
-            this.SPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SPort_DataReceived);
             // 
             // Timer1
             // 

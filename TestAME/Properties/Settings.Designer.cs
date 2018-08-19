@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestAME.Properties {
+namespace SerialComPort.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

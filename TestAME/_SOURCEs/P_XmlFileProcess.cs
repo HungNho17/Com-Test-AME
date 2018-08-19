@@ -6,7 +6,7 @@ using System.Xml;
 using System.IO;
 using System.Xml.Linq;
 
-namespace TestAME
+namespace SerialComPort
 {
     public struct ImageInfo
     {

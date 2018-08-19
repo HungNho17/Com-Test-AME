@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestAME
+namespace SerialComPort
 {
     public partial class SW_AME_Test : Form
     {
@@ -159,19 +159,19 @@ namespace TestAME
 
             if (TestMode == TEST_MODE_TYPE.MANUAL_MODE)
             {
-                lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
+                lbAutoStatus.Image = SerialComPort.Properties.Resources.D_green;
                 if (flip)
-                    lbManualStatus.Image = TestAME.Properties.Resources.Green;
+                    lbManualStatus.Image = SerialComPort.Properties.Resources.Green;
                 else
-                    lbManualStatus.Image = TestAME.Properties.Resources.D_green;
+                    lbManualStatus.Image = SerialComPort.Properties.Resources.D_green;
             }
             else if (TestMode == TEST_MODE_TYPE.AUTO_MODE)
             {
-                lbManualStatus.Image = TestAME.Properties.Resources.D_green;
+                lbManualStatus.Image = SerialComPort.Properties.Resources.D_green;
                 if (flip)
-                    lbAutoStatus.Image = TestAME.Properties.Resources.Green;
+                    lbAutoStatus.Image = SerialComPort.Properties.Resources.Green;
                 else
-                    lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
+                    lbAutoStatus.Image = SerialComPort.Properties.Resources.D_green;
             }
 
             return bRet;

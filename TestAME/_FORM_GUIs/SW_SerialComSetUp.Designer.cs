@@ -1,4 +1,4 @@
-﻿namespace TestAME
+﻿namespace SerialComPort
 {
     partial class SW_SerialComSetUp
     {

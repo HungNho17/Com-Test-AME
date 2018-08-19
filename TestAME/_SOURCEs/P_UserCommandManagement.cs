@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TestAME
+namespace SerialComPort
 {
     class P_UserCommandManagement
     {

@@ -5,7 +5,7 @@ using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 
-namespace TestAME
+namespace SerialComPort
 {
     public struct COMMAND_TYPE
     {
