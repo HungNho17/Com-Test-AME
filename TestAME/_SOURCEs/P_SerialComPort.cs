@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SerialComPort
 {
-    public class P_SerialComPort : ISerialComport
+    public class CSerialComPort : ISerialComport
     {
         int[] AssciiDecimalList = 
         { 
@@ -142,68 +142,31 @@ namespace SerialComPort
             "{\\xF0}"  ,"{\\xF1}"  ,"{\\xF2}"  ,"{\\xF3}"  ,"{\\xF4}"  ,"{\\xF5}"  ,"{\\xF6}"  ,"{\\xF7}"  ,
             "{\\xF8}"  ,"{\\xF9}"  ,"{\\xFA}"  ,"{\\xFB}"  ,"{\\xFC}"  ,"{\\xFD}"  ,"{\\xFE}"  ,"{\\xFF}"   
         };
-
         
-        private static SerialPort               m_CurrentComPort        = null;
+        private static SerialPort               m_SPCurrent             = null;
         private static Thread                   m_SPProcessing          = null;
         private static Queue<string>            m_SPReceiveQueue        = null;
-        private SerialDataReceivedEventHandler  m_SPReceiveHandler      = null;
-        private List<DataReceiveUpdate>         m_ClientReadHandlers    = null;
         private static bool                     m_SPFlagNewData         = false;
 
-        public P_SerialComPort(SerialPort a)
+        private SerialDataReceivedEventHandler  m_SPReceiveHandler      = null;
+        private List<DataReceiveUpdate>         m_ClientReadHandlers    = null;
+
+        public CSerialComPort(SerialPort a)
         {
             string[] port = null;
 
-            m_CurrentComPort     = a;
+            m_SPCurrent     = a;
             m_SPReceiveHandler   = new SerialDataReceivedEventHandler(DataReceiverHandler);
             m_SPReceiveQueue     = new Queue<string>();
             m_ClientReadHandlers = new List<DataReceiveUpdate>();
 
             // common setting for serial port
-            m_CurrentComPort.NewLine = "\n";
-            m_CurrentComPort.DataReceived += m_SPReceiveHandler;
+            m_SPCurrent.NewLine = "\n";
+            m_SPCurrent.DataReceived += m_SPReceiveHandler;
 
             port = SerialPort.GetPortNames();
             if(port.Length > 0)
-                m_CurrentComPort.PortName = port[0];
-        }
-
-        private static void DataReceiverHandler(object sender, EventArgs e)
-        {
-            SerialPort sp = (SerialPort)sender;
-            m_SPReceiveQueue.Enqueue(sp.ReadExisting());
-            m_SPFlagNewData = true;
-        }
-
-        private void Processing()
-        {
-            for (;;)
-            {
-                UpdateDataReceiveForClients();
-                //UpdateHandsakeStatusForClients();
-            }
-        }
-
-        private void UpdateDataReceiveForClients()
-        {
-            if (m_SPFlagNewData == true)
-            {
-                string sData = m_SPReceiveQueue.Dequeue();
-
-                if (m_ClientReadHandlers.Count > 0)
-                {
-                    foreach (DataReceiveUpdate ClientHandler in m_ClientReadHandlers)
-                    {
-                        ClientHandler(sData);
-                    }
-                }
-
-                if (m_SPReceiveQueue.Count == 0)
-                {
-                    m_SPFlagNewData = false;
-                }
-            }
+                m_SPCurrent.PortName = port[0];
         }
 
         public void RegisterReceiveRealTime(DataReceiveUpdate Read)
@@ -214,15 +177,15 @@ namespace SerialComPort
         public bool OpenSPort()
         {
             bool bRet = false;
-            if (m_CurrentComPort != null)
+            if (m_SPCurrent != null)
             {
                 bRet = true;
-                if (m_CurrentComPort.IsOpen == false)
+                if (m_SPCurrent.IsOpen == false)
                 {
                     try
                     {
-                        m_CurrentComPort.Open();
-                        if (m_CurrentComPort.IsOpen == true)
+                        m_SPCurrent.Open();
+                        if (m_SPCurrent.IsOpen == true)
                         {
                             m_SPProcessing = new Thread(new ThreadStart(Processing));
                             m_SPProcessing.Start();
@@ -237,17 +200,17 @@ namespace SerialComPort
 
         public bool CloseSPort()
         {
-            if (m_CurrentComPort.PortName == null)
+            if (m_SPCurrent.PortName == null)
                 return false;
 
-            if (m_CurrentComPort != null)
+            if (m_SPCurrent != null)
             {
-                if (m_CurrentComPort.IsOpen == true)
+                if (m_SPCurrent.IsOpen == true)
                 {
                     try
                     {
-                        m_CurrentComPort.Close();
-                        if (m_CurrentComPort.IsOpen == true)
+                        m_SPCurrent.Close();
+                        if (m_SPCurrent.IsOpen == true)
                         {
                             return false;
                         }
@@ -265,9 +228,9 @@ namespace SerialComPort
         public bool CheckSport()
         {
             bool bRet = true;
-            if (m_CurrentComPort != null)
+            if (m_SPCurrent != null)
             {
-                if (m_CurrentComPort.IsOpen == true)
+                if (m_SPCurrent.IsOpen == true)
                 {
                     string[] port = null;
                     port = SerialPort.GetPortNames();
@@ -275,7 +238,7 @@ namespace SerialComPort
                     { 
                         foreach (string element in port)
                         {
-                            if (element == m_CurrentComPort.PortName)
+                            if (element == m_SPCurrent.PortName)
                             {
                                 return bRet;
                             }
@@ -295,20 +258,20 @@ namespace SerialComPort
                 switch ((int)iMode)
                 {
                     case 0:
-                        m_CurrentComPort.Handshake = Handshake.RequestToSend;
+                        m_SPCurrent.Handshake = Handshake.RequestToSend;
                         break;
 
                     case 1:
-                        m_CurrentComPort.Handshake = Handshake.XOnXOff;
+                        m_SPCurrent.Handshake = Handshake.XOnXOff;
                         break;
 
                     case 2:
-                        m_CurrentComPort.Handshake = Handshake.RequestToSendXOnXOff;
+                        m_SPCurrent.Handshake = Handshake.RequestToSendXOnXOff;
                         break;
 
                     case 3:
                     default:
-                        m_CurrentComPort.Handshake = Handshake.None;
+                        m_SPCurrent.Handshake = Handshake.None;
                         break;
                 }
                 bRet = true;
@@ -321,39 +284,42 @@ namespace SerialComPort
         public bool DTRSetting(bool FlagEnable)
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen)
+            if (m_SPCurrent.IsOpen)
             {
-                m_CurrentComPort.DtrEnable = FlagEnable;
+                m_SPCurrent.DtrEnable = FlagEnable;
                 bRet = true;
             }
             return bRet;
         }
+
         public bool RTSSetting(bool FlagEnable)
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen)
+            if (m_SPCurrent.IsOpen)
             {
-                if (FlagEnable == false) m_CurrentComPort.BaseStream.Flush();
-                m_CurrentComPort.RtsEnable = FlagEnable;
+                if (FlagEnable == false) m_SPCurrent.BaseStream.Flush();
+                m_SPCurrent.RtsEnable = FlagEnable;
                 bRet = true;
             }
             return bRet;
         }
+
         public bool CTSGetting()
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen)
+            if (m_SPCurrent.IsOpen)
             {
-                bRet = m_CurrentComPort.CtsHolding;
+                bRet = m_SPCurrent.CtsHolding;
             }
             return bRet;
         }
+
         public bool DSRGetting()
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen)
+            if (m_SPCurrent.IsOpen)
             {
-                bRet = m_CurrentComPort.DsrHolding;
+                bRet = m_SPCurrent.DsrHolding;
             }
             return bRet;
         }
@@ -422,30 +388,30 @@ namespace SerialComPort
             return sResult;
         }
 
-        public bool SendData(int dataOut, bool flagSendLF)
+        public bool Write(int dataOut, bool flagSendLF)
         {
             bool bRet = true;
 
-            if (m_CurrentComPort.PortName == null)
+            if (m_SPCurrent.PortName == null)
                 return false;
 
-            if (m_CurrentComPort.IsOpen == true)
+            if (m_SPCurrent.IsOpen == true)
             {
                 try
                 {
                     byte[] dataBytes = new byte[2];
                     dataBytes[0] = (byte)dataOut;
-                    m_CurrentComPort.Write(dataBytes, 0, 1);
+                    m_SPCurrent.Write(dataBytes, 0, 1);
 
                     if (flagSendLF)
                     {
                         dataBytes[0] = 13;
-                        m_CurrentComPort.Write(dataBytes, 0, 1);
+                        m_SPCurrent.Write(dataBytes, 0, 1);
                     }
                 }
                 catch
                 {
-                    m_CurrentComPort.Close();
+                    m_SPCurrent.Close();
                     return false;
                 }
             }
@@ -453,37 +419,57 @@ namespace SerialComPort
             return bRet;
         }
 
-        public bool SendData(string dataOut, bool flagSendLF)
+        public bool Write(string dataOut, bool flagSendLF)
         {
             bool bRet = true;
 
-            if (m_CurrentComPort.PortName == null)
+            if (m_SPCurrent.PortName == null)
                 return false;
 
-            if (m_CurrentComPort.IsOpen == true)
+            if (m_SPCurrent.IsOpen == true)
             {
                 try
                 {
+                    dataOut = dataOut.Replace("\n", string.Empty);
+
+                    if (flagSendLF)
+                    {
+                        if (dataOut.Contains("\n") == false)
+                        {
+                            dataOut += "\n";
+                        }
+                    }
+
                     byte[] dataBytes = null;
                     dataBytes = Encoding.ASCII.GetBytes(dataOut);
 
                     if (dataBytes.Length > 0)
-                        m_CurrentComPort.Write(dataBytes, 0, dataBytes.Length);
-
-                    if (flagSendLF)
-                    {
-                        dataBytes[0] = 13;
-                        m_CurrentComPort.Write(dataBytes, 0, 1);
-                    }
+                        m_SPCurrent.Write(dataBytes, 0, dataBytes.Length);
                 }
                 catch
                 {
-                    m_CurrentComPort.Close();
+                    m_SPCurrent.Close();
                     return false;
                 }
             }
 
             return bRet;
+        }
+
+        public string Read()
+        {
+            string sRet = null;
+
+            if (m_SPCurrent.IsOpen == true)
+            {
+                while (m_SPReceiveQueue.Count > 0)
+                {
+                    sRet += m_SPReceiveQueue.Dequeue();
+                }
+                m_SPFlagNewData = false;
+            }
+
+            return sRet;
         }
 
         public DataTable ProcessCharSetTable()
@@ -514,21 +500,22 @@ namespace SerialComPort
         public bool SaveComPort()
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen)
+            if (m_SPCurrent.IsOpen)
             {
-                Properties.Settings.Default.PortName = m_CurrentComPort.PortName;
-                Properties.Settings.Default.PortBaudrate = m_CurrentComPort.BaudRate;
-                Properties.Settings.Default.PortDataBit = m_CurrentComPort.DataBits;
-                Properties.Settings.Default.PortStopBit = m_CurrentComPort.StopBits;
+                Properties.Settings.Default.PortName        = m_SPCurrent.PortName;
+                Properties.Settings.Default.PortBaudrate    = m_SPCurrent.BaudRate;
+                Properties.Settings.Default.PortDataBit     = m_SPCurrent.DataBits;
+                Properties.Settings.Default.PortStopBit     = m_SPCurrent.StopBits;
                 Properties.Settings.Default.Save();
                 bRet = true;
             }
             return bRet;
         }
+
         public bool LoadOldComPort()
         {
             bool bRet = false;
-            if (m_CurrentComPort.IsOpen == false)
+            if (m_SPCurrent.IsOpen == false)
             {
                 if (Properties.Settings.Default.PortName != null)
                 {
@@ -538,10 +525,10 @@ namespace SerialComPort
                     {
                         if(element == Properties.Settings.Default.PortName)
                         {
-                            m_CurrentComPort.PortName = Properties.Settings.Default.PortName;
-                            m_CurrentComPort.BaudRate = Properties.Settings.Default.PortBaudrate;
-                            m_CurrentComPort.DataBits = Properties.Settings.Default.PortDataBit;
-                            m_CurrentComPort.StopBits = Properties.Settings.Default.PortStopBit;
+                            m_SPCurrent.PortName = Properties.Settings.Default.PortName;
+                            m_SPCurrent.BaudRate = Properties.Settings.Default.PortBaudrate;
+                            m_SPCurrent.DataBits = Properties.Settings.Default.PortDataBit;
+                            m_SPCurrent.StopBits = Properties.Settings.Default.PortStopBit;
                             bRet = true;
                         }
                     }
@@ -550,5 +537,44 @@ namespace SerialComPort
             }
             return bRet;
         }
+
+        
+        private static void DataReceiverHandler(object sender, EventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            m_SPReceiveQueue.Enqueue(sp.ReadExisting());
+            m_SPFlagNewData = true;
+        }
+
+        private void Processing()
+        {
+            for (;;)
+            {
+                UpdateDataReceiveForClients();
+                //UpdateHandsakeStatusForClients();
+            }
+        }
+
+        private void UpdateDataReceiveForClients()
+        {
+            if (m_SPFlagNewData == true)
+            {
+                string sData = m_SPReceiveQueue.Dequeue();
+
+                if (m_ClientReadHandlers.Count > 0)
+                {
+                    foreach (DataReceiveUpdate ClientHandler in m_ClientReadHandlers)
+                    {
+                        ClientHandler(sData);
+                    }
+                }
+
+                if (m_SPReceiveQueue.Count == 0)
+                {
+                    m_SPFlagNewData = false;
+                }
+            }
+        }
+
     }
 }

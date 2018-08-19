@@ -31,13 +31,14 @@ namespace SerialComPort
         bool CTSGetting();
         bool DSRGetting();
 
-        void RegisterReceiveRealTime(DataReceiveUpdate ReceiveHandler);
+        void        RegisterReceiveRealTime(DataReceiveUpdate ReceiveHandler);
 
-        bool SendData(int dataOut, bool flagSendLF);
-        bool SendData(string dataOut, bool flagSendLF);
+        bool        Write(int dataOut, bool flagSendLF);
+        bool        Write(string dataOut, bool flagSendLF);
+        string      Read();
 
-        string IntToAssciiStr(int dataIn, bool flagShowLF, bool flagShowSpace);
-        string ProcessPureString(string dataIn, bool flagShowLF, bool flagShowSpace);
-        DataTable ProcessCharSetTable();
+        string      IntToAssciiStr(int dataIn, bool flagShowLF, bool flagShowSpace);
+        string      ProcessPureString(string dataIn, bool flagShowLF, bool flagShowSpace);
+        DataTable   ProcessCharSetTable();
     }
 }

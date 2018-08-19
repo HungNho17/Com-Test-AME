@@ -22,8 +22,9 @@ namespace SerialComPort
 //==============================================================================
 // All Atributes.
 //==============================================================================
-        ISerialComport ComPort = null;
+        ISerialComport          ComPort = null;
         P_UserCommandManagement UserCmd = null;
+
         List<Button> CommandBTList = null;
         List<Button> ConnectStatusBTList = null;
         List<Button> ControlUIBTList = null;
@@ -86,7 +87,7 @@ namespace SerialComPort
 
         public void ReInitializeAllComponents()
         {
-            ComPort = new P_SerialComPort(SPort);
+            ComPort = new CSerialComPort(SPort);
             UserCmd = new P_UserCommandManagement();
             ConnectStatusBTList = new List<Button>() { btConnectSP, btDisplayRCData, btShowSpace, btShowLF,btTempConnect};
             ControlUIBTList = new List<Button>() { btWrapTextCo, btClearCo, btNewLineCo, btSendLFLo, btClearLo, btCharToCo, btCharToLo };
@@ -506,7 +507,7 @@ namespace SerialComPort
         public bool SendDataMethode(string dataIn)
         {
             bool bRet = false;
-            if (ComPort.SendData(dataIn, FlagSendLF))
+            if (ComPort.Write(dataIn, FlagSendLF))
             {
                 UpdateDataTransmited(dataIn);
                 bRet = true;
@@ -742,7 +743,7 @@ namespace SerialComPort
             string temp = null;
             int IndexSender = CommandBTList.IndexOf(sender as Button);
 
-            ComPort.SendData(cmdListCurrent[IndexSender], UserCmd.GetFlagInsertLF());
+            ComPort.Write(cmdListCurrent[IndexSender], UserCmd.GetFlagInsertLF());
             temp = cmdListCurrent[IndexSender];
 
             if (UserCmd.GetFlagInsertLF())
@@ -789,7 +790,7 @@ namespace SerialComPort
             sTemp = ComPort.IntToAssciiStr(iTemp, FlagShowLF, FlagShowSpace);
             UpdateDataRecieved(sTemp, false); // from keyboard
 
-            ComPort.SendData(iTemp, FlagSendLF);
+            ComPort.Write(iTemp, FlagSendLF);
         }
         private void WindowKeyUp_Event(object sender, KeyEventArgs e)
         {
@@ -821,7 +822,7 @@ namespace SerialComPort
                 {
                     if (FlagSendTo == true)
                     {
-                        if(ComPort.SendData(Int32.Parse(element.SubItems[1].Text), FlagSendLF))
+                        if(ComPort.Write(Int32.Parse(element.SubItems[1].Text), FlagSendLF))
                         {
                             string sTemp = null;
                             sTemp = ComPort.IntToAssciiStr(Int32.Parse(element.SubItems[1].Text), FlagShowLF, FlagShowSpace);
