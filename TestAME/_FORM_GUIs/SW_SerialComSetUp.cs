@@ -11,7 +11,7 @@ using System.Management;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
-namespace SerialComPort
+namespace TestAME
 {
     public partial class SW_SerialComSetUp : Form
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SerialComPort
+namespace TestAME
 {
     public partial class SW_AME_Test : Form
     {
@@ -20,7 +20,7 @@ namespace SerialComPort
         //==============================================================================
         // All Atributes.
         //==============================================================================
-        P_AME_ExcelFileProcess comExcel = null;
+        P_AmeCommands comExcel = null;
         string pathFileSelected = null;
         List<Button> listBtManual = null;
         List<Button> listBtAuto = null;
@@ -46,7 +46,7 @@ namespace SerialComPort
         public SW_AME_Test()
         {
             InitializeComponent();
-            comExcel = new P_AME_ExcelFileProcess();
+            comExcel = new P_AmeCommands();
             listBtManual = new List<Button> { btPrevious, btNext, btSend };
             listBtAuto = new List<Button> { btStart, btPause, btStop };
         }
@@ -54,7 +54,7 @@ namespace SerialComPort
         public SW_AME_Test(Func<string, bool> function)
         {
             InitializeComponent();
-            comExcel = new P_AME_ExcelFileProcess();
+            comExcel = new P_AmeCommands();
             listBtManual = new List<Button> { btPrevious, btNext, btSend };
             listBtAuto = new List<Button> { btStart, btPause, btStop };
 
@@ -106,7 +106,7 @@ namespace SerialComPort
         public bool UpdateCommonInfo()
         {
             bool bRet = true;
-            if (comExcel.IsFileExist() == true)
+            if (iNumberOfCmd > 0)
             {
                 lbFileStatus.Text = "Process Done!";
                 lbTotalCmd.Text = iNumberOfCmd.ToString();
@@ -122,14 +122,14 @@ namespace SerialComPort
         public bool UpdateCommandInfo()
         {
             bool bRet = false;
-            if (comExcel.IsFileExist() == true)
+            if (iNumberOfCmd > 0)
             {
                 for (int idx = 0; idx < iNumberOfCmd; idx++)
                 {
-                    CurrentCmd = comExcel.GetCommand(idx);
-                    cbCurrentNumber.Items.Add(CurrentCmd.number.ToString());
-                    cbCurrentDesc.Items.Add(CurrentCmd.desc);
-                    cbCurrentCmd.Items.Add(CurrentCmd.cmd);
+                    CurrentCmd = comExcel.ReadCmd(idx);
+                    cbCurrentNumber.Items.Add(idx.ToString());
+                    cbCurrentDesc.Items.Add(CurrentCmd.m_Desc);
+                    cbCurrentCmd.Items.Add(CurrentCmd.m_Cmd);
                 }
             }
             return bRet;
@@ -138,11 +138,11 @@ namespace SerialComPort
         public bool UpdateCurrentCmd(int CmdNumber)
         {
             bool bRet = false;
-            if (comExcel.IsFileExist() == true)
+            if (iNumberOfCmd > 0)
             {
                 if (iNumberOfCmd > 0 && CmdNumber < iNumberOfCmd)
                 {
-                    CurrentCmd = comExcel.GetCommand(CmdNumber);
+                    CurrentCmd = comExcel.ReadCmd(CmdNumber);
 
                     cbCurrentNumber.SelectedIndex = CmdNumber;
                     cbCurrentDesc.SelectedIndex = CmdNumber;
@@ -159,19 +159,19 @@ namespace SerialComPort
 
             if (TestMode == TEST_MODE_TYPE.MANUAL_MODE)
             {
-                lbAutoStatus.Image = SerialComPort.Properties.Resources.D_green;
+                lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
                 if (flip)
-                    lbManualStatus.Image = SerialComPort.Properties.Resources.Green;
+                    lbManualStatus.Image = TestAME.Properties.Resources.Green;
                 else
-                    lbManualStatus.Image = SerialComPort.Properties.Resources.D_green;
+                    lbManualStatus.Image = TestAME.Properties.Resources.D_green;
             }
             else if (TestMode == TEST_MODE_TYPE.AUTO_MODE)
             {
-                lbManualStatus.Image = SerialComPort.Properties.Resources.D_green;
+                lbManualStatus.Image = TestAME.Properties.Resources.D_green;
                 if (flip)
-                    lbAutoStatus.Image = SerialComPort.Properties.Resources.Green;
+                    lbAutoStatus.Image = TestAME.Properties.Resources.Green;
                 else
-                    lbAutoStatus.Image = SerialComPort.Properties.Resources.D_green;
+                    lbAutoStatus.Image = TestAME.Properties.Resources.D_green;
             }
 
             return bRet;
@@ -225,7 +225,7 @@ namespace SerialComPort
             }
             else if (rbCompareResp.Checked)
             {
-                if (CurrentCmd.resultExpect != sData)
+                if (CurrentCmd.m_ResultExpect != sData)
                 {
                     bRet = DoVerifyAction();
                 }
@@ -256,12 +256,12 @@ namespace SerialComPort
             }
 
             UpdateCurrentCmd(iCurrentCmdNumber);
-            this.Invoke(this.myDelegate, new Object[] { (CurrentCmd.cmd + "\r") });
+            this.Invoke(this.myDelegate, new Object[] { (CurrentCmd.m_Cmd + "\r") });
 
             int tempInterval = 0;
             try
             {
-                tempInterval = int.Parse(CurrentCmd.timeWait);
+                tempInterval = int.Parse(CurrentCmd.m_WaitInSec);
             }
             catch { }
             if (tempInterval == 0) tempInterval = DefaulIntervalWait;
@@ -291,9 +291,9 @@ namespace SerialComPort
         {
             if (pathFileSelected != null)
             {
-                if (comExcel.ExcelOpenFile(pathFileSelected))
+                if (comExcel.LoadAmeCmdFile(pathFileSelected))
                 {
-                    iNumberOfCmd = comExcel.FileCommandParser();
+                    iNumberOfCmd = comExcel.GetTotalNumberCmd();
                     if (iNumberOfCmd > 0)
                     {
                         UpdateCommonInfo();
@@ -346,7 +346,7 @@ namespace SerialComPort
                     UpdateCurrentCmd(iCurrentCmdNumber);
                     break;
                 case 2: // send
-                    this.Invoke(this.myDelegate, new Object[] { (CurrentCmd.cmd + "\r") });
+                    this.Invoke(this.myDelegate, new Object[] { (CurrentCmd.m_Cmd + "\r") });
                     if (iCurrentCmdNumber < iNumberOfCmd) iCurrentCmdNumber += 1;
                     UpdateCurrentCmd(iCurrentCmdNumber);
                     break;

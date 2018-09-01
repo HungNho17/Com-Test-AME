@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SerialComPort
+namespace TestAME
 {
     public partial class SW_SetupUserCommand : Form
     {

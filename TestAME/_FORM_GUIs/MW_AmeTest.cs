@@ -14,7 +14,7 @@ using System.Management;
 using System.Diagnostics;
 using System.Security.AccessControl;
 
-namespace SerialComPort
+namespace TestAME
 {
 
     public partial class MW_AmeTest : Form
@@ -127,76 +127,76 @@ namespace SerialComPort
 
             if (FlagConnectStatus) // update status connection
             {
-                lbConnect.Image = SerialComPort.Properties.Resources.Green;
-                lbTempStatus.Image = SerialComPort.Properties.Resources.Green;
+                lbConnect.Image = TestAME.Properties.Resources.Green;
+                lbTempStatus.Image = TestAME.Properties.Resources.Green;
 
                 if (FlagDisplayDataRecieve == false) // update status data recieve display
                 {
                     tbDataRecieve.BackColor = Color.Navy;
-                    lbDisplayRCData.Image = SerialComPort.Properties.Resources.Red;
+                    lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
                 }
                 else
                 {
                     tbDataRecieve.BackColor = Color.Black;
-                    lbDisplayRCData.Image = SerialComPort.Properties.Resources.Green;
+                    lbDisplayRCData.Image = TestAME.Properties.Resources.Green;
                 }
             }
             else
             {
-                lbConnect.Image = SerialComPort.Properties.Resources.Red;
-                lbTempStatus.Image = SerialComPort.Properties.Resources.Red;
+                lbConnect.Image = TestAME.Properties.Resources.Red;
+                lbTempStatus.Image = TestAME.Properties.Resources.Red;
 
                 tbDataRecieve.BackColor = Color.Navy;
-                lbDisplayRCData.Image = SerialComPort.Properties.Resources.Red;
+                lbDisplayRCData.Image = TestAME.Properties.Resources.Red;
             }
             
             if (FlagShowSpace )
             {
-                lbShowSpace.Image = SerialComPort.Properties.Resources.Green;
+                lbShowSpace.Image = TestAME.Properties.Resources.Green;
             }
             else
             {
-                lbShowSpace.Image = SerialComPort.Properties.Resources.Red;
+                lbShowSpace.Image = TestAME.Properties.Resources.Red;
             }
 
             if (FlagShowLF)
             {
-                lbShowLF.Image = SerialComPort.Properties.Resources.Green;
+                lbShowLF.Image = TestAME.Properties.Resources.Green;
             }
             else
             {
-                lbShowLF.Image = SerialComPort.Properties.Resources.Red;
+                lbShowLF.Image = TestAME.Properties.Resources.Red;
             }
 
             if (FlagWrapText) // update status process data recieve
             {
-                lbWrapText.Image = SerialComPort.Properties.Resources.Green;
+                lbWrapText.Image = TestAME.Properties.Resources.Green;
                 tbDataRecieve.WordWrap = true;
             }
             else
             {
-                lbWrapText.Image = SerialComPort.Properties.Resources.Red;
+                lbWrapText.Image = TestAME.Properties.Resources.Red;
                 tbDataRecieve.WordWrap = false;
             }
 
             if (FlagSendLF) // update status process data sending
             {
-                lbSendLF.Image = SerialComPort.Properties.Resources.Green;
+                lbSendLF.Image = TestAME.Properties.Resources.Green;
             }
             else
             {
-                lbSendLF.Image = SerialComPort.Properties.Resources.Red;
+                lbSendLF.Image = TestAME.Properties.Resources.Red;
             }
 
             if (FlagSendTo)
             {
-                lbToCommunicate.Image = SerialComPort.Properties.Resources.Green;
-                lbToLocalCMD.Image = SerialComPort.Properties.Resources.Red;
+                lbToCommunicate.Image = TestAME.Properties.Resources.Green;
+                lbToLocalCMD.Image = TestAME.Properties.Resources.Red;
             }
             else
             {
-                lbToCommunicate.Image = SerialComPort.Properties.Resources.Red;
-                lbToLocalCMD.Image = SerialComPort.Properties.Resources.Green;
+                lbToCommunicate.Image = TestAME.Properties.Resources.Red;
+                lbToLocalCMD.Image = TestAME.Properties.Resources.Green;
             }
 
             // temp init but do not tracking yet...
@@ -426,15 +426,15 @@ namespace SerialComPort
         {
             bool bRet = true;
 
-            lbCTSILow.Image = SerialComPort.Properties.Resources.D_green;
-            lbDSRILow.Image = SerialComPort.Properties.Resources.D_green;
-            lbRTSOLow.Image = SerialComPort.Properties.Resources.D_green;
-            lbDTROLow.Image = SerialComPort.Properties.Resources.D_green;
+            lbCTSILow.Image = TestAME.Properties.Resources.D_green;
+            lbDSRILow.Image = TestAME.Properties.Resources.D_green;
+            lbRTSOLow.Image = TestAME.Properties.Resources.D_green;
+            lbDTROLow.Image = TestAME.Properties.Resources.D_green;
 
-            lbCTSIHigh.Image = SerialComPort.Properties.Resources.D_brown;
-            lbDSRIHigh.Image = SerialComPort.Properties.Resources.D_brown;
-            lbRTSOHigh.Image = SerialComPort.Properties.Resources.D_brown;
-            lbDTROHigh.Image = SerialComPort.Properties.Resources.D_brown;
+            lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbRTSOHigh.Image = TestAME.Properties.Resources.D_brown;
+            lbDTROHigh.Image = TestAME.Properties.Resources.D_brown;
             
             lbCTSStatus.Enabled = false;
             lbDSRStatus.Enabled = false;
@@ -481,24 +481,24 @@ namespace SerialComPort
                 }
                 
                 if (ComPort.CTSGetting())
-                    lbCTSIHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbCTSIHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbCTSILow.Image = SerialComPort.Properties.Resources.Green;
+                    lbCTSILow.Image = TestAME.Properties.Resources.Green;
 
                 if (ComPort.DSRGetting())
-                    lbDSRIHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbDSRIHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbDSRILow.Image = SerialComPort.Properties.Resources.Green;
+                    lbDSRILow.Image = TestAME.Properties.Resources.Green;
 
                 if (FlagRTSOutput)
-                    lbRTSOHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbRTSOHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbRTSOLow.Image = SerialComPort.Properties.Resources.Green;
+                    lbRTSOLow.Image = TestAME.Properties.Resources.Green;
 
                 if (FlagDTROutput)
-                    lbDTROHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbDTROHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbDTROLow.Image = SerialComPort.Properties.Resources.Green;
+                    lbDTROLow.Image = TestAME.Properties.Resources.Green;
             }
 
             return bRet;
@@ -868,20 +868,20 @@ namespace SerialComPort
 
             if (HandshakeMode != HANDSHAKE_TYPE.NONE)
             {
-                lbCTSILow.Image = SerialComPort.Properties.Resources.D_green;
-                lbDSRILow.Image = SerialComPort.Properties.Resources.D_green;
-                lbCTSIHigh.Image = SerialComPort.Properties.Resources.D_brown;
-                lbDSRIHigh.Image = SerialComPort.Properties.Resources.D_brown;
+                lbCTSILow.Image = TestAME.Properties.Resources.D_green;
+                lbDSRILow.Image = TestAME.Properties.Resources.D_green;
+                lbCTSIHigh.Image = TestAME.Properties.Resources.D_brown;
+                lbDSRIHigh.Image = TestAME.Properties.Resources.D_brown;
 
                 if (ComPort.CTSGetting())
-                    lbCTSIHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbCTSIHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbCTSILow.Image = SerialComPort.Properties.Resources.Green;
+                    lbCTSILow.Image = TestAME.Properties.Resources.Green;
 
                 if (ComPort.DSRGetting())
-                    lbDSRIHigh.Image = SerialComPort.Properties.Resources.Red;
+                    lbDSRIHigh.Image = TestAME.Properties.Resources.Red;
                 else
-                    lbDSRILow.Image = SerialComPort.Properties.Resources.Green;
+                    lbDSRILow.Image = TestAME.Properties.Resources.Green;
             }
         }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace SerialComPort
+namespace TestAME
 {
     public enum HANDSHAKE_TYPE
     {

@@ -1,4 +1,4 @@
-﻿namespace SerialComPort
+﻿namespace TestAME
 {
     partial class SW_AME_Test
     {
@@ -241,7 +241,7 @@
             // lbManualStatus
             // 
             this.lbManualStatus.AutoSize = true;
-            this.lbManualStatus.Image = global::SerialComPort.Properties.Resources.D_green;
+            this.lbManualStatus.Image = global::TestAME.Properties.Resources.D_green;
             this.lbManualStatus.Location = new System.Drawing.Point(5, 21);
             this.lbManualStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbManualStatus.Name = "lbManualStatus";
@@ -414,7 +414,7 @@
             // lbAutoStatus
             // 
             this.lbAutoStatus.AutoSize = true;
-            this.lbAutoStatus.Image = global::SerialComPort.Properties.Resources.D_green;
+            this.lbAutoStatus.Image = global::TestAME.Properties.Resources.D_green;
             this.lbAutoStatus.Location = new System.Drawing.Point(4, 23);
             this.lbAutoStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAutoStatus.Name = "lbAutoStatus";

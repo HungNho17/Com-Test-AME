@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace SerialComPort
+namespace TestAME
 {
     public class CSerialComPort : ISerialComport
     {

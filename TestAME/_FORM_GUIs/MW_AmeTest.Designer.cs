@@ -1,4 +1,4 @@
-﻿namespace SerialComPort
+﻿namespace TestAME
 {
     partial class MW_AmeTest
     {

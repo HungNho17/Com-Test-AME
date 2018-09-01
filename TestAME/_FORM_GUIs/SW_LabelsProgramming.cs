@@ -10,7 +10,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Xml;
 
-namespace SerialComPort
+namespace TestAME
 {
     public partial class SW_LabelsProgramming : Form
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SerialComPort.Properties {
+namespace TestAME.Properties {
     using System;
     
     
