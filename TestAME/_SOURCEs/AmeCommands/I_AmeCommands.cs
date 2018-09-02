@@ -12,7 +12,6 @@ namespace TestAME
 
         public string   m_WaitInSec;
         public string   m_ResultExpect;
-        public string   m_Desc;
 
         public string   m_Result;
         public string   m_UserNote;
@@ -25,7 +24,6 @@ namespace TestAME
                 m_Cmd           = this.m_Cmd,
                 m_WaitInSec     = this.m_WaitInSec,
                 m_ResultExpect  = this.m_ResultExpect,
-                m_Desc          = this.m_Desc,
                 m_Result        = this.m_Result,
                 m_UserNote      = this.m_UserNote
             };

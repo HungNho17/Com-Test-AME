@@ -20,17 +20,17 @@ namespace TestAME
         //==============================================================================
         // All Atributes.
         //==============================================================================
-        P_AmeCommands comExcel = null;
-        string pathFileSelected = null;
-        List<Button> listBtManual = null;
-        List<Button> listBtAuto = null;
+        I_AmeCommands   CmdHandler          = null;
+        string          sPathFileSelected   = null;
+        List<Button>    listBtManual        = null;
+        List<Button>    listBtAuto          = null;
 
-        int iCurrentCmdNumber = 0;
-        COMMAND_TYPE CurrentCmd;
+        int             iCurrentCmdNumber   = 0;
+        COMMAND_TYPE    CurrentCmd          = null;
 
-        int iNumberOfCmd = 0;
-        bool FlagFileLoaded = false;
-        bool FlagFlipTestMode = false;
+        int             iNumberOfCmd        = 0;
+        bool            FlagFileLoaded      = false;
+        bool            FlagFlipTestMode    = false;
 
         TEST_MODE_TYPE TestMode = TEST_MODE_TYPE.UNDEF_MODE;
         public delegate bool SendDataDelegate(string datain);
@@ -46,7 +46,7 @@ namespace TestAME
         public SW_AME_Test()
         {
             InitializeComponent();
-            comExcel = new P_AmeCommands();
+            CmdHandler = new P_AmeCommands();
             listBtManual = new List<Button> { btPrevious, btNext, btSend };
             listBtAuto = new List<Button> { btStart, btPause, btStop };
         }
@@ -54,7 +54,7 @@ namespace TestAME
         public SW_AME_Test(Func<string, bool> function)
         {
             InitializeComponent();
-            comExcel = new P_AmeCommands();
+            CmdHandler = new P_AmeCommands();
             listBtManual = new List<Button> { btPrevious, btNext, btSend };
             listBtAuto = new List<Button> { btStart, btPause, btStop };
 
@@ -69,9 +69,9 @@ namespace TestAME
 
         private void SW_AME_Test_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (comExcel != null)
+            if (CmdHandler != null)
             {
-                comExcel = null;
+                CmdHandler = null;
             }
         }
 
@@ -126,9 +126,9 @@ namespace TestAME
             {
                 for (int idx = 0; idx < iNumberOfCmd; idx++)
                 {
-                    CurrentCmd = comExcel.ReadCmd(idx);
+                    CurrentCmd = CmdHandler.ReadCmd(idx);
                     cbCurrentNumber.Items.Add(idx.ToString());
-                    cbCurrentDesc.Items.Add(CurrentCmd.m_Desc);
+                    cbCurrentDesc.Items.Add(CurrentCmd.m_Name);
                     cbCurrentCmd.Items.Add(CurrentCmd.m_Cmd);
                 }
             }
@@ -142,7 +142,7 @@ namespace TestAME
             {
                 if (iNumberOfCmd > 0 && CmdNumber < iNumberOfCmd)
                 {
-                    CurrentCmd = comExcel.ReadCmd(CmdNumber);
+                    CurrentCmd = CmdHandler.ReadCmd(CmdNumber);
 
                     cbCurrentNumber.SelectedIndex = CmdNumber;
                     cbCurrentDesc.SelectedIndex = CmdNumber;
@@ -283,17 +283,17 @@ namespace TestAME
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 tbFilePath.Text = fileDialog.FileName;
-                pathFileSelected = tbFilePath.Text;
+                sPathFileSelected = tbFilePath.Text;
             }
         }
 
         private void btLoadProcess_Click(object sender, EventArgs e)
         {
-            if (pathFileSelected != null)
+            if (sPathFileSelected != null)
             {
-                if (comExcel.LoadAmeCmdFile(pathFileSelected))
+                if (CmdHandler.LoadAmeCmdFile(sPathFileSelected))
                 {
-                    iNumberOfCmd = comExcel.GetTotalNumberCmd();
+                    iNumberOfCmd = CmdHandler.GetTotalNumberCmd();
                     if (iNumberOfCmd > 0)
                     {
                         UpdateCommonInfo();

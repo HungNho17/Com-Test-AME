@@ -30,7 +30,13 @@ namespace TestAME
         private int                 m_iColStartNum  = 1;
 
         public P_ExcelHandler(){ }
-        ~P_ExcelHandler(){ }
+        ~P_ExcelHandler()
+        {
+            if (m_bFileOpen == true)
+            {
+                UnLoadFile();
+            }
+        }
        
         public bool LoadFile(string sFilePath)
         {
@@ -84,7 +90,7 @@ namespace TestAME
 
                     if (iIdx == sFieldList.Length)
                     {
-                        m_iRowStartNum = iRowIdx;
+                        m_iRowStartNum = iRowIdx + 1;
                         m_iFieldNumber = sFieldList.Length;
 
                         bRet = true;
