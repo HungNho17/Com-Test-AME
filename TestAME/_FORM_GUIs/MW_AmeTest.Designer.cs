@@ -235,7 +235,7 @@
             this.aMESupportTestToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 1, 0, 5);
             this.aMESupportTestToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.aMESupportTestToolStripMenuItem.Text = "Multi Commands";
-            this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.AME_Test_Load);
+            this.aMESupportTestToolStripMenuItem.Click += new System.EventHandler(this.Multi_Cmd_Load);
             // 
             // toolStripSeparator1
             // 

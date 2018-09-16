@@ -127,6 +127,9 @@
   <data name="Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\RESOURCEs\Images\Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pattern_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\RESOURCEs\Images\Pattern_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\RESOURCEs\Images\Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

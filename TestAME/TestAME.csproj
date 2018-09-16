@@ -56,6 +56,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="_FORM_GUIs\SW_MultiCmd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_FORM_GUIs\SW_MultiCmd.Designer.cs">
+      <DependentUpon>SW_MultiCmd.cs</DependentUpon>
+    </Compile>
     <Compile Include="_SOURCEs\AmeCommands\I_AmeCommands.cs" />
     <Compile Include="_SOURCEs\AmeCommands\P_ExcelHandler.cs" />
     <Compile Include="_SOURCEs\SerialComPort\I_SerialComPort.cs" />
@@ -109,6 +115,9 @@
     <EmbeddedResource Include="_FORM_GUIs\SW_LabelsProgramming.resx">
       <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="_FORM_GUIs\SW_MultiCmd.resx">
+      <DependentUpon>SW_MultiCmd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="_FORM_GUIs\SW_SerialComSetUp.resx">
       <DependentUpon>SW_SerialComSetUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +150,7 @@
     <Content Include="RESOURCEs\Images\datalogic.ico" />
     <Content Include="RESOURCEs\Images\D_brown.png" />
     <Content Include="RESOURCEs\Images\D_green.png" />
+    <Content Include="RESOURCEs\Images\Pattern_1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

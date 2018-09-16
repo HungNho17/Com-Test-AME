@@ -51,10 +51,10 @@ namespace TestAME
         public delegate void AddDataDelegate(string datain);
         public AddDataDelegate myDelegate;
 
-        SW_SerialComSetUp SubFormSPort = null;
-        SW_SetupUserCommand SubFormCmd = null;
-        SW_AME_Test SubFormAMETest = null;
-        SW_LabelsProgramming SubFormSampleLabels = null;
+        SW_SerialComSetUp       SubFormSPort        = null;
+        SW_SetupUserCommand     SubFormCmd          = null;
+        SW_MultiCmd             SubFormMultiCmd     = null;
+        SW_LabelsProgramming    SubFormSampleLabels = null;
 
         Size FormDefaultSize = new Size();
         bool FlagFlipView = false;
@@ -252,9 +252,9 @@ namespace TestAME
                     tbDataRecieve.AppendText(temp);
                     tbDataRecieve.SelectionColor = tbDataRecieve.ForeColor;
 
-                    if ((SubFormAMETest != null) && flagFromSP)
+                    if ((SubFormMultiCmd != null) && flagFromSP)
                     {
-                        SubFormAMETest.UpdateFeedBackSending(temp);
+                        //SubFormMultiCmd.UpdateFeedBackSending(temp);
                     }
                 }
             }
@@ -593,19 +593,18 @@ namespace TestAME
         /// <summary>
         /// SUB FORM AME TEST SUPPORT
         /// </summary>
-        private void AME_Test_Load(object sender, EventArgs e)
+        private void Multi_Cmd_Load(object sender, EventArgs e)
         {
-            if (SubFormAMETest == null)
+            if (SubFormMultiCmd == null)
             {
-                SubFormAMETest = new SW_AME_Test(SendDataMethode);
-                SubFormAMETest.FormClosed += new FormClosedEventHandler(SubFormAMETestClosed);
-                SubFormAMETest.Show();
-                SubFormAMETest.UpdateSystemInfo(FlagConnectStatus);
+                SubFormMultiCmd = new SW_MultiCmd(ComPort);
+                SubFormMultiCmd.FormClosed += new FormClosedEventHandler(SubFormMultiCmdClosed);
+                SubFormMultiCmd.Show();
             }
         }
-        void SubFormAMETestClosed(object sender, FormClosedEventArgs e)
+        void SubFormMultiCmdClosed(object sender, FormClosedEventArgs e)
         {
-            SubFormAMETest = null;
+            SubFormMultiCmd = null;
         }
 
         /// <summary>
@@ -659,8 +658,8 @@ namespace TestAME
                         }
                     }
 
-                    if (SubFormAMETest != null)
-                        SubFormAMETest.UpdateSystemInfo(FlagConnectStatus);
+                    if (SubFormMultiCmd != null)
+                    { }//SubFormMultiCmd.UpdateSystemInfo(FlagConnectStatus);
                     break;
 
                 case 1: // bt datarecieve display

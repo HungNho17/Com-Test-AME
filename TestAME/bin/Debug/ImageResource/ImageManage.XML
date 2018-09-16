@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageManage>
+  <Image name="image_1">
+    <Group name="Interface" />
+    <Desc name="USB COM" />
+    <Conte name="HA47" />
+  </Image>
+</ImageManage>

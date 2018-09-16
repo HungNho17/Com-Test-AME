@@ -25,10 +25,10 @@ namespace TestAME
         List<Button>    listBtManual        = null;
         List<Button>    listBtAuto          = null;
 
+        int             iNumberOfCmd        = 0;
         int             iCurrentCmdNumber   = 0;
         COMMAND_TYPE    CurrentCmd          = null;
 
-        int             iNumberOfCmd        = 0;
         bool            FlagFileLoaded      = false;
         bool            FlagFlipTestMode    = false;
 
@@ -54,9 +54,10 @@ namespace TestAME
         public SW_AME_Test(Func<string, bool> function)
         {
             InitializeComponent();
-            CmdHandler = new P_AmeCommands();
-            listBtManual = new List<Button> { btPrevious, btNext, btSend };
-            listBtAuto = new List<Button> { btStart, btPause, btStop };
+
+            CmdHandler      = new P_AmeCommands();
+            listBtManual    = new List<Button> { btPrevious, btNext, btSend };
+            listBtAuto      = new List<Button> { btStart, btPause, btStop };
 
             this.myDelegate = new SendDataDelegate(function);
         }
