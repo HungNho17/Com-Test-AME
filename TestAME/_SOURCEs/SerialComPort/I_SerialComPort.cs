@@ -15,6 +15,7 @@ namespace TestAME
     }
 
     public delegate void DataReceiveUpdate(string sData);
+    public delegate void DataWritenUpdate(string sData);
 
     public interface ISerialComport
     {
@@ -32,6 +33,7 @@ namespace TestAME
         bool DSRGetting();
 
         void        RegisterReceiveRealTime(DataReceiveUpdate ReceiveHandler);
+        void        RegisterReceiveWritenData(DataWritenUpdate ReceiveHandler);
 
         bool        Write(int dataOut, bool flagSendLF);
         bool        Write(string dataOut, bool flagSendLF);

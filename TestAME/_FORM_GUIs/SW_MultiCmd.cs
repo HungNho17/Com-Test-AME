@@ -17,9 +17,14 @@ namespace TestAME
 
         I_AmeCommands   m_CmdHandler        = null;
         int             m_iNumberOfCmd      = 0;
+        int             m_iCurrentIdxCmd    = 0;
+        bool            m_bFlagInWait       = false;
 
         string          sPathFileSelected   = null;
         bool            FlagFileLoaded      = false;
+
+        public delegate void AddDataDelegate(string datain);
+        public AddDataDelegate myDelegate;
 
         public SW_MultiCmd(ISerialComport ComPort)
         {
@@ -28,55 +33,35 @@ namespace TestAME
             m_CmdBtList = new List<Button>();
 
             InitializeComponent();
-            DataViewInit();
-        }
 
-        private void load_tsmi_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "*.xls|*.xlsx";
-            fileDialog.Title = "Select File Command !";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                sPathFileSelected = fileDialog.FileName;
-                lbPathFile.Text = fileDialog.FileName;
-            }
-
-            if (sPathFileSelected != null)
-            {
-                if (m_CmdHandler.LoadAmeCmdFile(sPathFileSelected))
-                {
-                    m_iNumberOfCmd = m_CmdHandler.GetTotalNumberCmd();
-                    if (m_iNumberOfCmd > 0)
-                    {
-                        FlagFileLoaded = true;
-                        UpdateCmdFromFile();
-                    }
-                }
-                else
-                    MessageBox.Show("File Invalid!");
-            }
+            this.myDelegate = new AddDataDelegate(AddDataMethod);
+            ComPort.RegisterReceiveRealTime(new DataReceiveUpdate(Read));
         }
 
         private bool DataViewInit()
         {
             bool bRet = false;
-            
-            //Setting type for columns: first to last
-            dtgvMain.Columns.Add(new DataGridViewButtonColumn());
 
-            dtgvMain.ColumnHeadersVisible = true;
-            dtgvMain.ColumnCount = 7;
-            dtgvMain.Columns[0].Name = "Send";
-            dtgvMain.Columns[1].Name = "Name";
-            dtgvMain.Columns[2].Name = "Command";
-            dtgvMain.Columns[3].Name = "Syntax";
-            dtgvMain.Columns[4].Name = "Result Expect";
-            dtgvMain.Columns[5].Name = "Result Observe";
-            dtgvMain.Columns[6].Name = "User Notes";
+            if (FlagFileLoaded)
+            {
+                //Setting type for columns: first to last
+                dtgvMain.Columns.Add(new DataGridViewButtonColumn());
 
-            bRet = true;
+                dtgvMain.ColumnHeadersVisible = true;
+                dtgvMain.ColumnCount = 7;
+                dtgvMain.Columns[0].Name = "Send";
+                dtgvMain.Columns[1].Name = "Name";
+                dtgvMain.Columns[2].Name = "Command";
+                dtgvMain.Columns[3].Name = "Syntax";
+                dtgvMain.Columns[4].Name = "Result Expect";
+                dtgvMain.Columns[5].Name = "Result Observe";
+                dtgvMain.Columns[6].Name = "User Notes";
+
+                dtgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dtgvMain.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                bRet = true;
+            }
 
             return bRet;
         }
@@ -119,6 +104,49 @@ namespace TestAME
             return bRet;
         }
 
+        public void AddDataMethod(string dataIn)
+        {
+            if (m_bFlagInWait == true)
+            {
+                m_bFlagInWait = false;
+                dtgvMain.Rows[m_iCurrentIdxCmd].Cells[5].Value = dataIn;
+            }
+        }
+
+        public void Read(string sDataSport)
+        {
+            this.Invoke(this.myDelegate, new object[] { sDataSport});
+        }
+        
+        private void load_tsmi_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "*.xls|*.xlsx";
+            fileDialog.Title = "Select File Command !";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                sPathFileSelected = fileDialog.FileName;
+                lbPathFile.Text = fileDialog.FileName;
+            }
+
+            if (sPathFileSelected != null)
+            {
+                if (m_CmdHandler.LoadAmeCmdFile(sPathFileSelected))
+                {
+                    m_iNumberOfCmd = m_CmdHandler.GetTotalNumberCmd();
+                    if (m_iNumberOfCmd > 0)
+                    {
+                        FlagFileLoaded = true;
+                        DataViewInit();
+                        UpdateCmdFromFile();
+                    }
+                }
+                else
+                    MessageBox.Show("File Invalid!");
+            }
+        }
+
         private void dtgvMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -130,6 +158,8 @@ namespace TestAME
                 try
                 {
                     m_ComPort.Write(dtgvMain.Rows[e.RowIndex].Cells[2].Value.ToString() +"\r", false);
+                    m_iCurrentIdxCmd = e.RowIndex;
+                    m_bFlagInWait = true;
                 }
                 catch { }
             }

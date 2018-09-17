@@ -182,9 +182,10 @@
             this.dtgvMain.Name = "dtgvMain";
             this.dtgvMain.ReadOnly = true;
             this.dtgvMain.RowHeadersVisible = false;
+            this.dtgvMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgvMain.Size = new System.Drawing.Size(693, 320);
             this.dtgvMain.TabIndex = 1;
-            this.dtgvMain.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvMain_CellContentClick);
+            this.dtgvMain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvMain_CellContentClick);
             // 
             // label2
             // 

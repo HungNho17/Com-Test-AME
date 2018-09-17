@@ -147,9 +147,13 @@ namespace TestAME
         private static Thread                   m_SPProcessing          = null;
         private static Queue<string>            m_SPReceiveQueue        = null;
         private static bool                     m_SPFlagNewData         = false;
+        
+        private static Queue<string>            m_SPWritenQueue         = null;
+        private static bool                     m_SPFlagWritenData      = false;
 
         private SerialDataReceivedEventHandler  m_SPReceiveHandler      = null;
         private List<DataReceiveUpdate>         m_ClientReadHandlers    = null;
+        private List<DataWritenUpdate>          m_ClientWritenHandlers  = null;
 
         public CSerialComPort(SerialPort a)
         {
@@ -159,6 +163,7 @@ namespace TestAME
             m_SPReceiveHandler   = new SerialDataReceivedEventHandler(DataReceiverHandler);
             m_SPReceiveQueue     = new Queue<string>();
             m_ClientReadHandlers = new List<DataReceiveUpdate>();
+            m_ClientWritenHandlers = new List<DataWritenUpdate>();
 
             // common setting for serial port
             m_SPCurrent.NewLine = "\n";
@@ -172,6 +177,11 @@ namespace TestAME
         public void RegisterReceiveRealTime(DataReceiveUpdate Read)
         {
             m_ClientReadHandlers.Add(Read);
+        }
+
+        public void RegisterReceiveWritenData(DataWritenUpdate Writen)
+        {
+            m_ClientWritenHandlers.Add(Writen);
         }
 
         public bool OpenSPort()
@@ -453,6 +463,9 @@ namespace TestAME
                 }
             }
 
+            m_SPWritenQueue.Enqueue(dataOut);
+            m_SPFlagWritenData = true;
+
             return bRet;
         }
 
@@ -551,6 +564,8 @@ namespace TestAME
             for (;;)
             {
                 UpdateDataReceiveForClients();
+                UpdateWritenDataForClients();
+
                 //UpdateHandsakeStatusForClients();
             }
         }
@@ -572,6 +587,27 @@ namespace TestAME
                 if (m_SPReceiveQueue.Count == 0)
                 {
                     m_SPFlagNewData = false;
+                }
+            }
+        }
+
+        private void UpdateWritenDataForClients()
+        {
+            if (m_SPFlagWritenData == true)
+            {
+                string sData = m_SPWritenQueue.Dequeue();
+
+                if (m_ClientWritenHandlers.Count > 0)
+                {
+                    foreach (DataWritenUpdate ClientHandler in m_ClientWritenHandlers)
+                    {
+                        ClientHandler(sData);
+                    }
+                }
+
+                if (m_SPWritenQueue.Count == 0)
+                {
+                    m_SPFlagWritenData = false;
                 }
             }
         }

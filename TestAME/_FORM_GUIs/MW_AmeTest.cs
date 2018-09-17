@@ -25,39 +25,39 @@ namespace TestAME
         ISerialComport          ComPort = null;
         P_UserCommandManagement UserCmd = null;
 
-        List<Button> CommandBTList = null;
-        List<Button> ConnectStatusBTList = null;
-        List<Button> ControlUIBTList = null;
-        static int IndextCounter = 0;
-        static int TimerCounterCheckComport = 0;
+        List<Button>    CommandBTList           = null;
+        List<Button>    ConnectStatusBTList     = null;
+        List<Button>    ControlUIBTList         = null;
+        static int      IndextCounter           = 0;
+        static int      TimerCounterCheckComport = 0;
 
-        string[] btNameListCurrent = null;
-        string[] cmdListCurrent = null;
+        string[]        btNameListCurrent       = null;
+        string[]        cmdListCurrent          = null;
 
-        bool FlagConnectStatus = false;
-        bool FlagDisplayDataRecieve = true;
-        bool FlagShowSpace = false;
-        bool FlagShowLF = false;
-        bool FlagWrapText = true;
-        bool FlagSendLF = false;
-        bool FlagSendTo = true;
-        bool FlagTimeStamping = false;
-        bool FlagIndexStamping = false;
+        bool            FlagConnectStatus       = false;
+        bool            FlagDisplayDataRecieve  = true;
+        bool            FlagShowSpace           = false;
+        bool            FlagShowLF              = false;
+        bool            FlagWrapText            = true;
+        bool            FlagSendLF              = false;
+        bool            FlagSendTo              = true;
+        bool            FlagTimeStamping        = false;
+        bool            FlagIndexStamping       = false;
 
-        bool FlagRTSOutput = true;
-        bool FlagDTROutput = true;
-        HANDSHAKE_TYPE HandshakeMode = HANDSHAKE_TYPE.BOTH;
+        bool            FlagRTSOutput           = true;
+        bool            FlagDTROutput           = true;
+        HANDSHAKE_TYPE  HandshakeMode           = HANDSHAKE_TYPE.BOTH;
 
-        public delegate void AddDataDelegate(string datain);
-        public AddDataDelegate myDelegate;
+        public delegate void    AddDataDelegate(string datain);
+        public AddDataDelegate  myDelegate;
 
         SW_SerialComSetUp       SubFormSPort        = null;
         SW_SetupUserCommand     SubFormCmd          = null;
         SW_MultiCmd             SubFormMultiCmd     = null;
         SW_LabelsProgramming    SubFormSampleLabels = null;
 
-        Size FormDefaultSize = new Size();
-        bool FlagFlipView = false;
+        Size                    FormDefaultSize     = new Size();
+        bool                    FlagFlipView        = false;
 
         //==============================================================================
         // Window Actions.
