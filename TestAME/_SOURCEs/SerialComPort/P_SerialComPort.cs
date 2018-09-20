@@ -161,9 +161,12 @@ namespace TestAME
 
             m_SPCurrent     = a;
             m_SPReceiveHandler   = new SerialDataReceivedEventHandler(DataReceiverHandler);
+
             m_SPReceiveQueue     = new Queue<string>();
             m_ClientReadHandlers = new List<DataReceiveUpdate>();
-            m_ClientWritenHandlers = new List<DataWritenUpdate>();
+
+            m_SPWritenQueue         = new Queue<string>();
+            m_ClientWritenHandlers  = new List<DataWritenUpdate>();
 
             // common setting for serial port
             m_SPCurrent.NewLine = "\n";
@@ -455,6 +458,10 @@ namespace TestAME
 
                     if (dataBytes.Length > 0)
                         m_SPCurrent.Write(dataBytes, 0, dataBytes.Length);
+
+                    
+                    m_SPWritenQueue.Enqueue(dataOut);
+                    m_SPFlagWritenData = true;
                 }
                 catch
                 {
@@ -463,8 +470,6 @@ namespace TestAME
                 }
             }
 
-            m_SPWritenQueue.Enqueue(dataOut);
-            m_SPFlagWritenData = true;
 
             return bRet;
         }

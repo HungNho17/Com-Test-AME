@@ -33,6 +33,9 @@ namespace TestAME
     interface I_AmeCommands
     {
         bool            LoadAmeCmdFile (string sFilePath);
+
+        void            Closed();
+
         bool            GenerateAmeCmdForm ();
 
         int             GetTotalNumberCmd ();

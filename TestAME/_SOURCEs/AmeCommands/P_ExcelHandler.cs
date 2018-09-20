@@ -11,6 +11,7 @@ namespace TestAME
     public interface I_ExcelHandler
     {
         bool            LoadFile (string sFilePath);
+        void            Closed();
         bool            CheckStructure (string[] sFieldList);
         List<string[]>  ParseFileAsStructure ();
         bool            CreateCopyFile (string sFileName, List<string[]> lContents);
@@ -62,6 +63,14 @@ namespace TestAME
             }
 
             return bRet;
+        }
+
+        public void Closed()
+        {
+            if (xlWorkbook != null)
+                xlWorkbook.Close(false);
+            if (xlApp != null)
+                xlApp.Quit();
         }
 
         public bool CheckStructure(string[] sFieldList)

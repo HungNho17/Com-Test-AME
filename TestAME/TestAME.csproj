@@ -75,12 +75,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_SOURCEs\P_XmlFileProcess.cs" />
-    <Compile Include="_FORM_GUIs\SW_AME_Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_FORM_GUIs\SW_AME_Test.Designer.cs">
-      <DependentUpon>SW_AME_Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="_FORM_GUIs\SW_LabelsProgramming.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,9 +102,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_FORM_GUIs\SW_AME_Test.resx">
-      <DependentUpon>SW_AME_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_FORM_GUIs\SW_LabelsProgramming.resx">
       <DependentUpon>SW_LabelsProgramming.cs</DependentUpon>

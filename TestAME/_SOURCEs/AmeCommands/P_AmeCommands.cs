@@ -17,6 +17,7 @@ namespace TestAME
 
         static string CMD_NAME          = "name";
         static string CMD_CMD           = "cmd";
+        static string CMD_SYNTAX        = "syntax";
         static string CMD_WAIT_TIME     = "wait time (in sec)";
         static string CMD_RESULT_EXPECT = "result expect";
         static string CMD_RESULT_OBSERV = "result observe";
@@ -24,6 +25,7 @@ namespace TestAME
 
         static string[] FIELD_DEFINE_LIST = new string[]{   CMD_NAME,
                                                             CMD_CMD,
+                                                            CMD_SYNTAX,
                                                             CMD_WAIT_TIME,
                                                             CMD_RESULT_EXPECT,
                                                             CMD_RESULT_OBSERV,
@@ -73,6 +75,13 @@ namespace TestAME
             return bRet;
         }
 
+        public void Closed()
+        {
+            if (m_FileHandler != null)
+            {
+                m_FileHandler.Closed();
+            }
+        }
         public bool GenerateAmeCmdForm()
         {
             bool bRet = false;

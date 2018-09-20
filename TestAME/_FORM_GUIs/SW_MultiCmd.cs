@@ -37,7 +37,12 @@ namespace TestAME
             this.myDelegate = new AddDataDelegate(AddDataMethod);
             ComPort.RegisterReceiveRealTime(new DataReceiveUpdate(Read));
         }
-
+        
+        private void SW_MultiCmd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (m_CmdHandler != null)
+                m_CmdHandler.Closed();
+        }
         private bool DataViewInit()
         {
             bool bRet = false;
@@ -59,6 +64,9 @@ namespace TestAME
 
                 dtgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 dtgvMain.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                dtgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                dtgvMain.AllowUserToResizeRows = false;
 
                 bRet = true;
             }
@@ -162,6 +170,14 @@ namespace TestAME
                     m_bFlagInWait = true;
                 }
                 catch { }
+            }
+        }
+
+        private void clearResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dtgvMain.Rows.Count; i++)
+            {
+                dtgvMain.Rows[i].Cells[5].Value = null;
             }
         }
     }
