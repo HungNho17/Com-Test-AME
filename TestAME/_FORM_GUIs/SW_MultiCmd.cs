@@ -129,7 +129,7 @@ namespace TestAME
         private void load_tsmi_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "*.xls|*.xlsx";
+            fileDialog.Filter = "Command file |*.xls;*.xlsx;*.csv";
             fileDialog.Title = "Select File Command !";
 
             if (fileDialog.ShowDialog() == DialogResult.OK)

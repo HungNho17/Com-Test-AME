@@ -20,7 +20,7 @@ namespace TestAME
     public class P_ExcelHandler : I_ExcelHandler
     {
         // attributes
-        private Excel.Application   xlApp       = new Excel.Application();
+        private Excel.Application   xlApp       = null;
         private Excel.Workbook      xlWorkbook  = null;
         private Excel._Worksheet    xlWorksheet = null;
         private Excel.Range         xlRange     = null;
@@ -30,38 +30,40 @@ namespace TestAME
         private int                 m_iRowStartNum  = 1;
         private int                 m_iColStartNum  = 1;
 
-        public P_ExcelHandler(){ }
+        private List<string[]>      m_lsFileContent = null;
+
+        public P_ExcelHandler()
+        {
+            xlApp = new Excel.Application();
+        }
+
         ~P_ExcelHandler()
         {
-            if (m_bFileOpen == true)
-            {
-                UnLoadFile();
-            }
+            Closed();
         }
        
         public bool LoadFile(string sFilePath)
         {
             bool bRet = false;
-            
-            if (File.Exists(sFilePath) == true)
+
+            if (sFilePath != null)
             {
-                if (m_bFileOpen == true)
+                if (Path.GetExtension(sFilePath) == ".csv")
                 {
-                    UnLoadFile();
+                    m_lsFileContent = ReadCsvFile(sFilePath);
+                }
+                else
+                {
+                    m_lsFileContent = ReadExcelFile(sFilePath);
                 }
 
-                try
+                if (m_lsFileContent != null && m_lsFileContent.Count > 0)
                 {
-                    xlWorkbook  = xlApp.Workbooks.Open(@sFilePath, ReadOnly: false, Editable: true);
-                    xlWorksheet = xlWorkbook.Sheets[1];
-                    xlRange     = xlWorksheet.UsedRange;
-
                     m_bFileOpen = true;
                     bRet = true;
                 }
-                catch{ ;}
             }
-
+            
             return bRet;
         }
 
@@ -81,19 +83,26 @@ namespace TestAME
                 (sFieldList != null)    ||
                 (sFieldList.Length > 0))
             {
-                for (int iRowIdx = 1; iRowIdx < 100; iRowIdx++)
+                for (int iRowIdx = 0; iRowIdx < m_lsFileContent.Count; iRowIdx++)
                 {
                     int iIdx = 0;
-                    for (int iColIdx = 1; iColIdx < 20; iColIdx++)
+                    string[] sRowContent = m_lsFileContent[iRowIdx];
+
+                    for (int iColIdx = 0; iColIdx < sRowContent.Length; iColIdx++)
                     {
-                        if ((xlWorksheet.Cells[iRowIdx, iColIdx].value != null) &&
-                            (xlWorksheet.Cells[iRowIdx, iColIdx].value.ToString() == sFieldList[iIdx]))
+                        if ((sRowContent[iColIdx] != null) &&
+                            (sRowContent[iColIdx] == sFieldList[iIdx]))
                         {
                             if (iIdx == 0)
                             {
                                 m_iColStartNum = iColIdx;
                             }
                             ++iIdx;
+
+                            if (iIdx == sFieldList.Length)
+                            {
+                                break;
+                            }
                         }
                     }
 
@@ -119,26 +128,22 @@ namespace TestAME
             {
                 lRet = new List<string[]>();
 
-                for (int iRowIdx = m_iRowStartNum; ; iRowIdx++)
+                for (int iRowIdx = m_iRowStartNum; iRowIdx < m_lsFileContent.Count ; iRowIdx++)
                 {
-                    int iIdx = 0;
-                    string[] sFieldContent = new string[m_iFieldNumber];
+                    string[] sRowContent = m_lsFileContent[iRowIdx];
 
-                    for (int iColIdx = m_iColStartNum; iColIdx < (m_iColStartNum + m_iFieldNumber); iColIdx++)
+                    if (sRowContent.Length >= (m_iColStartNum + m_iFieldNumber))
                     {
-                        if (xlWorksheet.Cells[iRowIdx, iColIdx].value != null)
-                                sFieldContent[iIdx++] = xlWorksheet.Cells[iRowIdx, iColIdx].value.ToString();
-                        else sFieldContent[iIdx++] = "";
-                    }
+                        int iIdx = 0;
+                        string[] sFieldContent = new string[m_iFieldNumber];
 
-                    if ((sFieldContent[0] == "") &&
-                        (sFieldContent[1] == "") &&
-                        (sFieldContent[2] == "") )
-                    {
-                        break;
-                    }
+                        for (int iColIdx = m_iColStartNum; iColIdx < (m_iColStartNum + m_iFieldNumber); iColIdx++)
+                        {
+                            sFieldContent[iIdx++] = sRowContent[iColIdx];
+                        }
 
-                    lRet.Add(sFieldContent);
+                        lRet.Add(sFieldContent);
+                    }
                 }
             }
 
@@ -153,19 +158,100 @@ namespace TestAME
         }
 
         // private apis
-        private void UnLoadFile()
+        private List<string[]> ReadCsvFile(string sFilePath)
         {
-            if (m_bFileOpen == true)
+            List<string[]> lsRet = null;
+
+            if (File.Exists(sFilePath) && (Path.GetExtension(sFilePath)==".csv"))
             {
+                lsRet = new List<string[]>();
+                using (StringReader sReader = new StringReader(File.ReadAllText(sFilePath)))
+                {
+                    uint uiCount = 0;
+                    while (sReader.Peek() > 0)
+                    {
+                        try
+                        {
+                            string[] lsTemp = sReader.ReadLine().Split(',');
+
+                            if ((lsTemp[0] == string.Empty) &&
+                                (lsTemp[1] == string.Empty) &&
+                                (lsTemp[2] == string.Empty))
+                            {
+                                if (uiCount < 3)
+                                {
+                                    uiCount++;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                uiCount = 0;
+                                lsRet.Add(lsTemp);
+                            }
+                        }
+                        catch { }
+                    }
+                }
+            }
+
+            return lsRet;
+        }
+
+        private List<string[]> ReadExcelFile(string sFilePath)
+        {
+            List<string[]> lsRet = null;
+
+            if (File.Exists(sFilePath))
+            {
+                lsRet = new List<string[]>();
+                
                 try
                 {
-                    xlWorkbook.Save();
-                    xlWorkbook.Close();
-
-                    m_bFileOpen = false;
+                    xlWorkbook  = xlApp.Workbooks.Open(@sFilePath, ReadOnly: false, Editable: true);
+                    xlWorksheet = xlWorkbook.Sheets[1];
+                    xlRange     = xlWorksheet.UsedRange;
                 }
-                catch{ ;}
+                catch{}
+
+                uint uiCount = 0;
+                for (int iRowIdx = 1/*first row*/; ; iRowIdx++)
+                {
+                    int iIdx = 0;
+                    string[] sFieldContent = new string[10];
+
+                    for (int iColIdx = 1/*first column*/; iColIdx < 10; iColIdx++)
+                    {
+                        if (xlWorksheet.Cells[iRowIdx, iColIdx].value != null)
+                                sFieldContent[iIdx++] = xlWorksheet.Cells[iRowIdx, iColIdx].value.ToString();
+                        else sFieldContent[iIdx++] = string.Empty;
+                    }
+
+                    if ((sFieldContent[0] == string.Empty) &&
+                        (sFieldContent[1] == string.Empty) &&
+                        (sFieldContent[2] == string.Empty))
+                    {
+                        if (uiCount < 3)
+                        {
+                            uiCount++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        uiCount = 0;
+                        lsRet.Add(sFieldContent);
+                    }
+                }
             }
+
+            return lsRet;
         }
     }
 }

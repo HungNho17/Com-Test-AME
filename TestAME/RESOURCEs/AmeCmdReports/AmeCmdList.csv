@@ -1,0 +1,257 @@
+AME COMMANDS SUPPORT,,,,,,
+PROJECT: TAHITI - DOZER,,,,,,
+DATE:,,,,,,
+ENGINEER:,,,,,,
+,,,,,,
+name,cmd,syntax,wait time (in sec),result expect,result observe,user note
+SSC_Set_Memory_Data OVERWRITE,$FK2000001100A1B1C1D1,FK <address-4B><operation-1B><data-2W> ,1,$>,,Set data at specified memory location
+SSC_Get_Memory_Range,$Ff2000001100000002,Ff <address-4B><range-2W> ,1,$>,,Get data at specified memory location
+SSC_Set_Memory_Data AND,$FK2000001101A1B1C1D1,FK <address-4B><operation-1B><data-2W> ,1,$>,,Set data at specified memory location
+SSC_Get_Memory_Range,$Ff2000001100000002,Ff <address-4B><range-2W> ,1,$>,,Get data at specified memory location
+SSC_Set_Memory_Data OR,$FK2000001102A1B1C1D1,FK <address-4B><operation-1B><data-2W> ,1,$>,,Set data at specified memory location
+SSC_Get_Memory_Range,$Ff2000001100000002,Ff <address-4B><range-2W> ,1,$>,,Get data at specified memory location
+SSC_Get_Trigger_State PULLED,$Fc,Fc (no arguments),1,$>,,"Read the state of the trigger switch (pulled, or not)"
+SSC_Get_Trigger_State RELEASED,$Fc,Fc (no arguments),1,$>,,"Read the state of the trigger switch (pulled, or not)"
+SSC_Diag1_Mode DISABLE,$FG00,FG <data-1B> ,1,$>,,"Use this command to set a diagnostic reading mode so that the scanner is not sensitive to events such as trigger, motion, object detection."
+SSC_Diag1_Mode ENABLE,$FG01,FG <data-1B> ,1,$>,,"Use this command to set a diagnostic reading mode so that the scanner is not sensitive to events such as trigger, motion, object detection."
+SSC_Set_Indicators GREEN SPOT - ON,$FF0001,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_Indicators GREEN SPOT - OFF,$FF0000,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_Indicators ILLUMINATOR - ON,$FF0101,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_Indicators ILLUMINATOR - OFF,$FF0100,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_Indicators POINTER - ON,$FF0201,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_Indicators POINTER - OFF,$FF0200,FF <type of indicator-1B><on or off-1B>,1,$>,,"Turn visual indicators (green spot, LED, ..) on or off"
+SSC_Set_IO PORT_A_00 NO_CHANGE,$Fw00000000,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_01 INPUT NO_CHANGE,$Fw00010100,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_02 INPUT PUSH_PULL,$Fw00020101,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_03 INPUT OPEN_DRAIN,$Fw00030102,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_04 OUTPUT_LOW NO_CHANGE,$Fw00040200,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_05 OUTPUT_LOW PUSH_PULL,$Fw00050201,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_06 OUTPUT_LOW OPEN_DRAIN,$Fw00060202,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_07 OUTPUT_HIGH NO_CHANGE,$Fw00070300,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_08 OUTPUT_HIGH PUSH_PULL,$Fw00080301,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_A_09 OUTPUT_HIGH OPEN_DRAIN,$Fw00090302,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0A NO_CHANGE,$Fw010A0000,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0B INPUT NO_CHANGE,$Fw010B0100,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0C INPUT PUSH_PULL,$Fw010C0101,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0D INPUT OPEN_DRAIN,$Fw010D0102,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0E OUTPUT_LOW NO_CHANGE,$Fw010E0200,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_0F OUTPUT_LOW PUSH_PULL,$Fw010F0201,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_10 OUTPUT_LOW OPEN_DRAIN,$Fw01100202,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_11 OUTPUT_HIGH NO_CHANGE,$Fw01110300,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_12 OUTPUT_HIGH PUSH_PULL,$Fw01120301,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_B_13 OUTPUT_HIGH OPEN_DRAIN,$Fw01130302,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_14 NO_CHANGE,$Fw02140000,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_15 INPUT NO_CHANGE,$Fw02150100,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_16 INPUT PUSH_PULL,$Fw02160101,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_17 INPUT OPEN_DRAIN,$Fw02170102,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_18 OUTPUT_LOW NO_CHANGE,$Fw02180200,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_19 OUTPUT_LOW PUSH_PULL,$Fw02190201,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_20 OUTPUT_LOW OPEN_DRAIN,$Fw02200202,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_21 OUTPUT_HIGH NO_CHANGE,$Fw02210300,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_22 OUTPUT_HIGH PUSH_PULL,$Fw02220301,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Set_IO PORT_C_23 OUTPUT_HIGH OPEN_DRAIN,$Fw02230302,Fw <port-1B><bit-1B><direction-1B><drive-1B> ,1,$>,,Sets I/O port (GPIO) direction and drive circuitry
+SSC_Get_IO PORT_A_00,$Fr0000,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_01,$Fr0001,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_02,$Fr0002,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_03,$Fr0003,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_04,$Fr0004,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_05,$Fr0005,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_06,$Fr0006,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_07,$Fr0007,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_08,$Fr0008,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_A_09,$Fr0009,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0A,$Fr010A,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0B,$Fr010B,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0C,$Fr010C,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0D,$Fr010D,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0E,$Fr010E,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_0F,$Fr010F,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_10,$Fr0110,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_11,$Fr0111,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_12,$Fr0112,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_B_13,$Fr0113,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_14,$Fr0214,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_15,$Fr0215,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_16,$Fr0216,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_17,$Fr0217,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_18,$Fr0218,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_19,$Fr0219,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_20,$Fr0220,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_21,$Fr0221,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_22,$Fr0222,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Get_IO PORT_C_23,$Fr0223,Fr <port-1B><bit-1B>  ,1,$>,,Gets I/O port (GPIO) setup
+SSC_Set_Beeper_Parameter OFF,$FD000202,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter LOW_F - MED_V,$FD010001,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter MED_F - MED_V,$FD010101,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter HIG_F - MED_V,$FD010201,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter MED_F - LOW_V,$FD010100,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter MED_F - MED_V,$FD010101,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Set_Beeper_Parameter MED_F - HIG_V,$FD010102,FD <on-off-1B><frequency-1B><volume-1B> ,1,$>,,Sets the beeper frequency and turns beeper on or off
+SSC_Sensor_Test ,$Fo,Fo (no parameter) ,1,$>,,Execute sensor test.
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
