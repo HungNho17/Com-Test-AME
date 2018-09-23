@@ -36,20 +36,19 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManual = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiReset = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dtgvMain = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.lbPathFile = new System.Windows.Forms.Label();
-            this.clearResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMain)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +81,7 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.load_tsmi_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.tsmiLoad_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -95,6 +94,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
             // settingToolStripMenuItem
             // 
@@ -107,54 +107,72 @@
             // modeToolStripMenuItem
             // 
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualToolStripMenuItem,
-            this.autoToolStripMenuItem});
+            this.tsmiManual,
+            this.tsmiAuto});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modeToolStripMenuItem.Text = "Mode";
             // 
-            // manualToolStripMenuItem
+            // tsmiManual
             // 
-            this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.manualToolStripMenuItem.Text = "Manual";
+            this.tsmiManual.Enabled = false;
+            this.tsmiManual.Name = "tsmiManual";
+            this.tsmiManual.Size = new System.Drawing.Size(114, 22);
+            this.tsmiManual.Text = "Manual";
+            this.tsmiManual.Click += new System.EventHandler(this.tsmiMenual_Click);
             // 
-            // autoToolStripMenuItem
+            // tsmiAuto
             // 
-            this.autoToolStripMenuItem.Name = "autoToolStripMenuItem";
-            this.autoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.autoToolStripMenuItem.Text = "Auto";
+            this.tsmiAuto.Enabled = false;
+            this.tsmiAuto.Name = "tsmiAuto";
+            this.tsmiAuto.Size = new System.Drawing.Size(114, 22);
+            this.tsmiAuto.Text = "Auto";
+            this.tsmiAuto.Click += new System.EventHandler(this.tsmiAuto_Click);
             // 
             // actionToolStripMenuItem
             // 
             this.actionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
-            this.startToolStripMenuItem,
-            this.pauseToolStripMenuItem,
-            this.stopToolStripMenuItem,
+            this.tsmiStart,
+            this.tsmiStop,
             this.toolStripSeparator2,
-            this.clearResultToolStripMenuItem});
+            this.tsmiReset});
             this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
             this.actionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.actionToolStripMenuItem.Text = "Action";
             // 
-            // startToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.startToolStripMenuItem.Text = "Start";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
-            // pauseToolStripMenuItem
+            // tsmiStart
             // 
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pauseToolStripMenuItem.Text = "Pause";
+            this.tsmiStart.Enabled = false;
+            this.tsmiStart.Name = "tsmiStart";
+            this.tsmiStart.Size = new System.Drawing.Size(152, 22);
+            this.tsmiStart.Text = "Start";
+            this.tsmiStart.Click += new System.EventHandler(this.tsmiAutoControl_Click);
             // 
-            // stopToolStripMenuItem
+            // tsmiStop
             // 
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.stopToolStripMenuItem.Text = "Stop";
+            this.tsmiStop.Enabled = false;
+            this.tsmiStop.Name = "tsmiStop";
+            this.tsmiStop.Size = new System.Drawing.Size(152, 22);
+            this.tsmiStop.Text = "Stop";
+            this.tsmiStop.Click += new System.EventHandler(this.tsmiAutoControl_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tsmiReset
+            // 
+            this.tsmiReset.Name = "tsmiReset";
+            this.tsmiReset.Size = new System.Drawing.Size(152, 22);
+            this.tsmiReset.Text = "Reset";
+            this.tsmiReset.Click += new System.EventHandler(this.tsmiReset_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -204,23 +222,6 @@
             this.lbPathFile.TabIndex = 4;
             this.lbPathFile.Text = "...";
             // 
-            // clearResultToolStripMenuItem
-            // 
-            this.clearResultToolStripMenuItem.Name = "clearResultToolStripMenuItem";
-            this.clearResultToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearResultToolStripMenuItem.Text = "Clear Result";
-            this.clearResultToolStripMenuItem.Click += new System.EventHandler(this.clearResultToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
             // SW_MultiCmd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,18 +254,17 @@
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem autoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiManual;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAuto;
         private System.Windows.Forms.DataGridView dtgvMain;
         private System.Windows.Forms.ToolStripMenuItem actionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStart;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStop;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
         private System.Windows.Forms.Label lbPathFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem clearResultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReset;
     }
 }

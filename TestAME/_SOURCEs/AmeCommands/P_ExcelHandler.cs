@@ -11,6 +11,8 @@ namespace TestAME
     public interface I_ExcelHandler
     {
         bool            LoadFile (string sFilePath);
+
+        bool            Save(List<string[]> lsContents);
         void            Closed();
         bool            CheckStructure (string[] sFieldList);
         List<string[]>  ParseFileAsStructure ();
@@ -64,6 +66,13 @@ namespace TestAME
                 }
             }
             
+            return bRet;
+        }
+
+        public bool Save(List<string[]> lsContents)
+        {
+            bool bRet = false;
+
             return bRet;
         }
 

@@ -15,22 +15,6 @@ namespace TestAME
         static string REPORT_FORM_FILE_NAME     = "AmeCmdForm.xlsx";
         static string REPORT_FILE_NAME_FORMAT   = "AmeCmd_{0}.xlsx";
 
-        static string CMD_NAME          = "name";
-        static string CMD_CMD           = "cmd";
-        static string CMD_SYNTAX        = "syntax";
-        static string CMD_WAIT_TIME     = "wait time (in sec)";
-        static string CMD_RESULT_EXPECT = "result expect";
-        static string CMD_RESULT_OBSERV = "result observe";
-        static string CMD_USER_NOTE     = "user note";
-
-        static string[] FIELD_DEFINE_LIST = new string[]{   CMD_NAME,
-                                                            CMD_CMD,
-                                                            CMD_SYNTAX,
-                                                            CMD_WAIT_TIME,
-                                                            CMD_RESULT_EXPECT,
-                                                            CMD_RESULT_OBSERV,
-                                                            CMD_USER_NOTE };
-
         // attributes
         private string              m_sReportFormFilePath = null;
 
@@ -56,13 +40,13 @@ namespace TestAME
             {
                 if (m_FileHandler.LoadFile(pathFile) == true)
                 {
-                    if (m_FileHandler.CheckStructure(FIELD_DEFINE_LIST) == true)
+                    if (m_FileHandler.CheckStructure(COMMAND_TYPE.FIELD_DEFINE_LIST) == true)
                     {
                         List<string[]> lRawCmdList = m_FileHandler.ParseFileAsStructure();
                         if ((lRawCmdList != null) && (lRawCmdList.Count > 0))
                         {
                             m_NumberOfCmd = lRawCmdList.Count;
-                            m_ListCommands = ParseCmdList(FIELD_DEFINE_LIST, lRawCmdList);
+                            m_ListCommands = ParseCmdList(COMMAND_TYPE.FIELD_DEFINE_LIST, lRawCmdList);
                             if ((m_ListCommands != null) && (m_ListCommands.Count > 0))
                             {
                                 bRet = true;
@@ -169,12 +153,13 @@ namespace TestAME
                 {
                     COMMAND_TYPE Cmd = new COMMAND_TYPE();
 
-                    Cmd.m_Name          = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_NAME)];
-                    Cmd.m_Cmd           = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_CMD)];
-                    Cmd.m_WaitInSec     = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_WAIT_TIME)];
-                    Cmd.m_ResultExpect  = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_RESULT_EXPECT)];
-                    Cmd.m_Result        = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_RESULT_OBSERV)];
-                    Cmd.m_UserNote      = sRawCmdElement[Array.IndexOf(sFieldRef, CMD_USER_NOTE)];
+                    Cmd.m_Name          = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_NAME)];
+                    Cmd.m_Cmd           = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_CMD)];
+                    Cmd.m_CmdSyntax     = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_SYNTAX)];
+                    Cmd.m_WaitInSec     = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_WAIT_TIME)];
+                    Cmd.m_ResultExpect  = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_RESULT_EXPECT)];
+                    Cmd.m_Result        = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_RESULT_OBSERV)];
+                    Cmd.m_UserNote      = sRawCmdElement[Array.IndexOf(sFieldRef, COMMAND_TYPE.CMD_USER_NOTE)];
 
                     lRet.Add(Cmd);
                 }

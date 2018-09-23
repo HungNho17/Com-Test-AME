@@ -11,6 +11,13 @@ namespace TestAME
 {
     public partial class SW_MultiCmd : Form
     {
+        private enum MODE_CMD
+        {
+            UNKNOW = 0,
+            MANUAL,
+            AUTO,
+        }
+
         ISerialComport  m_ComPort           = null;
 
         List<Button>    m_CmdBtList         = null;
@@ -19,6 +26,9 @@ namespace TestAME
         int             m_iNumberOfCmd      = 0;
         int             m_iCurrentIdxCmd    = 0;
         bool            m_bFlagInWait       = false;
+
+        Timer           m_AutoTimer         = null;
+        MODE_CMD        m_Mode              = MODE_CMD.MANUAL;
 
         string          sPathFileSelected   = null;
         bool            FlagFileLoaded      = false;
@@ -43,6 +53,7 @@ namespace TestAME
             if (m_CmdHandler != null)
                 m_CmdHandler.Closed();
         }
+
         private bool DataViewInit()
         {
             bool bRet = false;
@@ -67,10 +78,65 @@ namespace TestAME
 
                 dtgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
                 dtgvMain.AllowUserToResizeRows = false;
+                dtgvMain.MultiSelect = false;
 
                 bRet = true;
             }
 
+            return bRet;
+        }
+
+        private bool ToolStripInit()
+        {
+            bool bRet = false;
+
+            if (FlagFileLoaded)
+            {
+                tsmiManual.Enabled = true;
+                tsmiAuto.Enabled = true;
+
+                if (m_Mode == MODE_CMD.MANUAL)
+                {
+                    tsmiManual.Checked = true;
+                    tsmiAuto.Checked = false;
+
+                    tsmiStart.Enabled = false;
+                    tsmiStop.Enabled = false;
+                }
+                else if (m_Mode == MODE_CMD.AUTO)
+                {
+                    tsmiAuto.Checked = true;
+                    tsmiManual.Checked = false;
+
+                    tsmiStart.Enabled = true;
+                    tsmiStop.Enabled = true;
+                }
+
+                bRet = true;
+            }
+
+            return bRet;
+        }
+
+        private bool AutoTimerSetUp()
+        {
+            bool bRet = false;
+            if (m_Mode == MODE_CMD.AUTO)
+            {
+                m_AutoTimer = new Timer();
+                m_AutoTimer.Tick += new EventHandler(timer_Expired);
+                
+                tsmiStart.Enabled = true;
+                tsmiStop.Enabled = true;
+            }
+            else
+            {
+                m_AutoTimer.Dispose();
+                m_AutoTimer = null;
+                
+                tsmiStart.Enabled = false;
+                tsmiStop.Enabled = false;
+            }
             return bRet;
         }
 
@@ -99,7 +165,7 @@ namespace TestAME
                         RowContent[0] = "Cmd_" + i.ToString();
                         RowContent[1] = TempCmd.m_Name;
                         RowContent[2] = TempCmd.m_Cmd;
-                        RowContent[3] = "";
+                        RowContent[3] = TempCmd.m_CmdSyntax;
                         RowContent[4] = TempCmd.m_ResultExpect;
                         RowContent[5] = TempCmd.m_Result;
                         RowContent[6] = TempCmd.m_UserNote;
@@ -125,8 +191,28 @@ namespace TestAME
         {
             this.Invoke(this.myDelegate, new object[] { sDataSport});
         }
+
+        private bool SendCmd(int iCmdIdx)
+        {
+            bool bRet = false;
+
+            if ((iCmdIdx < m_iNumberOfCmd) && (m_iNumberOfCmd > 0))
+            {
+                dtgvMain.Rows[iCmdIdx].Selected = true;
+                try
+                {
+                    m_ComPort.Write(dtgvMain.Rows[iCmdIdx].Cells[2].Value.ToString() +"\r", false);
+                    m_iCurrentIdxCmd = iCmdIdx;
+                    m_bFlagInWait = true;
+                    bRet = true;
+                }
+                catch { }
+            }
+
+            return bRet;
+        }
         
-        private void load_tsmi_Click(object sender, EventArgs e)
+        private void tsmiLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Command file |*.xls;*.xlsx;*.csv";
@@ -146,7 +232,9 @@ namespace TestAME
                     if (m_iNumberOfCmd > 0)
                     {
                         FlagFileLoaded = true;
+
                         DataViewInit();
+                        ToolStripInit();
                         UpdateCmdFromFile();
                     }
                 }
@@ -162,23 +250,83 @@ namespace TestAME
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                dtgvMain.Rows[e.RowIndex].Selected = true;
-                try
-                {
-                    m_ComPort.Write(dtgvMain.Rows[e.RowIndex].Cells[2].Value.ToString() +"\r", false);
-                    m_iCurrentIdxCmd = e.RowIndex;
-                    m_bFlagInWait = true;
-                }
-                catch { }
+                SendCmd(e.RowIndex);
             }
         }
 
-        private void clearResultToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiReset_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dtgvMain.Rows.Count; i++)
             {
                 dtgvMain.Rows[i].Cells[5].Value = null;
             }
+
+            m_iCurrentIdxCmd = 0;
+        }
+
+        private void tsmiMenual_Click(object sender, EventArgs e)
+        {
+            tsmiManual.Checked ^= true;
+            tsmiAuto.Checked ^= tsmiManual.Checked;
+
+            if (tsmiManual.Checked)
+            {
+                m_Mode = MODE_CMD.MANUAL;
+                AutoTimerSetUp();
+            }
+        }
+
+        private void tsmiAuto_Click(object sender, EventArgs e)
+        {
+            tsmiAuto.Checked ^= true;
+            tsmiManual.Checked ^= tsmiAuto.Checked;
+            if (tsmiAuto.Checked)
+            {
+                m_Mode = MODE_CMD.AUTO;
+                AutoTimerSetUp();
+            }
+        }
+
+        private void tsmiAutoControl_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem) == tsmiStart)
+            {
+                m_AutoTimer.Enabled = true;
+            }
+            else if ((sender as ToolStripMenuItem) == tsmiStop)
+            {
+                m_AutoTimer.Enabled = false;
+            }
+        }
+
+        private void timer_Expired(object sender, EventArgs e)
+        {
+            if (m_iCurrentIdxCmd < m_iNumberOfCmd)
+            {
+                if (SendCmd(m_iCurrentIdxCmd))
+                {
+                    int iSecWait = 1;
+
+                    COMMAND_TYPE TempCmd = m_CmdHandler.ReadCmd(m_iCurrentIdxCmd);
+                    try
+                    {
+                        iSecWait = int.Parse(TempCmd.m_WaitInSec);
+                    }
+                    catch { }
+
+                    m_AutoTimer.Interval = (iSecWait * 1000);
+                    m_iCurrentIdxCmd++;
+                }
+                else
+                {
+                    m_AutoTimer.Enabled = false;
+                }    
+            }
+        }
+
+        private void tsmiExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
