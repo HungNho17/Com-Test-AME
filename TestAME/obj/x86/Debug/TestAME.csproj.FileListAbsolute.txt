@@ -50,3 +50,4 @@ D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_Labe
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SerialComSetUp.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_SetupUserCommand.resources
 D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.SW_MultiCmd.resources
+D:\1. GIT_LAB\1.VISUAL_STUDIO\Com-Test-AME\TestAME\obj\x86\Debug\TestAME.csprojResolveAssemblyReference.cache

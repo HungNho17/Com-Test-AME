@@ -138,6 +138,10 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="RESOURCEs\start.bmp" />
+    <None Include="RESOURCEs\stop.png" />
+    <None Include="RESOURCEs\start.png" />
+    <None Include="RESOURCEs\Image1.png" />
     <Content Include="RESOURCEs\Images\datalogic.ico" />
     <Content Include="RESOURCEs\Images\D_brown.png" />
     <Content Include="RESOURCEs\Images\D_green.png" />

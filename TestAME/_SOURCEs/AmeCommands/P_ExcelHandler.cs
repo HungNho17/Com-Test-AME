@@ -36,7 +36,6 @@ namespace TestAME
 
         public P_ExcelHandler()
         {
-            xlApp = new Excel.Application();
         }
 
         ~P_ExcelHandler()
@@ -217,6 +216,11 @@ namespace TestAME
             if (File.Exists(sFilePath))
             {
                 lsRet = new List<string[]>();
+
+                if (xlApp == null)
+                {
+                    xlApp = new Excel.Application();
+                }
                 
                 try
                 {

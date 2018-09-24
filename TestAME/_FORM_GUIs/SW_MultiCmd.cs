@@ -26,6 +26,7 @@ namespace TestAME
         int             m_iNumberOfCmd      = 0;
         int             m_iCurrentIdxCmd    = 0;
         bool            m_bFlagInWait       = false;
+        bool            m_bFlagCheckRes     = false;
 
         Timer           m_AutoTimer         = null;
         MODE_CMD        m_Mode              = MODE_CMD.MANUAL;
@@ -93,19 +94,22 @@ namespace TestAME
             if (FlagFileLoaded)
             {
                 tsmiManual.Enabled = true;
-                tsmiAuto.Enabled = true;
+                tsmiAutoNoRes.Enabled = true;
+                tsmiAutoRes.Enabled = true;
 
                 if (m_Mode == MODE_CMD.MANUAL)
                 {
                     tsmiManual.Checked = true;
-                    tsmiAuto.Checked = false;
+                    tsmiAutoNoRes.Checked = false;
+                    tsmiAutoRes.Checked = false;
 
                     tsmiStart.Enabled = false;
                     tsmiStop.Enabled = false;
                 }
                 else if (m_Mode == MODE_CMD.AUTO)
                 {
-                    tsmiAuto.Checked = true;
+                    tsmiAutoNoRes.Checked = true;
+                    tsmiAutoRes.Checked = false;
                     tsmiManual.Checked = false;
 
                     tsmiStart.Enabled = true;
@@ -182,8 +186,9 @@ namespace TestAME
         {
             if (m_bFlagInWait == true)
             {
-                m_bFlagInWait = false;
                 dtgvMain.Rows[m_iCurrentIdxCmd].Cells[5].Value = dataIn;
+                m_iCurrentIdxCmd++;
+                m_bFlagInWait = false;
             }
         }
 
@@ -212,6 +217,8 @@ namespace TestAME
             return bRet;
         }
         
+        // Event handler !
+
         private void tsmiLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -256,33 +263,49 @@ namespace TestAME
 
         private void tsmiReset_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dtgvMain.Rows.Count; i++)
+            if (dtgvMain.Rows.Count > 0)
             {
-                dtgvMain.Rows[i].Cells[5].Value = null;
-            }
+                for (int i = 0; i < dtgvMain.Rows.Count; i++)
+                {
+                    dtgvMain.Rows[i].Cells[5].Value = null;
+                }
 
-            m_iCurrentIdxCmd = 0;
+                dtgvMain.Rows[0].Selected = true;
+                m_iCurrentIdxCmd = 0;
+                m_bFlagInWait = false;
+            }
         }
 
         private void tsmiMenual_Click(object sender, EventArgs e)
         {
-            tsmiManual.Checked ^= true;
-            tsmiAuto.Checked ^= tsmiManual.Checked;
-
-            if (tsmiManual.Checked)
-            {
-                m_Mode = MODE_CMD.MANUAL;
-                AutoTimerSetUp();
-            }
+            tsmiManual.Checked = true;
+            tsmiAutoNoRes.Checked = false;
+            tsmiAutoRes.Checked = false;
+            
+            m_Mode = MODE_CMD.MANUAL;
+            AutoTimerSetUp();
         }
 
         private void tsmiAuto_Click(object sender, EventArgs e)
         {
-            tsmiAuto.Checked ^= true;
-            tsmiManual.Checked ^= tsmiAuto.Checked;
-            if (tsmiAuto.Checked)
+            if ((sender as ToolStripMenuItem) == tsmiAutoNoRes)
             {
+                tsmiAutoNoRes.Checked = true;
+                tsmiAutoRes.Checked = false; 
+                tsmiManual.Checked = false;
+
                 m_Mode = MODE_CMD.AUTO;
+                m_bFlagCheckRes = false;
+                AutoTimerSetUp();
+            }
+            else if ((sender as ToolStripMenuItem) == tsmiAutoRes)
+            {
+                tsmiAutoRes.Checked = true;
+                tsmiAutoNoRes.Checked = false;
+                tsmiManual.Checked = false;
+                
+                m_Mode = MODE_CMD.AUTO;
+                m_bFlagCheckRes = true;
                 AutoTimerSetUp();
             }
         }
@@ -301,7 +324,16 @@ namespace TestAME
 
         private void timer_Expired(object sender, EventArgs e)
         {
-            if (m_iCurrentIdxCmd < m_iNumberOfCmd)
+            if (m_bFlagCheckRes == false)
+            {
+                if (m_bFlagInWait == true)
+                {
+                    m_iCurrentIdxCmd++;
+                    m_bFlagInWait = false; // keep moving !
+                }
+            }
+
+            if ((m_iCurrentIdxCmd < m_iNumberOfCmd) && (m_bFlagInWait == false))
             {
                 if (SendCmd(m_iCurrentIdxCmd))
                 {
@@ -315,18 +347,31 @@ namespace TestAME
                     catch { }
 
                     m_AutoTimer.Interval = (iSecWait * 1000);
-                    m_iCurrentIdxCmd++;
                 }
-                else
-                {
-                    m_AutoTimer.Enabled = false;
-                }    
+            }
+            else
+            {
+                m_AutoTimer.Enabled = false;
+                MessageBox.Show("No Respond!");
             }
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsmiAction_DropDownOpened(object sender, EventArgs e)
+        {
+            if (m_bFlagInWait == true)
+            {
+                m_AutoTimer.Enabled = false;
+            }
+        }
+
+        private void tsmiAction_DropDownClosed(object sender, EventArgs e)
+        {
+            // No action.
         }
     }
 }
