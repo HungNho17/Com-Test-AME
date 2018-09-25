@@ -55,6 +55,9 @@ namespace TestAME
         {
             if (m_CmdHandler != null)
                 m_CmdHandler.Closed();
+
+            if (m_AutoTimer != null)
+                m_AutoTimer.Dispose();
         }
 
         private bool DataViewInit()
