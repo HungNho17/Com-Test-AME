@@ -73,15 +73,16 @@ namespace TestAME
                     break;
             }
 
-            if (Properties.Settings.Default.flagInsertLF == true)
+            if (Properties.Settings.Default.flagInsertCr)
             {
-                FlagInsertLF.Checked = true;
-            }
-            else
-            {
-                FlagInsertLF.Checked = false;
+                cbCrAppend.Checked = true;
             }
 
+            if (Properties.Settings.Default.flagInsertLF)
+            {
+                cbLfAppend.Checked = true;
+            }
+            
             return true;
         }
         public bool UpdateCurrentUser(int currentUser)
@@ -356,16 +357,25 @@ namespace TestAME
             }
         }
 
-        private void FlagInsertLF_CheckedChanged(object sender, EventArgs e)
+        private void FlagAppend_CheckedChanged(object sender, EventArgs e)
         {
-            if (FlagInsertLF.Checked == true)
-            {
-                Properties.Settings.Default.flagInsertLF = true;
-            }
-            else
+            if ((sender as CheckBox) == cbLfAppend)
             {
                 Properties.Settings.Default.flagInsertLF = false;
+                if (cbLfAppend.Checked == true)
+                {
+                    Properties.Settings.Default.flagInsertLF = true;
+                }
             }
+            else if((sender as CheckBox) == cbCrAppend)
+            {
+                Properties.Settings.Default.flagInsertCr = false;
+                if (cbCrAppend.Checked == true)
+                {
+                    Properties.Settings.Default.flagInsertCr = true;
+                }
+            }
+            Properties.Settings.Default.Save();
         }
         
     }

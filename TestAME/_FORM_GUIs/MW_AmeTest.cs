@@ -743,8 +743,14 @@ namespace TestAME
             string temp = null;
             int IndexSender = CommandBTList.IndexOf(sender as Button);
 
-            ComPort.Write(cmdListCurrent[IndexSender], UserCmd.GetFlagInsertLF());
             temp = cmdListCurrent[IndexSender];
+
+            if (UserCmd.GetFlagInsertCR())
+            {
+                temp+= "\r";
+            }
+
+            ComPort.Write(temp, UserCmd.GetFlagInsertLF());
 
             if (UserCmd.GetFlagInsertLF())
             {

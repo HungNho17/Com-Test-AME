@@ -186,5 +186,9 @@ namespace TestAME
         {
             return Properties.Settings.Default.flagInsertLF;
         }
+        public bool GetFlagInsertCR()
+        {
+            return Properties.Settings.Default.flagInsertCr;
+        }
     }
 }

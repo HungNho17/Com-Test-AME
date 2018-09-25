@@ -59,7 +59,8 @@
             this.btOK = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.btClear = new System.Windows.Forms.Button();
-            this.FlagInsertLF = new System.Windows.Forms.CheckBox();
+            this.cbCrAppend = new System.Windows.Forms.CheckBox();
+            this.cbLfAppend = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -340,23 +341,35 @@
             this.btClear.UseVisualStyleBackColor = true;
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
-            // FlagInsertLF
+            // cbCrAppend
             // 
-            this.FlagInsertLF.AutoSize = true;
-            this.FlagInsertLF.Location = new System.Drawing.Point(30, 327);
-            this.FlagInsertLF.Name = "FlagInsertLF";
-            this.FlagInsertLF.Size = new System.Drawing.Size(223, 17);
-            this.FlagInsertLF.TabIndex = 5;
-            this.FlagInsertLF.Text = "Auto insert { CR } at the end of command.";
-            this.FlagInsertLF.UseVisualStyleBackColor = true;
-            this.FlagInsertLF.CheckedChanged += new System.EventHandler(this.FlagInsertLF_CheckedChanged);
+            this.cbCrAppend.AutoSize = true;
+            this.cbCrAppend.Location = new System.Drawing.Point(32, 325);
+            this.cbCrAppend.Name = "cbCrAppend";
+            this.cbCrAppend.Size = new System.Drawing.Size(119, 17);
+            this.cbCrAppend.TabIndex = 5;
+            this.cbCrAppend.Text = "Auto append { CR }";
+            this.cbCrAppend.UseVisualStyleBackColor = true;
+            this.cbCrAppend.CheckedChanged += new System.EventHandler(this.FlagAppend_CheckedChanged);
+            // 
+            // cbLfAppend
+            // 
+            this.cbLfAppend.AutoSize = true;
+            this.cbLfAppend.Location = new System.Drawing.Point(156, 325);
+            this.cbLfAppend.Name = "cbLfAppend";
+            this.cbLfAppend.Size = new System.Drawing.Size(116, 17);
+            this.cbLfAppend.TabIndex = 6;
+            this.cbLfAppend.Text = "Auto append { LF }";
+            this.cbLfAppend.UseVisualStyleBackColor = true;
+            this.cbLfAppend.CheckedChanged += new System.EventHandler(this.FlagAppend_CheckedChanged);
             // 
             // SW_SetupUserCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 355);
-            this.Controls.Add(this.FlagInsertLF);
+            this.Controls.Add(this.cbLfAppend);
+            this.Controls.Add(this.cbCrAppend);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOK);
@@ -366,7 +379,7 @@
             this.MinimumSize = new System.Drawing.Size(489, 394);
             this.Name = "SW_SetupUserCommand";
             this.ShowIcon = false;
-            this.Text = "User Command Setting";
+            this.Text = "q";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -405,10 +418,11 @@
         private System.Windows.Forms.Button btOK;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btClear;
-        private System.Windows.Forms.CheckBox FlagInsertLF;
+        private System.Windows.Forms.CheckBox cbCrAppend;
         private System.Windows.Forms.TextBox tbCmd8;
         private System.Windows.Forms.TextBox tbCmd7;
         private System.Windows.Forms.TextBox tbName8;
         private System.Windows.Forms.TextBox tbName7;
+        private System.Windows.Forms.CheckBox cbLfAppend;
     }
 }

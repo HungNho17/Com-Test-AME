@@ -661,7 +661,7 @@ namespace TestAME.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool flagInsertLF {
             get {
                 return ((bool)(this["flagInsertLF"]));
@@ -944,6 +944,18 @@ namespace TestAME.Properties {
             }
             set {
                 this["Handshake"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool flagInsertCr {
+            get {
+                return ((bool)(this["flagInsertCr"]));
+            }
+            set {
+                this["flagInsertCr"] = value;
             }
         }
     }

@@ -162,7 +162,7 @@
       <Value Profile="(Default)">User #4</Value>
     </Setting>
     <Setting Name="flagInsertLF" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="user1_btName7" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -232,6 +232,9 @@
     </Setting>
     <Setting Name="Handshake" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="flagInsertCr" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

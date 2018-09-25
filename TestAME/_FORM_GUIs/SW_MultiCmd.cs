@@ -47,6 +47,8 @@ namespace TestAME
 
             this.myDelegate = new AddDataDelegate(AddDataMethod);
             ComPort.RegisterReceiveRealTime(new DataReceiveUpdate(Read));
+
+            btPaused.Hide();
         }
         
         private void SW_MultiCmd_FormClosed(object sender, FormClosedEventArgs e)
@@ -281,6 +283,7 @@ namespace TestAME
             tsmiManual.Checked = true;
             tsmiAutoNoRes.Checked = false;
             tsmiAutoRes.Checked = false;
+            btPaused.Hide();
             
             m_Mode = MODE_CMD.MANUAL;
             AutoTimerSetUp();
@@ -293,6 +296,7 @@ namespace TestAME
                 tsmiAutoNoRes.Checked = true;
                 tsmiAutoRes.Checked = false; 
                 tsmiManual.Checked = false;
+                btPaused.Show();
 
                 m_Mode = MODE_CMD.AUTO;
                 m_bFlagCheckRes = false;
@@ -303,6 +307,7 @@ namespace TestAME
                 tsmiAutoRes.Checked = true;
                 tsmiAutoNoRes.Checked = false;
                 tsmiManual.Checked = false;
+                btPaused.Show();
                 
                 m_Mode = MODE_CMD.AUTO;
                 m_bFlagCheckRes = true;
@@ -314,6 +319,7 @@ namespace TestAME
         {
             if ((sender as ToolStripMenuItem) == tsmiStart)
             {
+                btPaused.Text = "STARTED";
                 m_AutoTimer.Enabled = true;
             }
             else if ((sender as ToolStripMenuItem) == tsmiStop)
@@ -360,18 +366,22 @@ namespace TestAME
         {
             this.Close();
         }
-
-        private void tsmiAction_DropDownOpened(object sender, EventArgs e)
+        
+        private void btPaused_Click(object sender, EventArgs e)
         {
             if (m_bFlagInWait == true)
             {
-                m_AutoTimer.Enabled = false;
+                if (btPaused.Text == "PAUSED")
+                {
+                    m_AutoTimer.Enabled = true;
+                    btPaused.Text = "STARTED";
+                }
+                else
+                {
+                    m_AutoTimer.Enabled = false;
+                    btPaused.Text = "PAUSED";
+                }
             }
-        }
-
-        private void tsmiAction_DropDownClosed(object sender, EventArgs e)
-        {
-            // No action.
         }
     }
 }

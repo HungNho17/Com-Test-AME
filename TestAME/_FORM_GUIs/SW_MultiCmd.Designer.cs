@@ -36,6 +36,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManual = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiAutoRes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAutoNoRes = new System.Windows.Forms.ToolStripMenuItem();
             this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -46,8 +48,7 @@
             this.dtgvMain = new System.Windows.Forms.DataGridView();
             this.lbPathFile = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tsmiAutoRes = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btPaused = new System.Windows.Forms.Button();
             this.mnsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMain)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +114,19 @@
             this.tsmiManual.Text = "Manual";
             this.tsmiManual.Click += new System.EventHandler(this.tsmiMenual_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(192, 6);
+            // 
+            // tsmiAutoRes
+            // 
+            this.tsmiAutoRes.Enabled = false;
+            this.tsmiAutoRes.Name = "tsmiAutoRes";
+            this.tsmiAutoRes.Size = new System.Drawing.Size(195, 22);
+            this.tsmiAutoRes.Text = "Auto With Respond";
+            this.tsmiAutoRes.Click += new System.EventHandler(this.tsmiAuto_Click);
+            // 
             // tsmiAutoNoRes
             // 
             this.tsmiAutoNoRes.Enabled = false;
@@ -132,8 +146,6 @@
             this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
             this.actionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.actionToolStripMenuItem.Text = "Action";
-            this.actionToolStripMenuItem.DropDownClosed += new System.EventHandler(this.tsmiAction_DropDownClosed);
-            this.actionToolStripMenuItem.DropDownOpened += new System.EventHandler(this.tsmiAction_DropDownOpened);
             // 
             // toolStripSeparator1
             // 
@@ -202,24 +214,23 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 3;
             // 
-            // tsmiAutoRes
+            // btPaused
             // 
-            this.tsmiAutoRes.Enabled = false;
-            this.tsmiAutoRes.Name = "tsmiAutoRes";
-            this.tsmiAutoRes.Size = new System.Drawing.Size(195, 22);
-            this.tsmiAutoRes.Text = "Auto With Respond";
-            this.tsmiAutoRes.Click += new System.EventHandler(this.tsmiAuto_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(192, 6);
+            this.btPaused.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btPaused.Location = new System.Drawing.Point(606, 1);
+            this.btPaused.Name = "btPaused";
+            this.btPaused.Size = new System.Drawing.Size(75, 23);
+            this.btPaused.TabIndex = 5;
+            this.btPaused.Text = "PAUSED";
+            this.btPaused.UseVisualStyleBackColor = true;
+            this.btPaused.Click += new System.EventHandler(this.btPaused_Click);
             // 
             // SW_MultiCmd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 371);
+            this.Controls.Add(this.btPaused);
             this.Controls.Add(this.lbPathFile);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtgvMain);
@@ -258,5 +269,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiManual;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tsmiAutoRes;
+        private System.Windows.Forms.Button btPaused;
     }
 }

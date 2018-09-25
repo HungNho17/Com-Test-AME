@@ -95,6 +95,9 @@
       <DependentUpon>SW_SetupUserCommand.cs</DependentUpon>
     </Compile>
     <Compile Include="_SOURCEs\P_UserCommandManagement.cs" />
+    <Compile Include="_SOURCEs\UserCommands\I_UserCommand.cs" />
+    <Compile Include="_SOURCEs\UserCommands\P_UserCommands.cs" />
+    <Compile Include="_SOURCEs\UserCommands\P_XmlHandler.cs" />
     <EmbeddedResource Include="_FORM_GUIs\MW_AmeTest.resx">
       <DependentUpon>MW_AmeTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,10 +141,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="RESOURCEs\start.bmp" />
-    <None Include="RESOURCEs\stop.png" />
-    <None Include="RESOURCEs\start.png" />
-    <None Include="RESOURCEs\Image1.png" />
     <Content Include="RESOURCEs\Images\datalogic.ico" />
     <Content Include="RESOURCEs\Images\D_brown.png" />
     <Content Include="RESOURCEs\Images\D_green.png" />
