@@ -144,7 +144,10 @@ namespace TestAME
         };
         
         private static SerialPort               m_SPCurrent             = null;
+
         private static Thread                   m_SPProcessing          = null;
+        private static ThreadStart              m_FuncProcess           = null;
+
         private static Queue<string>            m_SPReceiveQueue        = null;
         private static bool                     m_SPFlagNewData         = false;
         
@@ -200,7 +203,8 @@ namespace TestAME
                         m_SPCurrent.Open();
                         if (m_SPCurrent.IsOpen == true)
                         {
-                            m_SPProcessing = new Thread(new ThreadStart(Processing));
+                            m_FuncProcess = new ThreadStart(Processing);
+                            m_SPProcessing = new Thread(m_FuncProcess);
                             m_SPProcessing.Start();
                         }
                     }
@@ -213,9 +217,7 @@ namespace TestAME
 
         public bool CloseSPort()
         {
-            if (m_SPCurrent.PortName == null)
-                return false;
-
+            bool bRet = false;
             if (m_SPCurrent != null)
             {
                 if (m_SPCurrent.IsOpen == true)
@@ -223,19 +225,13 @@ namespace TestAME
                     try
                     {
                         m_SPCurrent.Close();
-                        if (m_SPCurrent.IsOpen == true)
-                        {
-                            return false;
-                        }
+                        m_SPProcessing.Abort();
+                        bRet = true;
                     }
-                    catch
-                    {
-                        return false;
-                    }
-
+                    catch{}
                 }
             }
-            return true;
+            return bRet;
         }
 
         public bool CheckSport()
@@ -562,6 +558,12 @@ namespace TestAME
             SerialPort sp = (SerialPort)sender;
             m_SPReceiveQueue.Enqueue(sp.ReadExisting());
             m_SPFlagNewData = true;
+
+            if (m_SPProcessing.IsAlive == false)
+            {
+                m_SPProcessing = new Thread(m_FuncProcess);
+                m_SPProcessing.Start();
+            }
         }
 
         private void Processing()
@@ -571,7 +573,11 @@ namespace TestAME
                 UpdateDataReceiveForClients();
                 UpdateWritenDataForClients();
 
-                //UpdateHandsakeStatusForClients();
+                if ((m_SPFlagNewData == false) &&
+                    (m_SPFlagWritenData == false))
+                {
+                    m_SPProcessing.Abort();
+                }
             }
         }
 
